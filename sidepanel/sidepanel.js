@@ -6,13 +6,14 @@
 
 import {
   getLocal,
+  setLocal,
   getSession,
   setSession,
   removeSession,
   SESSION_KEYS,
   LOCAL_KEYS,
 } from '../lib/storage.js';
-import { submitReport } from '../lib/clickup.js';
+import { submitReport, getAuthorizedUser } from '../lib/clickup.js';
 
 const els = {
   viewLauncher: document.getElementById('view-launcher'),
@@ -24,6 +25,7 @@ const els = {
   priority: document.getElementById('task-priority'),
   description: document.getElementById('task-description'),
   targetInfo: document.getElementById('target-info'),
+  assignMe: document.getElementById('assign-me'),
   submitBtn: document.getElementById('submit-btn'),
   btnText: document.querySelector('#submit-btn .btn-text'),
   spinner: document.querySelector('#submit-btn .spinner'),
@@ -85,25 +87,49 @@ function setLoading(on) {
   els.btnText.textContent = on ? '등록 중…' : 'ClickUp에 등록';
 }
 
-/** QA 템플릿으로 제목/설명 기본값 구성. */
+/** ISO 문자열(또는 현재)을 'YYYY-MM-DD 오후 h:mm:ss' 형식으로. */
+function formatDateTime(iso) {
+  const d = iso ? new Date(iso) : new Date();
+  const date = d.toLocaleDateString('sv-SE'); // 2026-07-27
+  const time = d.toLocaleTimeString('ko-KR'); // 오후 4:02:54
+  return `${date} ${time}`;
+}
+
+/**
+ * QA 템플릿으로 제목/설명 기본값 구성.
+ * 설명은 마크다운(소제목은 굵게). 제출 시 제목이 H3로 맨 위에 붙는다.
+ */
 function buildDefaults(cap) {
-  const title = `[QA] ${cap.sourceTitle || cap.sourceUrl || '버그 리포트'}`;
-  const when = cap.capturedAt ? new Date(cap.capturedAt).toLocaleString('ko-KR') : '-';
+  const title = '[고객사] 이슈 내용';
   const description = [
-    `URL: ${cap.sourceUrl || '-'}`,
-    `캡처 시각: ${when}`,
-    `User-Agent: ${cap.metadata?.userAgent || navigator.userAgent}`,
+    '**이슈 내용**',
     '',
-    '재현 단계:',
+    '',
+    '**재현 방법**',
     '1. ',
     '2. ',
     '',
-    '기대 결과:',
+    '**URL**',
+    cap.sourceUrl || '-',
     '',
-    '실제 결과:',
-    '',
+    '**캡처 시각**',
+    formatDateTime(cap.capturedAt),
   ].join('\n');
   return { title, description };
+}
+
+/** 내 ClickUp user id를 캐시에서 읽거나, 없으면 API로 조회해 저장. 실패 시 null. */
+async function ensureMyUserId(token) {
+  const cfg = await getLocal([LOCAL_KEYS.MY_USER_ID]);
+  if (cfg[LOCAL_KEYS.MY_USER_ID]) return cfg[LOCAL_KEYS.MY_USER_ID];
+  try {
+    const data = await getAuthorizedUser(token);
+    const uid = data?.user?.id;
+    if (uid) await setLocal({ [LOCAL_KEYS.MY_USER_ID]: uid });
+    return uid || null;
+  } catch {
+    return null; // 배정 실패해도 태스크 생성은 계속 진행
+  }
 }
 
 /* ---------- 뷰 전환 ---------- */
@@ -203,13 +229,23 @@ async function handleSubmit() {
 
   setLoading(true);
   try {
+    // 제목을 H3로 맨 위에 붙이고, 그 아래 사용자가 작성한 마크다운 본문.
+    const markdownContent = `### ${name}\n\n${els.description.value}`;
+
+    let assignees;
+    if (els.assignMe.checked) {
+      const uid = await ensureMyUserId(token);
+      if (uid) assignees = [uid];
+    }
+
     const { taskUrl } = await submitReport({
       token,
       listId,
       task: {
         name,
-        description: els.description.value,
+        markdownContent,
         priority: Number(els.priority.value) || 3,
+        assignees,
       },
       blob: captureBlob,
       filename: captureFilename,
