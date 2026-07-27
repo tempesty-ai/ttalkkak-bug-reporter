@@ -16,6 +16,11 @@
   box-sizing: border-box;
 }
 
+/* hidden 속성이 항상 우선하도록. (.view 등의 display 규칙이 [hidden]을 덮는 문제 방지) */
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   height: 100%;
