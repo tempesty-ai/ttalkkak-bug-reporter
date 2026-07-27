@@ -92,11 +92,7 @@ qa-capture-clickup/
 │   ├── sidepanel.html
 │   ├── sidepanel.js
 │   ├── sidepanel.css
-│   └── tools/                # Phase 2 주석 도구별 모듈 (패널 내부에서 동작)
-│       ├── arrow.js
-│       ├── text.js
-│       ├── step-number.js
-│       └── highlight.js
+│   └── annotator.js          # 캔버스 주석 편집기 (화살표/형광펜/번호/텍스트 통합)
 ├── background/
 │   └── service-worker.js     # 패널 동작 설정, 캡처/녹화 오케스트레이션
 ├── content/

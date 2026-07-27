@@ -14,13 +14,17 @@ import {
   LOCAL_KEYS,
 } from '../lib/storage.js';
 import { submitReport, getAuthorizedUser } from '../lib/clickup.js';
+import { createAnnotator } from './annotator.js';
 
 const els = {
   viewLauncher: document.getElementById('view-launcher'),
   viewReport: document.getElementById('view-report'),
   launcherStatus: document.getElementById('launcher-status'),
   configWarning: document.getElementById('config-warning'),
-  previewImg: document.getElementById('capture-preview'),
+  canvas: document.getElementById('annotate-canvas'),
+  toolbar: document.querySelector('.annotate-toolbar'),
+  undoBtn: document.getElementById('undo-btn'),
+  clearBtn: document.getElementById('clear-btn'),
   title: document.getElementById('task-title'),
   priority: document.getElementById('task-priority'),
   description: document.getElementById('task-description'),
@@ -38,6 +42,10 @@ const els = {
 let captureBlob = null;
 let captureFilename = 'screenshot.png';
 let toastTimer = null;
+let annotator = null;
+
+const DEFAULT_TOOL = 'arrow';
+const DEFAULT_COLOR = '#e11d48';
 
 /* ---------- 공통 유틸 ---------- */
 
@@ -139,8 +147,25 @@ function showLauncher() {
   els.viewLauncher.hidden = false;
 }
 
+/** 툴바 버튼 활성 상태 표시. */
+function setActiveTool(toolBtn) {
+  els.toolbar.querySelectorAll('.tool-btn[data-tool]').forEach((b) => b.classList.remove('active'));
+  if (toolBtn) toolBtn.classList.add('active');
+}
+
+function setActiveColor(colorBtn) {
+  els.toolbar.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+  if (colorBtn) colorBtn.classList.add('active');
+}
+
 async function showReport(cap) {
-  els.previewImg.src = cap.dataUrl;
+  // 이전 캔버스 편집기 정리 후 새로 초기화.
+  if (annotator) annotator.destroy();
+  annotator = createAnnotator(els.canvas, cap.dataUrl);
+  annotator.setTool(DEFAULT_TOOL);
+  annotator.setColor(DEFAULT_COLOR);
+  setActiveTool(els.toolbar.querySelector(`.tool-btn[data-tool="${DEFAULT_TOOL}"]`));
+  setActiveColor(els.toolbar.querySelector(`.color-btn[data-color="${DEFAULT_COLOR}"]`));
 
   const defaults = buildDefaults(cap);
   els.title.value = defaults.title;
@@ -238,6 +263,13 @@ async function handleSubmit() {
       if (uid) assignees = [uid];
     }
 
+    // 주석이 합쳐진 이미지를 첨부. 실패 시 원본으로 폴백.
+    let blob = captureBlob;
+    if (annotator) {
+      const annotated = await annotator.getBlob();
+      if (annotated) blob = annotated;
+    }
+
     const { taskUrl } = await submitReport({
       token,
       listId,
@@ -247,7 +279,7 @@ async function handleSubmit() {
         priority: Number(els.priority.value) || 3,
         assignees,
       },
-      blob: captureBlob,
+      blob,
       filename: captureFilename,
     });
 
@@ -265,6 +297,10 @@ async function handleSubmit() {
 async function resetToLauncher() {
   await removeSession(SESSION_KEYS.PENDING_CAPTURE);
   captureBlob = null;
+  if (annotator) {
+    annotator.destroy();
+    annotator = null;
+  }
   showLauncher();
   await checkConfig();
 }
@@ -295,6 +331,24 @@ document.querySelectorAll('.action-btn').forEach((btn) => {
 });
 els.submitBtn.addEventListener('click', handleSubmit);
 els.backBtn.addEventListener('click', resetToLauncher);
+
+// 주석 툴바
+els.toolbar.querySelectorAll('.tool-btn[data-tool]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    if (!annotator) return;
+    annotator.setTool(btn.dataset.tool);
+    setActiveTool(btn);
+  });
+});
+els.toolbar.querySelectorAll('.color-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    if (!annotator) return;
+    annotator.setColor(btn.dataset.color);
+    setActiveColor(btn);
+  });
+});
+els.undoBtn.addEventListener('click', () => annotator && annotator.undo());
+els.clearBtn.addEventListener('click', () => annotator && annotator.clear());
 document.getElementById('open-options').addEventListener('click', () => chrome.runtime.openOptionsPage());
 document.getElementById('open-options-link').addEventListener('click', () => chrome.runtime.openOptionsPage());
 

@@ -71,8 +71,22 @@
   <main id="view-report" class="view" hidden>
     <button id="back-btn" class="back-btn" type="button">← 새 캡처</button>
 
+    <div class="annotate-toolbar" role="toolbar" aria-label="주석 도구">
+      <button class="tool-btn" data-tool="arrow" title="화살표" aria-label="화살표">↗</button>
+      <button class="tool-btn" data-tool="highlight" title="형광펜" aria-label="형광펜">▭</button>
+      <button class="tool-btn" data-tool="step" title="단계 번호" aria-label="단계 번호">①</button>
+      <button class="tool-btn" data-tool="text" title="텍스트" aria-label="텍스트">T</button>
+      <span class="tool-sep"></span>
+      <button class="color-btn c-red" data-color="#e11d48" title="빨강" aria-label="빨강"></button>
+      <button class="color-btn c-amber" data-color="#f59e0b" title="주황" aria-label="주황"></button>
+      <button class="color-btn c-blue" data-color="#2563eb" title="파랑" aria-label="파랑"></button>
+      <span class="tool-sep"></span>
+      <button id="undo-btn" class="tool-btn" title="실행 취소" aria-label="실행 취소">↶</button>
+      <button id="clear-btn" class="tool-btn" title="전체 지우기" aria-label="전체 지우기">🗑</button>
+    </div>
+
     <div class="preview">
-      <img id="capture-preview" class="capture-preview" alt="캡처 미리보기" />
+      <canvas id="annotate-canvas" class="annotate-canvas"></canvas>
     </div>
 
     <label class="field">
