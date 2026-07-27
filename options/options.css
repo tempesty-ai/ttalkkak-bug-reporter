@@ -85,11 +85,62 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
+.label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.label-row label {
+  margin-bottom: 0;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
 .hint {
   margin: 8px 0 0;
   font-size: 12px;
   line-height: 1.6;
   color: var(--text-sub);
+}
+
+.list-name {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.picker {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.picker .field:last-of-type {
+  margin-bottom: 0;
+}
+
+.picker select {
+  cursor: pointer;
+}
+
+.picker .primary-btn {
+  margin-top: 14px;
+  width: 100%;
 }
 
 .hint code {

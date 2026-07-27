@@ -27,12 +27,38 @@
     </section>
 
     <section class="field">
-      <label for="list-id">기본 리스트 ID</label>
+      <div class="label-row">
+        <label for="list-id">기본 리스트 ID</label>
+        <button id="find-list-btn" class="link-btn" type="button">리스트 찾아보기 ↓</button>
+      </div>
       <input id="list-id" type="text" placeholder="예: 901234567" autocomplete="off" spellcheck="false" />
+      <p id="list-name-label" class="hint list-name" hidden></p>
       <p class="hint">
-        리스트를 ClickUp에서 연 뒤 URL의 <code>/li/&lt;숫자&gt;</code> 또는
-        <code>/v/li/&lt;숫자&gt;</code> 부분이 리스트 ID입니다.
+        ClickUp URL(<code>/v/l/…</code>)에는 리스트 ID가 안 나올 수 있어요.
+        <strong>리스트 찾아보기</strong>로 골라주세요. (직접 입력도 가능)
       </p>
+    </section>
+
+    <!-- 리스트 피커: 토큰으로 계층을 훑어 리스트를 선택 -->
+    <section id="list-picker" class="picker" hidden>
+      <div class="field">
+        <label for="pk-team">워크스페이스</label>
+        <select id="pk-team"><option value="">불러오는 중…</option></select>
+      </div>
+      <div class="field">
+        <label for="pk-space">스페이스</label>
+        <select id="pk-space" disabled><option value="">—</option></select>
+      </div>
+      <div class="field">
+        <label for="pk-folder">폴더</label>
+        <select id="pk-folder" disabled><option value="">—</option></select>
+      </div>
+      <div class="field">
+        <label for="pk-list">리스트</label>
+        <select id="pk-list" disabled><option value="">—</option></select>
+      </div>
+      <p id="pk-status" class="hint" hidden></p>
+      <button id="pk-apply" class="primary-btn" type="button" disabled>이 리스트 사용</button>
     </section>
 
     <div class="actions">
