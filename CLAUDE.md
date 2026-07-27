@@ -225,7 +225,8 @@ const headers = {
   'Content-Type': 'application/json'
 };
 ```
-**개인 API 토큰 발급 경로**: ClickUp 우상단 아바타 → Settings → Apps → API Token → Generate
+**개인 API 토큰 발급 경로**: ClickUp 우상단 아바타 → Settings → All settings → ClickUp API → Generate
+(표시되는 토큰은 마스킹되어 있으므로 반드시 **Copy 버튼**으로 복사할 것)
 ### 계층 구조
 ```
 Team (Workspace)
