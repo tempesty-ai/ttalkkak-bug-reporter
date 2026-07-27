@@ -31,6 +31,11 @@ QA 엔지니어가 버그를 발견한 순간부터 이슈 트래커(ClickUp)에
 - 정말 필요하면 단일 파일 라이브러리 로컬 벤더링 OK (CDN 로딩은 CSP 위반)
 ---
 ## 3. 아키텍처
+> **결정 이력 (2026-07-27):** UI를 팝업이 아니라 **크롬 사이드 패널(`chrome.sidePanel`)** 로 구현한다.
+> 팝업은 페이지 클릭 시 즉시 닫혀 QA 작업(페이지 조작 중 캡처, 녹화 컨트롤, 영역 선택)에 불리하기 때문.
+> 캡처 실행·미리보기·리포트 폼·ClickUp 등록을 **패널 한 곳**에서 처리하며, 별도 편집기 탭은 두지 않는다.
+> (Phase 2 주석 도구도 패널 내부에서 동작.)
+
 ### 컴포넌트 구성
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -55,16 +60,16 @@ QA 엔지니어가 버그를 발견한 순간부터 이슈 트래커(ClickUp)에
 └─────────────────────────────────────────────────────────────┘
 ```
 ### 메시지 흐름 (스크린샷 케이스)
-1. 사용자가 팝업에서 "화면 캡처" 클릭
-2. `popup.js` → `chrome.tabs.captureVisibleTab()` 직접 호출 (혹은 SW에 위임)
-3. 결과 dataURL을 `chrome.storage.session`에 `pendingCapture`로 저장
-4. `chrome.tabs.create({ url: 'editor/editor.html' })`로 편집기 탭 열기
-5. `editor.js`가 로드되면 session storage에서 캡처 데이터 읽음
-6. 사용자가 주석 달고 "ClickUp 등록" 클릭
-7. `editor.js`가 `lib/clickup.js`를 통해 API 호출
+1. 사용자가 툴바 아이콘 클릭 → SW의 `openPanelOnActionClick` 설정으로 사이드 패널 열림
+2. 패널(런처 뷰)에서 "화면 캡처" 클릭 → `sidepanel.js`가 `chrome.tabs.captureVisibleTab()` 직접 호출
+   (버튼 클릭 = 사용자 제스처, `<all_urls>` 권한으로 동작)
+3. 결과 dataURL을 `chrome.storage.session`에 `pendingCapture`로 저장 (패널 재오픈 시 복원용)
+4. 패널이 리포트 뷰로 전환 → 미리보기 + 제목/우선순위/설명 폼 표시
+5. 사용자가 폼 작성 후 "ClickUp 등록" 클릭
+6. `sidepanel.js`가 `lib/clickup.js`를 통해 API 호출
    - `POST /list/{list_id}/task` → task_id 획득
    - `POST /task/{task_id}/attachment` → 이미지 첨부
-8. 성공 시 토스트 노출 + 편집기 닫기
+7. 성공 시 토스트 노출 + session의 `pendingCapture` 제거
 ### 메시지 흐름 (영상 녹화 케이스)
 1. 사용자가 팝업에서 "동영상 녹화" 클릭
 2. `popup.js` → SW로 `START_RECORDING` 메시지 전달
@@ -83,12 +88,17 @@ qa-capture-clickup/
 ├── manifest.json              # MV3 매니페스트
 ├── CLAUDE.md                  # 이 파일
 ├── README.md                  # 사용자용 설치·사용 가이드
-├── popup/
-│   ├── popup.html            # 툴바 아이콘 클릭 시 뜨는 팝업
-│   ├── popup.js
-│   └── popup.css
+├── sidepanel/                 # 메인 UI (런처 + 미리보기 + 리포트 폼 통합)
+│   ├── sidepanel.html
+│   ├── sidepanel.js
+│   ├── sidepanel.css
+│   └── tools/                # Phase 2 주석 도구별 모듈 (패널 내부에서 동작)
+│       ├── arrow.js
+│       ├── text.js
+│       ├── step-number.js
+│       └── highlight.js
 ├── background/
-│   └── service-worker.js     # 캡처/녹화 오케스트레이션, ClickUp 호출 위임
+│   └── service-worker.js     # 패널 동작 설정, 캡처/녹화 오케스트레이션
 ├── content/
 │   ├── region-select.js      # 영역 선택용 오버레이
 │   ├── fullpage-capture.js   # 전체 페이지 스크롤+스티칭
@@ -97,15 +107,6 @@ qa-capture-clickup/
 ├── offscreen/
 │   ├── offscreen.html        # MediaRecorder 실행용 히든 페이지
 │   └── offscreen.js
-├── editor/
-│   ├── editor.html           # 주석 편집기 (캔버스 기반)
-│   ├── editor.js
-│   ├── editor.css
-│   └── tools/                # 개별 도구별 모듈
-│       ├── arrow.js
-│       ├── text.js
-│       ├── step-number.js
-│       └── highlight.js
 ├── options/
 │   ├── options.html          # ClickUp 토큰·리스트 설정
 │   ├── options.js
@@ -464,13 +465,13 @@ await chrome.tabs.sendMessage(tabId, { type: 'START_SCROLL_CAPTURE' });
 ---
 ## 13. 기능 로드맵
 ### Phase 1: 최소 동작 (MVP) — 공모전 데모 가능 지점
-- [ ] `manifest.json` 뼈대
-- [ ] 팝업 UI (버튼 4개: 화면/전체/영역/영상 — 이번 phase는 화면만 실제 동작)
-- [ ] 서비스 워커 + `captureVisibleTab`
-- [ ] 편집기 뼈대 (이미지 표시 + "ClickUp 등록" 버튼)
+- [ ] `manifest.json` 뼈대 (`sidePanel` + `side_panel`)
+- [ ] 사이드 패널 런처 UI (버튼 4개: 화면/전체/영역/영상 — 이번 phase는 화면만 실제 동작)
+- [ ] 서비스 워커 + `captureVisibleTab` + `openPanelOnActionClick`
+- [ ] 패널 리포트 뷰 (이미지 표시 + 폼 + "ClickUp 등록" 버튼)
 - [ ] 옵션 페이지 (ClickUp 토큰 저장 + 리스트 ID 수동 입력)
 - [ ] `lib/clickup.js`: 태스크 생성 + 첨부
-**검증**: 팝업 → 캡처 → 편집기 표시 → "등록" 클릭 → ClickUp에 태스크 생성 확인
+**검증**: 패널 열기 → 캡처 → 리포트 뷰 표시 → "등록" 클릭 → ClickUp에 태스크 생성 확인
 ### Phase 2: 편집 도구
 - [ ] 캔버스 기반 편집기 (기존 이미지 위에 그리기)
 - [ ] 화살표 도구
@@ -509,8 +510,8 @@ await chrome.tabs.sendMessage(tabId, { type: 'START_SCROLL_CAPTURE' });
 ## 14. 검증 체크리스트 (Phase별)
 ### Phase 1 완료 조건
 - [ ] `chrome://extensions`에서 오류 없이 로드됨
-- [ ] 팝업이 정상 열림
-- [ ] "화면 캡처" 클릭 시 편집기 탭이 열리고 이미지가 표시됨
+- [ ] 툴바 아이콘 클릭 시 사이드 패널이 정상 열림
+- [ ] "화면 캡처" 클릭 시 패널이 리포트 뷰로 바뀌고 이미지가 표시됨
 - [ ] 옵션에 유효한 토큰·리스트 ID 넣고 "등록" 클릭 시 ClickUp에 태스크 생성됨
 - [ ] 태스크에 이미지가 첨부되어 있음
 - [ ] 토큰이 잘못됐을 때 사용자에게 명확한 에러 메시지 노출

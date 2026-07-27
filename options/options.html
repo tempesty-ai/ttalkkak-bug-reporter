@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>딸깍 버그리포팅 · 설정</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main class="card">
+    <header class="head">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <h1>딸깍 버그리포팅 설정</h1>
+    </header>
+
+    <section class="field">
+      <label for="token">ClickUp 개인 API 토큰</label>
+      <div class="input-row">
+        <input id="token" type="password" placeholder="pk_..." autocomplete="off" spellcheck="false" />
+        <button id="toggle-token" class="ghost-btn" type="button">표시</button>
+      </div>
+      <p class="hint">
+        발급: ClickUp 우상단 아바타 → Settings → Apps → API Token → Generate.
+        <strong>Bearer 접두어 없이</strong> 토큰만 붙여넣으세요.
+      </p>
+    </section>
+
+    <section class="field">
+      <label for="list-id">기본 리스트 ID</label>
+      <input id="list-id" type="text" placeholder="예: 901234567" autocomplete="off" spellcheck="false" />
+      <p class="hint">
+        리스트를 ClickUp에서 연 뒤 URL의 <code>/li/&lt;숫자&gt;</code> 또는
+        <code>/v/li/&lt;숫자&gt;</code> 부분이 리스트 ID입니다.
+      </p>
+    </section>
+
+    <div class="actions">
+      <button id="save-btn" class="primary-btn" type="button">저장</button>
+      <button id="test-btn" class="ghost-btn" type="button">연결 테스트</button>
+    </div>
+
+    <p id="status" class="status" role="status" hidden></p>
+  </main>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>
