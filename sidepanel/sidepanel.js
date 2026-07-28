@@ -29,7 +29,6 @@ const els = {
   priority: document.getElementById('task-priority'),
   description: document.getElementById('task-description'),
   targetInfo: document.getElementById('target-info'),
-  assignMe: document.getElementById('assign-me'),
   submitBtn: document.getElementById('submit-btn'),
   btnText: document.querySelector('#submit-btn .btn-text'),
   spinner: document.querySelector('#submit-btn .spinner'),
@@ -257,15 +256,10 @@ async function handleSubmit() {
     // 본문은 사용자가 작성한 마크다운 그대로. (제목은 태스크 name에만 들어가고 본문엔 반복하지 않음)
     const markdownContent = els.description.value;
 
+    // 항상 본인에게 배정 (ClickUp 본문 멘션 미지원 → 멘션은 수동).
     let assignees;
-    let mentionUserId;
-    if (els.assignMe.checked) {
-      const uid = await ensureMyUserId(token);
-      if (uid) {
-        assignees = [uid];
-        mentionUserId = uid; // 등록 후 @멘션 댓글용
-      }
-    }
+    const uid = await ensureMyUserId(token);
+    if (uid) assignees = [uid];
 
     // 주석이 합쳐진 이미지를 첨부. 실패 시 원본으로 폴백.
     let blob = captureBlob;
@@ -274,7 +268,7 @@ async function handleSubmit() {
       if (annotated) blob = annotated;
     }
 
-    const { taskUrl, mentionOk } = await submitReport({
+    const { taskUrl } = await submitReport({
       token,
       listId,
       task: {
@@ -285,14 +279,10 @@ async function handleSubmit() {
       },
       blob,
       filename: captureFilename,
-      mentionUserId,
     });
 
     await removeSession(SESSION_KEYS.PENDING_CAPTURE);
-    const msg = mentionUserId && !mentionOk
-      ? 'ClickUp에 등록됐지만 멘션 댓글은 실패했습니다.'
-      : 'ClickUp에 등록되었습니다.';
-    showToast(msg, mentionUserId && !mentionOk ? 'error' : 'success', taskUrl);
+    showToast('ClickUp에 등록되었습니다.', 'success', taskUrl);
     els.spinner.hidden = true;
     els.submitBtn.disabled = true;
     els.btnText.textContent = '등록 완료';
