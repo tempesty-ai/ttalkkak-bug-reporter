@@ -141,17 +141,20 @@ function buildDefaults(cap) {
   return { title, description };
 }
 
-/** 내 ClickUp user id를 캐시에서 읽거나, 없으면 API로 조회해 저장. 실패 시 null. */
-async function ensureMyUserId(token) {
-  const cfg = await getLocal([LOCAL_KEYS.MY_USER_ID]);
-  if (cfg[LOCAL_KEYS.MY_USER_ID]) return cfg[LOCAL_KEYS.MY_USER_ID];
+/** 내 ClickUp {id, name}을 캐시에서 읽거나, 없으면 API로 조회해 저장. 실패 시 {id:null}. */
+async function ensureMyUser(token) {
+  const cfg = await getLocal([LOCAL_KEYS.MY_USER_ID, LOCAL_KEYS.MY_USER_NAME]);
+  if (cfg[LOCAL_KEYS.MY_USER_ID]) {
+    return { id: cfg[LOCAL_KEYS.MY_USER_ID], name: cfg[LOCAL_KEYS.MY_USER_NAME] || '' };
+  }
   try {
     const data = await getAuthorizedUser(token);
-    const uid = data?.user?.id;
-    if (uid) await setLocal({ [LOCAL_KEYS.MY_USER_ID]: uid });
-    return uid || null;
+    const id = data?.user?.id || null;
+    const name = data?.user?.username || data?.user?.email || '';
+    if (id) await setLocal({ [LOCAL_KEYS.MY_USER_ID]: id, [LOCAL_KEYS.MY_USER_NAME]: name });
+    return { id, name };
   } catch {
-    return null; // 배정 실패해도 태스크 생성은 계속 진행
+    return { id: null, name: '' }; // 실패해도 태스크 생성은 계속 진행
   }
 }
 
@@ -543,13 +546,17 @@ async function handleSubmit() {
 
   setLoading(true);
   try {
-    // 본문은 사용자가 작성한 마크다운 그대로. (제목은 태스크 name에만 들어가고 본문엔 반복하지 않음)
-    const markdownContent = els.description.value;
-
-    // 항상 본인에게 배정 (ClickUp 본문 멘션 미지원 → 멘션은 수동).
+    // 항상 본인에게 배정 + 본문 맨 아래 @멘션 추가.
+    // ClickUp 본문 멘션은 마크다운 링크 형식: [@이름](http://#user_mention#<id>)
     let assignees;
-    const uid = await ensureMyUserId(token);
-    if (uid) assignees = [uid];
+    let mentionMd = '';
+    const me = await ensureMyUser(token);
+    if (me.id) {
+      assignees = [me.id];
+      const display = me.name ? `@${me.name}` : '@me';
+      mentionMd = `\n\n[${display}](http://#user_mention#${me.id})`;
+    }
+    const markdownContent = els.description.value + mentionMd;
 
     // 주석이 합쳐진 이미지를 첨부. 실패 시 원본으로 폴백.
     let blob = captureBlob;
