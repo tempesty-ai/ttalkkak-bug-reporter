@@ -42,6 +42,7 @@ let captureBlob = null;
 let captureFilename = 'screenshot.png';
 let toastTimer = null;
 let annotator = null;
+let regionTab = null; // 영역 선택 시작 시점의 대상 탭
 
 const DEFAULT_TOOL = 'arrow';
 const DEFAULT_COLOR = '#e11d48';
@@ -221,12 +222,68 @@ async function captureVisible() {
   await showReport(cap);
 }
 
+/** 영역 선택 오버레이를 활성 탭에 주입. 결과는 onMessage(REGION_SELECTED)로 돌아온다. */
+async function startRegionSelect() {
+  showLauncherStatus('');
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab) throw new Error('활성 탭을 찾을 수 없습니다.');
+  if (!isCapturableUrl(tab.url)) {
+    throw new Error('이 페이지는 캡처할 수 없습니다. 일반 웹페이지(http/https)에서 시도해주세요.');
+  }
+  regionTab = tab;
+  await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content/region-select.js'] });
+  showLauncherStatus('페이지에서 영역을 드래그하세요… (ESC 취소)');
+}
+
+/** 전체 뷰포트 dataURL을 rect(뷰포트 CSS px)만큼 잘라 새 dataURL 반환. */
+function cropDataUrl(dataUrl, rect, dpr) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const sx = Math.round(rect.x * dpr);
+      const sy = Math.round(rect.y * dpr);
+      const sw = Math.max(1, Math.round(rect.width * dpr));
+      const sh = Math.max(1, Math.round(rect.height * dpr));
+      const canvas = document.createElement('canvas');
+      canvas.width = sw;
+      canvas.height = sh;
+      canvas.getContext('2d').drawImage(img, sx, sy, sw, sh, 0, 0, sw, sh);
+      resolve(canvas.toDataURL('image/png'));
+    };
+    img.onerror = () => reject(new Error('캡처 이미지를 불러오지 못했습니다.'));
+    img.src = dataUrl;
+  });
+}
+
+async function handleRegionSelected(rect, dpr) {
+  try {
+    const tab = regionTab || (await chrome.tabs.query({ active: true, currentWindow: true }))[0];
+    const fullDataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });
+    const croppedDataUrl = await cropDataUrl(fullDataUrl, rect, dpr);
+
+    const cap = {
+      type: 'image',
+      dataUrl: croppedDataUrl,
+      sourceUrl: tab.url,
+      sourceTitle: tab.title || '',
+      capturedAt: new Date().toISOString(),
+      metadata: { userAgent: navigator.userAgent },
+    };
+    await setSession({ [SESSION_KEYS.PENDING_CAPTURE]: cap });
+    await showReport(cap);
+  } catch (err) {
+    showLauncherStatus(err.message || '영역 캡처 중 오류가 발생했습니다.');
+  }
+}
+
 async function handleAction(action) {
   try {
     if (action === 'visible') {
       await captureVisible();
+    } else if (action === 'region') {
+      await startRegionSelect();
     }
-    // 나머지 동작은 이후 Phase (버튼 disabled).
+    // fullpage/video 는 이후 Phase (버튼 disabled).
   } catch (err) {
     showLauncherStatus(err.message || '캡처 중 오류가 발생했습니다.');
   }
@@ -347,6 +404,15 @@ els.toolbar.querySelectorAll('.color-btn').forEach((btn) => {
 });
 els.undoBtn.addEventListener('click', () => annotator && annotator.undo());
 els.clearBtn.addEventListener('click', () => annotator && annotator.clear());
+
+// 영역 선택 오버레이(content script)로부터의 결과 수신
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg?.type === 'REGION_SELECTED') {
+    handleRegionSelected(msg.rect, msg.dpr);
+  } else if (msg?.type === 'REGION_CANCELLED') {
+    showLauncherStatus('영역 선택을 취소했습니다.');
+  }
+});
 document.getElementById('open-options').addEventListener('click', () => chrome.runtime.openOptionsPage());
 document.getElementById('open-options-link').addEventListener('click', () => chrome.runtime.openOptionsPage());
 
