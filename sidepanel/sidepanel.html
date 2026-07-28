@@ -49,14 +49,20 @@
         <span class="sub">드래그 영역</span>
       </button>
 
-      <button class="action-btn" data-action="video" type="button" disabled>
+      <button class="action-btn" data-action="video" type="button">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="23 7 16 12 23 17 23 7"></polygon>
           <rect x="1" y="5" width="15" height="14" rx="2"></rect>
         </svg>
         <span class="label">영상 녹화</span>
-        <span class="badge">곧 지원</span>
+        <span class="sub">탭 화면 녹화</span>
       </button>
+    </div>
+
+    <div id="recording-banner" class="recording-banner" hidden>
+      <span class="rec-dot" aria-hidden="true"></span>
+      <span>녹화 중…</span>
+      <button id="rec-stop" class="rec-stop" type="button">■ 중지</button>
     </div>
 
     <p id="launcher-status" class="inline-status" role="status" hidden></p>
@@ -87,6 +93,7 @@
 
     <div class="preview">
       <canvas id="annotate-canvas" class="annotate-canvas"></canvas>
+      <video id="video-preview" class="video-preview" controls hidden></video>
     </div>
 
     <label class="field">

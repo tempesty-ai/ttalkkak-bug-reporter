@@ -22,9 +22,12 @@ const els = {
   launcherStatus: document.getElementById('launcher-status'),
   configWarning: document.getElementById('config-warning'),
   canvas: document.getElementById('annotate-canvas'),
+  videoPreview: document.getElementById('video-preview'),
   toolbar: document.querySelector('.annotate-toolbar'),
   undoBtn: document.getElementById('undo-btn'),
   clearBtn: document.getElementById('clear-btn'),
+  recordingBanner: document.getElementById('recording-banner'),
+  recStop: document.getElementById('rec-stop'),
   title: document.getElementById('task-title'),
   priority: document.getElementById('task-priority'),
   description: document.getElementById('task-description'),
@@ -43,6 +46,7 @@ let captureFilename = 'screenshot.png';
 let toastTimer = null;
 let annotator = null;
 let regionTab = null; // 영역 선택 시작 시점의 대상 탭
+let recordingTab = null; // 녹화 시작 시점의 대상 탭
 
 const DEFAULT_TOOL = 'arrow';
 const DEFAULT_COLOR = '#e11d48';
@@ -181,13 +185,31 @@ function setActiveColor(colorBtn) {
 }
 
 async function showReport(cap) {
-  // 이전 캔버스 편집기 정리 후 새로 초기화.
-  if (annotator) annotator.destroy();
-  annotator = createAnnotator(els.canvas, cap.dataUrl);
-  annotator.setTool(DEFAULT_TOOL);
-  annotator.setColor(DEFAULT_COLOR);
-  setActiveTool(els.toolbar.querySelector(`.tool-btn[data-tool="${DEFAULT_TOOL}"]`));
-  setActiveColor(els.toolbar.querySelector(`.color-btn[data-color="${DEFAULT_COLOR}"]`));
+  if (annotator) {
+    annotator.destroy();
+    annotator = null;
+  }
+
+  if (cap.type === 'video') {
+    // 영상: 주석 편집 없음 → 툴바/캔버스 숨기고 video 프리뷰.
+    els.toolbar.hidden = true;
+    els.canvas.hidden = true;
+    els.videoPreview.hidden = false;
+    els.videoPreview.src = cap.dataUrl;
+    captureBlob = dataUrlToBlob(cap.dataUrl);
+    captureFilename = `recording-${(cap.capturedAt || 'rec').replace(/[:.]/g, '-')}.webm`;
+  } else {
+    // 이미지: 캔버스 주석 편집기 초기화.
+    els.videoPreview.hidden = true;
+    els.videoPreview.removeAttribute('src');
+    els.toolbar.hidden = false;
+    els.canvas.hidden = false;
+    annotator = createAnnotator(els.canvas, cap.dataUrl);
+    annotator.setTool(DEFAULT_TOOL);
+    annotator.setColor(DEFAULT_COLOR);
+    setActiveTool(els.toolbar.querySelector(`.tool-btn[data-tool="${DEFAULT_TOOL}"]`));
+    setActiveColor(els.toolbar.querySelector(`.color-btn[data-color="${DEFAULT_COLOR}"]`));
+  }
 
   const defaults = buildDefaults(cap);
   els.title.value = defaults.title;
@@ -429,6 +451,61 @@ async function captureFullPage() {
   }
 }
 
+/* ---------- 영상 녹화 ---------- */
+
+function enterRecordingState() {
+  els.recordingBanner.hidden = false;
+  setActionsEnabled(false);
+  showLauncherStatus('');
+}
+
+function exitRecordingState() {
+  els.recordingBanner.hidden = true;
+  setActionsEnabled(true);
+}
+
+async function startVideoRecording() {
+  showLauncherStatus('');
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab) throw new Error('활성 탭을 찾을 수 없습니다.');
+  if (!isCapturableUrl(tab.url)) {
+    throw new Error('이 페이지는 녹화할 수 없습니다. 일반 웹페이지(http/https)에서 시도해주세요.');
+  }
+
+  // getMediaStreamId는 사용자 제스처(버튼 클릭) 컨텍스트인 패널에서 호출.
+  const streamId = await chrome.tabCapture.getMediaStreamId({ targetTabId: tab.id });
+  recordingTab = tab;
+
+  const res = await chrome.runtime.sendMessage({ type: 'START_RECORDING', streamId, tabId: tab.id });
+  if (!res?.ok) throw new Error(res?.error || '녹화를 시작하지 못했습니다.');
+
+  enterRecordingState();
+}
+
+function stopVideoRecording() {
+  chrome.runtime.sendMessage({ type: 'STOP_RECORDING' });
+}
+
+async function handleRecordingComplete(dataUrl) {
+  exitRecordingState();
+  const tab = recordingTab || (await chrome.tabs.query({ active: true, currentWindow: true }))[0] || {};
+  const cap = {
+    type: 'video',
+    dataUrl,
+    sourceUrl: tab.url || '',
+    sourceTitle: tab.title || '',
+    capturedAt: new Date().toISOString(),
+    metadata: { userAgent: navigator.userAgent },
+  };
+  // 영상 dataURL은 클 수 있어 session 저장은 best-effort (초과 시 메모리로만 유지).
+  try {
+    await setSession({ [SESSION_KEYS.PENDING_CAPTURE]: cap });
+  } catch {
+    /* quota 초과 무시 */
+  }
+  await showReport(cap);
+}
+
 async function handleAction(action) {
   try {
     if (action === 'visible') {
@@ -437,8 +514,9 @@ async function handleAction(action) {
       await startRegionSelect();
     } else if (action === 'fullpage') {
       await captureFullPage();
+    } else if (action === 'video') {
+      await startVideoRecording();
     }
-    // video 는 Phase 5 (버튼 disabled).
   } catch (err) {
     showLauncherStatus(err.message || '캡처 중 오류가 발생했습니다.');
   }
@@ -511,6 +589,8 @@ async function resetToLauncher() {
     annotator.destroy();
     annotator = null;
   }
+  els.videoPreview.removeAttribute('src');
+  els.videoPreview.hidden = true;
   showLauncher();
   await checkConfig();
 }
@@ -526,6 +606,14 @@ async function checkConfig() {
 /* ---------- 초기화 ---------- */
 
 async function init() {
+  // 패널이 녹화 중 닫혔다 다시 열린 경우: 녹화 상태 복원.
+  const { recording } = await getSession('recording');
+  if (recording) {
+    showLauncher();
+    enterRecordingState();
+    return;
+  }
+
   // 미제출 캡처가 있으면 리포트 뷰로 복원.
   const { [SESSION_KEYS.PENDING_CAPTURE]: cap } = await getSession(SESSION_KEYS.PENDING_CAPTURE);
   if (cap && cap.dataUrl) {
@@ -566,8 +654,15 @@ chrome.runtime.onMessage.addListener((msg) => {
     handleRegionSelected(msg.rect, msg.dpr);
   } else if (msg?.type === 'REGION_CANCELLED') {
     showLauncherStatus('영역 선택을 취소했습니다.');
+  } else if (msg?.type === 'RECORDING_COMPLETE') {
+    handleRecordingComplete(msg.dataUrl);
+  } else if (msg?.type === 'RECORDING_FAILED') {
+    exitRecordingState();
+    showLauncherStatus(`녹화에 실패했습니다: ${msg.error || '알 수 없는 오류'}`);
   }
 });
+
+els.recStop.addEventListener('click', stopVideoRecording);
 document.getElementById('open-options').addEventListener('click', () => chrome.runtime.openOptionsPage());
 document.getElementById('open-options-link').addEventListener('click', () => chrome.runtime.openOptionsPage());
 
