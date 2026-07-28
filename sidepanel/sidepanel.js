@@ -49,6 +49,9 @@ let annotator = null;
 let regionTab = null; // 영역 선택 시작 시점의 대상 탭
 let recordingTab = null; // 녹화 시작 시점의 대상 탭
 let currentSourceUrl = ''; // 현재 캡처의 원본 페이지 URL (멘션 하이퍼링크 대상)
+let mediaRecorder = null; // 패널 내 MediaRecorder (getDisplayMedia 방식)
+let recordedChunks = [];
+let recordingStream = null;
 
 const DEFAULT_TOOL = 'arrow';
 const DEFAULT_COLOR = '#e11d48';
@@ -73,6 +76,15 @@ function loadImage(src) {
     img.onload = () => resolve(img);
     img.onerror = () => reject(new Error('이미지를 불러오지 못했습니다.'));
     img.src = src;
+  });
+}
+
+function blobToDataUrl(blob) {
+  return new Promise((resolve, reject) => {
+    const fr = new FileReader();
+    fr.onload = () => resolve(fr.result);
+    fr.onerror = () => reject(new Error('영상 변환에 실패했습니다.'));
+    fr.readAsDataURL(blob);
   });
 }
 
@@ -479,50 +491,88 @@ function exitRecordingState() {
 
 async function startVideoRecording() {
   showLauncherStatus('');
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab) throw new Error('활성 탭을 찾을 수 없습니다.');
-  if (!isCapturableUrl(tab.url)) {
-    throw new Error('이 페이지는 녹화할 수 없습니다. 일반 웹페이지(http/https)에서 시도해주세요.');
-  }
 
-  // getMediaStreamId는 대상 탭에 activeTab 권한(사용자 초대)이 있어야 동작한다.
-  // 패널을 툴바 아이콘으로 연 순간 부여됨 → 부족하면 안내 메시지.
-  let streamId;
+  // getDisplayMedia는 사용자 제스처가 필요 → 다른 await보다 먼저 호출.
+  // preferCurrentTab: 현재 탭을 미리 선택해 공유 확인창을 단순화.
+  let stream;
   try {
-    streamId = await chrome.tabCapture.getMediaStreamId({ targetTabId: tab.id });
+    stream = await navigator.mediaDevices.getDisplayMedia({
+      video: { frameRate: 30 },
+      audio: false,
+      preferCurrentTab: true,
+    });
   } catch {
-    throw new Error(
-      '이 탭에서 녹화 권한이 아직 없어요. 녹화할 페이지 탭에서 툴바의 딸깍 아이콘을 한 번 눌러 패널을 다시 연 뒤, 곧바로 "영상 녹화"를 눌러주세요.',
-    );
+    throw new Error('화면 공유가 취소되었거나 시작하지 못했습니다.');
   }
-  recordingTab = tab;
 
-  const res = await chrome.runtime.sendMessage({ type: 'START_RECORDING', streamId, tabId: tab.id });
-  if (!res?.ok) throw new Error(res?.error || '녹화를 시작하지 못했습니다.');
+  recordingStream = stream;
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  recordingTab = tab || null;
 
+  recordedChunks = [];
+  const mimeType = MediaRecorder.isTypeSupported('video/webm;codecs=vp9')
+    ? 'video/webm;codecs=vp9'
+    : 'video/webm';
+  mediaRecorder = new MediaRecorder(stream, { mimeType });
+  mediaRecorder.ondataavailable = (e) => {
+    if (e.data && e.data.size > 0) recordedChunks.push(e.data);
+  };
+  mediaRecorder.onstop = handleRecorderStop;
+  mediaRecorder.start(1000);
+
+  // 크롬 자체 '공유 중지' 바로 멈추면 트랙이 종료됨 → 녹화도 마무리.
+  const [videoTrack] = stream.getVideoTracks();
+  if (videoTrack) videoTrack.addEventListener('ended', () => stopVideoRecording());
+
+  await setSession({ recording: true });
+  if (tab?.id) {
+    try {
+      await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content/recording-controls.js'] });
+    } catch {
+      /* 주입 불가 페이지 무시 */
+    }
+  }
   enterRecordingState();
 }
 
 function stopVideoRecording() {
-  chrome.runtime.sendMessage({ type: 'STOP_RECORDING' });
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+  }
 }
 
-async function handleRecordingComplete(dataUrl) {
+async function handleRecorderStop() {
+  if (recordingStream) {
+    recordingStream.getTracks().forEach((t) => t.stop());
+    recordingStream = null;
+  }
+  const blob = new Blob(recordedChunks, { type: 'video/webm' });
+  recordedChunks = [];
+  mediaRecorder = null;
+
+  await setSession({ recording: false });
+  if (recordingTab?.id) {
+    try {
+      await chrome.tabs.sendMessage(recordingTab.id, { type: 'REMOVE_RECORDING_CONTROLS' });
+    } catch {
+      /* 컨트롤 없거나 탭 닫힘 */
+    }
+  }
   exitRecordingState();
-  const tab = recordingTab || (await chrome.tabs.query({ active: true, currentWindow: true }))[0] || {};
+
+  const dataUrl = await blobToDataUrl(blob);
   const cap = {
     type: 'video',
     dataUrl,
-    sourceUrl: tab.url || '',
-    sourceTitle: tab.title || '',
+    sourceUrl: recordingTab?.url || '',
+    sourceTitle: recordingTab?.title || '',
     capturedAt: new Date().toISOString(),
     metadata: { userAgent: navigator.userAgent },
   };
-  // 영상 dataURL은 클 수 있어 session 저장은 best-effort (초과 시 메모리로만 유지).
   try {
     await setSession({ [SESSION_KEYS.PENDING_CAPTURE]: cap });
   } catch {
-    /* quota 초과 무시 */
+    /* 영상이 커서 quota 초과 시 메모리로만 유지 */
   }
   await showReport(cap);
 }
@@ -633,12 +683,10 @@ async function checkConfig() {
 /* ---------- 초기화 ---------- */
 
 async function init() {
-  // 패널이 녹화 중 닫혔다 다시 열린 경우: 녹화 상태 복원.
+  // 패널이 닫히면 패널 내 녹화(MediaRecorder)는 유지되지 않으므로, 남은 플래그는 정리.
   const { recording } = await getSession('recording');
   if (recording) {
-    showLauncher();
-    enterRecordingState();
-    return;
+    await setSession({ recording: false });
   }
 
   // 미제출 캡처가 있으면 리포트 뷰로 복원.
@@ -681,11 +729,9 @@ chrome.runtime.onMessage.addListener((msg) => {
     handleRegionSelected(msg.rect, msg.dpr);
   } else if (msg?.type === 'REGION_CANCELLED') {
     showLauncherStatus('영역 선택을 취소했습니다.');
-  } else if (msg?.type === 'RECORDING_COMPLETE') {
-    handleRecordingComplete(msg.dataUrl);
-  } else if (msg?.type === 'RECORDING_FAILED') {
-    exitRecordingState();
-    showLauncherStatus(`녹화에 실패했습니다: ${msg.error || '알 수 없는 오류'}`);
+  } else if (msg?.type === 'STOP_RECORDING') {
+    // 페이지 플로팅 컨트롤의 중지 버튼
+    stopVideoRecording();
   }
 });
 

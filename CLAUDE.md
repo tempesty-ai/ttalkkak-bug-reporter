@@ -100,9 +100,6 @@ qa-capture-clickup/
 │   ├── fullpage-capture.js   # 전체 페이지 스크롤+스티칭
 │   ├── recording-controls.js # 녹화 중 플로팅 컨트롤 UI
 │   └── log-collector.js      # 콘솔 에러·네트워크 요청 수집 (선택)
-├── offscreen/
-│   ├── offscreen.html        # MediaRecorder 실행용 히든 페이지
-│   └── offscreen.js
 ├── options/
 │   ├── options.html          # ClickUp 토큰·리스트 설정
 │   ├── options.js
