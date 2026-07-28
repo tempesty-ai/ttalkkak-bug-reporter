@@ -338,6 +338,23 @@ body {
   background: #000;
 }
 
+.video-play-btn {
+  align-self: flex-start;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.video-play-btn:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
 .field {
   display: flex;
   flex-direction: column;

@@ -23,6 +23,7 @@ const els = {
   configWarning: document.getElementById('config-warning'),
   canvas: document.getElementById('annotate-canvas'),
   videoPreview: document.getElementById('video-preview'),
+  videoPlayBtn: document.getElementById('video-play-btn'),
   toolbar: document.querySelector('.annotate-toolbar'),
   undoBtn: document.getElementById('undo-btn'),
   clearBtn: document.getElementById('clear-btn'),
@@ -216,12 +217,15 @@ async function showReport(cap) {
     els.canvas.hidden = true;
     els.videoPreview.hidden = false;
     els.videoPreview.src = cap.dataUrl;
+    els.videoPlayBtn.hidden = false;
+    els.videoPlayBtn.textContent = '▶ 재생';
     captureBlob = dataUrlToBlob(cap.dataUrl);
     captureFilename = `recording-${(cap.capturedAt || 'rec').replace(/[:.]/g, '-')}.webm`;
   } else {
     // 이미지: 캔버스 주석 편집기 초기화.
     els.videoPreview.hidden = true;
     els.videoPreview.removeAttribute('src');
+    els.videoPlayBtn.hidden = true;
     els.toolbar.hidden = false;
     els.canvas.hidden = false;
     annotator = createAnnotator(els.canvas, cap.dataUrl);
@@ -738,6 +742,18 @@ chrome.runtime.onMessage.addListener((msg) => {
 });
 
 els.recStop.addEventListener('click', stopVideoRecording);
+
+// 영상 재생/일시정지 토글 (native controls와 라벨 동기화)
+els.videoPlayBtn.addEventListener('click', () => {
+  if (els.videoPreview.paused) els.videoPreview.play();
+  else els.videoPreview.pause();
+});
+els.videoPreview.addEventListener('play', () => {
+  els.videoPlayBtn.textContent = '⏸ 일시정지';
+});
+els.videoPreview.addEventListener('pause', () => {
+  els.videoPlayBtn.textContent = '▶ 재생';
+});
 document.getElementById('open-options').addEventListener('click', () => chrome.runtime.openOptionsPage());
 document.getElementById('open-options-link').addEventListener('click', () => chrome.runtime.openOptionsPage());
 
