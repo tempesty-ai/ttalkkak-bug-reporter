@@ -258,9 +258,13 @@ async function handleSubmit() {
     const markdownContent = els.description.value;
 
     let assignees;
+    let mentionUserId;
     if (els.assignMe.checked) {
       const uid = await ensureMyUserId(token);
-      if (uid) assignees = [uid];
+      if (uid) {
+        assignees = [uid];
+        mentionUserId = uid; // 등록 후 @멘션 댓글용
+      }
     }
 
     // 주석이 합쳐진 이미지를 첨부. 실패 시 원본으로 폴백.
@@ -270,7 +274,7 @@ async function handleSubmit() {
       if (annotated) blob = annotated;
     }
 
-    const { taskUrl } = await submitReport({
+    const { taskUrl, mentionOk } = await submitReport({
       token,
       listId,
       task: {
@@ -281,10 +285,14 @@ async function handleSubmit() {
       },
       blob,
       filename: captureFilename,
+      mentionUserId,
     });
 
     await removeSession(SESSION_KEYS.PENDING_CAPTURE);
-    showToast('ClickUp에 등록되었습니다.', 'success', taskUrl);
+    const msg = mentionUserId && !mentionOk
+      ? 'ClickUp에 등록됐지만 멘션 댓글은 실패했습니다.'
+      : 'ClickUp에 등록되었습니다.';
+    showToast(msg, mentionUserId && !mentionOk ? 'error' : 'success', taskUrl);
     els.spinner.hidden = true;
     els.submitBtn.disabled = true;
     els.btnText.textContent = '등록 완료';
