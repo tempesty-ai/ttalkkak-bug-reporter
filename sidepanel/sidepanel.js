@@ -485,8 +485,16 @@ async function startVideoRecording() {
     throw new Error('이 페이지는 녹화할 수 없습니다. 일반 웹페이지(http/https)에서 시도해주세요.');
   }
 
-  // getMediaStreamId는 사용자 제스처(버튼 클릭) 컨텍스트인 패널에서 호출.
-  const streamId = await chrome.tabCapture.getMediaStreamId({ targetTabId: tab.id });
+  // getMediaStreamId는 대상 탭에 activeTab 권한(사용자 초대)이 있어야 동작한다.
+  // 패널을 툴바 아이콘으로 연 순간 부여됨 → 부족하면 안내 메시지.
+  let streamId;
+  try {
+    streamId = await chrome.tabCapture.getMediaStreamId({ targetTabId: tab.id });
+  } catch {
+    throw new Error(
+      '이 탭에서 녹화 권한이 아직 없어요. 녹화할 페이지 탭에서 툴바의 딸깍 아이콘을 한 번 눌러 패널을 다시 연 뒤, 곧바로 "영상 녹화"를 눌러주세요.',
+    );
+  }
   recordingTab = tab;
 
   const res = await chrome.runtime.sendMessage({ type: 'START_RECORDING', streamId, tabId: tab.id });
