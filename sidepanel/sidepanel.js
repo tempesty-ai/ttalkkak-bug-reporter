@@ -254,8 +254,8 @@ async function handleSubmit() {
 
   setLoading(true);
   try {
-    // 제목을 H3로 맨 위에 붙이고, 그 아래 사용자가 작성한 마크다운 본문.
-    const markdownContent = `### ${name}\n\n${els.description.value}`;
+    // 본문은 사용자가 작성한 마크다운 그대로. (제목은 태스크 name에만 들어가고 본문엔 반복하지 않음)
+    const markdownContent = els.description.value;
 
     let assignees;
     if (els.assignMe.checked) {
