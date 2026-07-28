@@ -499,7 +499,9 @@ async function startVideoRecording() {
     stream = await navigator.mediaDevices.getDisplayMedia({
       video: { frameRate: 30 },
       audio: false,
-      preferCurrentTab: true,
+      // 패널(확장) 자신은 공유 대상에서 제외 → 사용자가 '제품 탭'을 직접 선택.
+      selfBrowserSurface: 'exclude',
+      surfaceSwitching: 'include',
     });
   } catch {
     throw new Error('화면 공유가 취소되었거나 시작하지 못했습니다.');
