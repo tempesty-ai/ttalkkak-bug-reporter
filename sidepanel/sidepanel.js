@@ -31,6 +31,7 @@ const els = {
   title: document.getElementById('task-title'),
   priority: document.getElementById('task-priority'),
   description: document.getElementById('task-description'),
+  mentionName: document.getElementById('mention-name'),
   targetInfo: document.getElementById('target-info'),
   submitBtn: document.getElementById('submit-btn'),
   btnText: document.querySelector('#submit-btn .btn-text'),
@@ -221,6 +222,10 @@ async function showReport(cap) {
   els.title.value = defaults.title;
   els.description.value = defaults.description;
   els.priority.value = '3';
+
+  // 멘션 입력칸: 캐시된 내 이름으로 미리 채움 (없으면 비워 placeholder 예시 노출).
+  const meCache = await getLocal([LOCAL_KEYS.MY_USER_NAME]);
+  els.mentionName.value = meCache[LOCAL_KEYS.MY_USER_NAME] || '';
 
   const stamp = (cap.capturedAt || 'capture').replace(/[:.]/g, '-');
   captureFilename = `screenshot-${stamp}.png`;
@@ -549,15 +554,16 @@ async function handleSubmit() {
 
   setLoading(true);
   try {
-    // 항상 본인에게 배정 + 본문 맨 아래 @멘션 추가.
-    // ClickUp 본문 멘션은 마크다운 링크 형식: [@이름](http://#user_mention#<id>)
-    let assignees;
-    let mentionMd = '';
+    // 본인 배정 + 본문 맨 아래에 '멘션 표시' 하이퍼링크.
+    // (실제 멘션이 아니라 하이퍼링크 — 표시 텍스트는 입력값, 링크는 보이기용)
     const me = await ensureMyUser(token);
-    if (me.id) {
-      assignees = [me.id];
-      const display = me.name ? `@${me.name}` : '@me';
-      mentionMd = `\n\n[${display}](http://#user_mention#${me.id})`;
+    const assignees = me.id ? [me.id] : undefined;
+
+    let mentionMd = '';
+    const mentionText = els.mentionName.value.trim();
+    if (mentionText) {
+      const link = me.id ? `http://#user_mention#${me.id}` : 'https://app.clickup.com';
+      mentionMd = `\n\n[@${mentionText}](${link})`;
     }
     const markdownContent = els.description.value + mentionMd;
 
