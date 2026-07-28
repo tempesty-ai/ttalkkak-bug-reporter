@@ -48,6 +48,7 @@ let toastTimer = null;
 let annotator = null;
 let regionTab = null; // 영역 선택 시작 시점의 대상 탭
 let recordingTab = null; // 녹화 시작 시점의 대상 탭
+let currentSourceUrl = ''; // 현재 캡처의 원본 페이지 URL (멘션 하이퍼링크 대상)
 
 const DEFAULT_TOOL = 'arrow';
 const DEFAULT_COLOR = '#e11d48';
@@ -226,6 +227,7 @@ async function showReport(cap) {
   // 멘션 입력칸: 캐시된 내 이름으로 미리 채움 (없으면 비워 placeholder 예시 노출).
   const meCache = await getLocal([LOCAL_KEYS.MY_USER_NAME]);
   els.mentionName.value = meCache[LOCAL_KEYS.MY_USER_NAME] || '';
+  currentSourceUrl = cap.sourceUrl || '';
 
   const stamp = (cap.capturedAt || 'capture').replace(/[:.]/g, '-');
   captureFilename = `screenshot-${stamp}.png`;
@@ -562,7 +564,8 @@ async function handleSubmit() {
     let mentionMd = '';
     const mentionText = els.mentionName.value.trim();
     if (mentionText) {
-      const link = me.id ? `http://#user_mention#${me.id}` : 'https://app.clickup.com';
+      // 링크는 표시용 — 유효한 URL이어야 하이퍼링크로 렌더됨. 캡처 페이지 주소 사용.
+      const link = /^https?:\/\//.test(currentSourceUrl) ? currentSourceUrl : 'https://app.clickup.com';
       mentionMd = `\n\n[@${mentionText}](${link})`;
     }
     const markdownContent = els.description.value + mentionMd;
