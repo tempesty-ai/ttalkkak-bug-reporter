@@ -141,17 +141,20 @@ function buildDefaults(cap) {
   return { title, description };
 }
 
-/** 내 ClickUp {id, name}을 캐시에서 읽거나, 없으면 API로 조회해 저장. 실패 시 {id:null}. */
+/**
+ * 내 ClickUp {id, name}을 반환. id·name 둘 다 캐시돼 있어야 캐시 사용,
+ * 아니면 API로 다시 조회해 저장. (멘션 렌더에 정확한 이름이 필요)
+ */
 async function ensureMyUser(token) {
   const cfg = await getLocal([LOCAL_KEYS.MY_USER_ID, LOCAL_KEYS.MY_USER_NAME]);
-  if (cfg[LOCAL_KEYS.MY_USER_ID]) {
-    return { id: cfg[LOCAL_KEYS.MY_USER_ID], name: cfg[LOCAL_KEYS.MY_USER_NAME] || '' };
+  if (cfg[LOCAL_KEYS.MY_USER_ID] && cfg[LOCAL_KEYS.MY_USER_NAME]) {
+    return { id: cfg[LOCAL_KEYS.MY_USER_ID], name: cfg[LOCAL_KEYS.MY_USER_NAME] };
   }
   try {
     const data = await getAuthorizedUser(token);
     const id = data?.user?.id || null;
     const name = data?.user?.username || data?.user?.email || '';
-    if (id) await setLocal({ [LOCAL_KEYS.MY_USER_ID]: id, [LOCAL_KEYS.MY_USER_NAME]: name });
+    if (id && name) await setLocal({ [LOCAL_KEYS.MY_USER_ID]: id, [LOCAL_KEYS.MY_USER_NAME]: name });
     return { id, name };
   } catch {
     return { id: null, name: '' }; // 실패해도 태스크 생성은 계속 진행
