@@ -59,6 +59,17 @@ function dataUrlToBlob(dataUrl) {
   return new Blob([bytes], { type: mime });
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('이미지를 불러오지 못했습니다.'));
+    img.src = src;
+  });
+}
+
 function showLauncherStatus(message) {
   els.launcherStatus.textContent = message;
   els.launcherStatus.hidden = !message;
@@ -145,6 +156,17 @@ async function ensureMyUserId(token) {
 function showLauncher() {
   els.viewReport.hidden = true;
   els.viewLauncher.hidden = false;
+}
+
+/** 캡처 진행 중 런처 버튼 잠금. (영상 버튼은 Phase 5 전까지 항상 비활성) */
+function setActionsEnabled(on) {
+  document.querySelectorAll('#view-launcher .action-btn[data-action]').forEach((b) => {
+    if (b.dataset.action === 'video') {
+      b.disabled = true;
+      return;
+    }
+    b.disabled = !on;
+  });
 }
 
 /** 툴바 버튼 활성 상태 표시. */
@@ -276,14 +298,147 @@ async function handleRegionSelected(rect, dpr) {
   }
 }
 
+/* ---------- 전체 페이지 캡처 ---------- */
+// 아래 fp* 함수는 executeScript로 페이지에 주입되어 실행됨 (외부 스코프 참조 금지).
+
+function fpBegin() {
+  document.documentElement.style.scrollBehavior = 'auto';
+  const originalScrollY = window.scrollY;
+  let fixedCount = 0;
+  const all = document.body ? document.body.getElementsByTagName('*') : [];
+  for (const el of all) {
+    const pos = getComputedStyle(el).position;
+    if (pos === 'fixed' || pos === 'sticky') {
+      el.setAttribute('data-qa-fp-fixed', '');
+      fixedCount += 1;
+    }
+  }
+  const scrollHeight = Math.max(
+    document.documentElement.scrollHeight,
+    document.body ? document.body.scrollHeight : 0,
+  );
+  return {
+    scrollHeight,
+    viewportH: window.innerHeight,
+    viewportW: window.innerWidth,
+    dpr: window.devicePixelRatio || 1,
+    originalScrollY,
+    fixedCount,
+  };
+}
+
+function fpScroll(y, hideFixed) {
+  let style = document.getElementById('qa-fp-hide-style');
+  if (hideFixed && !style) {
+    // 첫 컷 이후엔 고정/스티키 요소를 숨겨 매 컷 반복되지 않게 함 (함정 6).
+    style = document.createElement('style');
+    style.id = 'qa-fp-hide-style';
+    style.textContent = '[data-qa-fp-fixed]{visibility:hidden !important;}';
+    document.documentElement.appendChild(style);
+  }
+  window.scrollTo(0, y);
+  return { scrollY: window.scrollY };
+}
+
+function fpEnd(originalScrollY) {
+  const style = document.getElementById('qa-fp-hide-style');
+  if (style) style.remove();
+  document.querySelectorAll('[data-qa-fp-fixed]').forEach((el) => el.removeAttribute('data-qa-fp-fixed'));
+  window.scrollTo(0, originalScrollY);
+}
+
+const FP_MAX_CANVAS_PX = 30000; // 캔버스 높이 한도. 초과 시 상단부터 이 높이까지만.
+const FP_MAX_SLICES = 40;
+const FP_SETTLE_MS = 600; // 스크롤 안정 + captureVisibleTab 레이트리밋(<=2/s)
+
+async function stitchSlices(slices, m) {
+  const width = Math.round(m.viewportW * m.dpr);
+  let fullH = Math.round(m.scrollHeight * m.dpr);
+  let truncated = false;
+  if (fullH > FP_MAX_CANVAS_PX) {
+    fullH = FP_MAX_CANVAS_PX;
+    truncated = true;
+  }
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = fullH;
+  const ctx = canvas.getContext('2d');
+  for (const slice of slices) {
+    // eslint-disable-next-line no-await-in-loop
+    const img = await loadImage(slice.dataUrl);
+    ctx.drawImage(img, 0, Math.round(slice.y * m.dpr));
+  }
+  return { dataUrl: canvas.toDataURL('image/png'), truncated };
+}
+
+async function captureFullPage() {
+  showLauncherStatus('');
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab) throw new Error('활성 탭을 찾을 수 없습니다.');
+  if (!isCapturableUrl(tab.url)) {
+    throw new Error('이 페이지는 캡처할 수 없습니다. 일반 웹페이지(http/https)에서 시도해주세요.');
+  }
+
+  setActionsEnabled(false);
+  try {
+    const [{ result: m }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: fpBegin });
+    const maxScroll = Math.max(0, m.scrollHeight - m.viewportH);
+    const slices = [];
+
+    try {
+      let y = 0;
+      let first = true;
+      while (slices.length < FP_MAX_SLICES) {
+        // eslint-disable-next-line no-await-in-loop
+        const [{ result: s }] = await chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          func: fpScroll,
+          args: [y, !first],
+        });
+        // eslint-disable-next-line no-await-in-loop
+        await sleep(FP_SETTLE_MS);
+        // eslint-disable-next-line no-await-in-loop
+        const dataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });
+        slices.push({ y: s.scrollY, dataUrl });
+        showLauncherStatus(`전체 페이지 캡처 중… ${slices.length}컷`);
+        first = false;
+        if (s.scrollY >= maxScroll) break;
+        y += m.viewportH;
+      }
+    } finally {
+      // 중간에 실패해도 페이지(스크롤/고정요소) 원상복구.
+      await chrome.scripting
+        .executeScript({ target: { tabId: tab.id }, func: fpEnd, args: [m.originalScrollY] })
+        .catch(() => {});
+    }
+
+    const { dataUrl, truncated } = await stitchSlices(slices, m);
+    const cap = {
+      type: 'image',
+      dataUrl,
+      sourceUrl: tab.url,
+      sourceTitle: tab.title || '',
+      capturedAt: new Date().toISOString(),
+      metadata: { userAgent: navigator.userAgent },
+    };
+    await setSession({ [SESSION_KEYS.PENDING_CAPTURE]: cap });
+    await showReport(cap);
+    if (truncated) showToast('페이지가 매우 길어 상단 일부만 캡처했어요.', 'error');
+  } finally {
+    setActionsEnabled(true);
+  }
+}
+
 async function handleAction(action) {
   try {
     if (action === 'visible') {
       await captureVisible();
     } else if (action === 'region') {
       await startRegionSelect();
+    } else if (action === 'fullpage') {
+      await captureFullPage();
     }
-    // fullpage/video 는 이후 Phase (버튼 disabled).
+    // video 는 Phase 5 (버튼 disabled).
   } catch (err) {
     showLauncherStatus(err.message || '캡처 중 오류가 발생했습니다.');
   }
