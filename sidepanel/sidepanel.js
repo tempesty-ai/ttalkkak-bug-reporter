@@ -497,18 +497,30 @@ async function startVideoRecording() {
   showLauncherStatus('');
 
   // getDisplayMedia는 사용자 제스처가 필요 → 다른 await보다 먼저 호출.
-  // preferCurrentTab: 현재 탭을 미리 선택해 공유 확인창을 단순화.
   let stream;
+  // CaptureController: 녹화 시작 후 '녹화 대상 탭'으로 포커스를 옮김.
+  const controller = typeof CaptureController !== 'undefined' ? new CaptureController() : null;
   try {
-    stream = await navigator.mediaDevices.getDisplayMedia({
+    const opts = {
       video: { frameRate: 30 },
       audio: false,
       // 패널(확장) 자신은 공유 대상에서 제외 → 사용자가 '제품 탭'을 직접 선택.
       selfBrowserSurface: 'exclude',
       surfaceSwitching: 'include',
-    });
+    };
+    if (controller) opts.controller = controller;
+    stream = await navigator.mediaDevices.getDisplayMedia(opts);
   } catch {
     throw new Error('화면 공유가 취소되었거나 시작하지 못했습니다.');
+  }
+
+  // 캡처된 탭으로 화면 전환 (지원 브라우저에서만).
+  if (controller) {
+    try {
+      controller.setFocusBehavior('focus-captured-surface');
+    } catch {
+      /* 미지원/타이밍 이슈 무시 */
+    }
   }
 
   recordingStream = stream;
