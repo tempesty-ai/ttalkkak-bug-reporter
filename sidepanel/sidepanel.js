@@ -187,11 +187,11 @@ function formatCollected(meta) {
   return lines.join('\n');
 }
 
-/** 활성 탭의 MAIN world에서 수집 데이터 + 뷰포트를 읽어온다. 주입 불가 페이지면 null. */
+/** 탭의 모든 프레임 MAIN world에서 수집 데이터를 읽어 병합. 주입 불가 페이지면 null. */
 async function collectPageInfo(tabId) {
   try {
-    const [res] = await chrome.scripting.executeScript({
-      target: { tabId },
+    const results = await chrome.scripting.executeScript({
+      target: { tabId, allFrames: true }, // iframe까지 포함
       world: 'MAIN',
       func: () => {
         const c = window.__qaCollected || { consoleErrors: [], failedRequests: [] };
@@ -202,7 +202,15 @@ async function collectPageInfo(tabId) {
         };
       },
     });
-    return res?.result || null;
+    const merged = { consoleErrors: [], failedRequests: [], viewport: '' };
+    for (const r of results) {
+      if (!r?.result) continue;
+      merged.consoleErrors.push(...(r.result.consoleErrors || []));
+      merged.failedRequests.push(...(r.result.failedRequests || []));
+    }
+    // 뷰포트는 최상위 프레임(첫 결과) 기준.
+    merged.viewport = results[0]?.result?.viewport || '';
+    return merged;
   } catch {
     return null; // chrome:// 등 주입 불가
   }
