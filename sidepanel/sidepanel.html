@@ -71,6 +71,19 @@
       ⚠️ ClickUp 토큰/리스트가 설정되지 않았습니다.
       <button id="open-options-link" class="link-btn" type="button">설정하기</button>
     </div>
+
+    <section id="collect-card" class="collect-card">
+      <div class="collect-head">
+        <span class="collect-title">🔎 이 페이지 진단</span>
+        <button id="collect-refresh" class="collect-refresh" type="button" title="새로고침" aria-label="새로고침">↻</button>
+      </div>
+      <div id="collect-summary" class="collect-summary">불러오는 중…</div>
+      <ul id="collect-detail" class="collect-detail" hidden></ul>
+      <label class="collect-toggle">
+        <input type="checkbox" id="auto-collect" checked />
+        리포트에 자동 첨부
+      </label>
+    </section>
   </main>
 
   <!-- ===== 뷰 2: 리포트 (미리보기 + 폼) ===== -->

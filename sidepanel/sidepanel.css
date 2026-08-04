@@ -215,6 +215,82 @@ body {
   border-radius: 8px;
 }
 
+.collect-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 12px 14px;
+}
+
+.collect-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.collect-title {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.collect-refresh {
+  border: none;
+  background: transparent;
+  color: var(--text-sub);
+  font-size: 15px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.collect-refresh:hover {
+  background: #eeeef4;
+  color: var(--brand);
+}
+
+.collect-summary {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+.collect-summary b {
+  color: var(--danger);
+}
+
+.collect-detail {
+  margin: 8px 0 0;
+  padding-left: 16px;
+  font-size: 11px;
+  color: var(--text-sub);
+  line-height: 1.5;
+  max-height: 140px;
+  overflow: auto;
+}
+
+.collect-detail li {
+  margin-bottom: 3px;
+  word-break: break-all;
+}
+
+.collect-toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.collect-toggle input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
 .link-btn {
   border: none;
   background: none;

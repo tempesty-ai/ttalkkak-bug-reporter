@@ -29,6 +29,10 @@ const els = {
   clearBtn: document.getElementById('clear-btn'),
   recordingBanner: document.getElementById('recording-banner'),
   recStop: document.getElementById('rec-stop'),
+  collectSummary: document.getElementById('collect-summary'),
+  collectDetail: document.getElementById('collect-detail'),
+  collectRefresh: document.getElementById('collect-refresh'),
+  autoCollect: document.getElementById('auto-collect'),
   title: document.getElementById('task-title'),
   priority: document.getElementById('task-priority'),
   description: document.getElementById('task-description'),
@@ -56,6 +60,8 @@ let recordingStream = null;
 
 const DEFAULT_TOOL = 'arrow';
 const DEFAULT_COLOR = '#e11d48';
+
+let autoCollectEnabled = true; // 리포트에 자동 수집 정보 첨부 여부
 
 /* ---------- 공통 유틸 ---------- */
 
@@ -139,7 +145,7 @@ function formatDateTime(iso) {
  */
 function buildDefaults(cap) {
   const title = '[고객사] 이슈 내용';
-  const description = [
+  const lines = [
     '**이슈 내용**',
     '',
     '',
@@ -152,8 +158,102 @@ function buildDefaults(cap) {
     '',
     '**캡처 시각**',
     formatDateTime(cap.capturedAt),
-  ].join('\n');
-  return { title, description };
+  ];
+  if (autoCollectEnabled) {
+    const collected = formatCollected(cap.metadata);
+    if (collected) lines.push(collected);
+  }
+  return { title, description: lines.join('\n') };
+}
+
+function truncate(s, n) {
+  const str = String(s || '');
+  return str.length > n ? `${str.slice(0, n)}…` : str;
+}
+
+/** cap.metadata의 자동 수집 정보를 마크다운 섹션으로. 없으면 빈 문자열. */
+function formatCollected(meta) {
+  if (!meta) return '';
+  const errs = meta.consoleErrors || [];
+  const reqs = meta.failedRequests || [];
+  if (!meta.viewport && !errs.length && !reqs.length) return '';
+
+  const lines = ['', '**🔎 자동 수집 정보**'];
+  if (meta.viewport) lines.push(`- 뷰포트: ${meta.viewport}`);
+  lines.push(`- 콘솔 에러: ${errs.length}건`);
+  errs.slice(0, 5).forEach((e) => lines.push(`  - ${truncate(e.message, 200)}`));
+  lines.push(`- 실패 요청: ${reqs.length}건`);
+  reqs.slice(0, 5).forEach((r) => lines.push(`  - ${r.status} ${r.method} ${truncate(r.url, 120)}`));
+  return lines.join('\n');
+}
+
+/** 활성 탭의 MAIN world에서 수집 데이터 + 뷰포트를 읽어온다. 주입 불가 페이지면 null. */
+async function collectPageInfo(tabId) {
+  try {
+    const [res] = await chrome.scripting.executeScript({
+      target: { tabId },
+      world: 'MAIN',
+      func: () => {
+        const c = window.__qaCollected || { consoleErrors: [], failedRequests: [] };
+        return {
+          consoleErrors: c.consoleErrors || [],
+          failedRequests: c.failedRequests || [],
+          viewport: `${window.innerWidth}x${window.innerHeight}`,
+        };
+      },
+    });
+    return res?.result || null;
+  } catch {
+    return null; // chrome:// 등 주입 불가
+  }
+}
+
+/** 캡처 메타데이터 구성 (userAgent + 자동 수집 정보). */
+async function buildCapMeta(tab) {
+  const meta = { userAgent: navigator.userAgent };
+  if (tab?.id && isCapturableUrl(tab.url)) {
+    const info = await collectPageInfo(tab.id);
+    if (info) {
+      meta.viewport = info.viewport;
+      meta.consoleErrors = info.consoleErrors;
+      meta.failedRequests = info.failedRequests;
+    }
+  }
+  return meta;
+}
+
+/** 런처의 진단 카드 갱신. */
+async function updateCollectCard() {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  els.collectDetail.hidden = true;
+  els.collectDetail.innerHTML = '';
+
+  if (!tab || !isCapturableUrl(tab.url)) {
+    els.collectSummary.textContent = '이 페이지에선 진단 정보를 수집할 수 없어요.';
+    return;
+  }
+  const info = await collectPageInfo(tab.id);
+  if (!info) {
+    els.collectSummary.textContent = '진단 정보를 불러올 수 없어요.';
+    return;
+  }
+
+  const e = info.consoleErrors.length;
+  const r = info.failedRequests.length;
+  els.collectSummary.innerHTML = `콘솔 에러 <b>${e}</b>건 · 실패 요청 <b>${r}</b>건 · 뷰포트 ${info.viewport}`;
+
+  const items = [
+    ...info.consoleErrors.slice(-3).map((x) => `🟥 ${truncate(x.message, 90)}`),
+    ...info.failedRequests.slice(-3).map((x) => `🌐 ${x.status} ${truncate(x.url, 70)}`),
+  ];
+  if (items.length) {
+    els.collectDetail.innerHTML = items.map((t) => `<li>${escapeHtml(t)}</li>`).join('');
+    els.collectDetail.hidden = false;
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
 
 /**
@@ -181,6 +281,7 @@ async function ensureMyUser(token) {
 function showLauncher() {
   els.viewReport.hidden = true;
   els.viewLauncher.hidden = false;
+  updateCollectCard();
 }
 
 /** 캡처 진행 중 런처 버튼 잠금. (영상 버튼은 Phase 5 전까지 항상 비활성) */
@@ -287,7 +388,7 @@ async function captureVisible() {
     sourceUrl: tab.url,
     sourceTitle: tab.title || '',
     capturedAt: new Date().toISOString(),
-    metadata: { userAgent: navigator.userAgent },
+    metadata: await buildCapMeta(tab),
   };
 
   // 패널이 닫혔다 다시 열려도 복원되도록 저장.
@@ -340,7 +441,7 @@ async function handleRegionSelected(rect, dpr) {
       sourceUrl: tab.url,
       sourceTitle: tab.title || '',
       capturedAt: new Date().toISOString(),
-      metadata: { userAgent: navigator.userAgent },
+      metadata: await buildCapMeta(tab),
     };
     await setSession({ [SESSION_KEYS.PENDING_CAPTURE]: cap });
     await showReport(cap);
@@ -470,7 +571,7 @@ async function captureFullPage() {
       sourceUrl: tab.url,
       sourceTitle: tab.title || '',
       capturedAt: new Date().toISOString(),
-      metadata: { userAgent: navigator.userAgent },
+      metadata: await buildCapMeta(tab),
     };
     await setSession({ [SESSION_KEYS.PENDING_CAPTURE]: cap });
     await showReport(cap);
@@ -585,7 +686,7 @@ async function handleRecorderStop() {
     sourceUrl: recordingTab?.url || '',
     sourceTitle: recordingTab?.title || '',
     capturedAt: new Date().toISOString(),
-    metadata: { userAgent: navigator.userAgent },
+    metadata: await buildCapMeta(recordingTab),
   };
   try {
     await setSession({ [SESSION_KEYS.PENDING_CAPTURE]: cap });
@@ -701,6 +802,11 @@ async function checkConfig() {
 /* ---------- 초기화 ---------- */
 
 async function init() {
+  // 자동 수집 첨부 여부 프리퍼런스 로드 (기본 켜짐).
+  const prefs = await getLocal([LOCAL_KEYS.AUTO_COLLECT]);
+  autoCollectEnabled = prefs[LOCAL_KEYS.AUTO_COLLECT] !== false;
+  els.autoCollect.checked = autoCollectEnabled;
+
   // 패널이 닫히면 패널 내 녹화(MediaRecorder)는 유지되지 않으므로, 남은 플래그는 정리.
   const { recording } = await getSession('recording');
   if (recording) {
@@ -740,6 +846,13 @@ els.toolbar.querySelectorAll('.color-btn').forEach((btn) => {
 });
 els.undoBtn.addEventListener('click', () => annotator && annotator.undo());
 els.clearBtn.addEventListener('click', () => annotator && annotator.clear());
+
+// 자동 수집 카드
+els.autoCollect.addEventListener('change', async () => {
+  autoCollectEnabled = els.autoCollect.checked;
+  await setLocal({ [LOCAL_KEYS.AUTO_COLLECT]: autoCollectEnabled });
+});
+els.collectRefresh.addEventListener('click', () => updateCollectCard());
 
 // 영역 선택 오버레이(content script)로부터의 결과 수신
 chrome.runtime.onMessage.addListener((msg) => {
