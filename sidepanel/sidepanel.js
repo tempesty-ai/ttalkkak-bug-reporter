@@ -32,6 +32,7 @@ const els = {
   collectSummary: document.getElementById('collect-summary'),
   collectDetail: document.getElementById('collect-detail'),
   collectRefresh: document.getElementById('collect-refresh'),
+  collectReread: document.getElementById('collect-reread'),
   autoCollect: document.getElementById('auto-collect'),
   title: document.getElementById('task-title'),
   priority: document.getElementById('task-priority'),
@@ -262,6 +263,46 @@ async function updateCollectCard() {
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+/** 탭 로드 완료까지 대기 (타임아웃 포함). */
+function waitForTabComplete(tabId, timeoutMs = 8000) {
+  return new Promise((resolve) => {
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      chrome.tabs.onUpdated.removeListener(listener);
+      resolve();
+    };
+    const listener = (id, info) => {
+      if (id === tabId && info.status === 'complete') finish();
+    };
+    chrome.tabs.onUpdated.addListener(listener);
+    setTimeout(finish, timeoutMs);
+  });
+}
+
+/** 페이지를 새로고침한 뒤(로드 중 에러까지 수집) 진단 카드 갱신. */
+async function reloadAndDiagnose() {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab || !isCapturableUrl(tab.url)) {
+    els.collectSummary.textContent = '이 페이지에선 진단할 수 없어요.';
+    return;
+  }
+  els.collectRefresh.disabled = true;
+  els.collectDetail.hidden = true;
+  els.collectSummary.textContent = '새로고침 후 진단 중…';
+  try {
+    await chrome.tabs.reload(tab.id);
+    await waitForTabComplete(tab.id);
+    await sleep(800); // 로드 직후 늦게 나는 에러 여유
+    await updateCollectCard();
+  } catch {
+    els.collectSummary.textContent = '진단에 실패했어요.';
+  } finally {
+    els.collectRefresh.disabled = false;
+  }
 }
 
 /**
@@ -860,7 +901,8 @@ els.autoCollect.addEventListener('change', async () => {
   autoCollectEnabled = els.autoCollect.checked;
   await setLocal({ [LOCAL_KEYS.AUTO_COLLECT]: autoCollectEnabled });
 });
-els.collectRefresh.addEventListener('click', () => updateCollectCard());
+els.collectRefresh.addEventListener('click', reloadAndDiagnose);
+els.collectReread.addEventListener('click', () => updateCollectCard());
 
 // 영역 선택 오버레이(content script)로부터의 결과 수신
 chrome.runtime.onMessage.addListener((msg) => {
