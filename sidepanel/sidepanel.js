@@ -146,6 +146,22 @@ function formatDateTime(iso) {
  * QA 템플릿으로 제목/설명 기본값 구성.
  * 설명은 마크다운(소제목은 굵게). 제출 시 제목이 H3로 맨 위에 붙는다.
  */
+/** 상호작용 1건을 한글 재현 문장으로. */
+function formatStep(s) {
+  if (s.action === 'input') return `${s.target}에 "${s.extra}" 입력`;
+  if (s.action === 'select') return `${s.target}에서 "${s.extra}" 선택`;
+  if (s.action === 'check') return `${s.target} 체크`;
+  if (s.action === 'uncheck') return `${s.target} 체크 해제`;
+  return `${s.target} 클릭`;
+}
+
+/** 자동 기록된 상호작용으로 재현 단계 라인 구성 (없으면 빈 템플릿). */
+function buildReproLines(meta) {
+  const steps = autoCollectEnabled && meta && Array.isArray(meta.interactions) ? meta.interactions.slice(-8) : [];
+  if (!steps.length) return ['1. ', '2. '];
+  return steps.map((s, i) => `${i + 1}. ${formatStep(s)}`);
+}
+
 function buildDefaults(cap) {
   const title = '[고객사] 이슈 내용';
   const lines = [
@@ -153,8 +169,7 @@ function buildDefaults(cap) {
     '',
     '',
     '**재현 방법**',
-    '1. ',
-    '2. ',
+    ...buildReproLines(cap.metadata),
     '',
     '**URL**',
     cap.sourceUrl || '-',
@@ -197,20 +212,24 @@ async function collectPageInfo(tabId) {
       target: { tabId, allFrames: true }, // iframe까지 포함
       world: 'MAIN',
       func: () => {
-        const c = window.__qaCollected || { consoleErrors: [], failedRequests: [] };
+        const c = window.__qaCollected || { consoleErrors: [], failedRequests: [], interactions: [] };
         return {
           consoleErrors: c.consoleErrors || [],
           failedRequests: c.failedRequests || [],
+          interactions: c.interactions || [],
           viewport: `${window.innerWidth}x${window.innerHeight}`,
         };
       },
     });
-    const merged = { consoleErrors: [], failedRequests: [], viewport: '' };
+    const merged = { consoleErrors: [], failedRequests: [], interactions: [], viewport: '' };
     for (const r of results) {
       if (!r?.result) continue;
       merged.consoleErrors.push(...(r.result.consoleErrors || []));
       merged.failedRequests.push(...(r.result.failedRequests || []));
+      merged.interactions.push(...(r.result.interactions || []));
     }
+    // 상호작용은 시간순 정렬 후 최근 것만.
+    merged.interactions.sort((a, b) => String(a.at).localeCompare(String(b.at)));
     // 뷰포트는 최상위 프레임(첫 결과) 기준.
     merged.viewport = results[0]?.result?.viewport || '';
     return merged;
@@ -228,6 +247,7 @@ async function buildCapMeta(tab) {
       meta.viewport = info.viewport;
       meta.consoleErrors = info.consoleErrors;
       meta.failedRequests = info.failedRequests;
+      meta.interactions = info.interactions;
     }
   }
   return meta;
@@ -251,9 +271,11 @@ async function updateCollectCard() {
 
   const e = info.consoleErrors.length;
   const r = info.failedRequests.length;
-  els.collectSummary.innerHTML = `콘솔 에러 <b>${e}</b>건 · 실패 요청 <b>${r}</b>건 · 뷰포트 ${info.viewport}`;
+  const s = (info.interactions || []).length;
+  els.collectSummary.innerHTML = `콘솔 에러 <b>${e}</b>건 · 실패 요청 <b>${r}</b>건 · 기록된 행동 ${s}개 · 뷰포트 ${info.viewport}`;
 
   const items = [
+    ...(info.interactions || []).slice(-3).map((x) => `👆 ${formatStep(x)}`),
     ...info.consoleErrors.slice(-3).map((x) => `🟥 ${truncate(x.message, 90)}`),
     ...info.failedRequests.slice(-3).map((x) => `🌐 ${x.status} ${truncate(x.url, 70)}`),
   ];
