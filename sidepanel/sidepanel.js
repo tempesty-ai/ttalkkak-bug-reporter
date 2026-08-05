@@ -63,6 +63,8 @@ const DEFAULT_TOOL = 'arrow';
 const DEFAULT_COLOR = '#e11d48';
 
 let autoCollectEnabled = true; // 리포트에 자동 수집 정보 첨부 여부
+let collectPollTimer = null; // 진단 카드 실시간 폴링
+let busyDiagnosing = false; // 새로고침 후 진단 진행 중
 
 /* ---------- 공통 유틸 ---------- */
 
@@ -265,6 +267,23 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
 
+const isLauncherVisible = () => !els.viewLauncher.hidden;
+
+/** 런처가 보이는 동안 진단 카드를 주기적으로 갱신 (페이지 활동 실시간 반영). */
+function startCollectPolling() {
+  stopCollectPolling();
+  collectPollTimer = setInterval(() => {
+    if (!busyDiagnosing && isLauncherVisible()) updateCollectCard();
+  }, 3000);
+}
+
+function stopCollectPolling() {
+  if (collectPollTimer) {
+    clearInterval(collectPollTimer);
+    collectPollTimer = null;
+  }
+}
+
 /** 탭 로드 완료까지 대기 (타임아웃 포함). */
 function waitForTabComplete(tabId, timeoutMs = 8000) {
   return new Promise((resolve) => {
@@ -293,6 +312,7 @@ async function reloadAndDiagnose() {
   els.collectRefresh.disabled = true;
   els.collectDetail.hidden = true;
   els.collectSummary.textContent = '새로고침 후 진단 중…';
+  busyDiagnosing = true;
   try {
     await chrome.tabs.reload(tab.id);
     await waitForTabComplete(tab.id);
@@ -301,6 +321,7 @@ async function reloadAndDiagnose() {
   } catch {
     els.collectSummary.textContent = '진단에 실패했어요.';
   } finally {
+    busyDiagnosing = false;
     els.collectRefresh.disabled = false;
   }
 }
@@ -331,6 +352,7 @@ function showLauncher() {
   els.viewReport.hidden = true;
   els.viewLauncher.hidden = false;
   updateCollectCard();
+  startCollectPolling();
 }
 
 /** 캡처 진행 중 런처 버튼 잠금. (영상 버튼은 Phase 5 전까지 항상 비활성) */
@@ -356,6 +378,7 @@ function setActiveColor(colorBtn) {
 }
 
 async function showReport(cap) {
+  stopCollectPolling(); // 리포트 화면에선 진단 폴링 중지
   if (annotator) {
     annotator.destroy();
     annotator = null;
@@ -903,6 +926,14 @@ els.autoCollect.addEventListener('change', async () => {
 });
 els.collectRefresh.addEventListener('click', reloadAndDiagnose);
 els.collectReread.addEventListener('click', () => updateCollectCard());
+
+// 탭 전환/페이지 이동 시 자동 재진단 (런처가 보일 때만)
+chrome.tabs.onActivated.addListener(() => {
+  if (!busyDiagnosing && isLauncherVisible()) updateCollectCard();
+});
+chrome.tabs.onUpdated.addListener((id, info) => {
+  if (info.status === 'complete' && !busyDiagnosing && isLauncherVisible()) updateCollectCard();
+});
 
 // 영역 선택 오버레이(content script)로부터의 결과 수신
 chrome.runtime.onMessage.addListener((msg) => {
