@@ -342,7 +342,7 @@ async function reloadAndDiagnose() {
   els.collectSummary.textContent = '새로고침 후 진단 중…';
   busyDiagnosing = true;
   try {
-    await chrome.tabs.reload(tab.id);
+    await chrome.tabs.reload(tab.id, { bypassCache: true }); // 강력 새로고침(캐시 무시)
     await waitForTabComplete(tab.id);
     await sleep(800); // 로드 직후 늦게 나는 에러 여유
     await updateCollectCard();
