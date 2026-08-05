@@ -285,9 +285,10 @@ async function updateCollectCard() {
     ? `웹 상태 <span class="collect-metric status-bad" title="${escapeHtml(tip)}">⚠️ 문제 ${total}건</span>`
     : '웹 상태 <b class="status-ok">정상 ✅</b>';
 
+  // 개수(웹 상태)와 목록이 일치하도록 잡은 항목을 모두 노출 (스크롤로 처리).
   const items = [
-    ...info.consoleErrors.slice(-3).map((x) => `🟥 ${truncate(x.message, 90)}`),
-    ...info.failedRequests.slice(-3).map((x) => `🌐 ${x.status} ${truncate(x.url, 70)}`),
+    ...info.consoleErrors.map((x) => `🟥 ${truncate(x.message, 120)}`),
+    ...info.failedRequests.map((x) => `🌐 ${x.status} ${x.method} ${truncate(x.url, 90)}`),
   ];
   if (items.length) {
     els.collectDetail.innerHTML = items.map((t) => `<li>${escapeHtml(t)}</li>`).join('');
