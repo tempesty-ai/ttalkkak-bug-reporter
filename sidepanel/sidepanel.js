@@ -270,19 +270,14 @@ async function updateCollectCard() {
   }
 
   const e = info.consoleErrors.length;
-  const r = info.failedRequests.length;
-  const total = e + r;
 
-  // 마우스 오버 시 실제 내용 툴팁 (콘솔 에러 + 실패 요청 합침, 최대 10건씩)
-  const tip = total
-    ? [
-        ...info.consoleErrors.slice(-10).map((x) => `[에러] ${truncate(x.message, 250)}`),
-        ...info.failedRequests.slice(-10).map((x) => `[요청] ${x.status} ${x.method} ${truncate(x.url, 180)}`),
-      ].join('\n')
-    : '문제 없음';
+  // '웹 상태' 카운트는 콘솔 에러 건수만. (마우스 오버 시 실제 내용 툴팁)
+  const tip = e
+    ? info.consoleErrors.slice(-15).map((x, i) => `${i + 1}. ${truncate(x.message, 250)}`).join('\n')
+    : '콘솔 에러 없음';
 
-  els.collectSummary.innerHTML = total
-    ? `웹 상태 <span class="collect-metric status-bad" title="${escapeHtml(tip)}">⚠️ 문제 ${total}건</span>`
+  els.collectSummary.innerHTML = e
+    ? `웹 상태 <span class="collect-metric status-bad" title="${escapeHtml(tip)}">⚠️ 콘솔 에러 ${e}건</span>`
     : '웹 상태 <b class="status-ok">정상 ✅</b>';
 
   // 개수(웹 상태)와 목록이 일치하도록 잡은 항목을 모두 노출 (스크롤로 처리).
