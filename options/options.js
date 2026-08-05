@@ -12,6 +12,7 @@ import {
   getFolderLists,
   getFolderlessLists,
 } from '../lib/clickup.js';
+import { listModels } from '../lib/ollama.js';
 
 const tokenEl = document.getElementById('token');
 const listIdEl = document.getElementById('list-id');
@@ -258,9 +259,34 @@ function applyPickedList() {
 
 /* ---------- 바인딩 ---------- */
 
+async function testOllama() {
+  const btn = document.getElementById('ollama-test');
+  btn.disabled = true;
+  const original = btn.textContent;
+  btn.textContent = '확인 중…';
+  try {
+    const models = await listModels(ollamaUrlEl.value.trim());
+    if (!models.length) {
+      showStatus('Ollama 연결 성공 — 단, 설치된 모델이 없어요. `ollama pull llama3.2-vision`', 'error');
+    } else {
+      const has = ollamaModelEl.value.trim() && models.some((m) => m.startsWith(ollamaModelEl.value.trim()));
+      showStatus(
+        `Ollama 연결 성공! 설치된 모델: ${models.join(', ')}` + (has ? '' : ' — 입력한 모델명이 목록에 없어요, 확인해주세요.'),
+        has || !ollamaModelEl.value.trim() ? 'success' : 'error',
+      );
+    }
+  } catch (err) {
+    showStatus(err.userMessage || err.message || 'Ollama 연결 실패', 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+}
+
 saveBtn.addEventListener('click', saveSettings);
 testBtn.addEventListener('click', testConnection);
 toggleBtn.addEventListener('click', toggleTokenVisibility);
+document.getElementById('ollama-test').addEventListener('click', testOllama);
 
 findListBtn.addEventListener('click', openPicker);
 pkTeam.addEventListener('change', onTeamChange);
