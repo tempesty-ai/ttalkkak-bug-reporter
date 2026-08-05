@@ -272,7 +272,19 @@ async function updateCollectCard() {
   const e = info.consoleErrors.length;
   const r = info.failedRequests.length;
   const s = (info.interactions || []).length;
-  els.collectSummary.innerHTML = `콘솔 에러 <b>${e}</b>건 · 실패 요청 <b>${r}</b>건 · 기록된 행동 ${s}개 · 뷰포트 ${info.viewport}`;
+
+  // 마우스 오버 시 실제 내용 툴팁 (최대 10건, 각 300자)
+  const errTip = e
+    ? info.consoleErrors.slice(-10).map((x, i) => `${i + 1}. ${truncate(x.message, 300)}`).join('\n')
+    : '콘솔 에러 없음';
+  const reqTip = r
+    ? info.failedRequests.slice(-10).map((x, i) => `${i + 1}. ${x.status} ${x.method} ${truncate(x.url, 200)}`).join('\n')
+    : '실패 요청 없음';
+
+  els.collectSummary.innerHTML =
+    `<span class="collect-metric" title="${escapeHtml(errTip)}">콘솔 에러 <b>${e}</b>건</span> · ` +
+    `<span class="collect-metric" title="${escapeHtml(reqTip)}">실패 요청 <b>${r}</b>건</span> · ` +
+    `기록된 행동 ${s}개 · 뷰포트 ${info.viewport}`;
 
   const items = [
     ...(info.interactions || []).slice(-3).map((x) => `👆 ${formatStep(x)}`),

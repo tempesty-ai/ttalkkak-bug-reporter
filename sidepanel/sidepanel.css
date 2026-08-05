@@ -259,6 +259,12 @@ body {
   color: var(--danger);
 }
 
+.collect-metric {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+
 .collect-detail {
   margin: 8px 0 0;
   padding-left: 16px;
