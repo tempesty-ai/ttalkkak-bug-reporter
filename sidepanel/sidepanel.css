@@ -248,6 +248,13 @@ body {
   color: var(--brand);
 }
 
+.collect-sub {
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--text-sub);
+  opacity: 0.85;
+}
+
 .collect-summary {
   margin-top: 8px;
   font-size: 12px;

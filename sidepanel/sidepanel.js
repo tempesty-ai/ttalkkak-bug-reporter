@@ -284,7 +284,7 @@ async function updateCollectCard() {
   els.collectSummary.innerHTML =
     `<span class="collect-metric" title="${escapeHtml(errTip)}">콘솔 에러 <b>${e}</b>건</span> · ` +
     `<span class="collect-metric" title="${escapeHtml(reqTip)}">실패 요청 <b>${r}</b>건</span> · ` +
-    `기록된 행동 ${s}개 · 뷰포트 ${info.viewport}`;
+    `기록된 행동 ${s}개`;
 
   const items = [
     ...(info.interactions || []).slice(-3).map((x) => `👆 ${formatStep(x)}`),
