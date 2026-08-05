@@ -14,6 +14,7 @@ import {
   LOCAL_KEYS,
 } from '../lib/storage.js';
 import { submitReport, getAuthorizedUser } from '../lib/clickup.js';
+import { chatJson } from '../lib/ollama.js';
 import { createAnnotator } from './annotator.js';
 
 const els = {
@@ -42,6 +43,9 @@ const els = {
   submitBtn: document.getElementById('submit-btn'),
   btnText: document.querySelector('#submit-btn .btn-text'),
   spinner: document.querySelector('#submit-btn .spinner'),
+  aiSubmitBtn: document.getElementById('ai-submit-btn'),
+  aiBtnText: document.querySelector('#ai-submit-btn .ai-btn-text'),
+  aiSpinner: document.querySelector('#ai-submit-btn .ai-spinner'),
   backBtn: document.getElementById('back-btn'),
   toast: document.getElementById('toast'),
   toastMsg: document.getElementById('toast-msg'),
@@ -55,6 +59,7 @@ let annotator = null;
 let regionTab = null; // 영역 선택 시작 시점의 대상 탭
 let recordingTab = null; // 녹화 시작 시점의 대상 탭
 let currentSourceUrl = ''; // 현재 캡처의 원본 페이지 URL (멘션 하이퍼링크 대상)
+let currentMeta = null; // 현재 캡처의 metadata (자동 수집 정보 — AI 등록 시 보존용)
 let mediaRecorder = null; // 패널 내 MediaRecorder (getDisplayMedia 방식)
 let recordedChunks = [];
 let recordingStream = null;
@@ -445,6 +450,7 @@ async function showReport(cap) {
   const meCache = await getLocal([LOCAL_KEYS.MY_USER_NAME]);
   els.mentionName.value = meCache[LOCAL_KEYS.MY_USER_NAME] || '';
   currentSourceUrl = cap.sourceUrl || '';
+  currentMeta = cap.metadata || null;
 
   const stamp = (cap.capturedAt || 'capture').replace(/[:.]/g, '-');
   captureFilename = `screenshot-${stamp}.png`;
@@ -814,6 +820,89 @@ async function handleAction(action) {
 
 /* ---------- 등록 ---------- */
 
+/* ---------- AI(Ollama)로 다듬어 등록 ---------- */
+
+/** Blob을 base64(접두어 없이)로. Ollama images 필드용. */
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const fr = new FileReader();
+    fr.onload = () => resolve(String(fr.result).split(',')[1] || '');
+    fr.onerror = () => reject(new Error('이미지 인코딩에 실패했습니다.'));
+    fr.readAsDataURL(blob);
+  });
+}
+
+/** AI 결과(JSON)를 마크다운 설명으로. */
+function buildAiDescription(r) {
+  const lines = [];
+  if (r.precondition) lines.push('**프리컨디션**', String(r.precondition), '');
+  lines.push('**재현 방법**');
+  const steps = Array.isArray(r.steps) ? r.steps : r.steps ? [r.steps] : [];
+  if (steps.length) {
+    steps.forEach((s, i) => lines.push(/^\s*\d/.test(String(s)) ? String(s) : `${i + 1}. ${s}`));
+  } else {
+    lines.push('1. ');
+  }
+  lines.push('');
+  if (r.expected) lines.push('**기대 결과**', String(r.expected), '');
+  if (r.actual) lines.push('**실제 결과**', String(r.actual), '');
+  return lines.join('\n').trim();
+}
+
+function setAiLoading(on) {
+  els.aiSpinner.hidden = !on;
+  els.aiSubmitBtn.disabled = on;
+  els.submitBtn.disabled = on;
+  els.aiBtnText.textContent = on ? 'AI 작성 중…' : '🤖 AI로 다듬어 등록';
+}
+
+async function handleAiSubmit() {
+  const cfg = await getLocal([LOCAL_KEYS.OLLAMA_URL, LOCAL_KEYS.OLLAMA_MODEL, LOCAL_KEYS.OLLAMA_SEND_IMAGE]);
+  if (!cfg[LOCAL_KEYS.OLLAMA_MODEL]) {
+    showToast('설정 페이지에서 AI 모델명을 먼저 입력해주세요.', 'error');
+    return;
+  }
+
+  setAiLoading(true);
+  try {
+    const system =
+      '당신은 QA 버그 리포트 정리 전문가입니다. 주어진 대략적인 메모, 사용자 행동(재현 스텝), 콘솔 에러, (제공되면) 스크린샷을 종합해 명확한 한국어 버그 리포트를 작성하세요. ' +
+      '반드시 아래 형식의 JSON만 출력하세요. 다른 말/설명 금지. ' +
+      '{"title":"간결한 제목","precondition":"사전 조건","steps":["1. ...","2. ..."],"expected":"기대 결과","actual":"실제 결과"}';
+    const user =
+      `제목(초안): ${els.title.value}\n\n` +
+      `아래 메모와 자동 수집 정보를 바탕으로 정리해주세요:\n${els.description.value}`;
+
+    let imagesBase64;
+    if (cfg[LOCAL_KEYS.OLLAMA_SEND_IMAGE] && captureBlob && (captureBlob.type || '').startsWith('image/')) {
+      imagesBase64 = [await blobToBase64(captureBlob)];
+    }
+
+    const result = await chatJson({
+      baseUrl: cfg[LOCAL_KEYS.OLLAMA_URL],
+      model: cfg[LOCAL_KEYS.OLLAMA_MODEL],
+      system,
+      user,
+      imagesBase64,
+    });
+
+    if (result.title) els.title.value = String(result.title).slice(0, 255);
+    let desc = buildAiDescription(result);
+    if (autoCollectEnabled) {
+      const collected = formatCollected(currentMeta);
+      if (collected) desc += `\n${collected}`;
+    }
+    els.description.value = desc;
+
+    // 다듬은 내용으로 바로 등록
+    await handleSubmit();
+  } catch (err) {
+    showToast(`AI 작성 실패: ${err.userMessage || err.message}`, 'error');
+  } finally {
+    setAiLoading(false);
+  }
+}
+
 async function handleSubmit() {
   const cfg = await getLocal([LOCAL_KEYS.CLICKUP_TOKEN, LOCAL_KEYS.DEFAULT_LIST_ID]);
   const token = cfg[LOCAL_KEYS.CLICKUP_TOKEN];
@@ -927,6 +1016,7 @@ document.querySelectorAll('.action-btn').forEach((btn) => {
   btn.addEventListener('click', () => handleAction(btn.dataset.action));
 });
 els.submitBtn.addEventListener('click', handleSubmit);
+els.aiSubmitBtn.addEventListener('click', handleAiSubmit);
 els.backBtn.addEventListener('click', resetToLauncher);
 
 // 주석 툴바

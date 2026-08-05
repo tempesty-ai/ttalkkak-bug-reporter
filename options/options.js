@@ -76,10 +76,23 @@ function resetSelect(select, placeholder) {
 
 /* ---------- 설정 저장/로드 ---------- */
 
+const ollamaUrlEl = document.getElementById('ollama-url');
+const ollamaModelEl = document.getElementById('ollama-model');
+const ollamaImageEl = document.getElementById('ollama-image');
+
 async function loadSettings() {
-  const cfg = await getLocal([LOCAL_KEYS.CLICKUP_TOKEN, LOCAL_KEYS.DEFAULT_LIST_ID]);
+  const cfg = await getLocal([
+    LOCAL_KEYS.CLICKUP_TOKEN,
+    LOCAL_KEYS.DEFAULT_LIST_ID,
+    LOCAL_KEYS.OLLAMA_URL,
+    LOCAL_KEYS.OLLAMA_MODEL,
+    LOCAL_KEYS.OLLAMA_SEND_IMAGE,
+  ]);
   tokenEl.value = cfg[LOCAL_KEYS.CLICKUP_TOKEN] || '';
   listIdEl.value = cfg[LOCAL_KEYS.DEFAULT_LIST_ID] || '';
+  ollamaUrlEl.value = cfg[LOCAL_KEYS.OLLAMA_URL] || '';
+  ollamaModelEl.value = cfg[LOCAL_KEYS.OLLAMA_MODEL] || '';
+  ollamaImageEl.checked = Boolean(cfg[LOCAL_KEYS.OLLAMA_SEND_IMAGE]);
 }
 
 async function saveSettings() {
@@ -98,6 +111,9 @@ async function saveSettings() {
   await setLocal({
     [LOCAL_KEYS.CLICKUP_TOKEN]: token,
     [LOCAL_KEYS.DEFAULT_LIST_ID]: listId,
+    [LOCAL_KEYS.OLLAMA_URL]: ollamaUrlEl.value.trim(),
+    [LOCAL_KEYS.OLLAMA_MODEL]: ollamaModelEl.value.trim(),
+    [LOCAL_KEYS.OLLAMA_SEND_IMAGE]: ollamaImageEl.checked,
   });
   showStatus('저장되었습니다.', 'success');
 }

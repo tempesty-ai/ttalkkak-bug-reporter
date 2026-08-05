@@ -61,6 +61,25 @@
       <button id="pk-apply" class="primary-btn" type="button" disabled>이 리스트 사용</button>
     </section>
 
+    <section class="field" style="margin-top:24px;border-top:1px solid var(--border);padding-top:20px;">
+      <label for="ollama-url">🤖 AI (로컬 Ollama) — 선택</label>
+      <input id="ollama-url" type="text" placeholder="http://localhost:11434" autocomplete="off" spellcheck="false" />
+      <p class="hint">
+        Ollama 서버 주소. 비우면 <code>http://localhost:11434</code> 사용.
+        설치: <code>ollama pull llama3.2-vision</code>
+      </p>
+    </section>
+
+    <section class="field">
+      <label for="ollama-model">AI 모델명</label>
+      <input id="ollama-model" type="text" placeholder="llama3.2-vision" autocomplete="off" spellcheck="false" />
+      <label class="inline-check">
+        <input type="checkbox" id="ollama-image" />
+        스크린샷도 AI에 전송 (비전 모델일 때만)
+      </label>
+      <p class="hint">추천: <code>llama3.2-vision</code>(이미지 인식) · <code>qwen2.5</code>(텍스트·빠름)</p>
+    </section>
+
     <div class="actions">
       <button id="save-btn" class="primary-btn" type="button">저장</button>
       <button id="test-btn" class="ghost-btn" type="button">연결 테스트</button>

@@ -121,6 +121,21 @@ input:focus {
   color: var(--text-sub);
 }
 
+.inline-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.inline-check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--brand);
+}
+
 .list-name {
   color: var(--success);
   font-weight: 600;
