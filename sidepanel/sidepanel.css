@@ -272,6 +272,14 @@ body {
   text-underline-offset: 2px;
 }
 
+.status-ok {
+  color: var(--success);
+}
+
+.status-bad {
+  color: var(--danger);
+}
+
 .collect-detail {
   margin: 8px 0 0;
   padding-left: 16px;
