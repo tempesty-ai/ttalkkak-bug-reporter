@@ -194,19 +194,35 @@ function truncate(s, n) {
   return str.length > n ? `${str.slice(0, n)}…` : str;
 }
 
+/** 같은 항목 중복 제거 (keyFn 기준). 반환 항목엔 count(발생 횟수) 부여. */
+function dedupeBy(arr, keyFn) {
+  const map = new Map();
+  for (const item of arr) {
+    const k = keyFn(item);
+    const existing = map.get(k);
+    if (existing) existing.count += 1;
+    else map.set(k, { ...item, count: 1 });
+  }
+  return [...map.values()];
+}
+
+/** 발생 횟수 접미사 (2회 이상일 때만 " (×N)"). */
+function timesSuffix(n) {
+  return n > 1 ? ` (×${n})` : '';
+}
+
 /** cap.metadata의 자동 수집 정보를 마크다운 섹션으로. 없으면 빈 문자열. */
 function formatCollected(meta) {
   if (!meta) return '';
   const errs = meta.consoleErrors || [];
   const reqs = meta.failedRequests || [];
-  if (!meta.viewport && !errs.length && !reqs.length) return '';
+  if (!errs.length && !reqs.length) return '';
 
   const lines = ['', '**🔎 자동 수집 정보**'];
-  if (meta.viewport) lines.push(`- 뷰포트: ${meta.viewport}`);
   lines.push(`- 콘솔 에러: ${errs.length}건`);
-  errs.slice(0, 5).forEach((e) => lines.push(`  - ${truncate(e.message, 200)}`));
+  errs.slice(0, 5).forEach((e) => lines.push(`  - ${truncate(e.message, 200)}${timesSuffix(e.count)}`));
   lines.push(`- 실패 요청: ${reqs.length}건`);
-  reqs.slice(0, 5).forEach((r) => lines.push(`  - ${r.status} ${r.method} ${truncate(r.url, 120)}`));
+  reqs.slice(0, 5).forEach((r) => lines.push(`  - ${r.status} ${r.method} ${truncate(r.url, 120)}${timesSuffix(r.count)}`));
   return lines.join('\n');
 }
 
@@ -235,8 +251,10 @@ async function collectPageInfo(tabId) {
     }
     // 상호작용은 시간순 정렬 후 최근 것만.
     merged.interactions.sort((a, b) => String(a.at).localeCompare(String(b.at)));
-    // 뷰포트는 최상위 프레임(첫 결과) 기준.
     merged.viewport = results[0]?.result?.viewport || '';
+    // 같은 에러/요청 중복 제거 → 1건 + count
+    merged.consoleErrors = dedupeBy(merged.consoleErrors, (e) => e.message);
+    merged.failedRequests = dedupeBy(merged.failedRequests, (r) => `${r.status} ${r.method} ${r.url}`);
     return merged;
   } catch {
     return null; // chrome:// 등 주입 불가
@@ -278,7 +296,7 @@ async function updateCollectCard() {
 
   // '웹 상태' 카운트는 콘솔 에러 건수만. (마우스 오버 시 실제 내용 툴팁)
   const tip = e
-    ? info.consoleErrors.slice(-15).map((x, i) => `${i + 1}. ${truncate(x.message, 250)}`).join('\n')
+    ? info.consoleErrors.slice(-15).map((x, i) => `${i + 1}. ${truncate(x.message, 250)}${timesSuffix(x.count)}`).join('\n')
     : '콘솔 에러 없음';
 
   els.collectSummary.innerHTML = e
@@ -287,8 +305,8 @@ async function updateCollectCard() {
 
   // 개수(웹 상태)와 목록이 일치하도록 잡은 항목을 모두 노출 (스크롤로 처리).
   const items = [
-    ...info.consoleErrors.map((x) => `🟥 ${truncate(x.message, 120)}`),
-    ...info.failedRequests.map((x) => `🌐 ${x.status} ${x.method} ${truncate(x.url, 90)}`),
+    ...info.consoleErrors.map((x) => `🟥 ${truncate(x.message, 120)}${timesSuffix(x.count)}`),
+    ...info.failedRequests.map((x) => `🌐 ${x.status} ${x.method} ${truncate(x.url, 90)}${timesSuffix(x.count)}`),
   ];
   if (items.length) {
     els.collectDetail.innerHTML = items.map((t) => `<li>${escapeHtml(t)}</li>`).join('');
