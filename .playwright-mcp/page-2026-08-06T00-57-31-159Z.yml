@@ -1,0 +1,273 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 알람 관리 솔루션 알람 설정
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e13364]:
+      - menubar [ref=e13365]:
+        - menuitem "헬스 알람 관리" [ref=e13366] [cursor=pointer]
+        - menuitem "알람 관리" [ref=e13367] [cursor=pointer]
+        - menuitem "사용률 알람 관리" [ref=e13368] [cursor=pointer]
+        - menuitem "솔루션 알람 관리" [ref=e13369] [cursor=pointer]
+        - menuitem "RCA 알람 관리" [ref=e13370] [cursor=pointer]
+      - generic [ref=e13372]:
+        - generic [ref=e13374]:
+          - generic [ref=e13375]: 타입
+          - generic [ref=e13379]:
+            - generic [ref=e13380]: DB
+            - generic [ref=e13381]: 
+        - generic [ref=e13383]:
+          - generic [ref=e13385]:
+            - generic [ref=e13386]:
+              - generic [ref=e13387]: 그룹 목록
+              - textbox "검색" [ref=e13393]
+            - generic [ref=e13394]:
+              - table [ref=e13396]:
+                - rowgroup [ref=e13399]:
+                  - row [ref=e13400]:
+                    - columnheader [ref=e13401]
+              - table [ref=e13404]:
+                - rowgroup [ref=e13407]:
+                  - row [ref=e13408]:
+                    - cell "전체" [ref=e13409]
+                  - row [ref=e13411]:
+                    - cell "AI그룹" [ref=e13412]
+                  - row [ref=e13414]:
+                    - cell "EAI그룹" [ref=e13415]
+                  - row [ref=e13417]:
+                    - cell "FEP그룹" [ref=e13418]
+                  - row [ref=e13420]:
+                    - cell "MCI그룹" [ref=e13421]
+                  - row [ref=e13423]:
+                    - cell "etc" [ref=e13424]
+                  - row [ref=e13426]:
+                    - cell "exemone" [ref=e13427]
+                  - row [ref=e13429]:
+                    - cell "jdh instancegroup 1" [ref=e13430]
+                  - row [ref=e13432]:
+                    - cell "jdh instancegroup 2" [ref=e13433]
+                  - row [ref=e13435]:
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e13436]
+          - generic [ref=e13439]:
+            - generic [ref=e13441]:
+              - generic [ref=e13442]: 타겟 목록
+              - textbox "검색" [ref=e13447]
+            - generic [ref=e13450]:
+              - table [ref=e13452]:
+                - rowgroup [ref=e13459]:
+                  - row [ref=e13460]:
+                    - columnheader [ref=e13461]
+                    - columnheader [ref=e13463]
+                    - columnheader [ref=e13465]
+                    - columnheader [ref=e13467]
+                    - columnheader [ref=e13469]
+              - table [ref=e13471]:
+                - rowgroup [ref=e13478]:
+                  - row [ref=e13479]:
+                    - cell " FEPDB01" [ref=e13480]:
+                      - generic [ref=e13481]:
+                        - generic [ref=e13482] [cursor=pointer]: 
+                        - text: FEPDB01
+                    - cell [ref=e13484]
+                    - cell [ref=e13485]
+                    - cell [ref=e13486]
+                    - cell [ref=e13487]
+                  - row "SYSAUX 90 수정" [ref=e13488]:
+                    - cell [ref=e13489]
+                    - cell "SYSAUX" [ref=e13492]
+                    - cell "90" [ref=e13494]
+                    - cell [ref=e13496]:
+                      - switch [ref=e13499]:
+                        - checkbox
+                    - cell [ref=e13501]:
+                      - button "수정" [ref=e13504] [cursor=pointer]
+                  - row "SYSTEM 90 수정" [ref=e13505]:
+                    - cell [ref=e13506]
+                    - cell "SYSTEM" [ref=e13509]
+                    - cell "90" [ref=e13511]
+                    - cell [ref=e13513]:
+                      - switch [ref=e13516]:
+                        - checkbox
+                    - cell [ref=e13518]:
+                      - button "수정" [ref=e13521] [cursor=pointer]
+                  - row "TEMP 90 수정" [ref=e13522]:
+                    - cell [ref=e13523]
+                    - cell "TEMP" [ref=e13526]
+                    - cell "90" [ref=e13528]
+                    - cell [ref=e13530]:
+                      - switch [ref=e13533]:
+                        - checkbox
+                    - cell [ref=e13535]:
+                      - button "수정" [ref=e13538] [cursor=pointer]
+                  - row "UNDOTBS_NEW 90 수정" [ref=e13539]:
+                    - cell [ref=e13540]
+                    - cell "UNDOTBS_NEW" [ref=e13543]
+                    - cell "90" [ref=e13545]
+                    - cell [ref=e13547]:
+                      - switch [ref=e13550]:
+                        - checkbox
+                    - cell [ref=e13552]:
+                      - button "수정" [ref=e13555] [cursor=pointer]
+                  - row "USERS 10 수정" [ref=e13556]:
+                    - cell [ref=e13557]
+                    - cell "USERS" [ref=e13560]
+                    - cell "10" [ref=e13562]
+                    - cell [ref=e13564]:
+                      - switch [ref=e13567]:
+                        - checkbox
+                    - cell [ref=e13569]:
+                      - button "수정" [ref=e13572] [cursor=pointer]
+                  - row [ref=e13573]:
+                    - cell "MCIDB2" [ref=e13574]
+                    - cell [ref=e13576]
+                    - cell [ref=e13577]
+                    - cell [ref=e13578]
+                    - cell [ref=e13579]
+                  - row [ref=e13580]:
+                    - cell " DEMO257854" [ref=e13581]:
+                      - generic [ref=e13582]:
+                        - generic [ref=e13583] [cursor=pointer]: 
+                        - text: DEMO257854
+                    - cell [ref=e13585]
+                    - cell [ref=e13586]
+                    - cell [ref=e13587]
+                    - cell [ref=e13588]
+                  - row "DATA1 90 수정" [ref=e13589]:
+                    - cell [ref=e13590]
+                    - cell "DATA1" [ref=e13593]
+                    - cell "90" [ref=e13595]
+                    - cell [ref=e13597]:
+                      - switch [ref=e13600]:
+                        - checkbox
+                    - cell [ref=e13602]:
+                      - button "수정" [ref=e13605] [cursor=pointer]
+                  - row "SYSSUB 90 수정" [ref=e13606]:
+                    - cell [ref=e13607]
+                    - cell "SYSSUB" [ref=e13610]
+                    - cell "90" [ref=e13612]
+                    - cell [ref=e13614]:
+                      - switch [ref=e13617]:
+                        - checkbox
+                    - cell [ref=e13619]:
+                      - button "수정" [ref=e13622] [cursor=pointer]
+                  - row "SYSTEM 90 수정" [ref=e13623]:
+                    - cell [ref=e13624]
+                    - cell "SYSTEM" [ref=e13627]
+                    - cell "90" [ref=e13629]
+                    - cell [ref=e13631]:
+                      - switch [ref=e13634]:
+                        - checkbox
+                    - cell [ref=e13636]:
+                      - button "수정" [ref=e13639] [cursor=pointer]
+                  - row "TEMP 90 수정" [ref=e13640]:
+                    - cell [ref=e13641]
+                    - cell "TEMP" [ref=e13644]
+                    - cell "90" [ref=e13646]
+                    - cell [ref=e13648]:
+                      - switch [ref=e13651]:
+                        - checkbox
+                    - cell [ref=e13653]:
+                      - button "수정" [ref=e13656] [cursor=pointer]
+                  - row "TEST 0 수정" [ref=e13657]:
+                    - cell [ref=e13658]
+                    - cell "TEST" [ref=e13661]
+                    - cell "0" [ref=e13663]
+                    - cell [ref=e13665]:
+                      - switch [checked] [ref=e13668]:
+                        - checkbox [checked]
+                    - cell [ref=e13670]:
+                      - button "수정" [ref=e13673] [cursor=pointer]
+                  - row "UNDO 90 수정" [ref=e13674]:
+                    - cell [ref=e13675]
+                    - cell "UNDO" [ref=e13678]
+                    - cell "90" [ref=e13680]
+                    - cell [ref=e13682]:
+                      - switch [ref=e13685]:
+                        - checkbox
+                    - cell [ref=e13687]:
+                      - button "수정" [ref=e13690] [cursor=pointer]
+                  - row "UNDO0 90 수정" [ref=e13691]:
+                    - cell [ref=e13692]
+                    - cell "UNDO0" [ref=e13695]
+                    - cell "90" [ref=e13697]
+                    - cell [ref=e13699]:
+                      - switch [ref=e13702]:
+                        - checkbox
+                    - cell [ref=e13704]:
+                      - button "수정" [ref=e13707] [cursor=pointer]
+                  - row "UNDO1 90 수정" [ref=e13708]:
+                    - cell [ref=e13709]
+                    - cell "UNDO1" [ref=e13712]
+                    - cell "90" [ref=e13714]
+                    - cell [ref=e13716]:
+                      - switch [ref=e13719]:
+                        - checkbox
+                    - cell [ref=e13721]:
+                      - button "수정" [ref=e13724] [cursor=pointer]
+                  - row "UNDO2 90 수정" [ref=e13725]:
+                    - cell [ref=e13726]
+                    - cell "UNDO2" [ref=e13729]
+                    - cell "90" [ref=e13731]
+                    - cell [ref=e13733]:
+                      - switch [ref=e13736]:
+                        - checkbox
+                    - cell [ref=e13738]:
+                      - button "수정" [ref=e13741] [cursor=pointer]
+                  - row "USR 90 수정" [ref=e13742]:
+                    - cell [ref=e13743]
+                    - cell "USR" [ref=e13746]
+                    - cell "90" [ref=e13748]
+                    - cell [ref=e13750]:
+                      - switch [ref=e13753]:
+                        - checkbox
+                    - cell [ref=e13755]:
+                      - button "수정" [ref=e13758] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

@@ -1,0 +1,123 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: Forbidden Forbidden
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e22469]:
+      - generic [ref=e22471]:
+        - button "Today" [ref=e22472] [cursor=pointer]
+        - text: "2026.08"
+        - button "학습 제외 설정" [ref=e22476] [cursor=pointer]
+      - generic [ref=e22479]:
+        - generic [ref=e22481]:
+          - generic [ref=e22482]: 일
+          - generic [ref=e22483]: 월
+          - generic [ref=e22484]: 화
+          - generic [ref=e22485]: 수
+          - generic [ref=e22486]: 목
+          - generic [ref=e22487]: 금
+          - generic [ref=e22488]: 토
+        - generic [ref=e22489]:
+          - generic [ref=e22493]:
+            - generic [ref=e22494]: "26"
+            - generic [ref=e22498]: "27"
+            - generic [ref=e22502]: "28"
+            - generic [ref=e22506]: "29"
+            - generic [ref=e22510]: "30"
+            - generic [ref=e22514]: "31"
+            - generic [ref=e22518]: "1"
+          - generic [ref=e22523]:
+            - generic [ref=e22525]:
+              - generic [ref=e22526]: "2"
+              - generic [ref=e22530]: "3"
+              - generic [ref=e22534]: "4"
+              - generic [ref=e22538]: "5"
+              - generic [ref=e22542]: "6"
+              - generic [ref=e22546]: "7"
+              - generic [ref=e22550]: "8"
+            - generic:
+              - generic "장애 탐지" [ref=e22556] [cursor=pointer]
+              - generic "장애 탐지" [ref=e22559] [cursor=pointer]
+              - generic "장애 탐지" [ref=e22562] [cursor=pointer]
+              - generic "장애 탐지" [ref=e22565] [cursor=pointer]
+          - generic [ref=e22569]:
+            - generic [ref=e22570]: "9"
+            - generic [ref=e22574]: "10"
+            - generic [ref=e22578]: "11"
+            - generic [ref=e22582]: "12"
+            - generic [ref=e22586]: "13"
+            - generic [ref=e22590]: "14"
+            - generic [ref=e22594]: "15"
+          - generic [ref=e22601]:
+            - generic [ref=e22602]: "16"
+            - generic [ref=e22606]: "17"
+            - generic [ref=e22610]: "18"
+            - generic [ref=e22614]: "19"
+            - generic [ref=e22618]: "20"
+            - generic [ref=e22622]: "21"
+            - generic [ref=e22626]: "22"
+          - generic [ref=e22633]:
+            - generic [ref=e22634]: "23"
+            - generic [ref=e22638]: "24"
+            - generic [ref=e22642]: "25"
+            - generic [ref=e22646]: "26"
+            - generic [ref=e22650]: "27"
+            - generic [ref=e22654]: "28"
+            - generic [ref=e22658]: "29"
+          - generic [ref=e22665]:
+            - generic [ref=e22666]: "30"
+            - generic [ref=e22670]: "31"
+            - generic [ref=e22674]: "1"
+            - generic [ref=e22678]: "2"
+            - generic [ref=e22682]: "3"
+            - generic [ref=e22686]: "4"
+            - generic [ref=e22690]: "5"
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

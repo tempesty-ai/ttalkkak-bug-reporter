@@ -1,0 +1,14 @@
+- generic [ref=e22701]:
+  - generic [ref=e22702]:
+    - generic [ref=e22703]:
+      - generic [ref=e22704]: "403"
+      - generic [ref=e22705]: Forbidden
+    - generic [ref=e22706]:
+      - generic [ref=e22707]: 죄송합니다. 요청하신 페이지에 접근권한이 없습니다.
+      - generic [ref=e22708]: 연결하려는 페이지에 접근권한이 없어 접근이 거부되었습니다. 서비스 이용에 불편을 드려 죄송합니다.
+      - button "로그인 페이지로 이동" [ref=e22709] [cursor=pointer]
+  - img "info_image" [ref=e22711]
+  - generic [ref=e22712]:
+    - img "info_image" [ref=e22713]
+    - img "info_image" [ref=e22714]
+    - img "info_image" [ref=e22715]

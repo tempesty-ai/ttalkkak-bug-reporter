@@ -1,0 +1,237 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 알람 채널 설정
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e13891]:
+      - menubar [ref=e13892]:
+        - menuitem "채널 설정" [ref=e14252] [cursor=pointer]
+        - menuitem "메신저 토큰 관리" [ref=e14253] [cursor=pointer]
+        - menuitem "채널 발신 내역" [ref=e14254] [cursor=pointer]
+      - generic [ref=e13900]:
+        - generic [ref=e13902]:
+          - generic [ref=e13903]:
+            - generic [ref=e13904]:
+              - generic [ref=e13905]: AI 탐지 레벨 *
+              - generic [ref=e13908]:
+                - textbox "선택" [ref=e13909] [cursor=pointer]: WARNING
+                - generic: 
+            - generic [ref=e13912]:
+              - generic [ref=e13913]: Elapse Avg. 임계치 *
+              - spinbutton [ref=e13917]: "0"
+            - generic [ref=e13918]:
+              - generic [ref=e13919]: Error Count 임계치 *
+              - spinbutton [ref=e13923]: "0"
+            - generic [ref=e13924]:
+              - generic [ref=e13925]: Exec Count 임계치 *
+              - spinbutton [ref=e13929]: "0"
+            - generic [ref=e13930]:
+              - generic [ref=e13931]: 옵션*
+              - generic [ref=e13934]:
+                - spinbutton [ref=e13937]: "1"
+                - text: 분 동안
+                - spinbutton [ref=e13940]: "1"
+                - text: 회 이상 발생시
+            - generic [ref=e13941]:
+              - generic [ref=e13942]: 알람 소리
+              - radiogroup [ref=e13944]:
+                - radio "사용" [ref=e13945] [cursor=pointer]:
+                  - radio [ref=e13948]
+                - radio "미사용" [checked] [ref=e13950] [cursor=pointer]:
+                  - radio [checked] [ref=e13953]
+          - button "적용" [ref=e13956] [cursor=pointer]
+        - generic [ref=e13959]:
+          - generic [ref=e13961]:
+            - generic [ref=e13962]: 개별 알람 설정
+            - textbox "검색" [ref=e13967]
+          - generic [ref=e13970]:
+            - table [ref=e13972]:
+              - rowgroup [ref=e13984]:
+                - row [ref=e13985]:
+                  - columnheader [ref=e13986]
+                  - columnheader [ref=e13988]
+                  - columnheader [ref=e13990]
+                  - columnheader [ref=e13992]
+                  - columnheader [ref=e13994]
+                  - columnheader [ref=e13996]
+                  - columnheader [ref=e13998]
+                  - columnheader [ref=e14000]
+                  - columnheader [ref=e14002]
+                  - columnheader [ref=e14003]
+            - table [ref=e14005]:
+              - rowgroup [ref=e14017]:
+                - row [ref=e14018]:
+                  - cell " EAI-MCI-FEP서비스" [ref=e14019]:
+                    - generic [ref=e14020]:
+                      - generic [ref=e14021] [cursor=pointer]: 
+                      - text: EAI-MCI-FEP서비스
+                  - cell [ref=e14023]
+                  - cell "WARNING" [ref=e14024]
+                  - cell "1" [ref=e14026]
+                  - cell "1" [ref=e14028]
+                  - cell "0" [ref=e14030]
+                  - cell "0" [ref=e14032]
+                  - cell "0" [ref=e14034]
+                  - cell [ref=e14036]:
+                    - button "수정" [ref=e14039] [cursor=pointer]
+                  - cell [ref=e14040]:
+                    - button "삭제" [ref=e14043] [cursor=pointer]
+                - row [ref=e14044]:
+                  - cell [ref=e14045]
+                  - cell "카드 결제(EMF)" [ref=e14048]
+                  - cell "WARNING" [ref=e14050]
+                  - cell "1" [ref=e14052]
+                  - cell "1" [ref=e14054]
+                  - cell "0" [ref=e14056]
+                  - cell "0" [ref=e14058]
+                  - cell "0" [ref=e14060]
+                  - cell [ref=e14062]:
+                    - button "수정" [ref=e14065] [cursor=pointer]
+                  - cell [ref=e14066]:
+                    - button "삭제" [ref=e14069] [cursor=pointer]
+                - row [ref=e14070]:
+                  - cell " MCI 단일구간 서비스" [ref=e14071]:
+                    - generic [ref=e14072]:
+                      - generic [ref=e14073] [cursor=pointer]: 
+                      - text: MCI 단일구간 서비스
+                  - cell [ref=e14075]
+                  - cell "WARNING" [ref=e14076]
+                  - cell "1" [ref=e14078]
+                  - cell "1" [ref=e14080]
+                  - cell "0" [ref=e14082]
+                  - cell "0" [ref=e14084]
+                  - cell "0" [ref=e14086]
+                  - cell [ref=e14088]:
+                    - button "수정" [ref=e14091] [cursor=pointer]
+                  - cell [ref=e14092]:
+                    - button "삭제" [ref=e14095] [cursor=pointer]
+                - row [ref=e14096]:
+                  - cell [ref=e14097]
+                  - cell "고객 등록" [ref=e14100]
+                  - cell "WARNING" [ref=e14102]
+                  - cell "1" [ref=e14104]
+                  - cell "1" [ref=e14106]
+                  - cell "0" [ref=e14108]
+                  - cell "0" [ref=e14110]
+                  - cell "0" [ref=e14112]
+                  - cell [ref=e14114]:
+                    - button "수정" [ref=e14117] [cursor=pointer]
+                  - cell [ref=e14118]:
+                    - button "삭제" [ref=e14121] [cursor=pointer]
+                - row [ref=e14122]:
+                  - cell [ref=e14123]
+                  - cell "계좌 입금" [ref=e14126]
+                  - cell "WARNING" [ref=e14128]
+                  - cell "1" [ref=e14130]
+                  - cell "1" [ref=e14132]
+                  - cell "0" [ref=e14134]
+                  - cell "0" [ref=e14136]
+                  - cell "0" [ref=e14138]
+                  - cell [ref=e14140]:
+                    - button "수정" [ref=e14143] [cursor=pointer]
+                  - cell [ref=e14144]:
+                    - button "삭제" [ref=e14147] [cursor=pointer]
+                - row [ref=e14148]:
+                  - cell " 엑셈뱅크V2서비스그룹" [ref=e14149]:
+                    - generic [ref=e14150]:
+                      - generic [ref=e14151] [cursor=pointer]: 
+                      - text: 엑셈뱅크V2서비스그룹
+                  - cell [ref=e14153]
+                  - cell "WARNING" [ref=e14154]
+                  - cell "1" [ref=e14156]
+                  - cell "1" [ref=e14158]
+                  - cell "0" [ref=e14160]
+                  - cell "0" [ref=e14162]
+                  - cell "0" [ref=e14164]
+                  - cell [ref=e14166]:
+                    - button "수정" [ref=e14169] [cursor=pointer]
+                  - cell [ref=e14170]:
+                    - button "삭제" [ref=e14173] [cursor=pointer]
+                - row [ref=e14174]:
+                  - cell [ref=e14175]
+                  - cell "외부 송금" [ref=e14178]
+                  - cell "WARNING" [ref=e14180]
+                  - cell "2" [ref=e14182]
+                  - cell "1" [ref=e14184]
+                  - cell "3" [ref=e14186]
+                  - cell "0" [ref=e14188]
+                  - cell "0" [ref=e14190]
+                  - cell [ref=e14192]:
+                    - button "수정" [ref=e14195] [cursor=pointer]
+                  - cell [ref=e14196]:
+                    - button "삭제" [ref=e14199] [cursor=pointer]
+                - row [ref=e14200]:
+                  - cell [ref=e14201]
+                  - cell "대출 신청" [ref=e14204]
+                  - cell "WARNING" [ref=e14206]
+                  - cell "1" [ref=e14208]
+                  - cell "1" [ref=e14210]
+                  - cell "0" [ref=e14212]
+                  - cell "0" [ref=e14214]
+                  - cell "0" [ref=e14216]
+                  - cell [ref=e14218]:
+                    - button "수정" [ref=e14221] [cursor=pointer]
+                  - cell [ref=e14222]:
+                    - button "삭제" [ref=e14225] [cursor=pointer]
+                - row [ref=e14226]:
+                  - cell [ref=e14227]
+                  - cell "대출 상품 조회" [ref=e14230]
+                  - cell "WARNING" [ref=e14232]
+                  - cell "1" [ref=e14234]
+                  - cell "1" [ref=e14236]
+                  - cell "0" [ref=e14238]
+                  - cell "0" [ref=e14240]
+                  - cell "0" [ref=e14242]
+                  - cell [ref=e14244]:
+                    - button "수정" [ref=e14247] [cursor=pointer]
+                  - cell [ref=e14248]:
+                    - button "삭제" [ref=e14251] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

@@ -1,0 +1,510 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 시스템 Sevice
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e4577]:
+      - menubar [ref=e4578]:
+        - menuitem "구간" [ref=e4579] [cursor=pointer]
+        - menuitem "업무 그룹" [ref=e4580] [cursor=pointer]
+        - menuitem "호스트" [ref=e4581] [cursor=pointer]
+        - menuitem "인스턴스" [ref=e4582] [cursor=pointer]
+        - menuitem "서비스" [ref=e4583] [cursor=pointer]
+        - menuitem "로그" [ref=e4584] [cursor=pointer]
+        - menuitem "시스템 연동" [ref=e4585] [cursor=pointer]
+      - generic [ref=e4588]:
+        - generic [ref=e4590]:
+          - generic [ref=e4591]:
+            - generic [ref=e4592]: 인스턴스 그룹
+            - button "매핑" [ref=e4607] [cursor=pointer]
+          - generic [ref=e4609]:
+            - table [ref=e4611]:
+              - rowgroup [ref=e4616]:
+                - row "그룹 명 순서" [ref=e4617]:
+                  - columnheader [ref=e4618]:
+                    - generic [ref=e4621] [cursor=pointer]:
+                      - checkbox
+                  - columnheader [ref=e4623]
+                  - columnheader [ref=e4627]
+            - table [ref=e4632]:
+              - rowgroup [ref=e4637]:
+                - row "전체 0" [ref=e4638]:
+                  - cell [ref=e4639]:
+                    - generic [ref=e4642] [cursor=pointer]:
+                      - checkbox [disabled]
+                  - cell "전체" [ref=e4644]
+                  - cell "0" [ref=e4649]
+                - row "MCI그룹 1" [ref=e4654]:
+                  - cell [ref=e4655]:
+                    - generic [ref=e4658] [cursor=pointer]:
+                      - checkbox
+                  - cell "MCI그룹" [ref=e4660]
+                  - cell "1" [ref=e4665]
+                - row "EAI그룹 2" [ref=e4670]:
+                  - cell [ref=e4671]:
+                    - generic [ref=e4674] [cursor=pointer]:
+                      - checkbox
+                  - cell "EAI그룹" [ref=e4676]
+                  - cell "2" [ref=e4681]
+                - row "FEP그룹 3" [ref=e4686]:
+                  - cell [ref=e4687]:
+                    - generic [ref=e4690] [cursor=pointer]:
+                      - checkbox
+                  - cell "FEP그룹" [ref=e4692]
+                  - cell "3" [ref=e4697]
+                - row "AI그룹 4" [ref=e4702]:
+                  - cell [ref=e4703]:
+                    - generic [ref=e4706] [cursor=pointer]:
+                      - checkbox
+                  - cell "AI그룹" [ref=e4708]
+                  - cell "4" [ref=e4713]
+                - row "exemone 5" [ref=e4718]:
+                  - cell [ref=e4719]:
+                    - generic [ref=e4722] [cursor=pointer]:
+                      - checkbox
+                  - cell "exemone" [ref=e4724]
+                  - cell "5" [ref=e4729]
+                - row "엑셈뱅크V2인스턴스그룹 777" [ref=e4734]:
+                  - cell [ref=e4735]:
+                    - generic [ref=e4738] [cursor=pointer]:
+                      - checkbox
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4740]
+                  - cell "777" [ref=e4745]
+                - row "etc 999" [ref=e4750]:
+                  - cell [ref=e4751]:
+                    - generic [ref=e4754] [cursor=pointer]:
+                      - checkbox
+                  - cell "etc" [ref=e4756]
+                  - cell "999" [ref=e4761]
+                - row "jdh instancegroup 1 9,999" [ref=e4766]:
+                  - cell [ref=e4767]:
+                    - generic [ref=e4770] [cursor=pointer]:
+                      - checkbox
+                  - cell "jdh instancegroup 1" [ref=e4772]
+                  - cell "9,999" [ref=e4777]
+                - row "jdh instancegroup 2 10,000" [ref=e4782]:
+                  - cell [ref=e4783]:
+                    - generic [ref=e4786] [cursor=pointer]:
+                      - checkbox
+                  - cell "jdh instancegroup 2" [ref=e4788]
+                  - cell "10,000" [ref=e4793]
+        - generic [ref=e4798]:
+          - generic [ref=e4799]:
+            - tablist [ref=e4803]:
+              - tab "WAS (171)" [selected] [ref=e4805]
+              - tab "DB (6)" [ref=e4806]
+              - tab "TP (2)" [ref=e4807]
+              - tab "WEB (2)" [ref=e4808]
+            - generic:
+              - tabpanel "WAS (171)"
+          - generic [ref=e4810]:
+            - generic [ref=e4811]:
+              - generic [ref=e4812]: 인스턴스
+              - textbox "검색" [ref=e4827]
+            - generic [ref=e4828]:
+              - table [ref=e4830]:
+                - rowgroup [ref=e4845]:
+                  - row " 타겟 ID 인스턴스 명 타입 호스트 명 Hostname 수집 모니터링 솔루션 인스턴스 정보 인스턴스 버전 설명 인스턴스 그룹 명 활성" [ref=e4846]:
+                    - columnheader [ref=e4847]:
+                      - generic [ref=e4850] [cursor=pointer]:
+                        - checkbox
+                    - columnheader [ref=e4852]:
+                      - button "" [ref=e4855] [cursor=pointer]
+                    - columnheader [ref=e4857]
+                    - columnheader [ref=e4859]
+                    - columnheader [ref=e4863]
+                    - columnheader [ref=e4865]
+                    - columnheader [ref=e4867]
+                    - columnheader [ref=e4869]
+                    - columnheader [ref=e4873]
+                    - columnheader [ref=e4877]
+                    - columnheader [ref=e4881]
+                    - columnheader [ref=e4885]
+                    - columnheader [ref=e4887]
+              - table [ref=e4890]:
+                - rowgroup [ref=e4905]:
+                  - row "26 mob-0001 WAS 채널계) mob ai-container-exbk-cahnnelmob-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e4906]:
+                    - cell [ref=e4907]:
+                      - generic [ref=e4910] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e4912]
+                    - cell "26" [ref=e4913]
+                    - cell "mob-0001" [ref=e4915]
+                    - cell "WAS" [ref=e4920]
+                    - cell "채널계) mob" [ref=e4922]
+                    - cell "ai-container-exbk-cahnnelmob-37130" [ref=e4924]
+                    - cell "intermax" [ref=e4926]
+                    - cell [ref=e4931]
+                    - cell [ref=e4933]
+                    - cell [ref=e4935]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e4937]
+                    - cell [ref=e4939]:
+                      - switch [ref=e4942]:
+                        - checkbox
+                  - row "27 mob-0002 WAS 채널계) mob ai-container-exbk-cahnnelmob-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e4944]:
+                    - cell [ref=e4945]:
+                      - generic [ref=e4948] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e4950]
+                    - cell "27" [ref=e4951]
+                    - cell "mob-0002" [ref=e4953]
+                    - cell "WAS" [ref=e4958]
+                    - cell "채널계) mob" [ref=e4960]
+                    - cell "ai-container-exbk-cahnnelmob-37130" [ref=e4962]
+                    - cell "intermax" [ref=e4964]
+                    - cell [ref=e4969]
+                    - cell [ref=e4971]
+                    - cell [ref=e4973]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e4975]
+                    - cell [ref=e4977]:
+                      - switch [ref=e4980]:
+                        - checkbox
+                  - row "28 mob-0003 WAS 채널계) mob ai-container-exbk-cahnnelmob-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e4982]:
+                    - cell [ref=e4983]:
+                      - generic [ref=e4986] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e4988]
+                    - cell "28" [ref=e4989]
+                    - cell "mob-0003" [ref=e4991]
+                    - cell "WAS" [ref=e4996]
+                    - cell "채널계) mob" [ref=e4998]
+                    - cell "ai-container-exbk-cahnnelmob-37130" [ref=e5000]
+                    - cell "intermax" [ref=e5002]
+                    - cell [ref=e5007]
+                    - cell [ref=e5009]
+                    - cell [ref=e5011]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5013]
+                    - cell [ref=e5015]:
+                      - switch [ref=e5018]:
+                        - checkbox
+                  - row "29 mob-0004 WAS 채널계) mob ai-container-exbk-cahnnelmob-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5020]:
+                    - cell [ref=e5021]:
+                      - generic [ref=e5024] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5026]
+                    - cell "29" [ref=e5027]
+                    - cell "mob-0004" [ref=e5029]
+                    - cell "WAS" [ref=e5034]
+                    - cell "채널계) mob" [ref=e5036]
+                    - cell "ai-container-exbk-cahnnelmob-37130" [ref=e5038]
+                    - cell "intermax" [ref=e5040]
+                    - cell [ref=e5045]
+                    - cell [ref=e5047]
+                    - cell [ref=e5049]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5051]
+                    - cell [ref=e5053]:
+                      - switch [ref=e5056]:
+                        - checkbox
+                  - row "30 mob-0005 WAS 채널계) mob ai-container-exbk-cahnnelmob-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5058]:
+                    - cell [ref=e5059]:
+                      - generic [ref=e5062] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5064]
+                    - cell "30" [ref=e5065]
+                    - cell "mob-0005" [ref=e5067]
+                    - cell "WAS" [ref=e5072]
+                    - cell "채널계) mob" [ref=e5074]
+                    - cell "ai-container-exbk-cahnnelmob-37130" [ref=e5076]
+                    - cell "intermax" [ref=e5078]
+                    - cell [ref=e5083]
+                    - cell [ref=e5085]
+                    - cell [ref=e5087]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5089]
+                    - cell [ref=e5091]:
+                      - switch [ref=e5094]:
+                        - checkbox
+                  - row "1 web-0001 WAS 채널계) web ai-container-exbk-cahnnelweb-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5096]:
+                    - cell [ref=e5097]:
+                      - generic [ref=e5100] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5102]
+                    - cell "1" [ref=e5103]
+                    - cell "web-0001" [ref=e5105]
+                    - cell "WAS" [ref=e5110]
+                    - cell "채널계) web" [ref=e5112]
+                    - cell "ai-container-exbk-cahnnelweb-37130" [ref=e5114]
+                    - cell "intermax" [ref=e5116]
+                    - cell [ref=e5121]
+                    - cell [ref=e5123]
+                    - cell [ref=e5125]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5127]
+                    - cell [ref=e5129]:
+                      - switch [ref=e5132]:
+                        - checkbox
+                  - row "2 web-0002 WAS 채널계) web ai-container-exbk-cahnnelweb-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5134]:
+                    - cell [ref=e5135]:
+                      - generic [ref=e5138] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5140]
+                    - cell "2" [ref=e5141]
+                    - cell "web-0002" [ref=e5143]
+                    - cell "WAS" [ref=e5148]
+                    - cell "채널계) web" [ref=e5150]
+                    - cell "ai-container-exbk-cahnnelweb-37130" [ref=e5152]
+                    - cell "intermax" [ref=e5154]
+                    - cell [ref=e5159]
+                    - cell [ref=e5161]
+                    - cell [ref=e5163]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5165]
+                    - cell [ref=e5167]:
+                      - switch [checked] [ref=e5170]:
+                        - checkbox [checked]
+                  - row "3 web-0003 WAS 채널계) web ai-container-exbk-cahnnelweb-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5172]:
+                    - cell [ref=e5173]:
+                      - generic [ref=e5176] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5178]
+                    - cell "3" [ref=e5179]
+                    - cell "web-0003" [ref=e5181]
+                    - cell "WAS" [ref=e5186]
+                    - cell "채널계) web" [ref=e5188]
+                    - cell "ai-container-exbk-cahnnelweb-37130" [ref=e5190]
+                    - cell "intermax" [ref=e5192]
+                    - cell [ref=e5197]
+                    - cell [ref=e5199]
+                    - cell [ref=e5201]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5203]
+                    - cell [ref=e5205]:
+                      - switch [ref=e5208]:
+                        - checkbox
+                  - row "4 web-0004 WAS 채널계) web ai-container-exbk-cahnnelweb-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5210]:
+                    - cell [ref=e5211]:
+                      - generic [ref=e5214] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5216]
+                    - cell "4" [ref=e5217]
+                    - cell "web-0004" [ref=e5219]
+                    - cell "WAS" [ref=e5224]
+                    - cell "채널계) web" [ref=e5226]
+                    - cell "ai-container-exbk-cahnnelweb-37130" [ref=e5228]
+                    - cell "intermax" [ref=e5230]
+                    - cell [ref=e5235]
+                    - cell [ref=e5237]
+                    - cell [ref=e5239]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5241]
+                    - cell [ref=e5243]:
+                      - switch [ref=e5246]:
+                        - checkbox
+                  - row "5 web-0005 WAS 채널계) web ai-container-exbk-cahnnelweb-37130 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5248]:
+                    - cell [ref=e5249]:
+                      - generic [ref=e5252] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5254]
+                    - cell "5" [ref=e5255]
+                    - cell "web-0005" [ref=e5257]
+                    - cell "WAS" [ref=e5262]
+                    - cell "채널계) web" [ref=e5264]
+                    - cell "ai-container-exbk-cahnnelweb-37130" [ref=e5266]
+                    - cell "intermax" [ref=e5268]
+                    - cell [ref=e5273]
+                    - cell [ref=e5275]
+                    - cell [ref=e5277]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5279]
+                    - cell [ref=e5281]:
+                      - switch [ref=e5284]:
+                        - checkbox
+                  - row "41 loan-0001 WAS 계정계) loan ai-container-exbk-coreloan-37131 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5286]:
+                    - cell [ref=e5287]:
+                      - generic [ref=e5290] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5292]
+                    - cell "41" [ref=e5293]
+                    - cell "loan-0001" [ref=e5295]
+                    - cell "WAS" [ref=e5300]
+                    - cell "계정계) loan" [ref=e5302]
+                    - cell "ai-container-exbk-coreloan-37131" [ref=e5304]
+                    - cell "intermax" [ref=e5306]
+                    - cell [ref=e5311]
+                    - cell [ref=e5313]
+                    - cell [ref=e5315]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5317]
+                    - cell [ref=e5319]:
+                      - switch [checked] [ref=e5322]:
+                        - checkbox [checked]
+                  - row "42 loan-0002 WAS 계정계) loan ai-container-exbk-coreloan-37131 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5324]:
+                    - cell [ref=e5325]:
+                      - generic [ref=e5328] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5330]
+                    - cell "42" [ref=e5331]
+                    - cell "loan-0002" [ref=e5333]
+                    - cell "WAS" [ref=e5338]
+                    - cell "계정계) loan" [ref=e5340]
+                    - cell "ai-container-exbk-coreloan-37131" [ref=e5342]
+                    - cell "intermax" [ref=e5344]
+                    - cell [ref=e5349]
+                    - cell [ref=e5351]
+                    - cell [ref=e5353]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5355]
+                    - cell [ref=e5357]:
+                      - switch [checked] [ref=e5360]:
+                        - checkbox [checked]
+                  - row "43 loan-0003 WAS 계정계) loan ai-container-exbk-coreloan-37131 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5362]:
+                    - cell [ref=e5363]:
+                      - generic [ref=e5366] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5368]
+                    - cell "43" [ref=e5369]
+                    - cell "loan-0003" [ref=e5371]
+                    - cell "WAS" [ref=e5376]
+                    - cell "계정계) loan" [ref=e5378]
+                    - cell "ai-container-exbk-coreloan-37131" [ref=e5380]
+                    - cell "intermax" [ref=e5382]
+                    - cell [ref=e5387]
+                    - cell [ref=e5389]
+                    - cell [ref=e5391]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5393]
+                    - cell [ref=e5395]:
+                      - switch [checked] [ref=e5398]:
+                        - checkbox [checked]
+                  - row "44 loan-0004 WAS 계정계) loan ai-container-exbk-coreloan-37131 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5400]:
+                    - cell [ref=e5401]:
+                      - generic [ref=e5404] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5406]
+                    - cell "44" [ref=e5407]
+                    - cell "loan-0004" [ref=e5409]
+                    - cell "WAS" [ref=e5414]
+                    - cell "계정계) loan" [ref=e5416]
+                    - cell "ai-container-exbk-coreloan-37131" [ref=e5418]
+                    - cell "intermax" [ref=e5420]
+                    - cell [ref=e5425]
+                    - cell [ref=e5427]
+                    - cell [ref=e5429]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5431]
+                    - cell [ref=e5433]:
+                      - switch [checked] [ref=e5436]:
+                        - checkbox [checked]
+                  - row "45 loan-0005 WAS 계정계) loan ai-container-exbk-coreloan-37131 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5438]:
+                    - cell [ref=e5439]:
+                      - generic [ref=e5442] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5444]
+                    - cell "45" [ref=e5445]
+                    - cell "loan-0005" [ref=e5447]
+                    - cell "WAS" [ref=e5452]
+                    - cell "계정계) loan" [ref=e5454]
+                    - cell "ai-container-exbk-coreloan-37131" [ref=e5456]
+                    - cell "intermax" [ref=e5458]
+                    - cell [ref=e5463]
+                    - cell [ref=e5465]
+                    - cell [ref=e5467]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5469]
+                    - cell [ref=e5471]:
+                      - switch [checked] [ref=e5474]:
+                        - checkbox [checked]
+                  - row "46 loan-0006 WAS 계정계) loan ai-container-exbk-coreloan-37131 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5476]:
+                    - cell [ref=e5477]:
+                      - generic [ref=e5480] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5482]
+                    - cell "46" [ref=e5483]
+                    - cell "loan-0006" [ref=e5485]
+                    - cell "WAS" [ref=e5490]
+                    - cell "계정계) loan" [ref=e5492]
+                    - cell "ai-container-exbk-coreloan-37131" [ref=e5494]
+                    - cell "intermax" [ref=e5496]
+                    - cell [ref=e5501]
+                    - cell [ref=e5503]
+                    - cell [ref=e5505]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5507]
+                    - cell [ref=e5509]:
+                      - switch [checked] [ref=e5512]:
+                        - checkbox [checked]
+                  - row "47 loan-0007 WAS 계정계) loan ai-container-exbk-coreloan-37131 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5514]:
+                    - cell [ref=e5515]:
+                      - generic [ref=e5518] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5520]
+                    - cell "47" [ref=e5521]
+                    - cell "loan-0007" [ref=e5523]
+                    - cell "WAS" [ref=e5528]
+                    - cell "계정계) loan" [ref=e5530]
+                    - cell "ai-container-exbk-coreloan-37131" [ref=e5532]
+                    - cell "intermax" [ref=e5534]
+                    - cell [ref=e5539]
+                    - cell [ref=e5541]
+                    - cell [ref=e5543]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5545]
+                    - cell [ref=e5547]:
+                      - switch [checked] [ref=e5550]:
+                        - checkbox [checked]
+                  - row "48 loan-0008 WAS 계정계) loan ai-container-exbk-coreloan-37131 intermax 엑셈뱅크V2인스턴스그룹" [ref=e5552]:
+                    - cell [ref=e5553]:
+                      - generic [ref=e5556] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e5558]
+                    - cell "48" [ref=e5559]
+                    - cell "loan-0008" [ref=e5561]
+                    - cell "WAS" [ref=e5566]
+                    - cell "계정계) loan" [ref=e5568]
+                    - cell "ai-container-exbk-coreloan-37131" [ref=e5570]
+                    - cell "intermax" [ref=e5572]
+                    - cell [ref=e5577]
+                    - cell [ref=e5579]
+                    - cell [ref=e5581]
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e5583]
+                    - cell [ref=e5585]:
+                      - switch [checked] [ref=e5588]:
+                        - checkbox [checked]
+            - generic [ref=e5591]:
+              - button "" [disabled] [ref=e5592]
+              - list [ref=e5594]:
+                - listitem [ref=e5595]: "1"
+                - listitem [ref=e5596] [cursor=pointer]: "2"
+                - listitem [ref=e5597] [cursor=pointer]: "3"
+                - listitem [ref=e5598] [cursor=pointer]: "4"
+                - listitem [ref=e5599] [cursor=pointer]: "5"
+                - listitem [ref=e5600] [cursor=pointer]: "6"
+                - listitem [ref=e5601] [cursor=pointer]: 
+                - listitem [ref=e5602] [cursor=pointer]: "10"
+              - button "" [ref=e5603] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

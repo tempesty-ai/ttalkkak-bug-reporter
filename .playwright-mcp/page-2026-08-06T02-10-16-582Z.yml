@@ -1,0 +1,140 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 통계 & 내역 로그 뷰어
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e21178]:
+      - generic [ref=e21181]:
+        - generic [ref=e21182]: 호스트 그룹 목록
+        - generic [ref=e21184]:
+          - table [ref=e21186]:
+            - rowgroup [ref=e21189]:
+              - row [ref=e21190]:
+                - columnheader [ref=e21191]
+          - table [ref=e21194]:
+            - rowgroup [ref=e21197]:
+              - row [ref=e21198]:
+                - cell "전체" [ref=e21199]
+              - row [ref=e21201]:
+                - cell "AI그룹" [ref=e21202]
+      - generic [ref=e21204]:
+        - generic [ref=e21206]:
+          - generic [ref=e21207]:
+            - generic [ref=e21208]: "호스트 요약 목록 (최신 데이터 수집일 : 2026/07/17)"
+            - button "Excel Export" [ref=e21210] [cursor=pointer]
+            - generic [ref=e21213]:
+              - textbox "선택" [ref=e21214] [cursor=pointer]: 사용량 합계
+              - generic: 
+            - textbox "검색" [ref=e21218]
+          - generic [ref=e21219]:
+            - table [ref=e21221]:
+              - rowgroup [ref=e21232]:
+                - row [ref=e21233]:
+                  - columnheader [ref=e21234]
+                  - columnheader [ref=e21236]
+                  - columnheader [ref=e21238]
+                  - columnheader [ref=e21240]
+                  - columnheader [ref=e21242]
+                  - columnheader [ref=e21244]
+                  - columnheader [ref=e21246]
+                  - columnheader [ref=e21248]
+                  - columnheader [ref=e21250]
+            - table [ref=e21253]:
+              - rowgroup [ref=e21264]:
+                - row [ref=e21265]:
+                  - cell "개발) API서버" [ref=e21266]
+                  - cell "ai-node-dev-be-3772" [ref=e21270]
+                  - cell "10.10.37.72" [ref=e21272]
+                  - cell "2.24TB" [ref=e21274]
+                  - cell "1.31TB" [ref=e21276]
+                  - cell "948.92GB" [ref=e21278]
+                  - cell "58.6%" [ref=e21280]
+                  - cell "-1.8%" [ref=e21282]
+                  - cell "226.2%" [ref=e21284]
+                - row [ref=e21286]:
+                  - cell "1" [ref=e21287]
+                  - cell "1" [ref=e21289]
+                  - cell [ref=e21291]
+                  - cell [ref=e21292]
+                  - cell [ref=e21293]
+                  - cell [ref=e21294]
+                  - cell [ref=e21295]
+                  - cell [ref=e21296]
+                  - cell [ref=e21297]
+        - generic [ref=e21299]:
+          - generic [ref=e21300]:
+            - generic [ref=e21301]: 파일 시스템 상세
+            - textbox "검색" [ref=e21303]
+          - generic [ref=e21304]:
+            - table [ref=e21306]:
+              - rowgroup [ref=e21316]:
+                - row [ref=e21317]:
+                  - columnheader [ref=e21318]
+                  - columnheader [ref=e21320]
+                  - columnheader [ref=e21322]
+                  - columnheader [ref=e21324]
+                  - columnheader [ref=e21326]
+                  - columnheader [ref=e21328]
+                  - columnheader [ref=e21330]
+                  - columnheader [ref=e21332]
+            - generic [ref=e21334]:
+              - table:
+                - rowgroup
+              - generic [ref=e21335]: 데이터 없음
+      - generic [ref=e21338]:
+        - generic [ref=e21339]: 디스크 총 사용량
+        - generic [ref=e21359]: 디스크 사용률
+        - generic [ref=e21380]:
+          - generic [ref=e21381]: 디스크 사용량
+          - generic [ref=e21384]:
+            - textbox "선택" [ref=e21385] [cursor=pointer]: 디스크 사용량
+            - generic: 
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

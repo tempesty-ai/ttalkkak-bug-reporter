@@ -1,0 +1,97 @@
+- generic [ref=f6e2]:
+  - banner [ref=f6e3]:
+    - heading "XAIOps 통합 테스트케이스 리포트" [level=1] [ref=f6e4]
+    - generic [ref=f6e5]:
+      - button "결과 내보내기(CSV)" [ref=f6e6] [cursor=pointer]
+      - generic [ref=f6e7] [cursor=pointer]: 결과 불러오기(CSV)
+      - button "초기화" [ref=f6e8] [cursor=pointer]
+      - text: ● 서버 공유 모드
+  - paragraph [ref=f6e9]: AI 초안 · QA 검증 · Pass/Fail/N·T·검증방법·비고 는 이 페이지에서 입력하면 저장됩니다
+  - navigation [ref=f6e10]:
+    - button "종합" [ref=f6e11] [cursor=pointer]
+    - button "모니터링" [ref=f6e12] [cursor=pointer]
+    - button "분석" [ref=f6e13] [cursor=pointer]
+    - button "통계 & 내역" [ref=f6e14] [cursor=pointer]
+    - button "사용자 대시보드" [ref=f6e15] [cursor=pointer]
+    - button "운영 관리" [ref=f6e16] [cursor=pointer]
+    - button "설정" [ref=f6e17] [cursor=pointer]
+  - navigation [ref=f6e18]:
+    - button "소개" [ref=f6e19] [cursor=pointer]
+    - button "종합 결과" [ref=f6e20] [cursor=pointer]
+    - button "설계맵" [ref=f6e21] [cursor=pointer]
+    - button "판정 기준" [ref=f6e22] [cursor=pointer]
+  - generic [ref=f6e24]:
+    - heading "이 리포트는?" [level=2] [ref=f6e25]
+    - paragraph [ref=f6e26]: 테스트케이스를 대메뉴 > 카테고리 > 화면 구조로 정리하고, 수동 테스트 실행(Pass/Fail·비고)과 설계 근거 추적을 한 곳에서 하도록 만든 리포트입니다. 상단 대메뉴 바에서 전환하세요.
+    - heading "단일 정본(JSON)으로 관리하는 이유" [level=2] [ref=f6e27]
+    - generic [ref=f6e28]:
+      - text: "모든 TC는 tc_data.json 한 파일을 정본으로 두고, 이 리포트/대시보드/CSV는 전부 그 JSON에서 생성됩니다. 내용(데이터)과 화면(렌더러)을 분리했기에:"
+      - list [ref=f6e29]:
+        - listitem [ref=f6e30]: 한 곳만 수정 → 모든 산출물에 반영 (HTML을 직접 손대지 않음)
+        - listitem [ref=f6e31]: 기계 검증 가능 → 중복 ID·공란·형식을 스크립트가 자동 점검
+        - listitem [ref=f6e32]: 재사용·이식 → 같은 도구로 다른 제품도 리포트화 (내용만 교체)
+        - listitem [ref=f6e33]: 결과가 TC ID에 고정 → 메뉴 순서를 바꿔도 Pass·비고·검증방법이 안 깨짐
+    - heading "어떻게 설계했나 — 진행 순서" [level=2] [ref=f6e34]
+    - generic [ref=f6e35]:
+      - generic [ref=f6e36]:
+        - generic [ref=f6e37]: "1"
+        - text: 소스코드·기획서·매뉴얼 대조
+        - generic [ref=f6e38]: 제품 소스코드·기획서·매뉴얼·실제 화면 등 근거 자료를 대조해 필드·버튼·검증 메시지 확인(추측 최소화)
+      - generic [ref=f6e39]: ▼
+      - generic [ref=f6e40]:
+        - generic [ref=f6e41]: "2"
+        - text: 화면별 섹션 분해
+        - generic [ref=f6e42]: 각 화면을 목록/등록/수정/삭제/조회/권한 등 섹션으로 분해
+      - generic [ref=f6e43]: ▼
+      - generic [ref=f6e44]:
+        - generic [ref=f6e45]: "3"
+        - text: TC 작성
+        - generic [ref=f6e46]: 일반 사용자 관점 번호 절차(1.~를 클릭한다) + 실제 제품 메시지로 기대결과
+      - generic [ref=f6e47]: ▼
+      - generic [ref=f6e48]:
+        - generic [ref=f6e49]: "4"
+        - text: 메타 태깅
+        - generic [ref=f6e50]: 설계기법·위험도·확신도·자동화 가능여부를 규칙으로 부여
+      - generic [ref=f6e51]: ▼
+      - generic [ref=f6e52]:
+        - generic [ref=f6e53]: "5"
+        - text: 단일 정본화 (JSON)
+        - generic [ref=f6e54]: 모든 TC를 구조화된 tc_data.json 한 파일로 관리 — 내용(데이터)과 화면(렌더러)을 분리
+      - generic [ref=f6e55]: ▼
+      - generic [ref=f6e56]:
+        - generic [ref=f6e57]: "6"
+        - text: 자체 검증
+        - generic [ref=f6e58]: AI가 만든 TC를 Python 스크립트가 규칙으로 점검 — 중복 ID·공란·형식(사람/AI 판단 아님)
+      - generic [ref=f6e59]: ▼
+      - generic [ref=f6e60]:
+        - generic [ref=f6e61]: "7"
+        - text: 산출물 생성
+        - generic [ref=f6e62]: 같은 JSON에서 HTML 리포트·공유 대시보드·CSV로 자동 변환
+      - generic [ref=f6e63]: ▼
+      - generic [ref=f6e64]:
+        - generic [ref=f6e65]: "8"
+        - text: QA 실행·보완
+        - generic [ref=f6e66]: Pass/Fail·비고·검증방법 기록, 필터로 우선순위, Gap·탐색차터로 보완
+    - heading "구성" [level=2] [ref=f6e67]
+    - generic [ref=f6e68]:
+      - generic [ref=f6e69]:
+        - text: 종합 결과
+        - generic [ref=f6e70]: 진행율·Pass/Fail 집계·검증방법(자동/수동)·자동화 커버리지·위험도/확신도 분포·Fail 목록
+      - generic [ref=f6e71]:
+        - text: 대메뉴 · 카테고리
+        - generic [ref=f6e72]: 상단 대메뉴 선택 → 카테고리별 화면 TC + Pass/Fail·비고·검증방법 + 필터
+      - generic [ref=f6e73]:
+        - text: 설계맵
+        - generic [ref=f6e74]: 확신도 히트맵·기능 분류 트리·Gap 분석·탐색 차터
+      - generic [ref=f6e75]:
+        - text: 판정 기준
+        - generic [ref=f6e76]: 위험도·확신도·설계기법·자동화 태깅 규칙
+    - heading "두 개의 축 — 결과 vs 검증방법" [level=2] [ref=f6e77]
+    - generic [ref=f6e78]: "결과(Pass/Fail/N·T) = 테스트가 통과했는가. 검증방법(🤖자동/✋수동) = 누가 확인했는가. 서로 독립이라 조합이 가능합니다 — 예: Pass + 🤖자동(Playwright가 통과 확인) vs Pass + ✋수동(QA가 직접 통과 확인). 나중에 “이거 누가 확인한 거지?”가 한눈에 구분됩니다. · N·T = 아직 안 함/보류(Not Tested)"
+    - heading "사용법" [level=2] [ref=f6e79]
+    - list [ref=f6e80]:
+      - listitem [ref=f6e81]: 각 TC의 [Pass][Fail][N·T] 클릭·비고 입력 → 자동 저장
+      - listitem [ref=f6e82]: 검증방법 버튼(🤖 자동 / ✋ 수동)으로 '누가 확인했는지' 표시 — Playwright 자동확인분은 🤖로 미리 표기됨(클릭하면 —→✋→🤖 순환)
+      - listitem [ref=f6e83]: "필터: 자동확인 / 수동확인 / 미확인 / 자동화 가능·불가 / Fail만 / 미실행만 으로 골라보기"
+      - listitem [ref=f6e84]: 상단 [결과 내보내기(CSV)] 백업·공유(TC ID·결과·검증방법·비고 포함), [결과 불러오기(CSV)] 복원, [초기화] Pass/Fail 리셋(비고는 유지)
+      - listitem [ref=f6e85]: 공유는 serve_dashboard.py 로 dashboard.html 을 띄우면 결과·비고·검증방법이 서버에 저장돼 여러 명이 공유(단독 report.html은 브라우저에 저장)

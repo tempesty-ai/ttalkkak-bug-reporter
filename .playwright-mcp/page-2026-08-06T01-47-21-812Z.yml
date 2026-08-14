@@ -1,0 +1,110 @@
+- generic [ref=e29]:
+  - generic [ref=e31]:
+    - generic [ref=e35]: 모니터링 토폴로지 뷰
+    - generic [ref=e39]:
+      - generic [ref=e17782] [cursor=pointer]: 기본 화면
+      - generic [ref=e17783] [cursor=pointer]: 화면 초기화
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e18257]:
+      - generic [ref=e18259]:
+        - generic [ref=e18260]:
+          - generic [ref=e18261]: 타임 라인
+          - generic [ref=e18267]:
+            - textbox "Select time" [ref=e18268] [cursor=pointer]: 2026/08/06 10:04
+            - generic [ref=e18269]: 
+        - generic [ref=e18271]:
+          - img [ref=e18279]:
+            - generic [ref=e18281]:
+              - generic [ref=e18282]: 07:35
+              - generic [ref=e18283]: 07:55
+              - generic [ref=e18284]: 08:15
+              - generic [ref=e18285]: 08:35
+              - generic [ref=e18286]: 08:55
+              - generic [ref=e18287]: 09:15
+              - generic [ref=e18288]: 09:35
+              - generic [ref=e18289]: 09:55
+              - generic [ref=e18290]: 10:15
+              - generic [ref=e18473]: "1000"
+              - generic [ref=e18475]: "8"
+              - generic [ref=e18477]: "7"
+              - generic [ref=e18479]: "6"
+              - generic [ref=e18481]: "5"
+              - generic [ref=e18483]: "3"
+              - generic [ref=e18485]: "2"
+              - generic [ref=e18487]: "0"
+              - generic [ref=e18489]: "-1"
+          - textbox [ref=e18500] [cursor=pointer]: 10:04
+      - generic [ref=e18501]:
+        - generic [ref=e18502]:
+          - generic [ref=e18503]: 로그 이상 탐지 타겟 ( 2026-08-06 10:04 )
+          - switch "AI 탐지" [ref=e18506]:
+            - checkbox
+            - generic [ref=e18510] [cursor=pointer]: 룰알람 탐지
+        - generic [ref=e18512]: 이상 탐지된 타겟이 없습니다.
+      - generic [ref=e18516]:
+        - generic [ref=e18517]: 로그 목록
+        - generic [ref=e18521]:
+          - table [ref=e18523]:
+            - rowgroup [ref=e18531]:
+              - row [ref=e18532]:
+                - columnheader [ref=e18533]
+                - columnheader [ref=e18535]
+                - columnheader [ref=e18537]
+                - columnheader [ref=e18539]
+                - columnheader [ref=e18541]
+                - columnheader [ref=e18545]
+          - generic [ref=e18547]:
+            - table:
+              - rowgroup
+            - generic [ref=e18548]: 데이터 없음
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

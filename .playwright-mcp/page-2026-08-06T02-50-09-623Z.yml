@@ -1,0 +1,379 @@
+- generic [ref=e22717]:
+  - generic [ref=e22718]: 설정 기타 Collect Target
+  - generic [ref=e22730]:
+    - list [ref=e22764]
+    - generic [ref=e33724]:
+      - menubar [ref=e33725]:
+        - menuitem "라이선스" [ref=e34371] [cursor=pointer]
+        - menuitem "언어" [ref=e34372] [cursor=pointer]
+        - menuitem "데이터 보관주기" [ref=e34373] [cursor=pointer]
+        - menuitem "로그인 내역" [ref=e34374] [cursor=pointer]
+        - menuitem "행위로그" [ref=e34375] [cursor=pointer]
+        - menuitem "수집 타겟" [ref=e34376] [cursor=pointer]
+        - menuitem "알람 사운드 관리" [ref=e34377] [cursor=pointer]
+      - generic [ref=e33734]:
+        - generic [ref=e33737]:
+          - generic [ref=e33738]: 업무 그룹 목록
+          - generic [ref=e33753]:
+            - table [ref=e33755]:
+              - rowgroup [ref=e33760]:
+                - row "업무 그룹 명 업무 그룹 코드" [ref=e33761]:
+                  - columnheader [ref=e33762]:
+                    - generic [ref=e33765] [cursor=pointer]:
+                      - checkbox
+                  - columnheader [ref=e33767]
+                  - columnheader [ref=e33771]
+            - table [ref=e33776]:
+              - rowgroup [ref=e33781]:
+                - row "엑셈뱅크V2 77" [ref=e33782]:
+                  - cell [ref=e33783]:
+                    - generic [ref=e33786] [cursor=pointer]:
+                      - checkbox
+                  - cell "엑셈뱅크V2" [ref=e33788]
+                  - cell "77" [ref=e33793]
+                - row "qatest 999" [ref=e33798]:
+                  - cell [ref=e33799]:
+                    - generic [ref=e33802] [cursor=pointer]:
+                      - checkbox
+                  - cell "qatest" [ref=e33804]
+                  - cell "999" [ref=e33809]
+                - row "EXEMONE EXEMONE" [ref=e33814]:
+                  - cell [ref=e33815]:
+                    - generic [ref=e33818] [cursor=pointer]:
+                      - checkbox
+                  - cell "EXEMONE" [ref=e33820]
+                  - cell "EXEMONE" [ref=e33825]
+                - row "TEST DH 업무그룹 TESTDH" [ref=e33830]:
+                  - cell [ref=e33831]:
+                    - generic [ref=e33834] [cursor=pointer]:
+                      - checkbox
+                  - cell "TEST DH 업무그룹" [ref=e33836]
+                  - cell "TESTDH" [ref=e33841]
+                - row "EAI eai53" [ref=e33846]:
+                  - cell [ref=e33847]:
+                    - generic [ref=e33850] [cursor=pointer]:
+                      - checkbox
+                  - cell "EAI" [ref=e33852]
+                  - cell "eai53" [ref=e33857]
+                - row "FEP fep53" [ref=e33862]:
+                  - cell [ref=e33863]:
+                    - generic [ref=e33866] [cursor=pointer]:
+                      - checkbox
+                  - cell "FEP" [ref=e33868]
+                  - cell "fep53" [ref=e33873]
+                - row "MCI mci53" [ref=e33878]:
+                  - cell [ref=e33879]:
+                    - generic [ref=e33882] [cursor=pointer]:
+                      - checkbox
+                  - cell "MCI" [ref=e33884]
+                  - cell "mci53" [ref=e33889]
+                - row "XAIOps xaiops" [ref=e33894]:
+                  - cell [ref=e33895]:
+                    - generic [ref=e33898] [cursor=pointer]:
+                      - checkbox
+                  - cell "XAIOps" [ref=e33900]
+                  - cell "xaiops" [ref=e33905]
+        - generic [ref=e33910]:
+          - button "매핑 저장" [ref=e33915]
+          - generic [ref=e33916]:
+            - generic [ref=e33918]:
+              - generic [ref=e33919]:
+                - generic [ref=e33920]: 서비스 그룹 목록
+                - textbox "검색" [ref=e33926]
+              - generic [ref=e33927]:
+                - table [ref=e33929]:
+                  - rowgroup [ref=e33935]:
+                    - row "서비스 그룹 명 서비스 그룹 코드 이미 매핑 됨" [ref=e33936]:
+                      - columnheader [ref=e33937]:
+                        - generic [ref=e33940] [cursor=pointer]:
+                          - checkbox
+                      - columnheader [ref=e33942]
+                      - columnheader [ref=e33944]
+                      - columnheader [ref=e33946]
+                - table [ref=e33949]:
+                  - rowgroup [ref=e33955]:
+                    - row "EAI-MCI-FEP서비스 4 EAI, FEP, MCI" [ref=e33956]:
+                      - cell [ref=e33957]:
+                        - generic [ref=e33960] [cursor=pointer]:
+                          - checkbox
+                      - cell "EAI-MCI-FEP서비스" [ref=e33962]
+                      - cell "4" [ref=e33964]
+                      - cell "EAI, FEP, MCI" [ref=e33966]
+                    - row "MCI 단일구간 서비스 1 MCI" [ref=e33968]:
+                      - cell [ref=e33969]:
+                        - generic [ref=e33972] [cursor=pointer]:
+                          - checkbox
+                      - cell "MCI 단일구간 서비스" [ref=e33974]
+                      - cell "1" [ref=e33976]
+                      - cell "MCI" [ref=e33978]
+                    - row "MCI-EAI 서비스 3 EAI, MCI" [ref=e33980]:
+                      - cell [ref=e33981]:
+                        - generic [ref=e33984] [cursor=pointer]:
+                          - checkbox
+                      - cell "MCI-EAI 서비스" [ref=e33986]
+                      - cell "3" [ref=e33988]
+                      - cell "EAI, MCI" [ref=e33990]
+                    - row "MCI-FEP 서비스 2 FEP, MCI" [ref=e33992]:
+                      - cell [ref=e33993]:
+                        - generic [ref=e33996] [cursor=pointer]:
+                          - checkbox
+                      - cell "MCI-FEP 서비스" [ref=e33998]
+                      - cell "2" [ref=e34000]
+                      - cell "FEP, MCI" [ref=e34002]
+                    - row "empty 서비스그룹 empty 서비스그룹 XAIOps" [ref=e34004]:
+                      - cell [ref=e34005]:
+                        - generic [ref=e34008] [cursor=pointer]:
+                          - checkbox
+                      - cell "empty 서비스그룹" [ref=e34010]
+                      - cell "empty 서비스그룹" [ref=e34012]
+                      - cell "XAIOps" [ref=e34014]
+                    - row "jdh servicegroup 1 333" [ref=e34016]:
+                      - cell [ref=e34017]:
+                        - generic [ref=e34020] [cursor=pointer]:
+                          - checkbox
+                      - cell "jdh servicegroup 1" [ref=e34022]
+                      - cell "333" [ref=e34024]
+                      - cell [ref=e34026]
+                    - row "jdh servicegroup 2 334" [ref=e34027]:
+                      - cell [ref=e34028]:
+                        - generic [ref=e34031] [cursor=pointer]:
+                          - checkbox
+                      - cell "jdh servicegroup 2" [ref=e34033]
+                      - cell "334" [ref=e34035]
+                      - cell [ref=e34037]
+                    - row "엑셈뱅크V2서비스그룹 7 엑셈뱅크V2" [ref=e34038]:
+                      - cell [ref=e34039]:
+                        - generic [ref=e34042] [cursor=pointer]:
+                          - checkbox
+                      - cell "엑셈뱅크V2서비스그룹" [ref=e34044]
+                      - cell "7" [ref=e34046]
+                      - cell "엑셈뱅크V2" [ref=e34048]
+            - generic [ref=e34051]:
+              - generic [ref=e34052]:
+                - generic [ref=e34053]: 인스턴스 그룹 목록
+                - textbox "검색" [ref=e34059]
+              - generic [ref=e34060]:
+                - table [ref=e34062]:
+                  - rowgroup [ref=e34068]:
+                    - row "인스턴스 그룹 명 순서 이미 매핑 됨" [ref=e34069]:
+                      - columnheader [ref=e34070]:
+                        - generic [ref=e34073] [cursor=pointer]:
+                          - checkbox
+                      - columnheader [ref=e34075]
+                      - columnheader [ref=e34077]
+                      - columnheader [ref=e34079]
+                - table [ref=e34082]:
+                  - rowgroup [ref=e34088]:
+                    - row "MCI그룹 1 MCI" [ref=e34089]:
+                      - cell [ref=e34090]:
+                        - generic [ref=e34093] [cursor=pointer]:
+                          - checkbox
+                      - cell "MCI그룹" [ref=e34095]
+                      - cell "1" [ref=e34097]
+                      - cell "MCI" [ref=e34099]
+                    - row "EAI그룹 2 EAI" [ref=e34101]:
+                      - cell [ref=e34102]:
+                        - generic [ref=e34105] [cursor=pointer]:
+                          - checkbox
+                      - cell "EAI그룹" [ref=e34107]
+                      - cell "2" [ref=e34109]
+                      - cell "EAI" [ref=e34111]
+                    - row "FEP그룹 3 FEP" [ref=e34113]:
+                      - cell [ref=e34114]:
+                        - generic [ref=e34117] [cursor=pointer]:
+                          - checkbox
+                      - cell "FEP그룹" [ref=e34119]
+                      - cell "3" [ref=e34121]
+                      - cell "FEP" [ref=e34123]
+                    - row "AI그룹 4 XAIOps" [ref=e34125]:
+                      - cell [ref=e34126]:
+                        - generic [ref=e34129] [cursor=pointer]:
+                          - checkbox
+                      - cell "AI그룹" [ref=e34131]
+                      - cell "4" [ref=e34133]
+                      - cell "XAIOps" [ref=e34135]
+                    - row "exemone 5 EXEMONE" [ref=e34137]:
+                      - cell [ref=e34138]:
+                        - generic [ref=e34141] [cursor=pointer]:
+                          - checkbox
+                      - cell "exemone" [ref=e34143]
+                      - cell "5" [ref=e34145]
+                      - cell "EXEMONE" [ref=e34147]
+                    - row "엑셈뱅크V2인스턴스그룹 777 엑셈뱅크V2" [ref=e34149]:
+                      - cell [ref=e34150]:
+                        - generic [ref=e34153] [cursor=pointer]:
+                          - checkbox
+                      - cell "엑셈뱅크V2인스턴스그룹" [ref=e34155]
+                      - cell "777" [ref=e34157]
+                      - cell "엑셈뱅크V2" [ref=e34159]
+                    - row "etc 999" [ref=e34161]:
+                      - cell [ref=e34162]:
+                        - generic [ref=e34165] [cursor=pointer]:
+                          - checkbox
+                      - cell "etc" [ref=e34167]
+                      - cell "999" [ref=e34169]
+                      - cell [ref=e34171]
+                    - row "jdh instancegroup 1 9,999 TEST DH 업무그룹" [ref=e34172]:
+                      - cell [ref=e34173]:
+                        - generic [ref=e34176] [cursor=pointer]:
+                          - checkbox
+                      - cell "jdh instancegroup 1" [ref=e34178]
+                      - cell "9,999" [ref=e34180]
+                      - cell "TEST DH 업무그룹" [ref=e34182]
+                    - row "jdh instancegroup 2 10,000" [ref=e34184]:
+                      - cell [ref=e34185]:
+                        - generic [ref=e34188] [cursor=pointer]:
+                          - checkbox
+                      - cell "jdh instancegroup 2" [ref=e34190]
+                      - cell "10,000" [ref=e34192]
+                      - cell [ref=e34194]
+            - generic [ref=e34196]:
+              - generic [ref=e34197]:
+                - generic [ref=e34198]: 호스트 그룹 목록
+                - textbox "검색" [ref=e34204]
+              - generic [ref=e34205]:
+                - table [ref=e34207]:
+                  - rowgroup [ref=e34213]:
+                    - row "호스트 그룹 명 순서 이미 매핑 됨" [ref=e34214]:
+                      - columnheader [ref=e34215]:
+                        - generic [ref=e34218] [cursor=pointer]:
+                          - checkbox
+                      - columnheader [ref=e34220]
+                      - columnheader [ref=e34222]
+                      - columnheader [ref=e34224]
+                - table [ref=e34227]:
+                  - rowgroup [ref=e34233]:
+                    - row "MCI그룹 1 MCI" [ref=e34234]:
+                      - cell [ref=e34235]:
+                        - generic [ref=e34238] [cursor=pointer]:
+                          - checkbox
+                      - cell "MCI그룹" [ref=e34240]
+                      - cell "1" [ref=e34242]
+                      - cell "MCI" [ref=e34244]
+                    - row "temp-janghh 1" [ref=e34246]:
+                      - cell [ref=e34247]:
+                        - generic [ref=e34250] [cursor=pointer]:
+                          - checkbox
+                      - cell "temp-janghh" [ref=e34252]
+                      - cell "1" [ref=e34254]
+                      - cell [ref=e34256]
+                    - row "EAI그룹 2 EAI" [ref=e34257]:
+                      - cell [ref=e34258]:
+                        - generic [ref=e34261] [cursor=pointer]:
+                          - checkbox
+                      - cell "EAI그룹" [ref=e34263]
+                      - cell "2" [ref=e34265]
+                      - cell "EAI" [ref=e34267]
+                    - row "FEP그룹 3 FEP" [ref=e34269]:
+                      - cell [ref=e34270]:
+                        - generic [ref=e34273] [cursor=pointer]:
+                          - checkbox
+                      - cell "FEP그룹" [ref=e34275]
+                      - cell "3" [ref=e34277]
+                      - cell "FEP" [ref=e34279]
+                    - row "AI그룹 4" [ref=e34281]:
+                      - cell [ref=e34282]:
+                        - generic [ref=e34285] [cursor=pointer]:
+                          - checkbox
+                      - cell "AI그룹" [ref=e34287]
+                      - cell "4" [ref=e34289]
+                      - cell [ref=e34291]
+                    - row "exemone 5 EXEMONE" [ref=e34292]:
+                      - cell [ref=e34293]:
+                        - generic [ref=e34296] [cursor=pointer]:
+                          - checkbox
+                      - cell "exemone" [ref=e34298]
+                      - cell "5" [ref=e34300]
+                      - cell "EXEMONE" [ref=e34302]
+                    - row "엑셈뱅크V2호스트그룹 77 엑셈뱅크V2" [ref=e34304]:
+                      - cell [ref=e34305]:
+                        - generic [ref=e34308] [cursor=pointer]:
+                          - checkbox
+                      - cell "엑셈뱅크V2호스트그룹" [ref=e34310]
+                      - cell "77" [ref=e34312]
+                      - cell "엑셈뱅크V2" [ref=e34314]
+                    - row "엑셈뱅크 78" [ref=e34316]:
+                      - cell [ref=e34317]:
+                        - generic [ref=e34320] [cursor=pointer]:
+                          - checkbox
+                      - cell "엑셈뱅크" [ref=e34322]
+                      - cell "78" [ref=e34324]
+                      - cell [ref=e34326]
+                    - row "엑셈뱅크V2인스턴스그룹 79" [ref=e34327]:
+                      - cell [ref=e34328]:
+                        - generic [ref=e34331] [cursor=pointer]:
+                          - checkbox
+                      - cell "엑셈뱅크V2인스턴스그룹" [ref=e34333]
+                      - cell "79" [ref=e34335]
+                      - cell [ref=e34337]
+                    - row "기타 80" [ref=e34338]:
+                      - cell [ref=e34339]:
+                        - generic [ref=e34342] [cursor=pointer]:
+                          - checkbox
+                      - cell "기타" [ref=e34344]
+                      - cell "80" [ref=e34346]
+                      - cell [ref=e34348]
+                    - row "jdh hostgroup 1 999" [ref=e34349]:
+                      - cell [ref=e34350]:
+                        - generic [ref=e34353] [cursor=pointer]:
+                          - checkbox
+                      - cell "jdh hostgroup 1" [ref=e34355]
+                      - cell "999" [ref=e34357]
+                      - cell [ref=e34359]
+                    - row "jdh hostgroup 2 1,000" [ref=e34360]:
+                      - cell [ref=e34361]:
+                        - generic [ref=e34364] [cursor=pointer]:
+                          - checkbox
+                      - cell "jdh hostgroup 2" [ref=e34366]
+                      - cell "1,000" [ref=e34368]
+                      - cell [ref=e34370]
+    - generic [ref=e24337]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e24344] [cursor=pointer]
+        - generic [ref=e24367]:
+          - text: 팝업 설정
+          - generic [ref=e24369]:
+            - text: 알람 팝업
+            - switch [ref=e24370]:
+              - checkbox
+        - generic [ref=e24372]:
+          - generic [ref=e24375]:
+            - button "알람 목록 (최근)" [ref=e24376] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e24377] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e24378] [cursor=pointer]
+          - generic [ref=e24382]:
+            - generic [ref=e24383]:
+              - generic [ref=e24384]: "룰 타입 :"
+              - generic [ref=e24386]:
+                - textbox "선택" [ref=e24387] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e24393]:
+              - table [ref=e24395]:
+                - rowgroup [ref=e24406]:
+                  - row [ref=e24407]:
+                    - columnheader [ref=e24408]
+                    - columnheader [ref=e24410]
+                    - columnheader [ref=e24412]
+                    - columnheader [ref=e24414]
+                    - columnheader [ref=e24416]
+                    - columnheader [ref=e24418]
+                    - columnheader [ref=e24420]
+                    - columnheader [ref=e24422]
+                    - columnheader [ref=e24424]
+              - generic [ref=e24426]:
+                - table:
+                  - rowgroup
+                - generic [ref=e24427]: 데이터 없음
+    - generic:
+      - generic [ref=e24430]:
+        - generic [ref=e24431]: Info (1970-01-01 09:00)
+        - generic [ref=e24437]:
+          - generic [ref=e24438]: 타겟 명
+          - generic [ref=e24440]: 타입
+          - generic [ref=e24442]: 상태
+      - generic [ref=e24447]:
+        - generic [ref=e24448]: Chart Detail
+        - generic [ref=e24453]:
+          - textbox "Select time" [ref=e24467] [cursor=pointer]
+          - generic [ref=e24472]: 데이터 없음

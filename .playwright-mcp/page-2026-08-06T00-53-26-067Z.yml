@@ -1,0 +1,407 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 학습 / 서비스 학습
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e7092]:
+      - menubar [ref=e7093]:
+        - menuitem "학습" [ref=e7722] [cursor=pointer]
+        - menuitem "자동 학습" [ref=e7723] [cursor=pointer]
+        - menuitem "서빙" [ref=e7724] [cursor=pointer]
+        - menuitem "수집 지표" [ref=e7725] [cursor=pointer]
+      - generic [ref=e7102]:
+        - generic [ref=e7104]:
+          - generic [ref=e7105]: 대상
+          - generic [ref=e7107]:
+            - text:   
+            - generic [ref=e7109]:
+              - generic [ref=e7110]: 호스트
+              - generic [ref=e7111]: 
+          - button "제외된 대상 관리" [ref=e7114] [cursor=pointer]
+        - generic [ref=e7116]:
+          - tablist [ref=e7120]:
+            - tab "추가 (139)" [selected] [ref=e7122]
+            - tab "수정 (4)" [ref=e7123]
+            - tab "삭제 (2)" [ref=e7124]
+          - generic:
+            - tabpanel "추가 (139)"
+        - generic [ref=e7126]:
+          - generic [ref=e7128]:
+            - generic [ref=e7129]: 호스트
+            - generic [ref=e7135]:
+              - button "선택 대상 추가" [ref=e7136] [cursor=pointer]
+              - button "연동 대상에서 제외" [ref=e7138] [cursor=pointer]
+            - textbox "검색" [ref=e7141]
+          - generic [ref=e7143]:
+            - generic [ref=e7144]:
+              - table [ref=e7146]:
+                - rowgroup [ref=e7161]:
+                  - row " 상태 식별자 ID 호스트 명 Hostname 호스트 IP OS 정보 OS 버전 CPU 타입 가상화 설명 작업" [ref=e7162]:
+                    - columnheader [ref=e7163]:
+                      - generic [ref=e7166] [cursor=pointer]:
+                        - checkbox
+                    - columnheader [ref=e7168]:
+                      - button "" [ref=e7171] [cursor=pointer]
+                    - columnheader [ref=e7173]
+                    - columnheader [ref=e7175]
+                    - columnheader [ref=e7177]
+                    - columnheader [ref=e7179]
+                    - columnheader [ref=e7181]
+                    - columnheader [ref=e7183]
+                    - columnheader [ref=e7185]
+                    - columnheader [ref=e7187]
+                    - columnheader [ref=e7189]
+                    - columnheader [ref=e7191]
+                    - columnheader [ref=e7193]
+              - table [ref=e7196]:
+                - rowgroup [ref=e7211]:
+                  - row "a9bc4b8e-51a2-4f4a-9bc8-67be40db39c3 v-develop-edge-05 v-develop-edge-05 linux Ubuntu 22.04 추가" [ref=e7212]:
+                    - cell [ref=e7213]:
+                      - generic [ref=e7216] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7218]
+                    - cell [ref=e7219]
+                    - cell "a9bc4b8e-51a2-4f4a-9bc8-67be40db39c3" [ref=e7223]
+                    - cell "v-develop-edge-05" [ref=e7225]
+                    - cell "v-develop-edge-05" [ref=e7227]
+                    - cell [ref=e7229]
+                    - cell "linux" [ref=e7230]
+                    - cell "Ubuntu 22.04" [ref=e7232]
+                    - cell [ref=e7234]
+                    - cell [ref=e7235]
+                    - cell [ref=e7236]
+                    - cell [ref=e7237]:
+                      - button "추가" [ref=e7240] [cursor=pointer]
+                  - row "f654e624-307b-42ae-8719-5afaac132a78 v-develop-api-06 v-develop-api-06 linux RHEL 8.8 추가" [ref=e7241]:
+                    - cell [ref=e7242]:
+                      - generic [ref=e7245] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7247]
+                    - cell [ref=e7248]
+                    - cell "f654e624-307b-42ae-8719-5afaac132a78" [ref=e7252]
+                    - cell "v-develop-api-06" [ref=e7254]
+                    - cell "v-develop-api-06" [ref=e7256]
+                    - cell [ref=e7258]
+                    - cell "linux" [ref=e7259]
+                    - cell "RHEL 8.8" [ref=e7261]
+                    - cell [ref=e7263]
+                    - cell [ref=e7264]
+                    - cell [ref=e7265]
+                    - cell [ref=e7266]:
+                      - button "추가" [ref=e7269] [cursor=pointer]
+                  - row "d51d9838-38f3-419c-8339-b7bca30cca5d v-develop-edge-05 v-develop-edge-05 linux Ubuntu 22.04 추가" [ref=e7270]:
+                    - cell [ref=e7271]:
+                      - generic [ref=e7274] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7276]
+                    - cell [ref=e7277]
+                    - cell "d51d9838-38f3-419c-8339-b7bca30cca5d" [ref=e7281]
+                    - cell "v-develop-edge-05" [ref=e7283]
+                    - cell "v-develop-edge-05" [ref=e7285]
+                    - cell [ref=e7287]
+                    - cell "linux" [ref=e7288]
+                    - cell "Ubuntu 22.04" [ref=e7290]
+                    - cell [ref=e7292]
+                    - cell [ref=e7293]
+                    - cell [ref=e7294]
+                    - cell [ref=e7295]:
+                      - button "추가" [ref=e7298] [cursor=pointer]
+                  - row "c539ee4c-776a-4286-9921-93ca7daefaaf v-develop-k8s-node-04 v-develop-k8s-node-04 linux 5.15.0-91-generic 추가" [ref=e7299]:
+                    - cell [ref=e7300]:
+                      - generic [ref=e7303] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7305]
+                    - cell [ref=e7306]
+                    - cell "c539ee4c-776a-4286-9921-93ca7daefaaf" [ref=e7310]
+                    - cell "v-develop-k8s-node-04" [ref=e7312]
+                    - cell "v-develop-k8s-node-04" [ref=e7314]
+                    - cell [ref=e7316]
+                    - cell "linux" [ref=e7317]
+                    - cell "5.15.0-91-generic" [ref=e7319]
+                    - cell [ref=e7321]
+                    - cell [ref=e7322]
+                    - cell [ref=e7323]
+                    - cell [ref=e7324]:
+                      - button "추가" [ref=e7327] [cursor=pointer]
+                  - row "97ac7f2d-42e5-4fde-b71d-a3d0c3507a04 v-develop-k8s-node-04 v-develop-k8s-node-04 linux Windows Server 2022 추가" [ref=e7328]:
+                    - cell [ref=e7329]:
+                      - generic [ref=e7332] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7334]
+                    - cell [ref=e7335]
+                    - cell "97ac7f2d-42e5-4fde-b71d-a3d0c3507a04" [ref=e7339]
+                    - cell "v-develop-k8s-node-04" [ref=e7341]
+                    - cell "v-develop-k8s-node-04" [ref=e7343]
+                    - cell [ref=e7345]
+                    - cell "linux" [ref=e7346]
+                    - cell "Windows Server 2022" [ref=e7348]
+                    - cell [ref=e7350]
+                    - cell [ref=e7351]
+                    - cell [ref=e7352]
+                    - cell [ref=e7353]:
+                      - button "추가" [ref=e7356] [cursor=pointer]
+                  - row "dbd10037-e2a6-4442-bbae-2532e056f49a v-develop-edge-05 v-develop-edge-05 linux Ubuntu 22.04 추가" [ref=e7357]:
+                    - cell [ref=e7358]:
+                      - generic [ref=e7361] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7363]
+                    - cell [ref=e7364]
+                    - cell "dbd10037-e2a6-4442-bbae-2532e056f49a" [ref=e7368]
+                    - cell "v-develop-edge-05" [ref=e7370]
+                    - cell "v-develop-edge-05" [ref=e7372]
+                    - cell [ref=e7374]
+                    - cell "linux" [ref=e7375]
+                    - cell "Ubuntu 22.04" [ref=e7377]
+                    - cell [ref=e7379]
+                    - cell [ref=e7380]
+                    - cell [ref=e7381]
+                    - cell [ref=e7382]:
+                      - button "추가" [ref=e7385] [cursor=pointer]
+                  - row "cb726a33-a5ea-4568-9514-9d5a9a820ff3 v-develop-db-03 v-develop-db-03 linux Rocky Linux 9 추가" [ref=e7386]:
+                    - cell [ref=e7387]:
+                      - generic [ref=e7390] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7392]
+                    - cell [ref=e7393]
+                    - cell "cb726a33-a5ea-4568-9514-9d5a9a820ff3" [ref=e7397]
+                    - cell "v-develop-db-03" [ref=e7399]
+                    - cell "v-develop-db-03" [ref=e7401]
+                    - cell [ref=e7403]
+                    - cell "linux" [ref=e7404]
+                    - cell "Rocky Linux 9" [ref=e7406]
+                    - cell [ref=e7408]
+                    - cell [ref=e7409]
+                    - cell [ref=e7410]
+                    - cell [ref=e7411]:
+                      - button "추가" [ref=e7414] [cursor=pointer]
+                  - row "980338cb-8c65-461b-9c2f-a3d81a31230f v-develop-db-08 v-develop-db-08 linux Windows Server 2022 추가" [ref=e7415]:
+                    - cell [ref=e7416]:
+                      - generic [ref=e7419] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7421]
+                    - cell [ref=e7422]
+                    - cell "980338cb-8c65-461b-9c2f-a3d81a31230f" [ref=e7426]
+                    - cell "v-develop-db-08" [ref=e7428]
+                    - cell "v-develop-db-08" [ref=e7430]
+                    - cell [ref=e7432]
+                    - cell "linux" [ref=e7433]
+                    - cell "Windows Server 2022" [ref=e7435]
+                    - cell [ref=e7437]
+                    - cell [ref=e7438]
+                    - cell [ref=e7439]
+                    - cell [ref=e7440]:
+                      - button "추가" [ref=e7443] [cursor=pointer]
+                  - row "1395da42-b803-4ead-8c91-1f8fb5dfa252 v-develop-db-03 v-develop-db-03 linux Rocky Linux 9 추가" [ref=e7444]:
+                    - cell [ref=e7445]:
+                      - generic [ref=e7448] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7450]
+                    - cell [ref=e7451]
+                    - cell "1395da42-b803-4ead-8c91-1f8fb5dfa252" [ref=e7455]
+                    - cell "v-develop-db-03" [ref=e7457]
+                    - cell "v-develop-db-03" [ref=e7459]
+                    - cell [ref=e7461]
+                    - cell "linux" [ref=e7462]
+                    - cell "Rocky Linux 9" [ref=e7464]
+                    - cell [ref=e7466]
+                    - cell [ref=e7467]
+                    - cell [ref=e7468]
+                    - cell [ref=e7469]:
+                      - button "추가" [ref=e7472] [cursor=pointer]
+                  - row "1e2efc64-fb62-43b8-89a4-063cf21e5ed5 v-develop-k8s-node-04 v-develop-k8s-node-04 linux Windows Server 2022 추가" [ref=e7473]:
+                    - cell [ref=e7474]:
+                      - generic [ref=e7477] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7479]
+                    - cell [ref=e7480]
+                    - cell "1e2efc64-fb62-43b8-89a4-063cf21e5ed5" [ref=e7484]
+                    - cell "v-develop-k8s-node-04" [ref=e7486]
+                    - cell "v-develop-k8s-node-04" [ref=e7488]
+                    - cell [ref=e7490]
+                    - cell "linux" [ref=e7491]
+                    - cell "Windows Server 2022" [ref=e7493]
+                    - cell [ref=e7495]
+                    - cell [ref=e7496]
+                    - cell [ref=e7497]
+                    - cell [ref=e7498]:
+                      - button "추가" [ref=e7501] [cursor=pointer]
+                  - row "5ac028f8-019d-4bf7-9f8f-9fb4255d5078 v-develop-db-08 v-develop-db-08 linux Windows Server 2022 추가" [ref=e7502]:
+                    - cell [ref=e7503]:
+                      - generic [ref=e7506] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7508]
+                    - cell [ref=e7509]
+                    - cell "5ac028f8-019d-4bf7-9f8f-9fb4255d5078" [ref=e7513]
+                    - cell "v-develop-db-08" [ref=e7515]
+                    - cell "v-develop-db-08" [ref=e7517]
+                    - cell [ref=e7519]
+                    - cell "linux" [ref=e7520]
+                    - cell "Windows Server 2022" [ref=e7522]
+                    - cell [ref=e7524]
+                    - cell [ref=e7525]
+                    - cell [ref=e7526]
+                    - cell [ref=e7527]:
+                      - button "추가" [ref=e7530] [cursor=pointer]
+                  - row "dcfebafd-a366-43e9-8f50-f6a8122b7423 exemone exemone 10.10.38.106 linux 3.10.0-1160.102.1.el7.x86_64 0 추가" [ref=e7531]:
+                    - cell [ref=e7532]:
+                      - generic [ref=e7535] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7537]
+                    - cell [ref=e7538]
+                    - cell "dcfebafd-a366-43e9-8f50-f6a8122b7423" [ref=e7542]
+                    - cell "exemone" [ref=e7544]
+                    - cell "exemone" [ref=e7546]
+                    - cell "10.10.38.106" [ref=e7548]
+                    - cell "linux" [ref=e7550]
+                    - cell "3.10.0-1160.102.1.el7.x86_64" [ref=e7552]
+                    - cell [ref=e7554]
+                    - cell "0" [ref=e7555]
+                    - cell [ref=e7557]
+                    - cell [ref=e7558]:
+                      - button "추가" [ref=e7561] [cursor=pointer]
+                  - row "837acafd-1a37-4721-ac41-5ce3c000a20d v-develop-api-01 v-develop-api-01 linux Ubuntu 22.04 추가" [ref=e7562]:
+                    - cell [ref=e7563]:
+                      - generic [ref=e7566] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7568]
+                    - cell [ref=e7569]
+                    - cell "837acafd-1a37-4721-ac41-5ce3c000a20d" [ref=e7573]
+                    - cell "v-develop-api-01" [ref=e7575]
+                    - cell "v-develop-api-01" [ref=e7577]
+                    - cell [ref=e7579]
+                    - cell "linux" [ref=e7580]
+                    - cell "Ubuntu 22.04" [ref=e7582]
+                    - cell [ref=e7584]
+                    - cell [ref=e7585]
+                    - cell [ref=e7586]
+                    - cell [ref=e7587]:
+                      - button "추가" [ref=e7590] [cursor=pointer]
+                  - row "79200966-6f3a-40c0-8856-c666d0d79a8c v-develop-edge-05 v-develop-edge-05 linux Ubuntu 22.04 추가" [ref=e7591]:
+                    - cell [ref=e7592]:
+                      - generic [ref=e7595] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7597]
+                    - cell [ref=e7598]
+                    - cell "79200966-6f3a-40c0-8856-c666d0d79a8c" [ref=e7602]
+                    - cell "v-develop-edge-05" [ref=e7604]
+                    - cell "v-develop-edge-05" [ref=e7606]
+                    - cell [ref=e7608]
+                    - cell "linux" [ref=e7609]
+                    - cell "Ubuntu 22.04" [ref=e7611]
+                    - cell [ref=e7613]
+                    - cell [ref=e7614]
+                    - cell [ref=e7615]
+                    - cell [ref=e7616]:
+                      - button "추가" [ref=e7619] [cursor=pointer]
+                  - row "10eb8ed0-f927-47ff-a145-b9916dbffa00 v-develop-api-06 v-develop-api-06 linux RHEL 8.8 추가" [ref=e7620]:
+                    - cell [ref=e7621]:
+                      - generic [ref=e7624] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7626]
+                    - cell [ref=e7627]
+                    - cell "10eb8ed0-f927-47ff-a145-b9916dbffa00" [ref=e7631]
+                    - cell "v-develop-api-06" [ref=e7633]
+                    - cell "v-develop-api-06" [ref=e7635]
+                    - cell [ref=e7637]
+                    - cell "linux" [ref=e7638]
+                    - cell "RHEL 8.8" [ref=e7640]
+                    - cell [ref=e7642]
+                    - cell [ref=e7643]
+                    - cell [ref=e7644]
+                    - cell [ref=e7645]:
+                      - button "추가" [ref=e7648] [cursor=pointer]
+                  - row "ce9c4a97-aa68-43f9-b91c-bd5a47b2bd22 v-develop-worker-07 v-develop-worker-07 linux Rocky Linux 9 추가" [ref=e7649]:
+                    - cell [ref=e7650]:
+                      - generic [ref=e7653] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7655]
+                    - cell [ref=e7656]
+                    - cell "ce9c4a97-aa68-43f9-b91c-bd5a47b2bd22" [ref=e7660]
+                    - cell "v-develop-worker-07" [ref=e7662]
+                    - cell "v-develop-worker-07" [ref=e7664]
+                    - cell [ref=e7666]
+                    - cell "linux" [ref=e7667]
+                    - cell "Rocky Linux 9" [ref=e7669]
+                    - cell [ref=e7671]
+                    - cell [ref=e7672]
+                    - cell [ref=e7673]
+                    - cell [ref=e7674]:
+                      - button "추가" [ref=e7677] [cursor=pointer]
+                  - row "735c9371-1739-43a6-9e58-721339c5b733 v-develop-api-06 v-develop-api-06 linux RHEL 8.8 추가" [ref=e7678]:
+                    - cell [ref=e7679]:
+                      - generic [ref=e7682] [cursor=pointer]:
+                        - checkbox
+                    - cell [ref=e7684]
+                    - cell [ref=e7685]
+                    - cell "735c9371-1739-43a6-9e58-721339c5b733" [ref=e7689]
+                    - cell "v-develop-api-06" [ref=e7691]
+                    - cell "v-develop-api-06" [ref=e7693]
+                    - cell [ref=e7695]
+                    - cell "linux" [ref=e7696]
+                    - cell "RHEL 8.8" [ref=e7698]
+                    - cell [ref=e7700]
+                    - cell [ref=e7701]
+                    - cell [ref=e7702]
+                    - cell [ref=e7703]:
+                      - button "추가" [ref=e7706] [cursor=pointer]
+            - generic [ref=e7708]:
+              - button "" [disabled] [ref=e7709]
+              - list [ref=e7711]:
+                - listitem [ref=e7712]: "1"
+                - listitem [ref=e7713] [cursor=pointer]: "2"
+                - listitem [ref=e7714] [cursor=pointer]: "3"
+                - listitem [ref=e7715] [cursor=pointer]: "4"
+                - listitem [ref=e7716] [cursor=pointer]: "5"
+                - listitem [ref=e7717] [cursor=pointer]: "6"
+                - listitem [ref=e7718] [cursor=pointer]: 
+                - listitem [ref=e7719] [cursor=pointer]: "9"
+              - button "" [ref=e7720] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

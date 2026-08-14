@@ -1,0 +1,155 @@
+- generic [ref=e22717]:
+  - generic [ref=e22718]: 운영 관리 레포트 문서
+  - generic [ref=e22730]:
+    - list [ref=e22764]
+    - generic [ref=e35090]:
+      - generic [ref=e35091]:
+        - generic [ref=e35092]:
+          - generic [ref=e35093]:
+            - generic [ref=e35094]: 단위
+            - radiogroup [ref=e35095]:
+              - radio "일" [ref=e35096] [cursor=pointer]:
+                - radio [ref=e35099]
+              - radio "시간" [checked] [ref=e35101] [cursor=pointer]:
+                - radio [checked] [ref=e35104]
+              - radio "분" [ref=e35106] [cursor=pointer]:
+                - radio [ref=e35109]
+          - generic [ref=e35111]:
+            - text: 
+            - generic [ref=e35112]:
+              - generic [ref=e35113]: 
+              - textbox "Start date" [ref=e35114]: 2026-08-06 05:00:00
+              - generic [ref=e35115]: "-"
+              - textbox "End date" [ref=e35116]: 2026-08-06 11:59:59
+        - generic [ref=e35118]:
+          - generic [ref=e35119]:
+            - generic [ref=e35120]: 룰 타입
+            - generic [ref=e35122]:
+              - textbox "선택" [ref=e35123] [cursor=pointer]: 전체
+              - generic: 
+          - generic [ref=e35126]:
+            - generic [ref=e35127]: 룰 레벨
+            - generic [ref=e35129]:
+              - textbox "선택" [ref=e35130] [cursor=pointer]: 전체
+              - generic: 
+        - generic [ref=e35133]:
+          - generic [ref=e35134]:
+            - generic [ref=e35135]: 타입
+            - generic [ref=e35137]:
+              - text: 
+              - generic [ref=e35139]:
+                - generic [ref=e35140]: 전체
+                - generic [ref=e35141]: 
+          - generic [ref=e35143]:
+            - generic [ref=e35144]: 지표
+            - generic [ref=e35146]:
+              - textbox "선택" [ref=e35147] [cursor=pointer]: 전체
+              - generic: 
+          - generic [ref=e35150]:
+            - generic [ref=e35151]: 타겟
+            - generic [ref=e35153]:
+              - generic [ref=e35154] [cursor=pointer]:
+                - textbox "선택" [ref=e35155]: 전체
+                - generic: 
+              - text: 
+        - generic [ref=e35158]:
+          - button "조회" [ref=e35159] [cursor=pointer]
+          - button "Excel Export" [disabled] [ref=e35160]
+      - generic [ref=e35176]:
+        - generic [ref=e35177]: 알람 요약 목록
+        - generic [ref=e35185]:
+          - table [ref=e35187]:
+            - rowgroup [ref=e35194]:
+              - row [ref=e35195]:
+                - columnheader [ref=e35196]
+                - columnheader [ref=e35198]
+                - columnheader [ref=e35200]
+                - columnheader [ref=e35202]
+                - columnheader [ref=e35204]
+          - generic [ref=e35206]:
+            - table:
+              - rowgroup
+            - generic [ref=e35207]: 데이터 없음
+      - generic [ref=e35209]:
+        - generic [ref=e35210]:
+          - generic [ref=e35211]: 알람 상세 목록
+          - generic [ref=e35213]:
+            - generic [ref=e35215] [cursor=pointer]:
+              - generic [ref=e35216]:
+                - checkbox "확인 여부"
+              - generic [ref=e35218]: 확인 여부
+            - generic [ref=e35219]:
+              - button "전체 확인" [ref=e35221] [cursor=pointer]
+              - button "전체 삭제" [ref=e35223] [cursor=pointer]
+              - button "확인" [ref=e35225] [cursor=pointer]
+              - button "삭제" [ref=e35227] [cursor=pointer]
+        - generic [ref=e35233]:
+          - table [ref=e35235]:
+            - rowgroup [ref=e35246]:
+              - row " 시간 룰 레벨 룰 이름 타겟 명 원인 확인여부 More" [ref=e35247]:
+                - columnheader [ref=e35248]:
+                  - generic [ref=e35251] [cursor=pointer]:
+                    - checkbox [disabled]
+                - columnheader [ref=e35253]:
+                  - button "" [ref=e35256] [cursor=pointer]
+                - columnheader [ref=e35258]
+                - columnheader [ref=e35260]
+                - columnheader [ref=e35262]
+                - columnheader [ref=e35264]
+                - columnheader [ref=e35266]
+                - columnheader [ref=e35268]
+                - columnheader [ref=e35270]
+          - generic [ref=e35272]:
+            - table:
+              - rowgroup
+            - generic [ref=e35273]: 데이터 없음
+    - generic [ref=e24337]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e24344] [cursor=pointer]
+        - generic [ref=e24367]:
+          - text: 팝업 설정
+          - generic [ref=e24369]:
+            - text: 알람 팝업
+            - switch [ref=e24370]:
+              - checkbox
+        - generic [ref=e24372]:
+          - generic [ref=e24375]:
+            - button "알람 목록 (최근)" [ref=e24376] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e24377] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e24378] [cursor=pointer]
+          - generic [ref=e24382]:
+            - generic [ref=e24383]:
+              - generic [ref=e24384]: "룰 타입 :"
+              - generic [ref=e24386]:
+                - textbox "선택" [ref=e24387] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e24393]:
+              - table [ref=e24395]:
+                - rowgroup [ref=e24406]:
+                  - row [ref=e24407]:
+                    - columnheader [ref=e24408]
+                    - columnheader [ref=e24410]
+                    - columnheader [ref=e24412]
+                    - columnheader [ref=e24414]
+                    - columnheader [ref=e24416]
+                    - columnheader [ref=e24418]
+                    - columnheader [ref=e24420]
+                    - columnheader [ref=e24422]
+                    - columnheader [ref=e24424]
+              - generic [ref=e24426]:
+                - table:
+                  - rowgroup
+                - generic [ref=e24427]: 데이터 없음
+    - generic:
+      - generic [ref=e24430]:
+        - generic [ref=e24431]: Info (1970-01-01 09:00)
+        - generic [ref=e24437]:
+          - generic [ref=e24438]: 타겟 명
+          - generic [ref=e24440]: 타입
+          - generic [ref=e24442]: 상태
+      - generic [ref=e24447]:
+        - generic [ref=e24448]: Chart Detail
+        - generic [ref=e24453]:
+          - textbox "Select time" [ref=e24467] [cursor=pointer]
+          - generic [ref=e24472]: 데이터 없음

@@ -1,0 +1,297 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 권한 사용자 그룹
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e14733]:
+      - menubar [ref=e14734]:
+        - menuitem "사용자" [ref=e15184] [cursor=pointer]
+        - menuitem "메뉴" [ref=e15185] [cursor=pointer]
+      - generic [ref=e14739]:
+        - generic [ref=e14742]:
+          - generic [ref=e14743]:
+            - generic [ref=e14744]: 
+            - textbox "Start date" [ref=e14745]: 2026-08-04
+            - generic [ref=e14746]: "-"
+            - textbox "End date" [ref=e14747]: 2026-08-06
+          - generic [ref=e14749]:
+            - text: 알람 세트 이름
+            - generic [ref=e14751]:
+              - textbox "선택" [ref=e14752] [cursor=pointer]: 전체
+              - generic: 
+          - textbox "룰 이름" [ref=e14757]
+          - generic [ref=e14758]:
+            - text: 채널 타입
+            - generic [ref=e14760]:
+              - textbox "선택" [ref=e14761] [cursor=pointer]: 전체
+              - generic: 
+          - textbox "수신자 명" [ref=e14766]
+          - textbox "수신자 정보" [ref=e14769]
+          - button " 검색" [ref=e14771] [cursor=pointer]:
+            - generic [ref=e14772]: 
+            - text: 검색
+        - generic [ref=e14774]:
+          - generic [ref=e14776]:
+            - generic [ref=e14777]: 발신자 내역 목록
+            - generic [ref=e14778]: "Total : 16"
+          - generic [ref=e14781]:
+            - generic [ref=e14782]:
+              - table [ref=e14784]:
+                - rowgroup [ref=e14794]:
+                  - row [ref=e14795]:
+                    - columnheader [ref=e14796]
+                    - columnheader [ref=e14798]
+                    - columnheader [ref=e14800]
+                    - columnheader [ref=e14802]
+                    - columnheader [ref=e14804]
+                    - columnheader [ref=e14806]
+                    - columnheader [ref=e14808]
+                    - columnheader [ref=e14810]
+              - table [ref=e14813]:
+                - rowgroup [ref=e14823]:
+                  - row [ref=e14824]:
+                    - cell "2026-08-05 14:53:50" [ref=e14825]
+                    - cell [ref=e14827]:
+                      - generic [ref=e14830]:
+                        - generic: 테스트 알람
+                        - button [ref=e14831] [cursor=pointer]
+                    - cell "TICKER" [ref=e14834]
+                    - cell "이정진" [ref=e14836]
+                    - cell "jj" [ref=e14838]
+                    - cell "희소로그 syslog" [ref=e14840]
+                    - cell "성공" [ref=e14842]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e14844]
+                  - row [ref=e14846]:
+                    - cell "2026-08-05 14:53:50" [ref=e14847]
+                    - cell [ref=e14849]:
+                      - generic [ref=e14852]:
+                        - generic: 테스트 알람
+                        - button [ref=e14853] [cursor=pointer]
+                    - cell "TICKER" [ref=e14856]
+                    - cell "류길현" [ref=e14858]
+                    - cell "khryu" [ref=e14860]
+                    - cell "희소로그 syslog" [ref=e14862]
+                    - cell "성공" [ref=e14864]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e14866]
+                  - row [ref=e14868]:
+                    - cell "2026-08-05 14:53:50" [ref=e14869]
+                    - cell [ref=e14871]:
+                      - generic [ref=e14874]:
+                        - generic: 테스트 알람
+                        - button [ref=e14875] [cursor=pointer]
+                    - cell "TICKER" [ref=e14878]
+                    - cell "정동희" [ref=e14880]
+                    - cell "jdhee" [ref=e14882]
+                    - cell "희소로그 syslog" [ref=e14884]
+                    - cell "성공" [ref=e14886]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e14888]
+                  - row [ref=e14890]:
+                    - cell "2026-08-05 14:53:50" [ref=e14891]
+                    - cell [ref=e14893]:
+                      - generic [ref=e14896]:
+                        - generic: 테스트 알람
+                        - button [ref=e14897] [cursor=pointer]
+                    - cell "TICKER" [ref=e14900]
+                    - cell "Administrator" [ref=e14902]
+                    - cell "admin" [ref=e14904]
+                    - cell "희소로그 syslog" [ref=e14906]
+                    - cell "성공" [ref=e14908]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e14910]
+                  - row [ref=e14912]:
+                    - cell "2026-08-05 14:50:50" [ref=e14913]
+                    - cell [ref=e14915]:
+                      - generic [ref=e14918]:
+                        - generic: 테스트 알람
+                        - button [ref=e14919] [cursor=pointer]
+                    - cell "TICKER" [ref=e14922]
+                    - cell "이정진" [ref=e14924]
+                    - cell "jj" [ref=e14926]
+                    - cell "희소로그 syslog" [ref=e14928]
+                    - cell "성공" [ref=e14930]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e14932]
+                  - row [ref=e14934]:
+                    - cell "2026-08-05 14:50:50" [ref=e14935]
+                    - cell [ref=e14937]:
+                      - generic [ref=e14940]:
+                        - generic: 테스트 알람
+                        - button [ref=e14941] [cursor=pointer]
+                    - cell "TICKER" [ref=e14944]
+                    - cell "류길현" [ref=e14946]
+                    - cell "khryu" [ref=e14948]
+                    - cell "희소로그 syslog" [ref=e14950]
+                    - cell "성공" [ref=e14952]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e14954]
+                  - row [ref=e14956]:
+                    - cell "2026-08-05 14:50:50" [ref=e14957]
+                    - cell [ref=e14959]:
+                      - generic [ref=e14962]:
+                        - generic: 테스트 알람
+                        - button [ref=e14963] [cursor=pointer]
+                    - cell "TICKER" [ref=e14966]
+                    - cell "정동희" [ref=e14968]
+                    - cell "jdhee" [ref=e14970]
+                    - cell "희소로그 syslog" [ref=e14972]
+                    - cell "성공" [ref=e14974]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e14976]
+                  - row [ref=e14978]:
+                    - cell "2026-08-05 14:50:50" [ref=e14979]
+                    - cell [ref=e14981]:
+                      - generic [ref=e14984]:
+                        - generic: 테스트 알람
+                        - button [ref=e14985] [cursor=pointer]
+                    - cell "TICKER" [ref=e14988]
+                    - cell "Administrator" [ref=e14990]
+                    - cell "admin" [ref=e14992]
+                    - cell "희소로그 syslog" [ref=e14994]
+                    - cell "성공" [ref=e14996]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e14998]
+                  - row [ref=e15000]:
+                    - cell "2026-08-05 14:49:50" [ref=e15001]
+                    - cell [ref=e15003]:
+                      - generic [ref=e15006]:
+                        - generic: 테스트 알람
+                        - button [ref=e15007] [cursor=pointer]
+                    - cell "TICKER" [ref=e15010]
+                    - cell "이정진" [ref=e15012]
+                    - cell "jj" [ref=e15014]
+                    - cell "희소로그 syslog" [ref=e15016]
+                    - cell "성공" [ref=e15018]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e15020]
+                  - row [ref=e15022]:
+                    - cell "2026-08-05 14:49:50" [ref=e15023]
+                    - cell [ref=e15025]:
+                      - generic [ref=e15028]:
+                        - generic: 테스트 알람
+                        - button [ref=e15029] [cursor=pointer]
+                    - cell "TICKER" [ref=e15032]
+                    - cell "류길현" [ref=e15034]
+                    - cell "khryu" [ref=e15036]
+                    - cell "희소로그 syslog" [ref=e15038]
+                    - cell "성공" [ref=e15040]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e15042]
+                  - row [ref=e15044]:
+                    - cell "2026-08-05 14:49:50" [ref=e15045]
+                    - cell [ref=e15047]:
+                      - generic [ref=e15050]:
+                        - generic: 테스트 알람
+                        - button [ref=e15051] [cursor=pointer]
+                    - cell "TICKER" [ref=e15054]
+                    - cell "정동희" [ref=e15056]
+                    - cell "jdhee" [ref=e15058]
+                    - cell "희소로그 syslog" [ref=e15060]
+                    - cell "성공" [ref=e15062]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e15064]
+                  - row [ref=e15066]:
+                    - cell "2026-08-05 14:49:50" [ref=e15067]
+                    - cell [ref=e15069]:
+                      - generic [ref=e15072]:
+                        - generic: 테스트 알람
+                        - button [ref=e15073] [cursor=pointer]
+                    - cell "TICKER" [ref=e15076]
+                    - cell "Administrator" [ref=e15078]
+                    - cell "admin" [ref=e15080]
+                    - cell "희소로그 syslog" [ref=e15082]
+                    - cell "성공" [ref=e15084]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e15086]
+                  - row [ref=e15088]:
+                    - cell "2026-08-05 13:14:50" [ref=e15089]
+                    - cell [ref=e15091]:
+                      - generic [ref=e15094]:
+                        - generic: 테스트 알람
+                        - button [ref=e15095] [cursor=pointer]
+                    - cell "TICKER" [ref=e15098]
+                    - cell "이정진" [ref=e15100]
+                    - cell "jj" [ref=e15102]
+                    - cell "희소로그 syslog" [ref=e15104]
+                    - cell "성공" [ref=e15106]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e15108]
+                  - row [ref=e15110]:
+                    - cell "2026-08-05 13:14:50" [ref=e15111]
+                    - cell [ref=e15113]:
+                      - generic [ref=e15116]:
+                        - generic: 테스트 알람
+                        - button [ref=e15117] [cursor=pointer]
+                    - cell "TICKER" [ref=e15120]
+                    - cell "류길현" [ref=e15122]
+                    - cell "khryu" [ref=e15124]
+                    - cell "희소로그 syslog" [ref=e15126]
+                    - cell "성공" [ref=e15128]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e15130]
+                  - row [ref=e15132]:
+                    - cell "2026-08-05 13:14:50" [ref=e15133]
+                    - cell [ref=e15135]:
+                      - generic [ref=e15138]:
+                        - generic: 테스트 알람
+                        - button [ref=e15139] [cursor=pointer]
+                    - cell "TICKER" [ref=e15142]
+                    - cell "정동희" [ref=e15144]
+                    - cell "jdhee" [ref=e15146]
+                    - cell "희소로그 syslog" [ref=e15148]
+                    - cell "성공" [ref=e15150]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e15152]
+                  - row [ref=e15154]:
+                    - cell "2026-08-05 13:14:50" [ref=e15155]
+                    - cell [ref=e15157]:
+                      - generic [ref=e15160]:
+                        - generic: 테스트 알람
+                        - button [ref=e15161] [cursor=pointer]
+                    - cell "TICKER" [ref=e15164]
+                    - cell "Administrator" [ref=e15166]
+                    - cell "admin" [ref=e15168]
+                    - cell "희소로그 syslog" [ref=e15170]
+                    - cell "성공" [ref=e15172]
+                    - cell "알람세트 테스트 알람의 알람옵션에 의해 이상이 탐지되었습니다. 룰 이름 | 룰 타입 | 룰 레벨 | 타겟명 희소로그 syslog | log | Normal | 개발 대시보드 로그" [ref=e15174]
+            - generic [ref=e15177]:
+              - button "" [disabled] [ref=e15178]
+              - list [ref=e15180]:
+                - listitem [ref=e15181]: "1"
+              - button "" [disabled] [ref=e15182]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

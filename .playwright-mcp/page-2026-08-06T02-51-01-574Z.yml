@@ -1,0 +1,129 @@
+- generic [ref=e22717]:
+  - generic [ref=e22718]: 설정 기타 Alarm Sound File Setting
+  - generic [ref=e22730]:
+    - list [ref=e22764]
+    - generic [ref=e34858]:
+      - menubar [ref=e34859]:
+        - menuitem "라이선스" [ref=e34990] [cursor=pointer]
+        - menuitem "언어" [ref=e34991] [cursor=pointer]
+        - menuitem "데이터 보관주기" [ref=e34992] [cursor=pointer]
+        - menuitem "로그인 내역" [ref=e34993] [cursor=pointer]
+        - menuitem "행위로그" [ref=e34994] [cursor=pointer]
+        - menuitem "수집 타겟" [ref=e34995] [cursor=pointer]
+        - menuitem "알람 사운드 관리" [ref=e34996] [cursor=pointer]
+      - generic [ref=e34867]:
+        - generic [ref=e34868]: 솔루션 알람 설정
+        - generic [ref=e34875]:
+          - generic [ref=e34876]:
+            - table [ref=e34878]:
+              - rowgroup [ref=e34883]:
+                - row [ref=e34884]:
+                  - columnheader [ref=e34885]
+                  - columnheader [ref=e34887]
+                  - columnheader [ref=e34889]
+            - table [ref=e34892]:
+              - rowgroup [ref=e34897]:
+                - row "INTERMAX 수정" [ref=e34898]:
+                  - cell "INTERMAX" [ref=e34899]
+                  - cell [ref=e34901]:
+                    - switch [checked] [ref=e34904]:
+                      - checkbox [checked]
+                  - cell [ref=e34906]:
+                    - button "수정" [ref=e34909] [cursor=pointer]
+                - row "MAXGAUGE 수정" [ref=e34910]:
+                  - cell "MAXGAUGE" [ref=e34911]
+                  - cell [ref=e34913]:
+                    - switch [checked] [ref=e34916]:
+                      - checkbox [checked]
+                  - cell [ref=e34918]:
+                    - button "수정" [ref=e34921] [cursor=pointer]
+                - row "PHAROS 수정" [ref=e34922]:
+                  - cell "PHAROS" [ref=e34923]
+                  - cell [ref=e34925]:
+                    - switch [ref=e34928]:
+                      - checkbox
+                  - cell [ref=e34930]:
+                    - button "수정" [ref=e34933] [cursor=pointer]
+                - row "ONTUNE 수정" [ref=e34934]:
+                  - cell "ONTUNE" [ref=e34935]
+                  - cell [ref=e34937]:
+                    - switch [ref=e34940]:
+                      - checkbox
+                  - cell [ref=e34942]:
+                    - button "수정" [ref=e34945] [cursor=pointer]
+                - row "FIREWALL 수정" [ref=e34946]:
+                  - cell "FIREWALL" [ref=e34947]
+                  - cell [ref=e34949]:
+                    - switch [ref=e34952]:
+                      - checkbox
+                  - cell [ref=e34954]:
+                    - button "수정" [ref=e34957] [cursor=pointer]
+                - row "SOLINK 수정" [ref=e34958]:
+                  - cell "SOLINK" [ref=e34959]
+                  - cell [ref=e34961]:
+                    - switch [checked] [ref=e34964]:
+                      - checkbox [checked]
+                  - cell [ref=e34966]:
+                    - button "수정" [ref=e34969] [cursor=pointer]
+                - row "EXEMONE 수정" [ref=e34970]:
+                  - cell "EXEMONE" [ref=e34971]
+                  - cell [ref=e34973]:
+                    - switch [ref=e34976]:
+                      - checkbox
+                  - cell [ref=e34978]:
+                    - button "수정" [ref=e34981] [cursor=pointer]
+          - generic [ref=e34983]:
+            - button "" [disabled] [ref=e34984]
+            - list [ref=e34986]:
+              - listitem [ref=e34987]: "1"
+            - button "" [disabled] [ref=e34988]
+    - generic [ref=e24337]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e24344] [cursor=pointer]
+        - generic [ref=e24367]:
+          - text: 팝업 설정
+          - generic [ref=e24369]:
+            - text: 알람 팝업
+            - switch [ref=e24370]:
+              - checkbox
+        - generic [ref=e24372]:
+          - generic [ref=e24375]:
+            - button "알람 목록 (최근)" [ref=e24376] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e24377] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e24378] [cursor=pointer]
+          - generic [ref=e24382]:
+            - generic [ref=e24383]:
+              - generic [ref=e24384]: "룰 타입 :"
+              - generic [ref=e24386]:
+                - textbox "선택" [ref=e24387] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e24393]:
+              - table [ref=e24395]:
+                - rowgroup [ref=e24406]:
+                  - row [ref=e24407]:
+                    - columnheader [ref=e24408]
+                    - columnheader [ref=e24410]
+                    - columnheader [ref=e24412]
+                    - columnheader [ref=e24414]
+                    - columnheader [ref=e24416]
+                    - columnheader [ref=e24418]
+                    - columnheader [ref=e24420]
+                    - columnheader [ref=e24422]
+                    - columnheader [ref=e24424]
+              - generic [ref=e24426]:
+                - table:
+                  - rowgroup
+                - generic [ref=e24427]: 데이터 없음
+    - generic:
+      - generic [ref=e24430]:
+        - generic [ref=e24431]: Info (1970-01-01 09:00)
+        - generic [ref=e24437]:
+          - generic [ref=e24438]: 타겟 명
+          - generic [ref=e24440]: 타입
+          - generic [ref=e24442]: 상태
+      - generic [ref=e24447]:
+        - generic [ref=e24448]: Chart Detail
+        - generic [ref=e24453]:
+          - textbox "Select time" [ref=e24467] [cursor=pointer]
+          - generic [ref=e24472]: 데이터 없음

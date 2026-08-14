@@ -1,0 +1,689 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 시스템 인스턴스
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e3007]:
+      - menubar [ref=e3008]:
+        - menuitem "구간" [ref=e3009] [cursor=pointer]
+        - menuitem "업무 그룹" [ref=e3010] [cursor=pointer]
+        - menuitem "호스트" [ref=e3011] [cursor=pointer]
+        - menuitem "인스턴스" [ref=e3012] [cursor=pointer]
+        - menuitem "서비스" [ref=e3013] [cursor=pointer]
+        - menuitem "로그" [ref=e3014] [cursor=pointer]
+        - menuitem "시스템 연동" [ref=e3015] [cursor=pointer]
+      - generic [ref=e3018]:
+        - generic [ref=e3019]:
+          - generic [ref=e3020]:
+            - generic [ref=e3021]: 호스트 그룹
+            - button "매핑" [ref=e3036] [cursor=pointer]
+          - generic [ref=e3038]:
+            - table [ref=e3040]:
+              - rowgroup [ref=e3045]:
+                - row "그룹 명 순서" [ref=e3046]:
+                  - columnheader [ref=e3047]:
+                    - generic [ref=e3050] [cursor=pointer]:
+                      - checkbox
+                  - columnheader [ref=e3052]
+                  - columnheader [ref=e3056]
+            - table [ref=e3061]:
+              - rowgroup [ref=e3066]:
+                - row "MCI그룹 1" [ref=e3067]:
+                  - cell [ref=e3068]:
+                    - generic [ref=e3071] [cursor=pointer]:
+                      - checkbox
+                  - cell "MCI그룹" [ref=e3073]
+                  - cell "1" [ref=e3078]
+                - row "temp-janghh 1" [ref=e3083]:
+                  - cell [ref=e3084]:
+                    - generic [ref=e3087] [cursor=pointer]:
+                      - checkbox
+                  - cell "temp-janghh" [ref=e3089]
+                  - cell "1" [ref=e3094]
+                - row "EAI그룹 2" [ref=e3099]:
+                  - cell [ref=e3100]:
+                    - generic [ref=e3103] [cursor=pointer]:
+                      - checkbox
+                  - cell "EAI그룹" [ref=e3105]
+                  - cell "2" [ref=e3110]
+                - row "FEP그룹 3" [ref=e3115]:
+                  - cell [ref=e3116]:
+                    - generic [ref=e3119] [cursor=pointer]:
+                      - checkbox
+                  - cell "FEP그룹" [ref=e3121]
+                  - cell "3" [ref=e3126]
+                - row "AI그룹 4" [ref=e3131]:
+                  - cell [ref=e3132]:
+                    - generic [ref=e3135] [cursor=pointer]:
+                      - checkbox
+                  - cell "AI그룹" [ref=e3137]
+                  - cell "4" [ref=e3142]
+                - row "exemone 5" [ref=e3147]:
+                  - cell [ref=e3148]:
+                    - generic [ref=e3151] [cursor=pointer]:
+                      - checkbox
+                  - cell "exemone" [ref=e3153]
+                  - cell "5" [ref=e3158]
+                - row "엑셈뱅크V2호스트그룹 77" [ref=e3163]:
+                  - cell [ref=e3164]:
+                    - generic [ref=e3167] [cursor=pointer]:
+                      - checkbox
+                  - cell "엑셈뱅크V2호스트그룹" [ref=e3169]
+                  - cell "77" [ref=e3174]
+                - row "엑셈뱅크 78" [ref=e3179]:
+                  - cell [ref=e3180]:
+                    - generic [ref=e3183] [cursor=pointer]:
+                      - checkbox
+                  - cell "엑셈뱅크" [ref=e3185]
+                  - cell "78" [ref=e3190]
+                - row "엑셈뱅크V2인스턴스그룹 79" [ref=e3195]:
+                  - cell [ref=e3196]:
+                    - generic [ref=e3199] [cursor=pointer]:
+                      - checkbox
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e3201]
+                  - cell "79" [ref=e3206]
+                - row "기타 80" [ref=e3211]:
+                  - cell [ref=e3212]:
+                    - generic [ref=e3215] [cursor=pointer]:
+                      - checkbox
+                  - cell "기타" [ref=e3217]
+                  - cell "80" [ref=e3222]
+                - row "jdh hostgroup 1 999" [ref=e3227]:
+                  - cell [ref=e3228]:
+                    - generic [ref=e3231] [cursor=pointer]:
+                      - checkbox
+                  - cell "jdh hostgroup 1" [ref=e3233]
+                  - cell "999" [ref=e3238]
+                - row "jdh hostgroup 2 1,000" [ref=e3243]:
+                  - cell [ref=e3244]:
+                    - generic [ref=e3247] [cursor=pointer]:
+                      - checkbox
+                  - cell "jdh hostgroup 2" [ref=e3249]
+                  - cell "1,000" [ref=e3254]
+        - generic [ref=e3259]:
+          - generic [ref=e3260]:
+            - generic [ref=e3261]: 호스트
+            - button "호스트 <> 인스턴스 매핑" [ref=e3276] [cursor=pointer]
+            - textbox "검색" [ref=e3279]
+          - generic [ref=e3280]:
+            - table [ref=e3282]:
+              - rowgroup [ref=e3297]:
+                - row " 타겟 ID 호스트 명 Hostname CPU 타입 OS 정보 OS 버전 주소 설명 호스트 그룹 명 활성 가상화" [ref=e3298]:
+                  - columnheader [ref=e3299]:
+                    - generic [ref=e3302] [cursor=pointer]:
+                      - checkbox
+                  - columnheader [ref=e3304]:
+                    - button "" [ref=e3307] [cursor=pointer]
+                  - columnheader [ref=e3309]
+                  - columnheader [ref=e3311]
+                  - columnheader [ref=e3315]
+                  - columnheader [ref=e3317]
+                  - columnheader [ref=e3321]
+                  - columnheader [ref=e3325]
+                  - columnheader [ref=e3329]
+                  - columnheader [ref=e3333]
+                  - columnheader [ref=e3337]
+                  - columnheader [ref=e3339]
+                  - columnheader [ref=e3341]
+            - table [ref=e3344]:
+              - rowgroup [ref=e3359]:
+                - row "1 1 1" [ref=e3360]:
+                  - cell [ref=e3361]:
+                    - generic [ref=e3364] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3366]
+                  - cell "1" [ref=e3367]
+                  - cell "1" [ref=e3369]
+                  - cell "1" [ref=e3374]
+                  - cell [ref=e3379]
+                  - cell [ref=e3380]
+                  - cell [ref=e3381]
+                  - cell [ref=e3382]
+                  - cell [ref=e3383]
+                  - cell [ref=e3384]
+                  - cell [ref=e3385]:
+                    - switch [checked] [ref=e3388]:
+                      - checkbox [checked]
+                  - cell [ref=e3390]:
+                    - switch [ref=e3393]:
+                      - checkbox
+                - row "5704631f-07fc-4853-9f2d-7d16a3cccfc7 YEJIN YEJIN 6.18.33.1-microsoft-standard-WSL2" [ref=e3395]:
+                  - cell [ref=e3396]:
+                    - generic [ref=e3399] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3401]
+                  - cell "5704631f-07fc-4853-9f2d-7d16a3cccfc7" [ref=e3402]
+                  - cell "YEJIN" [ref=e3404]
+                  - cell "YEJIN" [ref=e3409]
+                  - cell [ref=e3414]
+                  - cell [ref=e3416]
+                  - cell "6.18.33.1-microsoft-standard-WSL2" [ref=e3417]
+                  - cell [ref=e3422]
+                  - cell [ref=e3423]
+                  - cell [ref=e3425]
+                  - cell [ref=e3426]:
+                    - switch [ref=e3429]:
+                      - checkbox
+                  - cell [ref=e3431]:
+                    - switch [checked] [ref=e3434]:
+                      - checkbox [checked]
+                - row "ai-container-exbk-cahnnelmob-37130 채널계) mob ai-container-exbk-cahnnelmob-37130 amd64 Linux 4.18.0-553.33.1.el8_10.x86_64 10.10.37.130 엑셈뱅크V2호스트그룹" [ref=e3436]:
+                  - cell [ref=e3437]:
+                    - generic [ref=e3440] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3442]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e3443]
+                  - cell "채널계) mob" [ref=e3445]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e3450]
+                  - cell "amd64" [ref=e3455]
+                  - cell "Linux" [ref=e3460]
+                  - cell "4.18.0-553.33.1.el8_10.x86_64" [ref=e3465]
+                  - cell "10.10.37.130" [ref=e3470]
+                  - cell [ref=e3475]
+                  - cell "엑셈뱅크V2호스트그룹" [ref=e3477]
+                  - cell [ref=e3479]:
+                    - switch [ref=e3482]:
+                      - checkbox
+                  - cell [ref=e3484]:
+                    - switch [ref=e3487]:
+                      - checkbox
+                - row "ai-container-exbk-cahnnelweb-37130 채널계) web ai-container-exbk-cahnnelweb-37130 amd64 Linux 4.18.0-553.33.1.el8_10.x86_64 10.10.37.130 엑셈뱅크V2호스트그룹" [ref=e3489]:
+                  - cell [ref=e3490]:
+                    - generic [ref=e3493] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3495]
+                  - cell "ai-container-exbk-cahnnelweb-37130" [ref=e3496]
+                  - cell "채널계) web" [ref=e3498]
+                  - cell "ai-container-exbk-cahnnelweb-37130" [ref=e3503]
+                  - cell "amd64" [ref=e3508]
+                  - cell "Linux" [ref=e3513]
+                  - cell "4.18.0-553.33.1.el8_10.x86_64" [ref=e3518]
+                  - cell "10.10.37.130" [ref=e3523]
+                  - cell [ref=e3528]
+                  - cell "엑셈뱅크V2호스트그룹" [ref=e3530]
+                  - cell [ref=e3532]:
+                    - switch [ref=e3535]:
+                      - checkbox
+                  - cell [ref=e3537]:
+                    - switch [ref=e3540]:
+                      - checkbox
+                - row "ai-container-exbk-coreloan-37131 계정계) loan ai-container-exbk-coreloan-37131 amd64 Linux 4.18.0-553.33.1.el8_10.x86_64 10.10.37.131 엑셈뱅크V2호스트그룹" [ref=e3542]:
+                  - cell [ref=e3543]:
+                    - generic [ref=e3546] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3548]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e3549]
+                  - cell "계정계) loan" [ref=e3551]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e3556]
+                  - cell "amd64" [ref=e3561]
+                  - cell "Linux" [ref=e3566]
+                  - cell "4.18.0-553.33.1.el8_10.x86_64" [ref=e3571]
+                  - cell "10.10.37.131" [ref=e3576]
+                  - cell [ref=e3581]
+                  - cell "엑셈뱅크V2호스트그룹" [ref=e3583]
+                  - cell [ref=e3585]:
+                    - switch [ref=e3588]:
+                      - checkbox
+                  - cell [ref=e3590]:
+                    - switch [ref=e3593]:
+                      - checkbox
+                - row "ai-container-exbk-coretransfer-37131 계정계) transfer ai-container-exbk-coretransfer-37131 amd64 Linux 4.18.0-553.33.1.el8_10.x86_64 10.10.37.131 엑셈뱅크V2호스트그룹" [ref=e3595]:
+                  - cell [ref=e3596]:
+                    - generic [ref=e3599] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3601]
+                  - cell "ai-container-exbk-coretransfer-37131" [ref=e3602]
+                  - cell "계정계) transfer" [ref=e3604]
+                  - cell "ai-container-exbk-coretransfer-37131" [ref=e3609]
+                  - cell "amd64" [ref=e3614]
+                  - cell "Linux" [ref=e3619]
+                  - cell "4.18.0-553.33.1.el8_10.x86_64" [ref=e3624]
+                  - cell "10.10.37.131" [ref=e3629]
+                  - cell [ref=e3634]
+                  - cell "엑셈뱅크V2호스트그룹" [ref=e3636]
+                  - cell [ref=e3638]:
+                    - switch [ref=e3641]:
+                      - checkbox
+                  - cell [ref=e3643]:
+                    - switch [ref=e3646]:
+                      - checkbox
+                - row "ai-container-exbk-eai-37133 EAI ai-container-exbk-eai-37133 amd64 Linux 4.18.0-553.33.1.el8_10.x86_64 10.10.37.133 엑셈뱅크V2호스트그룹" [ref=e3648]:
+                  - cell [ref=e3649]:
+                    - generic [ref=e3652] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3654]
+                  - cell "ai-container-exbk-eai-37133" [ref=e3655]
+                  - cell "EAI" [ref=e3657]
+                  - cell "ai-container-exbk-eai-37133" [ref=e3662]
+                  - cell "amd64" [ref=e3667]
+                  - cell "Linux" [ref=e3672]
+                  - cell "4.18.0-553.33.1.el8_10.x86_64" [ref=e3677]
+                  - cell "10.10.37.133" [ref=e3682]
+                  - cell [ref=e3687]
+                  - cell "엑셈뱅크V2호스트그룹" [ref=e3689]
+                  - cell [ref=e3691]:
+                    - switch [ref=e3694]:
+                      - checkbox
+                  - cell [ref=e3696]:
+                    - switch [ref=e3699]:
+                      - checkbox
+                - row "ai-container-exbk-fep-37132 FEP ai-container-exbk-fep-37132 amd64 Linux 4.18.0-553.33.1.el8_10.x86_64 10.10.37.132 엑셈뱅크V2호스트그룹" [ref=e3701]:
+                  - cell [ref=e3702]:
+                    - generic [ref=e3705] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3707]
+                  - cell "ai-container-exbk-fep-37132" [ref=e3708]
+                  - cell "FEP" [ref=e3710]
+                  - cell "ai-container-exbk-fep-37132" [ref=e3715]
+                  - cell "amd64" [ref=e3720]
+                  - cell "Linux" [ref=e3725]
+                  - cell "4.18.0-553.33.1.el8_10.x86_64" [ref=e3730]
+                  - cell "10.10.37.132" [ref=e3735]
+                  - cell [ref=e3740]
+                  - cell "엑셈뱅크V2호스트그룹" [ref=e3742]
+                  - cell [ref=e3744]:
+                    - switch [ref=e3747]:
+                      - checkbox
+                  - cell [ref=e3749]:
+                    - switch [ref=e3752]:
+                      - checkbox
+                - row "ai-container-exbk-infohistory-37135 정보계) history ai-container-exbk-infohistory-37135 amd64 Linux 4.18.0-553.33.1.el8_10.x86_64 10.10.37.135 엑셈뱅크V2호스트그룹" [ref=e3754]:
+                  - cell [ref=e3755]:
+                    - generic [ref=e3758] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3760]
+                  - cell "ai-container-exbk-infohistory-37135" [ref=e3761]
+                  - cell "정보계) history" [ref=e3763]
+                  - cell "ai-container-exbk-infohistory-37135" [ref=e3768]
+                  - cell "amd64" [ref=e3773]
+                  - cell "Linux" [ref=e3778]
+                  - cell "4.18.0-553.33.1.el8_10.x86_64" [ref=e3783]
+                  - cell "10.10.37.135" [ref=e3788]
+                  - cell [ref=e3793]
+                  - cell "엑셈뱅크V2호스트그룹" [ref=e3795]
+                  - cell [ref=e3797]:
+                    - switch [ref=e3800]:
+                      - checkbox
+                  - cell [ref=e3802]:
+                    - switch [ref=e3805]:
+                      - checkbox
+                - row "dev_ai-server 개발) API서버 ai-node-dev-be-3772 amd64 Linux 3.10.0-1160.el7.x86_64 10.10.37.72 1 AI그룹" [ref=e3807]:
+                  - cell [ref=e3808]:
+                    - generic [ref=e3811] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3813]
+                  - cell "dev_ai-server" [ref=e3814]
+                  - cell "개발) API서버" [ref=e3816]
+                  - cell "ai-node-dev-be-3772" [ref=e3821]
+                  - cell "amd64" [ref=e3826]
+                  - cell "Linux" [ref=e3831]
+                  - cell "3.10.0-1160.el7.x86_64" [ref=e3836]
+                  - cell "10.10.37.72" [ref=e3841]
+                  - cell "1" [ref=e3846]
+                  - cell "AI그룹" [ref=e3851]
+                  - cell [ref=e3853]:
+                    - switch [checked] [ref=e3856]:
+                      - checkbox [checked]
+                  - cell [ref=e3858]:
+                    - switch [ref=e3861]:
+                      - checkbox
+                - row "dev_ai-pg 개발) PG서버 ai-node-dev-db-3771 amd64 Linux 3.10.0-1160.81.1.el7.x86_64 10.10.37.71 Test1 AI그룹" [ref=e3863]:
+                  - cell [ref=e3864]:
+                    - generic [ref=e3867] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3869]
+                  - cell "dev_ai-pg" [ref=e3870]
+                  - cell "개발) PG서버" [ref=e3872]
+                  - cell "ai-node-dev-db-3771" [ref=e3877]
+                  - cell "amd64" [ref=e3882]
+                  - cell "Linux" [ref=e3887]
+                  - cell "3.10.0-1160.81.1.el7.x86_64" [ref=e3892]
+                  - cell "10.10.37.71" [ref=e3897]
+                  - cell "Test1" [ref=e3902]
+                  - cell "AI그룹" [ref=e3907]
+                  - cell [ref=e3909]:
+                    - switch [ref=e3912]:
+                      - checkbox
+                  - cell [ref=e3914]:
+                    - switch [ref=e3917]:
+                      - checkbox
+                - row "ebmciapos03 ai-node-exbk-was3-3412 ai-node-exbk-was3-3412 amd64 Linux 3.10.0-1160.el7.x86_64 10.10.34.12 MCI그룹" [ref=e3919]:
+                  - cell [ref=e3920]:
+                    - generic [ref=e3923] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3925]
+                  - cell "ebmciapos03" [ref=e3926]
+                  - cell "ai-node-exbk-was3-3412" [ref=e3928]
+                  - cell "ai-node-exbk-was3-3412" [ref=e3933]
+                  - cell "amd64" [ref=e3938]
+                  - cell "Linux" [ref=e3943]
+                  - cell "3.10.0-1160.el7.x86_64" [ref=e3948]
+                  - cell "10.10.34.12" [ref=e3953]
+                  - cell [ref=e3958]
+                  - cell "MCI그룹" [ref=e3960]
+                  - cell [ref=e3962]:
+                    - switch [ref=e3965]:
+                      - checkbox
+                  - cell [ref=e3967]:
+                    - switch [ref=e3970]:
+                      - checkbox
+                - row "ebmciapos04 ai-node-exbk-was4-3413 ai-node-exbk-was4-3413 amd64 Linux 3.10.0-1160.el7.x86_64 10.10.34.13 MCI그룹, EAI그룹" [ref=e3972]:
+                  - cell [ref=e3973]:
+                    - generic [ref=e3976] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e3978]
+                  - cell "ebmciapos04" [ref=e3979]
+                  - cell "ai-node-exbk-was4-3413" [ref=e3981]
+                  - cell "ai-node-exbk-was4-3413" [ref=e3986]
+                  - cell "amd64" [ref=e3991]
+                  - cell "Linux" [ref=e3996]
+                  - cell "3.10.0-1160.el7.x86_64" [ref=e4001]
+                  - cell "10.10.34.13" [ref=e4006]
+                  - cell [ref=e4011]
+                  - cell "MCI그룹, EAI그룹" [ref=e4013]
+                  - cell [ref=e4015]:
+                    - switch [ref=e4018]:
+                      - checkbox
+                  - cell [ref=e4020]:
+                    - switch [ref=e4023]:
+                      - checkbox
+                - row "ai-node-exms-febdb-3436 FEP DB ai-node-exms-febdb-3436 amd64 Linux 3.10.0-1160.el7.x86_64 10.10.34.36 FEP그룹" [ref=e4025]:
+                  - cell [ref=e4026]:
+                    - generic [ref=e4029] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e4031]
+                  - cell "ai-node-exms-febdb-3436" [ref=e4032]
+                  - cell "FEP DB" [ref=e4034]
+                  - cell "ai-node-exms-febdb-3436" [ref=e4039]
+                  - cell "amd64" [ref=e4044]
+                  - cell "Linux" [ref=e4049]
+                  - cell "3.10.0-1160.el7.x86_64" [ref=e4054]
+                  - cell "10.10.34.36" [ref=e4059]
+                  - cell [ref=e4064]
+                  - cell "FEP그룹" [ref=e4066]
+                  - cell [ref=e4068]:
+                    - switch [ref=e4071]:
+                      - checkbox
+                  - cell [ref=e4073]:
+                    - switch [ref=e4076]:
+                      - checkbox
+                - row "ai-pg 운영) PG서버 ai-node-prod-db-3781 amd64 Linux 4.18.0-425.13.1.el8_7.x86_64 10.10.37.81" [ref=e4078]:
+                  - cell [ref=e4079]:
+                    - generic [ref=e4082] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e4084]
+                  - cell "ai-pg" [ref=e4085]
+                  - cell "운영) PG서버" [ref=e4087]
+                  - cell "ai-node-prod-db-3781" [ref=e4092]
+                  - cell "amd64" [ref=e4097]
+                  - cell "Linux" [ref=e4102]
+                  - cell "4.18.0-425.13.1.el8_7.x86_64" [ref=e4107]
+                  - cell "10.10.37.81" [ref=e4112]
+                  - cell [ref=e4117]
+                  - cell [ref=e4119]
+                  - cell [ref=e4120]:
+                    - switch [ref=e4123]:
+                      - checkbox
+                  - cell [ref=e4125]:
+                    - switch [ref=e4128]:
+                      - checkbox
+                - row "dev_train-server 개발) AI서버 ai-server-dev-ai-3773 amd64 Linux 3.10.0-1160.el7.x86_64 10.10.37.73 AI그룹" [ref=e4130]:
+                  - cell [ref=e4131]:
+                    - generic [ref=e4134] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e4136]
+                  - cell "dev_train-server" [ref=e4137]
+                  - cell "개발) AI서버" [ref=e4139]
+                  - cell "ai-server-dev-ai-3773" [ref=e4144]
+                  - cell "amd64" [ref=e4149]
+                  - cell "Linux" [ref=e4154]
+                  - cell "3.10.0-1160.el7.x86_64" [ref=e4159]
+                  - cell "10.10.37.73" [ref=e4164]
+                  - cell [ref=e4169]
+                  - cell "AI그룹" [ref=e4171]
+                  - cell [ref=e4173]:
+                    - switch [ref=e4176]:
+                      - checkbox
+                  - cell [ref=e4178]:
+                    - switch [ref=e4181]:
+                      - checkbox
+                - row "dev_ai-collector ai-server-dev-lp-3421 ai-server-dev-lp-3421 amd64 Linux 3.10.0-1160.102.1.el7.x86_64 10.10.34.21 AI그룹" [ref=e4183]:
+                  - cell [ref=e4184]:
+                    - generic [ref=e4187] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e4189]
+                  - cell "dev_ai-collector" [ref=e4190]
+                  - cell "ai-server-dev-lp-3421" [ref=e4192]
+                  - cell "ai-server-dev-lp-3421" [ref=e4197]
+                  - cell "amd64" [ref=e4202]
+                  - cell "Linux" [ref=e4207]
+                  - cell "3.10.0-1160.102.1.el7.x86_64" [ref=e4212]
+                  - cell "10.10.34.21" [ref=e4217]
+                  - cell [ref=e4222]
+                  - cell "AI그룹" [ref=e4224]
+                  - cell [ref=e4226]:
+                    - switch [ref=e4229]:
+                      - checkbox
+                  - cell [ref=e4231]:
+                    - switch [ref=e4234]:
+                      - checkbox
+                - row "ai-server-exms-mfc-3439 mfc 서버 ai-server-exms-mfc-3439 amd64 Linux 3.10.0-957.el7.x86_64 10.10.34.39 AI그룹" [ref=e4236]:
+                  - cell [ref=e4237]:
+                    - generic [ref=e4240] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e4242]
+                  - cell "ai-server-exms-mfc-3439" [ref=e4243]
+                  - cell "mfc 서버" [ref=e4245]
+                  - cell "ai-server-exms-mfc-3439" [ref=e4250]
+                  - cell "amd64" [ref=e4255]
+                  - cell "Linux" [ref=e4260]
+                  - cell "3.10.0-957.el7.x86_64" [ref=e4265]
+                  - cell "10.10.34.39" [ref=e4270]
+                  - cell [ref=e4275]
+                  - cell "AI그룹" [ref=e4277]
+                  - cell [ref=e4279]:
+                    - switch [ref=e4282]:
+                      - checkbox
+                  - cell [ref=e4284]:
+                    - switch [ref=e4287]:
+                      - checkbox
+                - row "ai-server-exms-workload-3438 모의시스템 - 부하/장애 스케줄링 서버 ai-server-exms-workload-3438 amd64 Linux 3.10.0-1160.53.1.el7.x86_64 10.10.34.38 설명1 AI그룹" [ref=e4289]:
+                  - cell [ref=e4290]:
+                    - generic [ref=e4293] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e4295]
+                  - cell "ai-server-exms-workload-3438" [ref=e4296]
+                  - cell "모의시스템 - 부하/장애 스케줄링 서버" [ref=e4298]
+                  - cell "ai-server-exms-workload-3438" [ref=e4303]
+                  - cell "amd64" [ref=e4308]
+                  - cell "Linux" [ref=e4313]
+                  - cell "3.10.0-1160.53.1.el7.x86_64" [ref=e4318]
+                  - cell "10.10.34.38" [ref=e4323]
+                  - cell "설명1" [ref=e4328]
+                  - cell "AI그룹" [ref=e4333]
+                  - cell [ref=e4335]:
+                    - switch [ref=e4338]:
+                      - checkbox
+                  - cell [ref=e4340]:
+                    - switch [ref=e4343]:
+                      - checkbox
+          - generic [ref=e4346]:
+            - button "" [disabled] [ref=e4347]
+            - list [ref=e4349]:
+              - listitem [ref=e4350]: "1"
+              - listitem [ref=e4351] [cursor=pointer]: "2"
+              - listitem [ref=e4352] [cursor=pointer]: "3"
+            - button "" [ref=e4353] [cursor=pointer]
+        - generic [ref=e4355]:
+          - generic [ref=e4356]:
+            - generic [ref=e4357]: 매핑 인스턴스
+            - generic [ref=e4359]:
+              - textbox "선택" [ref=e4360] [cursor=pointer]: 전체
+              - generic: 
+            - textbox "검색" [ref=e4364]
+          - generic [ref=e4365]:
+            - table [ref=e4367]:
+              - rowgroup [ref=e4373]:
+                - row [ref=e4374]:
+                  - columnheader [ref=e4375]
+                  - columnheader [ref=e4377]
+                  - columnheader [ref=e4379]
+                  - columnheader [ref=e4381]
+            - table [ref=e4384]:
+              - rowgroup [ref=e4390]:
+                - row [ref=e4391]:
+                  - cell "mob-0001" [ref=e4392]
+                  - cell "WAS" [ref=e4394]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4396]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e4398]
+                - row [ref=e4400]:
+                  - cell "mob-0002" [ref=e4401]
+                  - cell "WAS" [ref=e4403]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4405]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e4407]
+                - row [ref=e4409]:
+                  - cell "mob-0003" [ref=e4410]
+                  - cell "WAS" [ref=e4412]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4414]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e4416]
+                - row [ref=e4418]:
+                  - cell "mob-0004" [ref=e4419]
+                  - cell "WAS" [ref=e4421]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4423]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e4425]
+                - row [ref=e4427]:
+                  - cell "mob-0005" [ref=e4428]
+                  - cell "WAS" [ref=e4430]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4432]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e4434]
+                - row [ref=e4436]:
+                  - cell "web-0001" [ref=e4437]
+                  - cell "WAS" [ref=e4439]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4441]
+                  - cell "ai-container-exbk-cahnnelweb-37130" [ref=e4443]
+                - row [ref=e4445]:
+                  - cell "web-0002" [ref=e4446]
+                  - cell "WAS" [ref=e4448]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4450]
+                  - cell "ai-container-exbk-cahnnelweb-37130" [ref=e4452]
+                - row [ref=e4454]:
+                  - cell "web-0003" [ref=e4455]
+                  - cell "WAS" [ref=e4457]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4459]
+                  - cell "ai-container-exbk-cahnnelweb-37130" [ref=e4461]
+                - row [ref=e4463]:
+                  - cell "web-0004" [ref=e4464]
+                  - cell "WAS" [ref=e4466]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4468]
+                  - cell "ai-container-exbk-cahnnelweb-37130" [ref=e4470]
+                - row [ref=e4472]:
+                  - cell "web-0005" [ref=e4473]
+                  - cell "WAS" [ref=e4475]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4477]
+                  - cell "ai-container-exbk-cahnnelweb-37130" [ref=e4479]
+                - row [ref=e4481]:
+                  - cell "loan-0001" [ref=e4482]
+                  - cell "WAS" [ref=e4484]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4486]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4488]
+                - row [ref=e4490]:
+                  - cell "loan-0002" [ref=e4491]
+                  - cell "WAS" [ref=e4493]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4495]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4497]
+                - row [ref=e4499]:
+                  - cell "loan-0003" [ref=e4500]
+                  - cell "WAS" [ref=e4502]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4504]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4506]
+                - row [ref=e4508]:
+                  - cell "loan-0004" [ref=e4509]
+                  - cell "WAS" [ref=e4511]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4513]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4515]
+                - row [ref=e4517]:
+                  - cell "loan-0005" [ref=e4518]
+                  - cell "WAS" [ref=e4520]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4522]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4524]
+                - row [ref=e4526]:
+                  - cell "loan-0006" [ref=e4527]
+                  - cell "WAS" [ref=e4529]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4531]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4533]
+                - row [ref=e4535]:
+                  - cell "loan-0007" [ref=e4536]
+                  - cell "WAS" [ref=e4538]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4540]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4542]
+                - row [ref=e4544]:
+                  - cell "loan-0008" [ref=e4545]
+                  - cell "WAS" [ref=e4547]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4549]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4551]
+                - row [ref=e4553]:
+                  - cell "loan-0009" [ref=e4554]
+                  - cell "WAS" [ref=e4556]
+                  - cell "엑셈뱅크V2인스턴스그룹" [ref=e4558]
+                  - cell "ai-container-exbk-coreloan-37131" [ref=e4560]
+          - generic [ref=e4563]:
+            - button "" [disabled] [ref=e4564]
+            - list [ref=e4566]:
+              - listitem [ref=e4567]: "1"
+              - listitem [ref=e4568] [cursor=pointer]: "2"
+              - listitem [ref=e4569] [cursor=pointer]: "3"
+              - listitem [ref=e4570] [cursor=pointer]: "4"
+              - listitem [ref=e4571] [cursor=pointer]: "5"
+              - listitem [ref=e4572] [cursor=pointer]: "6"
+              - listitem [ref=e4573] [cursor=pointer]: 
+              - listitem [ref=e4574] [cursor=pointer]: "10"
+            - button "" [ref=e4575] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

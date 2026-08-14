@@ -1,0 +1,158 @@
+- generic [ref=e29]:
+  - generic [ref=e31]:
+    - generic [ref=e35]: 모니터링 Anomaly View
+    - generic [ref=e39]:
+      - generic [ref=e17782] [cursor=pointer]: 기본 화면
+      - generic [ref=e17783] [cursor=pointer]: 화면 초기화
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e19271]:
+      - generic [ref=e19273]:
+        - generic [ref=e19274]:
+          - generic [ref=e19275]: 타임 라인
+          - generic [ref=e19281]:
+            - textbox "Select time" [ref=e19282] [cursor=pointer]: 2026/08/06 10:04
+            - generic [ref=e19283]: 
+        - generic [ref=e19285]:
+          - img [ref=e19293]:
+            - generic [ref=e19295]:
+              - generic [ref=e19792]: 07:35
+              - generic [ref=e19793]: 07:55
+              - generic [ref=e19794]: 08:15
+              - generic [ref=e19795]: 08:35
+              - generic [ref=e19796]: 08:55
+              - generic [ref=e19797]: 09:15
+              - generic [ref=e19798]: 09:35
+              - generic [ref=e19799]: 09:55
+              - generic [ref=e19800]: 10:15
+              - generic [ref=e19983]: "1000"
+              - generic [ref=e19985]: "8"
+              - generic [ref=e19987]: "7"
+              - generic [ref=e19989]: "6"
+              - generic [ref=e19991]: "5"
+              - generic [ref=e19993]: "3"
+              - generic [ref=e19995]: "2"
+              - generic [ref=e19997]: "0"
+              - generic [ref=e19999]: "-1"
+          - textbox [ref=e19514] [cursor=pointer]: 10:04
+      - generic [ref=e19517]:
+        - button "" [ref=e19518] [cursor=pointer]
+        - button "" [ref=e19520] [cursor=pointer]
+        - generic [ref=e19523]:
+          - button "엑셈뱅크V2" [ref=e19524] [cursor=pointer]
+          - button "qatest" [ref=e19531] [cursor=pointer]
+          - button "EXEMONE" [ref=e19538] [cursor=pointer]
+          - button "TEST DH 업무그룹" [ref=e19545] [cursor=pointer]
+          - button "EAI" [ref=e19552] [cursor=pointer]
+          - button "FEP" [ref=e19559] [cursor=pointer]
+          - button "MCI" [ref=e19566] [cursor=pointer]
+          - button "XAIOps" [ref=e19573] [cursor=pointer]
+        - generic [ref=e19580]:
+          - generic [ref=e19581]: 자동 전환
+          - button "일시정지" [ref=e19582] [cursor=pointer]
+          - generic [ref=e19584]:
+            - generic [ref=e19586]:
+              - textbox "Select" [ref=e19587] [cursor=pointer]: 30초
+              - generic: 
+            - generic: 22초
+        - generic [ref=e19590]:
+          - generic [ref=e19591]: XAIOps
+          - generic [ref=e19596]:
+            - generic [ref=e20000]:
+              - generic [ref=e20002]:
+                - textbox [ref=e20004]
+                - generic [ref=e20005]:
+                  - textbox "Select" [ref=e20006] [cursor=pointer]
+                  - generic: 
+              - generic [ref=e20009] [cursor=pointer]:
+                - generic [ref=e20010]:
+                  - checkbox "연결 노드 포함" [checked]
+                - generic [ref=e20012]: 연결 노드 포함
+            - img [ref=e20013]:
+              - generic [ref=e20014]:
+                - generic [ref=e20028]:
+                  - generic [ref=e20029]: 업무그룹 [1/1]
+                  - generic [ref=e20031]: 서비스 [4/4]
+                  - generic [ref=e20033]: 구간 [0/0]
+                  - generic [ref=e20035]: 호스트 [8/8]
+                  - generic [ref=e20037]:
+                    - generic [ref=e20038]: 인스턴스 [0/0]
+                    - generic [ref=e20040]:
+                      - generic "인스턴스 전체 펼치기" [ref=e20041] [cursor=pointer]:
+                        - generic: 
+                        - generic [ref=e20044]: "51"
+                      - generic "인스턴스 전체 접기" [ref=e20045]: 
+                - generic [ref=e20047]:
+                  - generic [ref=e20048] [cursor=pointer]: 엑셈뱅크V2
+                  - generic [ref=e20054] [cursor=pointer]: 대출 상품 조회
+                  - generic [ref=e20064] [cursor=pointer]: 대출 신청
+                  - generic [ref=e20074] [cursor=pointer]: 송금
+                  - generic [ref=e20084] [cursor=pointer]: 외부 송금
+                  - generic [ref=e20094] [cursor=pointer]: 계정계) loan
+                  - generic [ref=e20104] [cursor=pointer]: 계정계) transfer
+                  - generic [ref=e20114] [cursor=pointer]: 정보계) history
+                  - generic [ref=e20124] [cursor=pointer]: 채널계) mob
+                  - generic [ref=e20134] [cursor=pointer]: 채널계) web
+                  - generic [ref=e20144] [cursor=pointer]: EAI
+                  - generic [ref=e20154] [cursor=pointer]: FEP
+                  - generic [ref=e20164] [cursor=pointer]: 미매핑 호스트
+                - generic [ref=e20167]:
+                  - generic [ref=e20168]: +
+                  - generic [ref=e20171]: +
+                  - generic [ref=e20174]: +
+                  - generic [ref=e20177]: +
+                  - generic [ref=e20180]: +
+                  - generic [ref=e20183]: +
+                  - generic [ref=e20186]: +
+            - button "" [ref=e20189] [cursor=pointer]
+          - generic [ref=e19788]: qatest
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

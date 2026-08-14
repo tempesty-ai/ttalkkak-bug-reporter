@@ -1,0 +1,105 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 학습 / 서비스 수집 지표
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e9680]:
+      - menubar [ref=e9681]:
+        - menuitem "학습" [ref=e9682] [cursor=pointer]
+        - menuitem "자동 학습" [ref=e9683] [cursor=pointer]
+        - menuitem "서빙" [ref=e9684] [cursor=pointer]
+        - menuitem "수집 지표" [ref=e9685] [cursor=pointer]
+      - generic [ref=e9687]:
+        - generic [ref=e9690]:
+          - generic [ref=e9691]: AI 서비스
+          - generic [ref=e9693]:
+            - textbox "선택" [ref=e9694] [cursor=pointer]: 이상탐지
+            - generic: 
+          - generic [ref=e9697]: 타입
+          - generic [ref=e9699]:
+            - text: 
+            - generic [ref=e9701]:
+              - generic [ref=e9702]: WAS
+              - generic [ref=e9703]: 
+        - generic [ref=e9706]:
+          - generic [ref=e9708]:
+            - generic [ref=e9709]:
+              - generic [ref=e9710]: 서빙 그룹 목록
+              - textbox "검색" [ref=e9719]
+            - generic [ref=e9720]:
+              - table [ref=e9722]:
+                - rowgroup [ref=e9727]:
+                  - row [ref=e9728]:
+                    - columnheader [ref=e9729]
+                    - columnheader [ref=e9731]
+                    - columnheader [ref=e9733]
+              - generic [ref=e9735]:
+                - table:
+                  - rowgroup
+                - generic [ref=e9736]: 데이터 없음
+          - generic [ref=e9740]:
+            - generic [ref=e9741]:
+              - generic [ref=e9742]: 서빙 타겟 목록
+              - textbox "검색" [ref=e9751]
+            - generic [ref=e9752]:
+              - table [ref=e9754]:
+                - rowgroup [ref=e9761]:
+                  - row [ref=e9762]:
+                    - columnheader [ref=e9763]
+                    - columnheader [ref=e9765]
+                    - columnheader [ref=e9767]
+                    - columnheader [ref=e9769]
+                    - columnheader [ref=e9771]
+              - generic [ref=e9773]:
+                - table:
+                  - rowgroup
+                - generic [ref=e9774]: 데이터 없음
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

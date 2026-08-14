@@ -1,0 +1,317 @@
+- generic [ref=e22717]:
+  - generic [ref=e22718]: 설정 알람 관리 솔루션 알람 설정
+  - generic [ref=e22730]:
+    - list [ref=e22764]
+    - generic [ref=e34378]:
+      - menubar [ref=e34379]:
+        - menuitem "헬스 알람 관리" [ref=e34853] [cursor=pointer]
+        - menuitem "알람 관리" [ref=e34854] [cursor=pointer]
+        - menuitem "사용률 알람 관리" [ref=e34855] [cursor=pointer]
+        - menuitem "솔루션 알람 관리" [ref=e34856] [cursor=pointer]
+        - menuitem "RCA 알람 관리" [ref=e34857] [cursor=pointer]
+      - generic [ref=e34388]:
+        - generic [ref=e34390]:
+          - generic [ref=e34391]: 타입
+          - generic [ref=e34393]:
+            - text: 
+            - generic [ref=e34395]:
+              - generic [ref=e34396]: WAS
+              - generic [ref=e34397]: 
+        - generic [ref=e34401]:
+          - generic [ref=e34402]:
+            - generic [ref=e34403]: 수집 타겟 목록
+            - textbox "검색" [ref=e34415]
+          - generic [ref=e34416]:
+            - table [ref=e34418]:
+              - rowgroup [ref=e34427]:
+                - row " 타겟 ID 타겟 명 타입 마지막 수집 일자 활성" [ref=e34428]:
+                  - columnheader [ref=e34429]:
+                    - generic [ref=e34432] [cursor=pointer]:
+                      - checkbox
+                  - columnheader [ref=e34434]:
+                    - button "" [ref=e34437] [cursor=pointer]
+                  - columnheader [ref=e34439]
+                  - columnheader [ref=e34441]
+                  - columnheader [ref=e34443]
+                  - columnheader [ref=e34445]
+                  - columnheader [ref=e34447]
+            - table [ref=e34450]:
+              - rowgroup [ref=e34459]:
+                - row "45 loan-0005 WAS 2026-08-06 11:47:00" [ref=e34460]:
+                  - cell [ref=e34461]:
+                    - generic [ref=e34464] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34466]
+                  - cell "45" [ref=e34467]
+                  - cell "loan-0005" [ref=e34469]
+                  - cell "WAS" [ref=e34471]
+                  - cell "2026-08-06 11:47:00" [ref=e34473]
+                  - cell [ref=e34475]:
+                    - generic [ref=e34479] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "44 loan-0004 WAS 2026-08-06 11:47:00" [ref=e34481]:
+                  - cell [ref=e34482]:
+                    - generic [ref=e34485] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34487]
+                  - cell "44" [ref=e34488]
+                  - cell "loan-0004" [ref=e34490]
+                  - cell "WAS" [ref=e34492]
+                  - cell "2026-08-06 11:47:00" [ref=e34494]
+                  - cell [ref=e34496]:
+                    - generic [ref=e34500] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "43 loan-0003 WAS 2026-08-06 11:47:00" [ref=e34502]:
+                  - cell [ref=e34503]:
+                    - generic [ref=e34506] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34508]
+                  - cell "43" [ref=e34509]
+                  - cell "loan-0003" [ref=e34511]
+                  - cell "WAS" [ref=e34513]
+                  - cell "2026-08-06 11:47:00" [ref=e34515]
+                  - cell [ref=e34517]:
+                    - generic [ref=e34521] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "42 loan-0002 WAS 2026-08-06 11:47:00" [ref=e34523]:
+                  - cell [ref=e34524]:
+                    - generic [ref=e34527] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34529]
+                  - cell "42" [ref=e34530]
+                  - cell "loan-0002" [ref=e34532]
+                  - cell "WAS" [ref=e34534]
+                  - cell "2026-08-06 11:47:00" [ref=e34536]
+                  - cell [ref=e34538]:
+                    - generic [ref=e34542] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "11 transfer-0006 WAS 2026-08-06 11:47:00" [ref=e34544]:
+                  - cell [ref=e34545]:
+                    - generic [ref=e34548] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34550]
+                  - cell "11" [ref=e34551]
+                  - cell "transfer-0006" [ref=e34553]
+                  - cell "WAS" [ref=e34555]
+                  - cell "2026-08-06 11:47:00" [ref=e34557]
+                  - cell [ref=e34559]:
+                    - generic [ref=e34563] [cursor=pointer]:
+                      - checkbox
+                - row "49 loan-0009 WAS 2026-08-06 11:47:00" [ref=e34565]:
+                  - cell [ref=e34566]:
+                    - generic [ref=e34569] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34571]
+                  - cell "49" [ref=e34572]
+                  - cell "loan-0009" [ref=e34574]
+                  - cell "WAS" [ref=e34576]
+                  - cell "2026-08-06 11:47:00" [ref=e34578]
+                  - cell [ref=e34580]:
+                    - generic [ref=e34584] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "1201 JEUS_1201 WAS 2026-08-06 11:47:00" [ref=e34586]:
+                  - cell [ref=e34587]:
+                    - generic [ref=e34590] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34592]
+                  - cell "1201" [ref=e34593]
+                  - cell "JEUS_1201" [ref=e34595]
+                  - cell "WAS" [ref=e34597]
+                  - cell "2026-08-06 11:47:00" [ref=e34599]
+                  - cell [ref=e34601]:
+                    - generic [ref=e34605] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "48 loan-0008 WAS 2026-08-06 11:47:00" [ref=e34607]:
+                  - cell [ref=e34608]:
+                    - generic [ref=e34611] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34613]
+                  - cell "48" [ref=e34614]
+                  - cell "loan-0008" [ref=e34616]
+                  - cell "WAS" [ref=e34618]
+                  - cell "2026-08-06 11:47:00" [ref=e34620]
+                  - cell [ref=e34622]:
+                    - generic [ref=e34626] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "1209 JEUS_1209 WAS 2026-08-06 11:47:00" [ref=e34628]:
+                  - cell [ref=e34629]:
+                    - generic [ref=e34632] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34634]
+                  - cell "1209" [ref=e34635]
+                  - cell "JEUS_1209" [ref=e34637]
+                  - cell "WAS" [ref=e34639]
+                  - cell "2026-08-06 11:47:00" [ref=e34641]
+                  - cell [ref=e34643]:
+                    - generic [ref=e34647] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "47 loan-0007 WAS 2026-08-06 11:47:00" [ref=e34649]:
+                  - cell [ref=e34650]:
+                    - generic [ref=e34653] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34655]
+                  - cell "47" [ref=e34656]
+                  - cell "loan-0007" [ref=e34658]
+                  - cell "WAS" [ref=e34660]
+                  - cell "2026-08-06 11:47:00" [ref=e34662]
+                  - cell [ref=e34664]:
+                    - generic [ref=e34668] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "1 web-0001 WAS 2026-07-31 16:13:00" [ref=e34670]:
+                  - cell [ref=e34671]:
+                    - generic [ref=e34674] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34676]
+                  - cell "1" [ref=e34677]
+                  - cell "web-0001" [ref=e34679]
+                  - cell "WAS" [ref=e34681]
+                  - cell "2026-07-31 16:13:00" [ref=e34683]
+                  - cell [ref=e34685]:
+                    - generic [ref=e34689] [cursor=pointer]:
+                      - checkbox
+                - row "46 loan-0006 WAS 2026-08-06 11:47:00" [ref=e34691]:
+                  - cell [ref=e34692]:
+                    - generic [ref=e34695] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34697]
+                  - cell "46" [ref=e34698]
+                  - cell "loan-0006" [ref=e34700]
+                  - cell "WAS" [ref=e34702]
+                  - cell "2026-08-06 11:47:00" [ref=e34704]
+                  - cell [ref=e34706]:
+                    - generic [ref=e34710] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "41 loan-0001 WAS 2026-08-06 11:47:00" [ref=e34712]:
+                  - cell [ref=e34713]:
+                    - generic [ref=e34716] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34718]
+                  - cell "41" [ref=e34719]
+                  - cell "loan-0001" [ref=e34721]
+                  - cell "WAS" [ref=e34723]
+                  - cell "2026-08-06 11:47:00" [ref=e34725]
+                  - cell [ref=e34727]:
+                    - generic [ref=e34731] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "6 transfer-0001 WAS 2026-08-06 11:47:00" [ref=e34733]:
+                  - cell [ref=e34734]:
+                    - generic [ref=e34737] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34739]
+                  - cell "6" [ref=e34740]
+                  - cell "transfer-0001" [ref=e34742]
+                  - cell "WAS" [ref=e34744]
+                  - cell "2026-08-06 11:47:00" [ref=e34746]
+                  - cell [ref=e34748]:
+                    - generic [ref=e34752] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "7 transfer-0002 WAS 2026-08-06 11:47:00" [ref=e34754]:
+                  - cell [ref=e34755]:
+                    - generic [ref=e34758] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34760]
+                  - cell "7" [ref=e34761]
+                  - cell "transfer-0002" [ref=e34763]
+                  - cell "WAS" [ref=e34765]
+                  - cell "2026-08-06 11:47:00" [ref=e34767]
+                  - cell [ref=e34769]:
+                    - generic [ref=e34773] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "8 transfer-0003 WAS 2026-08-06 11:47:00" [ref=e34775]:
+                  - cell [ref=e34776]:
+                    - generic [ref=e34779] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34781]
+                  - cell "8" [ref=e34782]
+                  - cell "transfer-0003" [ref=e34784]
+                  - cell "WAS" [ref=e34786]
+                  - cell "2026-08-06 11:47:00" [ref=e34788]
+                  - cell [ref=e34790]:
+                    - generic [ref=e34794] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "9 transfer-0004 WAS 2026-08-06 11:47:00" [ref=e34796]:
+                  - cell [ref=e34797]:
+                    - generic [ref=e34800] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34802]
+                  - cell "9" [ref=e34803]
+                  - cell "transfer-0004" [ref=e34805]
+                  - cell "WAS" [ref=e34807]
+                  - cell "2026-08-06 11:47:00" [ref=e34809]
+                  - cell [ref=e34811]:
+                    - generic [ref=e34815] [cursor=pointer]:
+                      - checkbox [checked]
+                - row "10 transfer-0005 WAS 2026-08-06 11:47:00" [ref=e34817]:
+                  - cell [ref=e34818]:
+                    - generic [ref=e34821] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e34823]
+                  - cell "10" [ref=e34824]
+                  - cell "transfer-0005" [ref=e34826]
+                  - cell "WAS" [ref=e34828]
+                  - cell "2026-08-06 11:47:00" [ref=e34830]
+                  - cell [ref=e34832]:
+                    - generic [ref=e34836] [cursor=pointer]:
+                      - checkbox [checked]
+          - generic [ref=e34839]:
+            - button "" [disabled] [ref=e34840]
+            - list [ref=e34842]:
+              - listitem [ref=e34843]: "1"
+              - listitem [ref=e34844] [cursor=pointer]: "2"
+              - listitem [ref=e34845] [cursor=pointer]: "3"
+              - listitem [ref=e34846] [cursor=pointer]: "4"
+              - listitem [ref=e34847] [cursor=pointer]: "5"
+              - listitem [ref=e34848] [cursor=pointer]: "6"
+              - listitem [ref=e34849] [cursor=pointer]: 
+              - listitem [ref=e34850] [cursor=pointer]: "10"
+            - button "" [ref=e34851] [cursor=pointer]
+    - generic [ref=e24337]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e24344] [cursor=pointer]
+        - generic [ref=e24367]:
+          - text: 팝업 설정
+          - generic [ref=e24369]:
+            - text: 알람 팝업
+            - switch [ref=e24370]:
+              - checkbox
+        - generic [ref=e24372]:
+          - generic [ref=e24375]:
+            - button "알람 목록 (최근)" [ref=e24376] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e24377] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e24378] [cursor=pointer]
+          - generic [ref=e24382]:
+            - generic [ref=e24383]:
+              - generic [ref=e24384]: "룰 타입 :"
+              - generic [ref=e24386]:
+                - textbox "선택" [ref=e24387] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e24393]:
+              - table [ref=e24395]:
+                - rowgroup [ref=e24406]:
+                  - row [ref=e24407]:
+                    - columnheader [ref=e24408]
+                    - columnheader [ref=e24410]
+                    - columnheader [ref=e24412]
+                    - columnheader [ref=e24414]
+                    - columnheader [ref=e24416]
+                    - columnheader [ref=e24418]
+                    - columnheader [ref=e24420]
+                    - columnheader [ref=e24422]
+                    - columnheader [ref=e24424]
+              - generic [ref=e24426]:
+                - table:
+                  - rowgroup
+                - generic [ref=e24427]: 데이터 없음
+    - generic:
+      - generic [ref=e24430]:
+        - generic [ref=e24431]: Info (1970-01-01 09:00)
+        - generic [ref=e24437]:
+          - generic [ref=e24438]: 타겟 명
+          - generic [ref=e24440]: 타입
+          - generic [ref=e24442]: 상태
+      - generic [ref=e24447]:
+        - generic [ref=e24448]: Chart Detail
+        - generic [ref=e24453]:
+          - textbox "Select time" [ref=e24467] [cursor=pointer]
+          - generic [ref=e24472]: 데이터 없음

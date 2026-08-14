@@ -442,7 +442,7 @@ async function showReport(cap) {
   }
 
   const defaults = buildDefaults(cap);
-  els.title.value = defaults.title;
+  els.title.value = ''; // 제목은 placeholder([고객사] 이슈 내용)로만 안내 → 지울 필요 없음
   els.description.value = defaults.description;
   els.priority.value = '3';
 

@@ -1,0 +1,247 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 기타 AuditLog
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e16616]:
+      - menubar [ref=e16617]:
+        - menuitem "라이선스" [ref=e16618] [cursor=pointer]
+        - menuitem "언어" [ref=e16619] [cursor=pointer]
+        - menuitem "데이터 보관주기" [ref=e16620] [cursor=pointer]
+        - menuitem "로그인 내역" [ref=e16621] [cursor=pointer]
+        - menuitem "행위로그" [ref=e16622] [cursor=pointer]
+        - menuitem "수집 타겟" [ref=e16623] [cursor=pointer]
+        - menuitem "알람 사운드 관리" [ref=e16624] [cursor=pointer]
+      - generic [ref=e16626]:
+        - generic [ref=e16629]:
+          - generic [ref=e16630]:
+            - generic [ref=e16631]: 
+            - textbox "Start date" [ref=e16632]: 2026-08-04
+            - generic [ref=e16633]: "-"
+            - textbox "End date" [ref=e16634]: 2026-08-06
+          - textbox "사용자 ID" [ref=e16638]
+          - textbox "사용자 IP" [ref=e16641]
+          - generic [ref=e16642]:
+            - text: 상태
+            - generic [ref=e16644]:
+              - textbox "선택" [ref=e16645] [cursor=pointer]: 전체
+              - generic: 
+          - button " 검색" [ref=e16649] [cursor=pointer]:
+            - generic [ref=e16650]: 
+            - text: 검색
+        - generic [ref=e16652]:
+          - generic [ref=e16653]: 로그인 내역 목록
+          - generic [ref=e16655]:
+            - table [ref=e16657]:
+              - rowgroup [ref=e16666]:
+                - row [ref=e16667]:
+                  - columnheader [ref=e16668]
+                  - columnheader [ref=e16670]
+                  - columnheader [ref=e16672]
+                  - columnheader [ref=e16674]
+                  - columnheader [ref=e16676]
+                  - columnheader [ref=e16678]
+                  - columnheader [ref=e16680]
+            - table [ref=e16683]:
+              - rowgroup [ref=e16692]:
+                - row [ref=e16693]:
+                  - cell "admin" [ref=e16694]
+                  - cell "admin" [ref=e16696]
+                  - cell "10.10.37.71" [ref=e16698]
+                  - cell "성공" [ref=e16700]
+                  - cell "2026-08-06 10:34:06" [ref=e16702]
+                  - cell [ref=e16704]
+                  - cell "로그인" [ref=e16705]
+                - row [ref=e16707]:
+                  - cell "admin" [ref=e16708]
+                  - cell "admin" [ref=e16710]
+                  - cell "10.10.37.71" [ref=e16712]
+                  - cell "성공" [ref=e16714]
+                  - cell "2026-08-06 09:47:54" [ref=e16716]
+                  - cell [ref=e16718]
+                  - cell "로그인" [ref=e16719]
+                - row [ref=e16721]:
+                  - cell "admin" [ref=e16722]
+                  - cell "admin" [ref=e16724]
+                  - cell "10.10.37.71" [ref=e16726]
+                  - cell "성공" [ref=e16728]
+                  - cell "2026-08-06 09:25:56" [ref=e16730]
+                  - cell [ref=e16732]
+                  - cell "로그인" [ref=e16733]
+                - row [ref=e16735]:
+                  - cell "admin" [ref=e16736]
+                  - cell "admin" [ref=e16738]
+                  - cell "10.10.37.71" [ref=e16740]
+                  - cell "성공" [ref=e16742]
+                  - cell "2026-08-06 09:19:01" [ref=e16744]
+                  - cell [ref=e16746]
+                  - cell "로그인" [ref=e16747]
+                - row [ref=e16749]:
+                  - cell "admin" [ref=e16750]
+                  - cell "admin" [ref=e16752]
+                  - cell "10.10.37.71" [ref=e16754]
+                  - cell "성공" [ref=e16756]
+                  - cell "2026-08-06 09:18:18" [ref=e16758]
+                  - cell [ref=e16760]
+                  - cell "로그인" [ref=e16761]
+                - row [ref=e16763]:
+                  - cell "admin" [ref=e16764]
+                  - cell "admin" [ref=e16766]
+                  - cell "10.10.37.71" [ref=e16768]
+                  - cell "성공" [ref=e16770]
+                  - cell "2026-08-06 09:13:48" [ref=e16772]
+                  - cell [ref=e16774]
+                  - cell "로그인" [ref=e16775]
+                - row [ref=e16777]:
+                  - cell "admin" [ref=e16778]
+                  - cell "admin" [ref=e16780]
+                  - cell "10.10.37.71" [ref=e16782]
+                  - cell "성공" [ref=e16784]
+                  - cell "2026-08-06 09:01:39" [ref=e16786]
+                  - cell [ref=e16788]
+                  - cell "로그인" [ref=e16789]
+                - row [ref=e16791]:
+                  - cell "admin" [ref=e16792]
+                  - cell "admin" [ref=e16794]
+                  - cell "10.10.37.71" [ref=e16796]
+                  - cell "성공" [ref=e16798]
+                  - cell "2026-08-06 08:52:05" [ref=e16800]
+                  - cell [ref=e16802]
+                  - cell "로그인" [ref=e16803]
+                - row [ref=e16805]:
+                  - cell "admin" [ref=e16806]
+                  - cell "admin" [ref=e16808]
+                  - cell "10.10.37.71" [ref=e16810]
+                  - cell "성공" [ref=e16812]
+                  - cell "2026-08-06 08:40:48" [ref=e16814]
+                  - cell [ref=e16816]
+                  - cell "로그인" [ref=e16817]
+                - row [ref=e16819]:
+                  - cell "admin" [ref=e16820]
+                  - cell "admin" [ref=e16822]
+                  - cell "10.10.37.71" [ref=e16824]
+                  - cell "성공" [ref=e16826]
+                  - cell "2026-08-05 18:31:38" [ref=e16828]
+                  - cell [ref=e16830]
+                  - cell "로그인" [ref=e16831]
+                - row [ref=e16833]:
+                  - cell "admin" [ref=e16834]
+                  - cell "admin" [ref=e16836]
+                  - cell "10.10.37.71" [ref=e16838]
+                  - cell "성공" [ref=e16840]
+                  - cell "2026-08-05 17:55:38" [ref=e16842]
+                  - cell [ref=e16844]
+                  - cell "로그인" [ref=e16845]
+                - row [ref=e16847]:
+                  - cell "admin" [ref=e16848]
+                  - cell "admin" [ref=e16850]
+                  - cell "10.10.37.71" [ref=e16852]
+                  - cell "성공" [ref=e16854]
+                  - cell "2026-08-05 17:24:41" [ref=e16856]
+                  - cell [ref=e16858]
+                  - cell "로그인" [ref=e16859]
+                - row [ref=e16861]:
+                  - cell "admin" [ref=e16862]
+                  - cell "admin" [ref=e16864]
+                  - cell "10.10.37.71" [ref=e16866]
+                  - cell "성공" [ref=e16868]
+                  - cell "2026-08-05 17:09:46" [ref=e16870]
+                  - cell [ref=e16872]
+                  - cell "로그인" [ref=e16873]
+                - row [ref=e16875]:
+                  - cell "admin" [ref=e16876]
+                  - cell "admin" [ref=e16878]
+                  - cell "10.10.37.71" [ref=e16880]
+                  - cell "성공" [ref=e16882]
+                  - cell "2026-08-05 17:04:51" [ref=e16884]
+                  - cell "2026-08-05 17:21:07" [ref=e16886]
+                  - cell "로그아웃" [ref=e16888]
+                - row [ref=e16890]:
+                  - cell "admin" [ref=e16891]
+                  - cell "admin" [ref=e16893]
+                  - cell "10.10.37.71" [ref=e16895]
+                  - cell "성공" [ref=e16897]
+                  - cell "2026-08-05 17:02:54" [ref=e16899]
+                  - cell [ref=e16901]
+                  - cell "로그인" [ref=e16902]
+                - row [ref=e16904]:
+                  - cell "admin" [ref=e16905]
+                  - cell "admin" [ref=e16907]
+                  - cell "10.10.37.71" [ref=e16909]
+                  - cell "성공" [ref=e16911]
+                  - cell "2026-08-05 16:34:51" [ref=e16913]
+                  - cell [ref=e16915]
+                  - cell "로그인" [ref=e16916]
+                - row [ref=e16918]:
+                  - cell "admin" [ref=e16919]
+                  - cell "admin" [ref=e16921]
+                  - cell "10.10.37.71" [ref=e16923]
+                  - cell "성공" [ref=e16925]
+                  - cell "2026-08-05 16:06:03" [ref=e16927]
+                  - cell [ref=e16929]
+                  - cell "로그인" [ref=e16930]
+                - row [ref=e16932]:
+                  - cell "admin" [ref=e16933]
+                  - cell "admin" [ref=e16935]
+                  - cell "10.10.37.71" [ref=e16937]
+                  - cell "성공" [ref=e16939]
+                  - cell "2026-08-05 15:26:22" [ref=e16941]
+                  - cell "2026-08-05 16:10:51" [ref=e16943]
+                  - cell "로그아웃" [ref=e16945]
+          - generic [ref=e16948]:
+            - button "" [disabled] [ref=e16949]
+            - list [ref=e16951]:
+              - listitem [ref=e16952]: "1"
+              - listitem [ref=e16953] [cursor=pointer]: "2"
+              - listitem [ref=e16954] [cursor=pointer]: "3"
+              - listitem [ref=e16955] [cursor=pointer]: "4"
+            - button "" [ref=e16956] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

@@ -1,0 +1,226 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 운영 관리 장애 날짜 제외
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e21921]:
+      - generic [ref=e21923]:
+        - generic [ref=e21924]:
+          - generic [ref=e21925]: 비즈니스 타입 목록
+          - button "반복 설정" [ref=e21940] [cursor=pointer]
+        - generic [ref=e21942]:
+          - table [ref=e21944]:
+            - rowgroup [ref=e21952]:
+              - row "이름 설명 우선 순위 색상 학습 제외 여부" [ref=e21953]:
+                - columnheader [ref=e21954]:
+                  - generic [ref=e21957] [cursor=pointer]:
+                    - checkbox
+                - columnheader [ref=e21959]
+                - columnheader [ref=e21963]
+                - columnheader [ref=e21967]
+                - columnheader [ref=e21971]
+                - columnheader "학습 제외 여부" [ref=e21975]:
+                  - generic [ref=e21976]:
+                    - generic [ref=e21979] [cursor=pointer]:
+                      - checkbox
+                    - text: 학습 제외 여부
+          - table [ref=e21982]:
+            - rowgroup [ref=e21990]:
+              - row "급여일 비즈니스데이(삭제금지) 1 " [ref=e21991]:
+                - cell [ref=e21992]:
+                  - generic [ref=e21995] [cursor=pointer]:
+                    - checkbox
+                - cell "급여일" [ref=e21997]
+                - cell "비즈니스데이(삭제금지)" [ref=e22002]
+                - cell "1" [ref=e22007]
+                - cell "" [ref=e22012]
+                - cell [ref=e22021]:
+                  - generic [ref=e22025] [cursor=pointer]:
+                    - checkbox
+              - row "목요일부하 비즈니스데이(삭제금지) 2 " [ref=e22027]:
+                - cell [ref=e22028]:
+                  - generic [ref=e22031] [cursor=pointer]:
+                    - checkbox
+                - cell "목요일부하" [ref=e22033]
+                - cell "비즈니스데이(삭제금지)" [ref=e22038]
+                - cell "2" [ref=e22043]
+                - cell "" [ref=e22048]
+                - cell [ref=e22057]:
+                  - generic [ref=e22061] [cursor=pointer]:
+                    - checkbox
+              - row "test-001 test 3 " [ref=e22063]:
+                - cell [ref=e22064]:
+                  - generic [ref=e22067] [cursor=pointer]:
+                    - checkbox
+                - cell "test-001" [ref=e22069]
+                - cell "test" [ref=e22074]
+                - cell "3" [ref=e22079]
+                - cell "" [ref=e22084]
+                - cell [ref=e22093]:
+                  - generic [ref=e22097] [cursor=pointer]:
+                    - checkbox
+              - row "123 123 9 " [ref=e22099]:
+                - cell [ref=e22100]:
+                  - generic [ref=e22103] [cursor=pointer]:
+                    - checkbox
+                - cell "123" [ref=e22105]
+                - cell "123" [ref=e22110]
+                - cell "9" [ref=e22115]
+                - cell "" [ref=e22120]
+                - cell [ref=e22129]:
+                  - generic [ref=e22133] [cursor=pointer]:
+                    - checkbox
+              - row "test_jyp test_jyp 11 " [ref=e22135]:
+                - cell [ref=e22136]:
+                  - generic [ref=e22139] [cursor=pointer]:
+                    - checkbox
+                - cell "test_jyp" [ref=e22141]
+                - cell "test_jyp" [ref=e22146]
+                - cell "11" [ref=e22151]
+                - cell "" [ref=e22156]
+                - cell [ref=e22165]:
+                  - generic [ref=e22169] [cursor=pointer]:
+                    - checkbox
+              - row "test test 99 " [ref=e22171]:
+                - cell [ref=e22172]:
+                  - generic [ref=e22175] [cursor=pointer]:
+                    - checkbox
+                - cell "test" [ref=e22177]
+                - cell "test" [ref=e22182]
+                - cell "99" [ref=e22187]
+                - cell "" [ref=e22192]
+                - cell [ref=e22201]:
+                  - generic [ref=e22205] [cursor=pointer]:
+                    - checkbox
+              - row "테스트요 110 " [ref=e22207]:
+                - cell [ref=e22208]:
+                  - generic [ref=e22211] [cursor=pointer]:
+                    - checkbox
+                - cell "테스트요" [ref=e22213]
+                - cell [ref=e22218]
+                - cell "110" [ref=e22219]
+                - cell "" [ref=e22224]
+                - cell [ref=e22233]:
+                  - generic [ref=e22237] [cursor=pointer]:
+                    - checkbox
+      - generic [ref=e22239]:
+        - generic [ref=e22241]:
+          - button "Today" [ref=e22242] [cursor=pointer]
+          - text: "2026.08"
+        - generic [ref=e22250]:
+          - generic [ref=e22252]:
+            - generic [ref=e22253]: 일
+            - generic [ref=e22254]: 월
+            - generic [ref=e22255]: 화
+            - generic [ref=e22256]: 수
+            - generic [ref=e22257]: 목
+            - generic [ref=e22258]: 금
+            - generic [ref=e22259]: 토
+          - generic [ref=e22260]:
+            - generic [ref=e22264]:
+              - generic [ref=e22265]: "26"
+              - generic [ref=e22269]: "27"
+              - generic [ref=e22273]: "28"
+              - generic [ref=e22277]: "29"
+              - generic [ref=e22281]: "30"
+              - generic [ref=e22285]: "31"
+              - generic [ref=e22289]: "1"
+            - generic [ref=e22294]:
+              - generic [ref=e22296]:
+                - generic [ref=e22297]: "2"
+                - generic [ref=e22301]: "3"
+                - generic [ref=e22305]: "4"
+                - generic [ref=e22309]: "5"
+                - generic [ref=e22313]: "6"
+                - generic [ref=e22317]: "7"
+                - generic [ref=e22321]: "8"
+              - generic "목요일부하(반복)" [ref=e22327] [cursor=pointer]
+            - generic [ref=e22329]:
+              - generic [ref=e22331]:
+                - generic [ref=e22332]: "9"
+                - generic [ref=e22336]: "10"
+                - generic [ref=e22340]: "11"
+                - generic [ref=e22344]: "12"
+                - generic [ref=e22348]: "13"
+                - generic [ref=e22352]: "14"
+                - generic [ref=e22356]: "15"
+              - generic "목요일부하(반복)" [ref=e22362] [cursor=pointer]
+            - generic [ref=e22364]:
+              - generic [ref=e22366]:
+                - generic [ref=e22367]: "16"
+                - generic [ref=e22371]: "17"
+                - generic [ref=e22375]: "18"
+                - generic [ref=e22379]: "19"
+                - generic [ref=e22383]: "20"
+                - generic [ref=e22387]: "21"
+                - generic [ref=e22391]: "22"
+              - generic "목요일부하(반복)" [ref=e22397] [cursor=pointer]
+            - generic [ref=e22399]:
+              - generic [ref=e22401]:
+                - generic [ref=e22402]: "23"
+                - generic [ref=e22406]: "24"
+                - generic [ref=e22410]: "25"
+                - generic [ref=e22414]: "26"
+                - generic [ref=e22418]: "27"
+                - generic [ref=e22422]: "28"
+                - generic [ref=e22426]: "29"
+              - generic:
+                - generic "급여일(반복)" [ref=e22432] [cursor=pointer]
+                - generic "목요일부하(반복)" [ref=e22435] [cursor=pointer]
+            - generic [ref=e22439]:
+              - generic [ref=e22440]: "30"
+              - generic [ref=e22444]: "31"
+              - generic [ref=e22448]: "1"
+              - generic [ref=e22452]: "2"
+              - generic [ref=e22456]: "3"
+              - generic [ref=e22460]: "4"
+              - generic [ref=e22464]: "5"
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

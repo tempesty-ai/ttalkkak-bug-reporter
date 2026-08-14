@@ -1,0 +1,1427 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 알람 관리 알람 관리
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e10405]:
+      - menubar [ref=e10406]:
+        - menuitem "헬스 알람 관리" [ref=e10407] [cursor=pointer]
+        - menuitem "알람 관리" [ref=e10408] [cursor=pointer]
+        - menuitem "사용률 알람 관리" [ref=e10409] [cursor=pointer]
+        - menuitem "솔루션 알람 관리" [ref=e10410] [cursor=pointer]
+        - menuitem "RCA 알람 관리" [ref=e10411] [cursor=pointer]
+      - generic [ref=e10413]:
+        - generic [ref=e10415]:
+          - generic [ref=e10416]: 타입
+          - generic [ref=e10418]:
+            - textbox "선택" [ref=e10419] [cursor=pointer]: WAS
+            - generic: 
+        - generic [ref=e10422]:
+          - generic [ref=e10424]:
+            - generic [ref=e10425]:
+              - generic [ref=e10426]: 그룹 목록
+              - textbox "검색" [ref=e10432]
+            - generic [ref=e10433]:
+              - table [ref=e10435]:
+                - rowgroup [ref=e10438]:
+                  - row [ref=e10439]:
+                    - columnheader [ref=e10440]
+              - table [ref=e10443]:
+                - rowgroup [ref=e10446]:
+                  - row [ref=e10447]:
+                    - cell "전체" [ref=e10448]
+                  - row [ref=e10450]:
+                    - cell "AI그룹" [ref=e10451]
+                  - row [ref=e10453]:
+                    - cell "EAI그룹" [ref=e10454]
+                  - row [ref=e10456]:
+                    - cell "FEP그룹" [ref=e10457]
+                  - row [ref=e10459]:
+                    - cell "MCI그룹" [ref=e10460]
+                  - row [ref=e10462]:
+                    - cell "etc" [ref=e10463]
+                  - row [ref=e10465]:
+                    - cell "exemone" [ref=e10466]
+                  - row [ref=e10468]:
+                    - cell "jdh instancegroup 1" [ref=e10469]
+                  - row [ref=e10471]:
+                    - cell "jdh instancegroup 2" [ref=e10472]
+                  - row [ref=e10474]:
+                    - cell "엑셈뱅크V2인스턴스그룹" [ref=e10475]
+          - generic [ref=e10478]:
+            - generic [ref=e10480]:
+              - generic [ref=e10481]: 타겟 목록
+              - button "선택 타겟 변경" [ref=e10486] [cursor=pointer]
+              - textbox "검색" [ref=e10489]
+            - generic [ref=e10492]:
+              - table [ref=e10494]:
+                - rowgroup [ref=e10503]:
+                  - row "타겟 명 알람 제외 (특정 기간) 알람 제외 (반복) 사용 수정" [ref=e10504]:
+                    - columnheader [ref=e10505]:
+                      - generic [ref=e10508] [cursor=pointer]:
+                        - checkbox
+                    - columnheader "타겟 명" [ref=e10510]
+                    - columnheader "알람 제외 (특정 기간)" [ref=e10512]
+                    - columnheader "알람 제외 (반복)" [ref=e10514]
+                    - columnheader "사용" [ref=e10516]
+                    - columnheader "수정" [ref=e10518]
+                    - columnheader [ref=e10520]
+              - table [ref=e10522]:
+                - rowgroup [ref=e10530]:
+                  - row "transfer-0005 - - 수정" [ref=e10531]:
+                    - cell [ref=e10532]:
+                      - generic [ref=e10535] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0005" [ref=e10537]
+                    - cell "-" [ref=e10539]
+                    - cell "-" [ref=e10541]
+                    - cell [ref=e10543]:
+                      - switch [ref=e10546]:
+                        - checkbox
+                    - cell [ref=e10548]:
+                      - button "수정" [ref=e10551] [cursor=pointer]
+                  - row "transfer-0007 - - 수정" [ref=e10552]:
+                    - cell [ref=e10553]:
+                      - generic [ref=e10556] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0007" [ref=e10558]
+                    - cell "-" [ref=e10560]
+                    - cell "-" [ref=e10562]
+                    - cell [ref=e10564]:
+                      - switch [ref=e10567]:
+                        - checkbox
+                    - cell [ref=e10569]:
+                      - button "수정" [ref=e10572] [cursor=pointer]
+                  - row "JEUS_1201 - - 수정" [ref=e10573]:
+                    - cell [ref=e10574]:
+                      - generic [ref=e10577] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1201" [ref=e10579]
+                    - cell "-" [ref=e10581]
+                    - cell "-" [ref=e10583]
+                    - cell [ref=e10585]:
+                      - switch [checked] [ref=e10588]:
+                        - checkbox [checked]
+                    - cell [ref=e10590]:
+                      - button "수정" [ref=e10593] [cursor=pointer]
+                  - row "JEUS_1202 - - 수정" [ref=e10594]:
+                    - cell [ref=e10595]:
+                      - generic [ref=e10598] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1202" [ref=e10600]
+                    - cell "-" [ref=e10602]
+                    - cell "-" [ref=e10604]
+                    - cell [ref=e10606]:
+                      - switch [checked] [ref=e10609]:
+                        - checkbox [checked]
+                    - cell [ref=e10611]:
+                      - button "수정" [ref=e10614] [cursor=pointer]
+                  - row "JEUS_1203 - - 수정" [ref=e10615]:
+                    - cell [ref=e10616]:
+                      - generic [ref=e10619] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1203" [ref=e10621]
+                    - cell "-" [ref=e10623]
+                    - cell "-" [ref=e10625]
+                    - cell [ref=e10627]:
+                      - switch [ref=e10630]:
+                        - checkbox
+                    - cell [ref=e10632]:
+                      - button "수정" [ref=e10635] [cursor=pointer]
+                  - row "JEUS_1204 - - 수정" [ref=e10636]:
+                    - cell [ref=e10637]:
+                      - generic [ref=e10640] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1204" [ref=e10642]
+                    - cell "-" [ref=e10644]
+                    - cell "-" [ref=e10646]
+                    - cell [ref=e10648]:
+                      - switch [checked] [ref=e10651]:
+                        - checkbox [checked]
+                    - cell [ref=e10653]:
+                      - button "수정" [ref=e10656] [cursor=pointer]
+                  - row "JEUS_1205 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10657]:
+                    - cell [ref=e10658]:
+                      - generic [ref=e10661] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1205" [ref=e10663]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10665]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10667]
+                    - cell [ref=e10669]:
+                      - switch [checked] [ref=e10672]:
+                        - checkbox [checked]
+                    - cell [ref=e10674]:
+                      - button "수정" [ref=e10677] [cursor=pointer]
+                  - row "JEUS_1206 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10678]:
+                    - cell [ref=e10679]:
+                      - generic [ref=e10682] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1206" [ref=e10684]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10686]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10688]
+                    - cell [ref=e10690]:
+                      - switch [checked] [ref=e10693]:
+                        - checkbox [checked]
+                    - cell [ref=e10695]:
+                      - button "수정" [ref=e10698] [cursor=pointer]
+                  - row "JEUS_1207 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10699]:
+                    - cell [ref=e10700]:
+                      - generic [ref=e10703] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1207" [ref=e10705]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10707]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10709]
+                    - cell [ref=e10711]:
+                      - switch [checked] [ref=e10714]:
+                        - checkbox [checked]
+                    - cell [ref=e10716]:
+                      - button "수정" [ref=e10719] [cursor=pointer]
+                  - row "JEUS_1208 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10720]:
+                    - cell [ref=e10721]:
+                      - generic [ref=e10724] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1208" [ref=e10726]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10728]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10730]
+                    - cell [ref=e10732]:
+                      - switch [checked] [ref=e10735]:
+                        - checkbox [checked]
+                    - cell [ref=e10737]:
+                      - button "수정" [ref=e10740] [cursor=pointer]
+                  - row "JEUS_1209 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10741]:
+                    - cell [ref=e10742]:
+                      - generic [ref=e10745] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1209" [ref=e10747]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10749]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10751]
+                    - cell [ref=e10753]:
+                      - switch [checked] [ref=e10756]:
+                        - checkbox [checked]
+                    - cell [ref=e10758]:
+                      - button "수정" [ref=e10761] [cursor=pointer]
+                  - row "JEUS_1210 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10762]:
+                    - cell [ref=e10763]:
+                      - generic [ref=e10766] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1210" [ref=e10768]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10770]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10772]
+                    - cell [ref=e10774]:
+                      - switch [checked] [ref=e10777]:
+                        - checkbox [checked]
+                    - cell [ref=e10779]:
+                      - button "수정" [ref=e10782] [cursor=pointer]
+                  - row "transfer-0008 - - 수정" [ref=e10783]:
+                    - cell [ref=e10784]:
+                      - generic [ref=e10787] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0008" [ref=e10789]
+                    - cell "-" [ref=e10791]
+                    - cell "-" [ref=e10793]
+                    - cell [ref=e10795]:
+                      - switch [ref=e10798]:
+                        - checkbox
+                    - cell [ref=e10800]:
+                      - button "수정" [ref=e10803] [cursor=pointer]
+                  - row "JEUS_1301 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10804]:
+                    - cell [ref=e10805]:
+                      - generic [ref=e10808] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1301" [ref=e10810]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10812]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10814]
+                    - cell [ref=e10816]:
+                      - switch [checked] [ref=e10819]:
+                        - checkbox [checked]
+                    - cell [ref=e10821]:
+                      - button "수정" [ref=e10824] [cursor=pointer]
+                  - row "JEUS_1302 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10825]:
+                    - cell [ref=e10826]:
+                      - generic [ref=e10829] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1302" [ref=e10831]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10833]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10835]
+                    - cell [ref=e10837]:
+                      - switch [checked] [ref=e10840]:
+                        - checkbox [checked]
+                    - cell [ref=e10842]:
+                      - button "수정" [ref=e10845] [cursor=pointer]
+                  - row "JEUS_1303 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10846]:
+                    - cell [ref=e10847]:
+                      - generic [ref=e10850] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1303" [ref=e10852]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10854]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10856]
+                    - cell [ref=e10858]:
+                      - switch [checked] [ref=e10861]:
+                        - checkbox [checked]
+                    - cell [ref=e10863]:
+                      - button "수정" [ref=e10866] [cursor=pointer]
+                  - row "JEUS_1304 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10867]:
+                    - cell [ref=e10868]:
+                      - generic [ref=e10871] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1304" [ref=e10873]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10875]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10877]
+                    - cell [ref=e10879]:
+                      - switch [checked] [ref=e10882]:
+                        - checkbox [checked]
+                    - cell [ref=e10884]:
+                      - button "수정" [ref=e10887] [cursor=pointer]
+                  - row "JEUS_1305 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10888]:
+                    - cell [ref=e10889]:
+                      - generic [ref=e10892] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1305" [ref=e10894]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10896]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10898]
+                    - cell [ref=e10900]:
+                      - switch [checked] [ref=e10903]:
+                        - checkbox [checked]
+                    - cell [ref=e10905]:
+                      - button "수정" [ref=e10908] [cursor=pointer]
+                  - row "JEUS_1306 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10909]:
+                    - cell [ref=e10910]:
+                      - generic [ref=e10913] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1306" [ref=e10915]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10917]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10919]
+                    - cell [ref=e10921]:
+                      - switch [checked] [ref=e10924]:
+                        - checkbox [checked]
+                    - cell [ref=e10926]:
+                      - button "수정" [ref=e10929] [cursor=pointer]
+                  - row "JEUS_1307 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10930]:
+                    - cell [ref=e10931]:
+                      - generic [ref=e10934] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1307" [ref=e10936]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10938]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10940]
+                    - cell [ref=e10942]:
+                      - switch [checked] [ref=e10945]:
+                        - checkbox [checked]
+                    - cell [ref=e10947]:
+                      - button "수정" [ref=e10950] [cursor=pointer]
+                  - row "JEUS_1308 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10951]:
+                    - cell [ref=e10952]:
+                      - generic [ref=e10955] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1308" [ref=e10957]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10959]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10961]
+                    - cell [ref=e10963]:
+                      - switch [checked] [ref=e10966]:
+                        - checkbox [checked]
+                    - cell [ref=e10968]:
+                      - button "수정" [ref=e10971] [cursor=pointer]
+                  - row "JEUS_1309 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10972]:
+                    - cell [ref=e10973]:
+                      - generic [ref=e10976] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1309" [ref=e10978]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e10980]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e10982]
+                    - cell [ref=e10984]:
+                      - switch [checked] [ref=e10987]:
+                        - checkbox [checked]
+                    - cell [ref=e10989]:
+                      - button "수정" [ref=e10992] [cursor=pointer]
+                  - row "JEUS_1310 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e10993]:
+                    - cell [ref=e10994]:
+                      - generic [ref=e10997] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_1310" [ref=e10999]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11001]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11003]
+                    - cell [ref=e11005]:
+                      - switch [checked] [ref=e11008]:
+                        - checkbox [checked]
+                    - cell [ref=e11010]:
+                      - button "수정" [ref=e11013] [cursor=pointer]
+                  - row "transfer-0009 - - 수정" [ref=e11014]:
+                    - cell [ref=e11015]:
+                      - generic [ref=e11018] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0009" [ref=e11020]
+                    - cell "-" [ref=e11022]
+                    - cell "-" [ref=e11024]
+                    - cell [ref=e11026]:
+                      - switch [ref=e11029]:
+                        - checkbox
+                    - cell [ref=e11031]:
+                      - button "수정" [ref=e11034] [cursor=pointer]
+                  - row "transfer-0010 - - 수정" [ref=e11035]:
+                    - cell [ref=e11036]:
+                      - generic [ref=e11039] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0010" [ref=e11041]
+                    - cell "-" [ref=e11043]
+                    - cell "-" [ref=e11045]
+                    - cell [ref=e11047]:
+                      - switch [ref=e11050]:
+                        - checkbox
+                    - cell [ref=e11052]:
+                      - button "수정" [ref=e11055] [cursor=pointer]
+                  - row "fep-0001 - - 수정" [ref=e11056]:
+                    - cell [ref=e11057]:
+                      - generic [ref=e11060] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0001" [ref=e11062]
+                    - cell "-" [ref=e11064]
+                    - cell "-" [ref=e11066]
+                    - cell [ref=e11068]:
+                      - switch [ref=e11071]:
+                        - checkbox
+                    - cell [ref=e11073]:
+                      - button "수정" [ref=e11076] [cursor=pointer]
+                  - row "fep-0002 - - 수정" [ref=e11077]:
+                    - cell [ref=e11078]:
+                      - generic [ref=e11081] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0002" [ref=e11083]
+                    - cell "-" [ref=e11085]
+                    - cell "-" [ref=e11087]
+                    - cell [ref=e11089]:
+                      - switch [ref=e11092]:
+                        - checkbox
+                    - cell [ref=e11094]:
+                      - button "수정" [ref=e11097] [cursor=pointer]
+                  - row "fep-0003 - - 수정" [ref=e11098]:
+                    - cell [ref=e11099]:
+                      - generic [ref=e11102] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0003" [ref=e11104]
+                    - cell "-" [ref=e11106]
+                    - cell "-" [ref=e11108]
+                    - cell [ref=e11110]:
+                      - switch [ref=e11113]:
+                        - checkbox
+                    - cell [ref=e11115]:
+                      - button "수정" [ref=e11118] [cursor=pointer]
+                  - row "fep-0004 - - 수정" [ref=e11119]:
+                    - cell [ref=e11120]:
+                      - generic [ref=e11123] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0004" [ref=e11125]
+                    - cell "-" [ref=e11127]
+                    - cell "-" [ref=e11129]
+                    - cell [ref=e11131]:
+                      - switch [ref=e11134]:
+                        - checkbox
+                    - cell [ref=e11136]:
+                      - button "수정" [ref=e11139] [cursor=pointer]
+                  - row "web-0002 - - 수정" [ref=e11140]:
+                    - cell [ref=e11141]:
+                      - generic [ref=e11144] [cursor=pointer]:
+                        - checkbox
+                    - cell "web-0002" [ref=e11146]
+                    - cell "-" [ref=e11148]
+                    - cell "-" [ref=e11150]
+                    - cell [ref=e11152]:
+                      - switch [ref=e11155]:
+                        - checkbox
+                    - cell [ref=e11157]:
+                      - button "수정" [ref=e11160] [cursor=pointer]
+                  - row "fep-0005 - - 수정" [ref=e11161]:
+                    - cell [ref=e11162]:
+                      - generic [ref=e11165] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0005" [ref=e11167]
+                    - cell "-" [ref=e11169]
+                    - cell "-" [ref=e11171]
+                    - cell [ref=e11173]:
+                      - switch [ref=e11176]:
+                        - checkbox
+                    - cell [ref=e11178]:
+                      - button "수정" [ref=e11181] [cursor=pointer]
+                  - row "fep-0006 - - 수정" [ref=e11182]:
+                    - cell [ref=e11183]:
+                      - generic [ref=e11186] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0006" [ref=e11188]
+                    - cell "-" [ref=e11190]
+                    - cell "-" [ref=e11192]
+                    - cell [ref=e11194]:
+                      - switch [ref=e11197]:
+                        - checkbox
+                    - cell [ref=e11199]:
+                      - button "수정" [ref=e11202] [cursor=pointer]
+                  - row "fep-0007 - - 수정" [ref=e11203]:
+                    - cell [ref=e11204]:
+                      - generic [ref=e11207] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0007" [ref=e11209]
+                    - cell "-" [ref=e11211]
+                    - cell "-" [ref=e11213]
+                    - cell [ref=e11215]:
+                      - switch [ref=e11218]:
+                        - checkbox
+                    - cell [ref=e11220]:
+                      - button "수정" [ref=e11223] [cursor=pointer]
+                  - row "fep-0008 - - 수정" [ref=e11224]:
+                    - cell [ref=e11225]:
+                      - generic [ref=e11228] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0008" [ref=e11230]
+                    - cell "-" [ref=e11232]
+                    - cell "-" [ref=e11234]
+                    - cell [ref=e11236]:
+                      - switch [ref=e11239]:
+                        - checkbox
+                    - cell [ref=e11241]:
+                      - button "수정" [ref=e11244] [cursor=pointer]
+                  - row "fep-0009 - - 수정" [ref=e11245]:
+                    - cell [ref=e11246]:
+                      - generic [ref=e11249] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0009" [ref=e11251]
+                    - cell "-" [ref=e11253]
+                    - cell "-" [ref=e11255]
+                    - cell [ref=e11257]:
+                      - switch [ref=e11260]:
+                        - checkbox
+                    - cell [ref=e11262]:
+                      - button "수정" [ref=e11265] [cursor=pointer]
+                  - row "fep-0010 - - 수정" [ref=e11266]:
+                    - cell [ref=e11267]:
+                      - generic [ref=e11270] [cursor=pointer]:
+                        - checkbox
+                    - cell "fep-0010" [ref=e11272]
+                    - cell "-" [ref=e11274]
+                    - cell "-" [ref=e11276]
+                    - cell [ref=e11278]:
+                      - switch [ref=e11281]:
+                        - checkbox
+                    - cell [ref=e11283]:
+                      - button "수정" [ref=e11286] [cursor=pointer]
+                  - row "hyo-tomcat - - 수정" [ref=e11287]:
+                    - cell [ref=e11288]:
+                      - generic [ref=e11291] [cursor=pointer]:
+                        - checkbox
+                    - cell "hyo-tomcat" [ref=e11293]
+                    - cell "-" [ref=e11295]
+                    - cell "-" [ref=e11297]
+                    - cell [ref=e11299]:
+                      - switch [ref=e11302]:
+                        - checkbox
+                    - cell [ref=e11304]:
+                      - button "수정" [ref=e11307] [cursor=pointer]
+                  - row "eai-0001 - - 수정" [ref=e11308]:
+                    - cell [ref=e11309]:
+                      - generic [ref=e11312] [cursor=pointer]:
+                        - checkbox
+                    - cell "eai-0001" [ref=e11314]
+                    - cell "-" [ref=e11316]
+                    - cell "-" [ref=e11318]
+                    - cell [ref=e11320]:
+                      - switch [checked] [ref=e11323]:
+                        - checkbox [checked]
+                    - cell [ref=e11325]:
+                      - button "수정" [ref=e11328] [cursor=pointer]
+                  - row "JEUS_3204 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11329]:
+                    - cell [ref=e11330]:
+                      - generic [ref=e11333] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3204" [ref=e11335]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11337]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11339]
+                    - cell [ref=e11341]:
+                      - switch [checked] [ref=e11344]:
+                        - checkbox [checked]
+                    - cell [ref=e11346]:
+                      - button "수정" [ref=e11349] [cursor=pointer]
+                  - row "JEUS_3205 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11350]:
+                    - cell [ref=e11351]:
+                      - generic [ref=e11354] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3205" [ref=e11356]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11358]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11360]
+                    - cell [ref=e11362]:
+                      - switch [checked] [ref=e11365]:
+                        - checkbox [checked]
+                    - cell [ref=e11367]:
+                      - button "수정" [ref=e11370] [cursor=pointer]
+                  - row "JEUS_3206 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11371]:
+                    - cell [ref=e11372]:
+                      - generic [ref=e11375] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3206" [ref=e11377]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11379]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11381]
+                    - cell [ref=e11383]:
+                      - switch [checked] [ref=e11386]:
+                        - checkbox [checked]
+                    - cell [ref=e11388]:
+                      - button "수정" [ref=e11391] [cursor=pointer]
+                  - row "JEUS_3207 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11392]:
+                    - cell [ref=e11393]:
+                      - generic [ref=e11396] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3207" [ref=e11398]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11400]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11402]
+                    - cell [ref=e11404]:
+                      - switch [checked] [ref=e11407]:
+                        - checkbox [checked]
+                    - cell [ref=e11409]:
+                      - button "수정" [ref=e11412] [cursor=pointer]
+                  - row "JEUS_3208 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11413]:
+                    - cell [ref=e11414]:
+                      - generic [ref=e11417] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3208" [ref=e11419]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11421]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11423]
+                    - cell [ref=e11425]:
+                      - switch [checked] [ref=e11428]:
+                        - checkbox [checked]
+                    - cell [ref=e11430]:
+                      - button "수정" [ref=e11433] [cursor=pointer]
+                  - row "JEUS_3209 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11434]:
+                    - cell [ref=e11435]:
+                      - generic [ref=e11438] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3209" [ref=e11440]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11442]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11444]
+                    - cell [ref=e11446]:
+                      - switch [checked] [ref=e11449]:
+                        - checkbox [checked]
+                    - cell [ref=e11451]:
+                      - button "수정" [ref=e11454] [cursor=pointer]
+                  - row "JEUS_3210 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11455]:
+                    - cell [ref=e11456]:
+                      - generic [ref=e11459] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3210" [ref=e11461]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11463]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11465]
+                    - cell [ref=e11467]:
+                      - switch [checked] [ref=e11470]:
+                        - checkbox [checked]
+                    - cell [ref=e11472]:
+                      - button "수정" [ref=e11475] [cursor=pointer]
+                  - row "JEUS_3211 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11476]:
+                    - cell [ref=e11477]:
+                      - generic [ref=e11480] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3211" [ref=e11482]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11484]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11486]
+                    - cell [ref=e11488]:
+                      - switch [checked] [ref=e11491]:
+                        - checkbox [checked]
+                    - cell [ref=e11493]:
+                      - button "수정" [ref=e11496] [cursor=pointer]
+                  - row "JEUS_3212 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11497]:
+                    - cell [ref=e11498]:
+                      - generic [ref=e11501] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3212" [ref=e11503]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11505]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11507]
+                    - cell [ref=e11509]:
+                      - switch [checked] [ref=e11512]:
+                        - checkbox [checked]
+                    - cell [ref=e11514]:
+                      - button "수정" [ref=e11517] [cursor=pointer]
+                  - row "JEUS_3213 - - 수정" [ref=e11518]:
+                    - cell [ref=e11519]:
+                      - generic [ref=e11522] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3213" [ref=e11524]
+                    - cell "-" [ref=e11526]
+                    - cell "-" [ref=e11528]
+                    - cell [ref=e11530]:
+                      - switch [checked] [ref=e11533]:
+                        - checkbox [checked]
+                    - cell [ref=e11535]:
+                      - button "수정" [ref=e11538] [cursor=pointer]
+                  - row "JEUS_3304 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11539]:
+                    - cell [ref=e11540]:
+                      - generic [ref=e11543] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3304" [ref=e11545]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11547]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11549]
+                    - cell [ref=e11551]:
+                      - switch [checked] [ref=e11554]:
+                        - checkbox [checked]
+                    - cell [ref=e11556]:
+                      - button "수정" [ref=e11559] [cursor=pointer]
+                  - row "JEUS_3305 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11560]:
+                    - cell [ref=e11561]:
+                      - generic [ref=e11564] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3305" [ref=e11566]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11568]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11570]
+                    - cell [ref=e11572]:
+                      - switch [checked] [ref=e11575]:
+                        - checkbox [checked]
+                    - cell [ref=e11577]:
+                      - button "수정" [ref=e11580] [cursor=pointer]
+                  - row "JEUS_3306 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11581]:
+                    - cell [ref=e11582]:
+                      - generic [ref=e11585] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3306" [ref=e11587]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11589]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11591]
+                    - cell [ref=e11593]:
+                      - switch [checked] [ref=e11596]:
+                        - checkbox [checked]
+                    - cell [ref=e11598]:
+                      - button "수정" [ref=e11601] [cursor=pointer]
+                  - row "JEUS_3307 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11602]:
+                    - cell [ref=e11603]:
+                      - generic [ref=e11606] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3307" [ref=e11608]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11610]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11612]
+                    - cell [ref=e11614]:
+                      - switch [checked] [ref=e11617]:
+                        - checkbox [checked]
+                    - cell [ref=e11619]:
+                      - button "수정" [ref=e11622] [cursor=pointer]
+                  - row "JEUS_3308 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11623]:
+                    - cell [ref=e11624]:
+                      - generic [ref=e11627] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3308" [ref=e11629]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11631]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11633]
+                    - cell [ref=e11635]:
+                      - switch [checked] [ref=e11638]:
+                        - checkbox [checked]
+                    - cell [ref=e11640]:
+                      - button "수정" [ref=e11643] [cursor=pointer]
+                  - row "JEUS_3309 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11644]:
+                    - cell [ref=e11645]:
+                      - generic [ref=e11648] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3309" [ref=e11650]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11652]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11654]
+                    - cell [ref=e11656]:
+                      - switch [checked] [ref=e11659]:
+                        - checkbox [checked]
+                    - cell [ref=e11661]:
+                      - button "수정" [ref=e11664] [cursor=pointer]
+                  - row "JEUS_3310 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11665]:
+                    - cell [ref=e11666]:
+                      - generic [ref=e11669] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3310" [ref=e11671]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11673]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11675]
+                    - cell [ref=e11677]:
+                      - switch [checked] [ref=e11680]:
+                        - checkbox [checked]
+                    - cell [ref=e11682]:
+                      - button "수정" [ref=e11685] [cursor=pointer]
+                  - row "JEUS_3311 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11686]:
+                    - cell [ref=e11687]:
+                      - generic [ref=e11690] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3311" [ref=e11692]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11694]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11696]
+                    - cell [ref=e11698]:
+                      - switch [checked] [ref=e11701]:
+                        - checkbox [checked]
+                    - cell [ref=e11703]:
+                      - button "수정" [ref=e11706] [cursor=pointer]
+                  - row "JEUS_3312 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11707]:
+                    - cell [ref=e11708]:
+                      - generic [ref=e11711] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3312" [ref=e11713]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11715]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11717]
+                    - cell [ref=e11719]:
+                      - switch [checked] [ref=e11722]:
+                        - checkbox [checked]
+                    - cell [ref=e11724]:
+                      - button "수정" [ref=e11727] [cursor=pointer]
+                  - row "JEUS_3313 2025-03-21 01:00:00 ~ 2025-03-21 11:00:00 월, 수 09:00:00 ~ 11:00:00 수정" [ref=e11728]:
+                    - cell [ref=e11729]:
+                      - generic [ref=e11732] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3313" [ref=e11734]
+                    - cell "2025-03-21 01:00:00 ~ 2025-03-21 11:00:00" [ref=e11736]
+                    - cell "월, 수 09:00:00 ~ 11:00:00" [ref=e11738]
+                    - cell [ref=e11740]:
+                      - switch [checked] [ref=e11743]:
+                        - checkbox [checked]
+                    - cell [ref=e11745]:
+                      - button "수정" [ref=e11748] [cursor=pointer]
+                  - row "JEUS_3501 2025-05-12 00:00:00 ~ 2025-05-12 23:59:59 월 09:00:00 ~ 09:00:00 외 2 건 수정" [ref=e11749]:
+                    - cell [ref=e11750]:
+                      - generic [ref=e11753] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3501" [ref=e11755]
+                    - cell "2025-05-12 00:00:00 ~ 2025-05-12 23:59:59" [ref=e11757]
+                    - cell "월 09:00:00 ~ 09:00:00 외 2 건" [ref=e11759]
+                    - cell [ref=e11761]:
+                      - switch [checked] [ref=e11764]:
+                        - checkbox [checked]
+                    - cell [ref=e11766]:
+                      - button "수정" [ref=e11769] [cursor=pointer]
+                  - row "JEUS_3502 2025-05-12 00:00:00 ~ 2025-05-12 23:59:59 월 09:00:00 ~ 09:00:00 외 2 건 수정" [ref=e11770]:
+                    - cell [ref=e11771]:
+                      - generic [ref=e11774] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3502" [ref=e11776]
+                    - cell "2025-05-12 00:00:00 ~ 2025-05-12 23:59:59" [ref=e11778]
+                    - cell "월 09:00:00 ~ 09:00:00 외 2 건" [ref=e11780]
+                    - cell [ref=e11782]:
+                      - switch [checked] [ref=e11785]:
+                        - checkbox [checked]
+                    - cell [ref=e11787]:
+                      - button "수정" [ref=e11790] [cursor=pointer]
+                  - row "JEUS_3503 2025-05-12 00:00:00 ~ 2025-05-12 23:59:59 월 09:00:00 ~ 09:00:00 외 2 건 수정" [ref=e11791]:
+                    - cell [ref=e11792]:
+                      - generic [ref=e11795] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3503" [ref=e11797]
+                    - cell "2025-05-12 00:00:00 ~ 2025-05-12 23:59:59" [ref=e11799]
+                    - cell "월 09:00:00 ~ 09:00:00 외 2 건" [ref=e11801]
+                    - cell [ref=e11803]:
+                      - switch [checked] [ref=e11806]:
+                        - checkbox [checked]
+                    - cell [ref=e11808]:
+                      - button "수정" [ref=e11811] [cursor=pointer]
+                  - row "JEUS_3504 2025-05-12 00:00:00 ~ 2025-05-12 23:59:59 월 09:00:00 ~ 09:00:00 외 2 건 수정" [ref=e11812]:
+                    - cell [ref=e11813]:
+                      - generic [ref=e11816] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3504" [ref=e11818]
+                    - cell "2025-05-12 00:00:00 ~ 2025-05-12 23:59:59" [ref=e11820]
+                    - cell "월 09:00:00 ~ 09:00:00 외 2 건" [ref=e11822]
+                    - cell [ref=e11824]:
+                      - switch [checked] [ref=e11827]:
+                        - checkbox [checked]
+                    - cell [ref=e11829]:
+                      - button "수정" [ref=e11832] [cursor=pointer]
+                  - row "JEUS_3505 2025-05-12 00:00:00 ~ 2025-05-12 23:59:58 월 09:00:00 ~ 09:00:00 외 2 건 수정" [ref=e11833]:
+                    - cell [ref=e11834]:
+                      - generic [ref=e11837] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3505" [ref=e11839]
+                    - cell "2025-05-12 00:00:00 ~ 2025-05-12 23:59:58" [ref=e11841]
+                    - cell "월 09:00:00 ~ 09:00:00 외 2 건" [ref=e11843]
+                    - cell [ref=e11845]:
+                      - switch [checked] [ref=e11848]:
+                        - checkbox [checked]
+                    - cell [ref=e11850]:
+                      - button "수정" [ref=e11853] [cursor=pointer]
+                  - row "JEUS_3506 2025-05-12 00:00:00 ~ 2025-05-12 23:59:59 월 09:00:00 ~ 09:00:00 외 2 건 수정" [ref=e11854]:
+                    - cell [ref=e11855]:
+                      - generic [ref=e11858] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3506" [ref=e11860]
+                    - cell "2025-05-12 00:00:00 ~ 2025-05-12 23:59:59" [ref=e11862]
+                    - cell "월 09:00:00 ~ 09:00:00 외 2 건" [ref=e11864]
+                    - cell [ref=e11866]:
+                      - switch [checked] [ref=e11869]:
+                        - checkbox [checked]
+                    - cell [ref=e11871]:
+                      - button "수정" [ref=e11874] [cursor=pointer]
+                  - row "JEUS_3507 2025-05-12 00:00:00 ~ 2025-05-12 23:59:59 월 09:00:00 ~ 09:00:00 외 2 건 수정" [ref=e11875]:
+                    - cell [ref=e11876]:
+                      - generic [ref=e11879] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3507" [ref=e11881]
+                    - cell "2025-05-12 00:00:00 ~ 2025-05-12 23:59:59" [ref=e11883]
+                    - cell "월 09:00:00 ~ 09:00:00 외 2 건" [ref=e11885]
+                    - cell [ref=e11887]:
+                      - switch [checked] [ref=e11890]:
+                        - checkbox [checked]
+                    - cell [ref=e11892]:
+                      - button "수정" [ref=e11895] [cursor=pointer]
+                  - row "JEUS_3508 2025-05-12 00:00:00 ~ 2025-05-12 23:59:59 월 09:00:00 ~ 09:00:00 외 2 건 수정" [ref=e11896]:
+                    - cell [ref=e11897]:
+                      - generic [ref=e11900] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3508" [ref=e11902]
+                    - cell "2025-05-12 00:00:00 ~ 2025-05-12 23:59:59" [ref=e11904]
+                    - cell "월 09:00:00 ~ 09:00:00 외 2 건" [ref=e11906]
+                    - cell [ref=e11908]:
+                      - switch [checked] [ref=e11911]:
+                        - checkbox [checked]
+                    - cell [ref=e11913]:
+                      - button "수정" [ref=e11916] [cursor=pointer]
+                  - row "JEUS_3701 - - 수정" [ref=e11917]:
+                    - cell [ref=e11918]:
+                      - generic [ref=e11921] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3701" [ref=e11923]
+                    - cell "-" [ref=e11925]
+                    - cell "-" [ref=e11927]
+                    - cell [ref=e11929]:
+                      - switch [ref=e11932]:
+                        - checkbox
+                    - cell [ref=e11934]:
+                      - button "수정" [ref=e11937] [cursor=pointer]
+                  - row "JEUS_3702 - - 수정" [ref=e11938]:
+                    - cell [ref=e11939]:
+                      - generic [ref=e11942] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3702" [ref=e11944]
+                    - cell "-" [ref=e11946]
+                    - cell "-" [ref=e11948]
+                    - cell [ref=e11950]:
+                      - switch [checked] [ref=e11953]:
+                        - checkbox [checked]
+                    - cell [ref=e11955]:
+                      - button "수정" [ref=e11958] [cursor=pointer]
+                  - row "JEUS_3703 - - 수정" [ref=e11959]:
+                    - cell [ref=e11960]:
+                      - generic [ref=e11963] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3703" [ref=e11965]
+                    - cell "-" [ref=e11967]
+                    - cell "-" [ref=e11969]
+                    - cell [ref=e11971]:
+                      - switch [ref=e11974]:
+                        - checkbox
+                    - cell [ref=e11976]:
+                      - button "수정" [ref=e11979] [cursor=pointer]
+                  - row "JEUS_3704 - - 수정" [ref=e11980]:
+                    - cell [ref=e11981]:
+                      - generic [ref=e11984] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3704" [ref=e11986]
+                    - cell "-" [ref=e11988]
+                    - cell "-" [ref=e11990]
+                    - cell [ref=e11992]:
+                      - switch [ref=e11995]:
+                        - checkbox
+                    - cell [ref=e11997]:
+                      - button "수정" [ref=e12000] [cursor=pointer]
+                  - row "JEUS_3705 - - 수정" [ref=e12001]:
+                    - cell [ref=e12002]:
+                      - generic [ref=e12005] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3705" [ref=e12007]
+                    - cell "-" [ref=e12009]
+                    - cell "-" [ref=e12011]
+                    - cell [ref=e12013]:
+                      - switch [checked] [ref=e12016]:
+                        - checkbox [checked]
+                    - cell [ref=e12018]:
+                      - button "수정" [ref=e12021] [cursor=pointer]
+                  - row "JEUS_3706 - - 수정" [ref=e12022]:
+                    - cell [ref=e12023]:
+                      - generic [ref=e12026] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3706" [ref=e12028]
+                    - cell "-" [ref=e12030]
+                    - cell "-" [ref=e12032]
+                    - cell [ref=e12034]:
+                      - switch [ref=e12037]:
+                        - checkbox
+                    - cell [ref=e12039]:
+                      - button "수정" [ref=e12042] [cursor=pointer]
+                  - row "JEUS_3707 - - 수정" [ref=e12043]:
+                    - cell [ref=e12044]:
+                      - generic [ref=e12047] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3707" [ref=e12049]
+                    - cell "-" [ref=e12051]
+                    - cell "-" [ref=e12053]
+                    - cell [ref=e12055]:
+                      - switch [ref=e12058]:
+                        - checkbox
+                    - cell [ref=e12060]:
+                      - button "수정" [ref=e12063] [cursor=pointer]
+                  - row "JEUS_3708 - - 수정" [ref=e12064]:
+                    - cell [ref=e12065]:
+                      - generic [ref=e12068] [cursor=pointer]:
+                        - checkbox
+                    - cell "JEUS_3708" [ref=e12070]
+                    - cell "-" [ref=e12072]
+                    - cell "-" [ref=e12074]
+                    - cell [ref=e12076]:
+                      - switch [ref=e12079]:
+                        - checkbox
+                    - cell [ref=e12081]:
+                      - button "수정" [ref=e12084] [cursor=pointer]
+                  - row "loan-0001 - - 수정" [ref=e12085]:
+                    - cell [ref=e12086]:
+                      - generic [ref=e12089] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0001" [ref=e12091]
+                    - cell "-" [ref=e12093]
+                    - cell "-" [ref=e12095]
+                    - cell [ref=e12097]:
+                      - switch [ref=e12100]:
+                        - checkbox
+                    - cell [ref=e12102]:
+                      - button "수정" [ref=e12105] [cursor=pointer]
+                  - row "loan-0002 - - 수정" [ref=e12106]:
+                    - cell [ref=e12107]:
+                      - generic [ref=e12110] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0002" [ref=e12112]
+                    - cell "-" [ref=e12114]
+                    - cell "-" [ref=e12116]
+                    - cell [ref=e12118]:
+                      - switch [ref=e12121]:
+                        - checkbox
+                    - cell [ref=e12123]:
+                      - button "수정" [ref=e12126] [cursor=pointer]
+                  - row "loan-0003 - - 수정" [ref=e12127]:
+                    - cell [ref=e12128]:
+                      - generic [ref=e12131] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0003" [ref=e12133]
+                    - cell "-" [ref=e12135]
+                    - cell "-" [ref=e12137]
+                    - cell [ref=e12139]:
+                      - switch [ref=e12142]:
+                        - checkbox
+                    - cell [ref=e12144]:
+                      - button "수정" [ref=e12147] [cursor=pointer]
+                  - row "loan-0004 - - 수정" [ref=e12148]:
+                    - cell [ref=e12149]:
+                      - generic [ref=e12152] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0004" [ref=e12154]
+                    - cell "-" [ref=e12156]
+                    - cell "-" [ref=e12158]
+                    - cell [ref=e12160]:
+                      - switch [ref=e12163]:
+                        - checkbox
+                    - cell [ref=e12165]:
+                      - button "수정" [ref=e12168] [cursor=pointer]
+                  - row "loan-0005 - - 수정" [ref=e12169]:
+                    - cell [ref=e12170]:
+                      - generic [ref=e12173] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0005" [ref=e12175]
+                    - cell "-" [ref=e12177]
+                    - cell "-" [ref=e12179]
+                    - cell [ref=e12181]:
+                      - switch [ref=e12184]:
+                        - checkbox
+                    - cell [ref=e12186]:
+                      - button "수정" [ref=e12189] [cursor=pointer]
+                  - row "loan-0006 - - 수정" [ref=e12190]:
+                    - cell [ref=e12191]:
+                      - generic [ref=e12194] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0006" [ref=e12196]
+                    - cell "-" [ref=e12198]
+                    - cell "-" [ref=e12200]
+                    - cell [ref=e12202]:
+                      - switch [ref=e12205]:
+                        - checkbox
+                    - cell [ref=e12207]:
+                      - button "수정" [ref=e12210] [cursor=pointer]
+                  - row "loan-0007 - - 수정" [ref=e12211]:
+                    - cell [ref=e12212]:
+                      - generic [ref=e12215] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0007" [ref=e12217]
+                    - cell "-" [ref=e12219]
+                    - cell "-" [ref=e12221]
+                    - cell [ref=e12223]:
+                      - switch [ref=e12226]:
+                        - checkbox
+                    - cell [ref=e12228]:
+                      - button "수정" [ref=e12231] [cursor=pointer]
+                  - row "loan-0008 - - 수정" [ref=e12232]:
+                    - cell [ref=e12233]:
+                      - generic [ref=e12236] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0008" [ref=e12238]
+                    - cell "-" [ref=e12240]
+                    - cell "-" [ref=e12242]
+                    - cell [ref=e12244]:
+                      - switch [ref=e12247]:
+                        - checkbox
+                    - cell [ref=e12249]:
+                      - button "수정" [ref=e12252] [cursor=pointer]
+                  - row "loan-0009 - - 수정" [ref=e12253]:
+                    - cell [ref=e12254]:
+                      - generic [ref=e12257] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0009" [ref=e12259]
+                    - cell "-" [ref=e12261]
+                    - cell "-" [ref=e12263]
+                    - cell [ref=e12265]:
+                      - switch [ref=e12268]:
+                        - checkbox
+                    - cell [ref=e12270]:
+                      - button "수정" [ref=e12273] [cursor=pointer]
+                  - row "loan-0010 - - 수정" [ref=e12274]:
+                    - cell [ref=e12275]:
+                      - generic [ref=e12278] [cursor=pointer]:
+                        - checkbox
+                    - cell "loan-0010" [ref=e12280]
+                    - cell "-" [ref=e12282]
+                    - cell "-" [ref=e12284]
+                    - cell [ref=e12286]:
+                      - switch [ref=e12289]:
+                        - checkbox
+                    - cell [ref=e12291]:
+                      - button "수정" [ref=e12294] [cursor=pointer]
+                  - row "info-history-0001 - - 수정" [ref=e12295]:
+                    - cell [ref=e12296]:
+                      - generic [ref=e12299] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0001" [ref=e12301]
+                    - cell "-" [ref=e12303]
+                    - cell "-" [ref=e12305]
+                    - cell [ref=e12307]:
+                      - switch [ref=e12310]:
+                        - checkbox
+                    - cell [ref=e12312]:
+                      - button "수정" [ref=e12315] [cursor=pointer]
+                  - row "info-history-0002 - - 수정" [ref=e12316]:
+                    - cell [ref=e12317]:
+                      - generic [ref=e12320] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0002" [ref=e12322]
+                    - cell "-" [ref=e12324]
+                    - cell "-" [ref=e12326]
+                    - cell [ref=e12328]:
+                      - switch [ref=e12331]:
+                        - checkbox
+                    - cell [ref=e12333]:
+                      - button "수정" [ref=e12336] [cursor=pointer]
+                  - row "info-history-0003 - - 수정" [ref=e12337]:
+                    - cell [ref=e12338]:
+                      - generic [ref=e12341] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0003" [ref=e12343]
+                    - cell "-" [ref=e12345]
+                    - cell "-" [ref=e12347]
+                    - cell [ref=e12349]:
+                      - switch [ref=e12352]:
+                        - checkbox
+                    - cell [ref=e12354]:
+                      - button "수정" [ref=e12357] [cursor=pointer]
+                  - row "info-history-0004 - - 수정" [ref=e12358]:
+                    - cell [ref=e12359]:
+                      - generic [ref=e12362] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0004" [ref=e12364]
+                    - cell "-" [ref=e12366]
+                    - cell "-" [ref=e12368]
+                    - cell [ref=e12370]:
+                      - switch [ref=e12373]:
+                        - checkbox
+                    - cell [ref=e12375]:
+                      - button "수정" [ref=e12378] [cursor=pointer]
+                  - row "info-history-0005 - - 수정" [ref=e12379]:
+                    - cell [ref=e12380]:
+                      - generic [ref=e12383] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0005" [ref=e12385]
+                    - cell "-" [ref=e12387]
+                    - cell "-" [ref=e12389]
+                    - cell [ref=e12391]:
+                      - switch [ref=e12394]:
+                        - checkbox
+                    - cell [ref=e12396]:
+                      - button "수정" [ref=e12399] [cursor=pointer]
+                  - row "info-history-0006 - - 수정" [ref=e12400]:
+                    - cell [ref=e12401]:
+                      - generic [ref=e12404] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0006" [ref=e12406]
+                    - cell "-" [ref=e12408]
+                    - cell "-" [ref=e12410]
+                    - cell [ref=e12412]:
+                      - switch [ref=e12415]:
+                        - checkbox
+                    - cell [ref=e12417]:
+                      - button "수정" [ref=e12420] [cursor=pointer]
+                  - row "exemone-neworder - - 수정" [ref=e12421]:
+                    - cell [ref=e12422]:
+                      - generic [ref=e12425] [cursor=pointer]:
+                        - checkbox
+                    - cell "exemone-neworder" [ref=e12427]
+                    - cell "-" [ref=e12429]
+                    - cell "-" [ref=e12431]
+                    - cell [ref=e12433]:
+                      - switch [ref=e12436]:
+                        - checkbox
+                    - cell [ref=e12438]:
+                      - button "수정" [ref=e12441] [cursor=pointer]
+                  - row "info-history-0007 - - 수정" [ref=e12442]:
+                    - cell [ref=e12443]:
+                      - generic [ref=e12446] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0007" [ref=e12448]
+                    - cell "-" [ref=e12450]
+                    - cell "-" [ref=e12452]
+                    - cell [ref=e12454]:
+                      - switch [ref=e12457]:
+                        - checkbox
+                    - cell [ref=e12459]:
+                      - button "수정" [ref=e12462] [cursor=pointer]
+                  - row "info-history-0008 - - 수정" [ref=e12463]:
+                    - cell [ref=e12464]:
+                      - generic [ref=e12467] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0008" [ref=e12469]
+                    - cell "-" [ref=e12471]
+                    - cell "-" [ref=e12473]
+                    - cell [ref=e12475]:
+                      - switch [ref=e12478]:
+                        - checkbox
+                    - cell [ref=e12480]:
+                      - button "수정" [ref=e12483] [cursor=pointer]
+                  - row "info-history-0009 - - 수정" [ref=e12484]:
+                    - cell [ref=e12485]:
+                      - generic [ref=e12488] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0009" [ref=e12490]
+                    - cell "-" [ref=e12492]
+                    - cell "-" [ref=e12494]
+                    - cell [ref=e12496]:
+                      - switch [ref=e12499]:
+                        - checkbox
+                    - cell [ref=e12501]:
+                      - button "수정" [ref=e12504] [cursor=pointer]
+                  - row "transfer-0001 - - 수정" [ref=e12505]:
+                    - cell [ref=e12506]:
+                      - generic [ref=e12509] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0001" [ref=e12511]
+                    - cell "-" [ref=e12513]
+                    - cell "-" [ref=e12515]
+                    - cell [ref=e12517]:
+                      - switch [ref=e12520]:
+                        - checkbox
+                    - cell [ref=e12522]:
+                      - button "수정" [ref=e12525] [cursor=pointer]
+                  - row "info-history-0010 - - 수정" [ref=e12526]:
+                    - cell [ref=e12527]:
+                      - generic [ref=e12530] [cursor=pointer]:
+                        - checkbox
+                    - cell "info-history-0010" [ref=e12532]
+                    - cell "-" [ref=e12534]
+                    - cell "-" [ref=e12536]
+                    - cell [ref=e12538]:
+                      - switch [ref=e12541]:
+                        - checkbox
+                    - cell [ref=e12543]:
+                      - button "수정" [ref=e12546] [cursor=pointer]
+                  - row "transfer-0002 - - 수정" [ref=e12547]:
+                    - cell [ref=e12548]:
+                      - generic [ref=e12551] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0002" [ref=e12553]
+                    - cell "-" [ref=e12555]
+                    - cell "-" [ref=e12557]
+                    - cell [ref=e12559]:
+                      - switch [ref=e12562]:
+                        - checkbox
+                    - cell [ref=e12564]:
+                      - button "수정" [ref=e12567] [cursor=pointer]
+                  - row "exemone-payment - - 수정" [ref=e12568]:
+                    - cell [ref=e12569]:
+                      - generic [ref=e12572] [cursor=pointer]:
+                        - checkbox
+                    - cell "exemone-payment" [ref=e12574]
+                    - cell "-" [ref=e12576]
+                    - cell "-" [ref=e12578]
+                    - cell [ref=e12580]:
+                      - switch [ref=e12583]:
+                        - checkbox
+                    - cell [ref=e12585]:
+                      - button "수정" [ref=e12588] [cursor=pointer]
+                  - row "transfer-0003 - - 수정" [ref=e12589]:
+                    - cell [ref=e12590]:
+                      - generic [ref=e12593] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0003" [ref=e12595]
+                    - cell "-" [ref=e12597]
+                    - cell "-" [ref=e12599]
+                    - cell [ref=e12601]:
+                      - switch [ref=e12604]:
+                        - checkbox
+                    - cell [ref=e12606]:
+                      - button "수정" [ref=e12609] [cursor=pointer]
+                  - row "xaiops-dds(prod) - - 수정" [ref=e12610]:
+                    - cell [ref=e12611]:
+                      - generic [ref=e12614] [cursor=pointer]:
+                        - checkbox
+                    - cell "xaiops-dds(prod)" [ref=e12616]
+                    - cell "-" [ref=e12618]
+                    - cell "-" [ref=e12620]
+                    - cell [ref=e12622]:
+                      - switch [ref=e12625]:
+                        - checkbox
+                    - cell [ref=e12627]:
+                      - button "수정" [ref=e12630] [cursor=pointer]
+                  - row "xaiops-server-cmd - - 수정" [ref=e12631]:
+                    - cell [ref=e12632]:
+                      - generic [ref=e12635] [cursor=pointer]:
+                        - checkbox
+                    - cell "xaiops-server-cmd" [ref=e12637]
+                    - cell "-" [ref=e12639]
+                    - cell "-" [ref=e12641]
+                    - cell [ref=e12643]:
+                      - switch [ref=e12646]:
+                        - checkbox
+                    - cell [ref=e12648]:
+                      - button "수정" [ref=e12651] [cursor=pointer]
+                  - row "xaiops-alarm(prod) - - 수정" [ref=e12652]:
+                    - cell [ref=e12653]:
+                      - generic [ref=e12656] [cursor=pointer]:
+                        - checkbox
+                    - cell "xaiops-alarm(prod)" [ref=e12658]
+                    - cell "-" [ref=e12660]
+                    - cell "-" [ref=e12662]
+                    - cell [ref=e12664]:
+                      - switch [ref=e12667]:
+                        - checkbox
+                    - cell [ref=e12669]:
+                      - button "수정" [ref=e12672] [cursor=pointer]
+                  - row "exemone-orderstatus - - 수정" [ref=e12673]:
+                    - cell [ref=e12674]:
+                      - generic [ref=e12677] [cursor=pointer]:
+                        - checkbox
+                    - cell "exemone-orderstatus" [ref=e12679]
+                    - cell "-" [ref=e12681]
+                    - cell "-" [ref=e12683]
+                    - cell [ref=e12685]:
+                      - switch [ref=e12688]:
+                        - checkbox
+                    - cell [ref=e12690]:
+                      - button "수정" [ref=e12693] [cursor=pointer]
+                  - row "exemone-main - - 수정" [ref=e12694]:
+                    - cell [ref=e12695]:
+                      - generic [ref=e12698] [cursor=pointer]:
+                        - checkbox
+                    - cell "exemone-main" [ref=e12700]
+                    - cell "-" [ref=e12702]
+                    - cell "-" [ref=e12704]
+                    - cell [ref=e12706]:
+                      - switch [ref=e12709]:
+                        - checkbox
+                    - cell [ref=e12711]:
+                      - button "수정" [ref=e12714] [cursor=pointer]
+                  - row "transfer-0004 - - 수정" [ref=e12715]:
+                    - cell [ref=e12716]:
+                      - generic [ref=e12719] [cursor=pointer]:
+                        - checkbox
+                    - cell "transfer-0004" [ref=e12721]
+                    - cell "-" [ref=e12723]
+                    - cell "-" [ref=e12725]
+                    - cell [ref=e12727]:
+                      - switch [ref=e12730]:
+                        - checkbox
+                    - cell [ref=e12732]:
+                      - button "수정" [ref=e12735] [cursor=pointer]
+                  - row "[e2etest.one_2_0] - - 수정" [ref=e12736]:
+                    - cell [ref=e12737]:
+                      - generic [ref=e12740] [cursor=pointer]:
+                        - checkbox
+                    - cell "[e2etest.one_2_0]" [ref=e12742]
+                    - cell "-" [ref=e12744]
+                    - cell "-" [ref=e12746]
+                    - cell [ref=e12748]:
+                      - switch [ref=e12751]:
+                        - checkbox
+                    - cell [ref=e12753]:
+                      - button "수정" [ref=e12756] [cursor=pointer]
+                  - row "[e2etest.one_4_0] - - 수정" [ref=e12757]:
+                    - cell [ref=e12758]:
+                      - generic [ref=e12761] [cursor=pointer]:
+                        - checkbox
+                    - cell "[e2etest.one_4_0]" [ref=e12763]
+                    - cell "-" [ref=e12765]
+                    - cell "-" [ref=e12767]
+                    - cell [ref=e12769]:
+                      - switch [ref=e12772]:
+                        - checkbox
+                    - cell [ref=e12774]:
+                      - button "수정" [ref=e12777] [cursor=pointer]
+                  - row "[e2etest.one_3_0] - - 수정" [ref=e12778]:
+                    - cell [ref=e12779]:
+                      - generic [ref=e12782] [cursor=pointer]:
+                        - checkbox
+                    - cell "[e2etest.one_3_0]" [ref=e12784]
+                    - cell "-" [ref=e12786]
+                    - cell "-" [ref=e12788]
+                    - cell [ref=e12790]:
+                      - switch [ref=e12793]:
+                        - checkbox
+                    - cell [ref=e12795]:
+                      - button "수정" [ref=e12798] [cursor=pointer]
+                  - row "exemone-delivery - - 수정" [ref=e12799]:
+                    - cell [ref=e12800]:
+                      - generic [ref=e12803] [cursor=pointer]:
+                        - checkbox
+                    - cell "exemone-delivery" [ref=e12805]
+                    - cell "-" [ref=e12807]
+                    - cell "-" [ref=e12809]
+                    - cell [ref=e12811]:
+                      - switch [ref=e12814]:
+                        - checkbox
+                    - cell [ref=e12816]:
+                      - button "수정" [ref=e12819] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

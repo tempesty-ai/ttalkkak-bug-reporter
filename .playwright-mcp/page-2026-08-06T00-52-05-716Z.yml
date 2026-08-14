@@ -1,0 +1,407 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 시스템 시스템 연동
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e6267]:
+      - menubar [ref=e6268]:
+        - menuitem "구간" [ref=e6269] [cursor=pointer]
+        - menuitem "업무 그룹" [ref=e6270] [cursor=pointer]
+        - menuitem "호스트" [ref=e6271] [cursor=pointer]
+        - menuitem "인스턴스" [ref=e6272] [cursor=pointer]
+        - menuitem "서비스" [ref=e6273] [cursor=pointer]
+        - menuitem "로그" [ref=e6274] [cursor=pointer]
+        - menuitem "시스템 연동" [ref=e6275] [cursor=pointer]
+      - generic [ref=e6277]:
+        - generic [ref=e6280]:
+          - text: 로그 유형
+          - generic [ref=e6282]:
+            - textbox "선택" [ref=e6283] [cursor=pointer]: 전체
+            - generic: 
+        - generic [ref=e6288]:
+          - generic [ref=e6289]:
+            - generic [ref=e6290]: 로그 목록
+            - textbox "검색" [ref=e6305]
+          - generic [ref=e6306]:
+            - table [ref=e6308]:
+              - rowgroup [ref=e6322]:
+                - row " 로그 ID 타겟 ID 로그 이름 로그 타입 로그 유형 로그 위치 Hostname 인스턴스 명 설명 활성" [ref=e6323]:
+                  - columnheader [ref=e6324]:
+                    - generic [ref=e6327] [cursor=pointer]:
+                      - checkbox
+                  - columnheader [ref=e6329]:
+                    - button "" [ref=e6332] [cursor=pointer]
+                  - columnheader [ref=e6334]
+                  - columnheader [ref=e6336]
+                  - columnheader [ref=e6338]
+                  - columnheader [ref=e6342]
+                  - columnheader [ref=e6344]
+                  - columnheader [ref=e6348]
+                  - columnheader [ref=e6350]
+                  - columnheader [ref=e6356]
+                  - columnheader [ref=e6360]
+                  - columnheader [ref=e6364]
+            - table [ref=e6367]:
+              - rowgroup [ref=e6381]:
+                - row "272 dev_ai-server.apdex [CH]개발 apdex 로그 FILELOG ETC /home/aiops/xaiops-log/apdex-log/xaiops-apdex.log ai-node-dev-be-3772" [ref=e6382]:
+                  - cell [ref=e6383]:
+                    - generic [ref=e6386] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6388]
+                  - cell "272" [ref=e6389]
+                  - cell "dev_ai-server.apdex" [ref=e6391]
+                  - cell "[CH]개발 apdex 로그" [ref=e6393]
+                  - cell "FILELOG" [ref=e6398]
+                  - cell "ETC" [ref=e6400]
+                  - cell "/home/aiops/xaiops-log/apdex-log/xaiops-apdex.log" [ref=e6405]
+                  - cell "ai-node-dev-be-3772" [ref=e6407]
+                  - cell [ref=e6412]
+                  - cell [ref=e6413]
+                  - cell [ref=e6414]:
+                    - switch [ref=e6417]:
+                      - checkbox
+                - row "394 localhost.localdomain.sjs localhost.localdomain.sjs FILELOG ETC /root/test.log localhost.localdomain" [ref=e6419]:
+                  - cell [ref=e6420]:
+                    - generic [ref=e6423] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6425]
+                  - cell "394" [ref=e6426]
+                  - cell "localhost.localdomain.sjs" [ref=e6428]
+                  - cell "localhost.localdomain.sjs" [ref=e6430]
+                  - cell "FILELOG" [ref=e6435]
+                  - cell "ETC" [ref=e6437]
+                  - cell "/root/test.log" [ref=e6442]
+                  - cell "localhost.localdomain" [ref=e6444]
+                  - cell [ref=e6449]
+                  - cell [ref=e6450]
+                  - cell [ref=e6452]:
+                    - switch [ref=e6455]:
+                      - checkbox
+                - row "441 TEST--09 TEST--09 FILELOG WAS TEST--09 ai-container-exbk-cahnnelmob-37130 TEST--09" [ref=e6457]:
+                  - cell [ref=e6458]:
+                    - generic [ref=e6461] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6463]
+                  - cell "441" [ref=e6464]
+                  - cell "TEST--09" [ref=e6466]
+                  - cell "TEST--09" [ref=e6468]
+                  - cell "FILELOG" [ref=e6473]
+                  - cell "WAS" [ref=e6475]
+                  - cell "TEST--09" [ref=e6480]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e6482]
+                  - cell [ref=e6487]
+                  - cell "TEST--09" [ref=e6488]
+                  - cell [ref=e6493]:
+                    - switch [checked] [ref=e6496]:
+                      - checkbox [checked]
+                - row "412 test_cje test_cje FILELOG WAS ai-container-exbk-cahnnelmob-37130 mob-0002 test22" [ref=e6498]:
+                  - cell [ref=e6499]:
+                    - generic [ref=e6502] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6504]
+                  - cell "412" [ref=e6505]
+                  - cell "test_cje" [ref=e6507]
+                  - cell "test_cje" [ref=e6509]
+                  - cell "FILELOG" [ref=e6514]
+                  - cell "WAS" [ref=e6516]
+                  - cell [ref=e6521]
+                  - cell "ai-container-exbk-cahnnelmob-37130" [ref=e6522]
+                  - cell "mob-0002" [ref=e6527]
+                  - cell "test22" [ref=e6532]
+                  - cell [ref=e6537]:
+                    - switch [ref=e6540]:
+                      - checkbox
+                - row "323 ai-server-dev-lp-3421.syslog XAIOPS 데모 개발 (BE) SYSLOG OS ai-server-dev-lp-3421" [ref=e6542]:
+                  - cell [ref=e6543]:
+                    - generic [ref=e6546] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6548]
+                  - cell "323" [ref=e6549]
+                  - cell "ai-server-dev-lp-3421.syslog" [ref=e6551]
+                  - cell "XAIOPS 데모 개발 (BE)" [ref=e6553]
+                  - cell "SYSLOG" [ref=e6558]
+                  - cell "OS" [ref=e6560]
+                  - cell [ref=e6565]
+                  - cell "ai-server-dev-lp-3421" [ref=e6566]
+                  - cell [ref=e6571]
+                  - cell [ref=e6572]
+                  - cell [ref=e6574]:
+                    - switch [checked] [ref=e6577]:
+                      - checkbox [checked]
+                - row "332 ai-server-prod-ai-3783.syslog XAIOPS 데모 운영 (AI) SYSLOG OS ai-server-prod-ai-3783" [ref=e6579]:
+                  - cell [ref=e6580]:
+                    - generic [ref=e6583] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6585]
+                  - cell "332" [ref=e6586]
+                  - cell "ai-server-prod-ai-3783.syslog" [ref=e6588]
+                  - cell "XAIOPS 데모 운영 (AI)" [ref=e6590]
+                  - cell "SYSLOG" [ref=e6595]
+                  - cell "OS" [ref=e6597]
+                  - cell [ref=e6602]
+                  - cell "ai-server-prod-ai-3783" [ref=e6603]
+                  - cell [ref=e6608]
+                  - cell [ref=e6609]
+                  - cell [ref=e6611]:
+                    - switch [checked] [ref=e6614]:
+                      - checkbox [checked]
+                - row "288 ai-server-prod-lp-3411.syslog XAIOPS 데모 운영 (CT) SYSLOG OS ai-server-prod-lp-3411" [ref=e6616]:
+                  - cell [ref=e6617]:
+                    - generic [ref=e6620] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6622]
+                  - cell "288" [ref=e6623]
+                  - cell "ai-server-prod-lp-3411.syslog" [ref=e6625]
+                  - cell "XAIOPS 데모 운영 (CT)" [ref=e6627]
+                  - cell "SYSLOG" [ref=e6632]
+                  - cell "OS" [ref=e6634]
+                  - cell [ref=e6639]
+                  - cell "ai-server-prod-lp-3411" [ref=e6640]
+                  - cell [ref=e6645]
+                  - cell [ref=e6646]
+                  - cell [ref=e6648]:
+                    - switch [checked] [ref=e6651]:
+                      - checkbox [checked]
+                - row "285 dev_ai-server.api 개발 api 로그 FILELOG ETC /data/xaiops-log/server-log/xaiops-server.log ai-node-dev-be-3772" [ref=e6653]:
+                  - cell [ref=e6654]:
+                    - generic [ref=e6657] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6659]
+                  - cell "285" [ref=e6660]
+                  - cell "dev_ai-server.api" [ref=e6662]
+                  - cell "개발 api 로그" [ref=e6664]
+                  - cell "FILELOG" [ref=e6669]
+                  - cell "ETC" [ref=e6671]
+                  - cell "/data/xaiops-log/server-log/xaiops-server.log" [ref=e6676]
+                  - cell "ai-node-dev-be-3772" [ref=e6678]
+                  - cell [ref=e6683]
+                  - cell [ref=e6684]
+                  - cell [ref=e6686]:
+                    - switch [checked] [ref=e6689]:
+                      - checkbox [checked]
+                - row "289 ai-node-dev-db-3771.syslog 개발 DB SYSLOG OS ai-node-dev-db-3771" [ref=e6691]:
+                  - cell [ref=e6692]:
+                    - generic [ref=e6695] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6697]
+                  - cell "289" [ref=e6698]
+                  - cell "ai-node-dev-db-3771.syslog" [ref=e6700]
+                  - cell "개발 DB" [ref=e6702]
+                  - cell "SYSLOG" [ref=e6707]
+                  - cell "OS" [ref=e6709]
+                  - cell [ref=e6714]
+                  - cell "ai-node-dev-db-3771" [ref=e6715]
+                  - cell [ref=e6720]
+                  - cell [ref=e6721]
+                  - cell [ref=e6723]:
+                    - switch [checked] [ref=e6726]:
+                      - checkbox [checked]
+                - row "280 dev_ai-pg.dds 개발 dds 로그 FILELOG ETC /home/aiops/xaiops-log/dds-log/xaiops-dds.log ai-node-dev-db-3771" [ref=e6728]:
+                  - cell [ref=e6729]:
+                    - generic [ref=e6732] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6734]
+                  - cell "280" [ref=e6735]
+                  - cell "dev_ai-pg.dds" [ref=e6737]
+                  - cell "개발 dds 로그" [ref=e6739]
+                  - cell "FILELOG" [ref=e6744]
+                  - cell "ETC" [ref=e6746]
+                  - cell "/home/aiops/xaiops-log/dds-log/xaiops-dds.log" [ref=e6751]
+                  - cell "ai-node-dev-db-3771" [ref=e6753]
+                  - cell [ref=e6758]
+                  - cell [ref=e6759]
+                  - cell [ref=e6761]:
+                    - switch [checked] [ref=e6764]:
+                      - checkbox [checked]
+                - row "276 dev_ai-pg.pg 개발 pg 로그 FILELOG DB /data/pg/log/postgresql-Wed.log ai-node-dev-db-3771" [ref=e6766]:
+                  - cell [ref=e6767]:
+                    - generic [ref=e6770] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6772]
+                  - cell "276" [ref=e6773]
+                  - cell "dev_ai-pg.pg" [ref=e6775]
+                  - cell "개발 pg 로그" [ref=e6777]
+                  - cell "FILELOG" [ref=e6782]
+                  - cell "DB" [ref=e6784]
+                  - cell "/data/pg/log/postgresql-Wed.log" [ref=e6789]
+                  - cell "ai-node-dev-db-3771" [ref=e6791]
+                  - cell [ref=e6796]
+                  - cell [ref=e6797]
+                  - cell [ref=e6799]:
+                    - switch [checked] [ref=e6802]:
+                      - checkbox [checked]
+                - row "333 ai-node-dev-be-3772.syslog 개발 대시보드 로그 SYSLOG OS ai-node-dev-be-3772 xaiops-alarm(prod)" [ref=e6804]:
+                  - cell [ref=e6805]:
+                    - generic [ref=e6808] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6810]
+                  - cell "333" [ref=e6811]
+                  - cell "ai-node-dev-be-3772.syslog" [ref=e6813]
+                  - cell "개발 대시보드 로그" [ref=e6815]
+                  - cell "SYSLOG" [ref=e6820]
+                  - cell "OS" [ref=e6822]
+                  - cell [ref=e6827]
+                  - cell "ai-node-dev-be-3772" [ref=e6828]
+                  - cell "xaiops-alarm(prod)" [ref=e6833]
+                  - cell [ref=e6838]
+                  - cell [ref=e6840]:
+                    - switch [checked] [ref=e6843]:
+                      - checkbox [checked]
+                - row "286 dev_train-server.ss 개발 서빙 로그 FILELOG ETC /home/aiops/xaiops-log/serving-log/xaiops-serving.log ai-server-dev-ai-3773" [ref=e6845]:
+                  - cell [ref=e6846]:
+                    - generic [ref=e6849] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6851]
+                  - cell "286" [ref=e6852]
+                  - cell "dev_train-server.ss" [ref=e6854]
+                  - cell "개발 서빙 로그" [ref=e6856]
+                  - cell "FILELOG" [ref=e6861]
+                  - cell "ETC" [ref=e6863]
+                  - cell "/home/aiops/xaiops-log/serving-log/xaiops-serving.log" [ref=e6868]
+                  - cell "ai-server-dev-ai-3773" [ref=e6870]
+                  - cell [ref=e6875]
+                  - cell [ref=e6876]
+                  - cell [ref=e6878]:
+                    - switch [checked] [ref=e6881]:
+                      - checkbox [checked]
+                - row "275 dev_ai-server.alarm 개발 알람 로그 FILELOG ETC /data/xaiops-log/alarm-log/xaiops-alarm-main.log ai-node-dev-be-3772 JEUS_1208" [ref=e6883]:
+                  - cell [ref=e6884]:
+                    - generic [ref=e6887] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6889]
+                  - cell "275" [ref=e6890]
+                  - cell "dev_ai-server.alarm" [ref=e6892]
+                  - cell "개발 알람 로그" [ref=e6894]
+                  - cell "FILELOG" [ref=e6899]
+                  - cell "ETC" [ref=e6901]
+                  - cell "/data/xaiops-log/alarm-log/xaiops-alarm-main.log" [ref=e6906]
+                  - cell "ai-node-dev-be-3772" [ref=e6908]
+                  - cell "JEUS_1208" [ref=e6913]
+                  - cell [ref=e6918]
+                  - cell [ref=e6920]:
+                    - switch [checked] [ref=e6923]:
+                      - checkbox [checked]
+                - row "429 dev_ai-pg.msa 개발 에이전트MSA 로그 FILELOG ETC /home/aiops/xaiops-agent/logs/xaiops-agent.log ai-node-dev-db-3771 개발 에이전트MSA 로그" [ref=e6925]:
+                  - cell [ref=e6926]:
+                    - generic [ref=e6929] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6931]
+                  - cell "429" [ref=e6932]
+                  - cell "dev_ai-pg.msa" [ref=e6934]
+                  - cell "개발 에이전트MSA 로그" [ref=e6936]
+                  - cell "FILELOG" [ref=e6941]
+                  - cell "ETC" [ref=e6943]
+                  - cell "/home/aiops/xaiops-agent/logs/xaiops-agent.log" [ref=e6948]
+                  - cell "ai-node-dev-db-3771" [ref=e6950]
+                  - cell [ref=e6955]
+                  - cell "개발 에이전트MSA 로그" [ref=e6956]
+                  - cell [ref=e6961]:
+                    - switch [checked] [ref=e6964]:
+                      - checkbox [checked]
+                - row "403 ai-server-test-elo-3774.test_js_no_year 개발 연구 (BE) 연도 없는 로그 FILELOG ETC /home/aiops/apache-flume-1.11.0-bin/test_log.log ai-server-test-elo-3774 BE) agent-msa 테스트 로그" [ref=e6966]:
+                  - cell [ref=e6967]:
+                    - generic [ref=e6970] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e6972]
+                  - cell "403" [ref=e6973]
+                  - cell "ai-server-test-elo-3774.test_js_no_year" [ref=e6975]
+                  - cell "개발 연구 (BE) 연도 없는 로그" [ref=e6977]
+                  - cell "FILELOG" [ref=e6982]
+                  - cell "ETC" [ref=e6984]
+                  - cell "/home/aiops/apache-flume-1.11.0-bin/test_log.log" [ref=e6989]
+                  - cell "ai-server-test-elo-3774" [ref=e6991]
+                  - cell [ref=e6996]
+                  - cell "BE) agent-msa 테스트 로그" [ref=e6997]
+                  - cell [ref=e7002]:
+                    - switch [checked] [ref=e7005]:
+                      - checkbox [checked]
+                - row "281 dev_train-server.ts 개발 학습 로그 FILELOG ETC /home/aiops/xaiops-log/train-log/xaiops-train.log ai-server-dev-ai-3773" [ref=e7007]:
+                  - cell [ref=e7008]:
+                    - generic [ref=e7011] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e7013]
+                  - cell "281" [ref=e7014]
+                  - cell "dev_train-server.ts" [ref=e7016]
+                  - cell "개발 학습 로그" [ref=e7018]
+                  - cell "FILELOG" [ref=e7023]
+                  - cell "ETC" [ref=e7025]
+                  - cell "/home/aiops/xaiops-log/train-log/xaiops-train.log" [ref=e7030]
+                  - cell "ai-server-dev-ai-3773" [ref=e7032]
+                  - cell [ref=e7037]
+                  - cell [ref=e7038]
+                  - cell [ref=e7040]:
+                    - switch [checked] [ref=e7043]:
+                      - checkbox [checked]
+                - row "330 ai-server-dev-ai-3773.syslog 개발 학습서버 시스로그 SYSLOG OS ai-server-dev-ai-3773" [ref=e7045]:
+                  - cell [ref=e7046]:
+                    - generic [ref=e7049] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e7051]
+                  - cell "330" [ref=e7052]
+                  - cell "ai-server-dev-ai-3773.syslog" [ref=e7054]
+                  - cell "개발 학습서버 시스로그" [ref=e7056]
+                  - cell "SYSLOG" [ref=e7061]
+                  - cell "OS" [ref=e7063]
+                  - cell [ref=e7068]
+                  - cell "ai-server-dev-ai-3773" [ref=e7069]
+                  - cell [ref=e7074]
+                  - cell [ref=e7075]
+                  - cell [ref=e7077]:
+                    - switch [checked] [ref=e7080]:
+                      - checkbox [checked]
+          - generic [ref=e7083]:
+            - button "" [disabled] [ref=e7084]
+            - list [ref=e7086]:
+              - listitem [ref=e7087]: "1"
+              - listitem [ref=e7088] [cursor=pointer]: "2"
+              - listitem [ref=e7089] [cursor=pointer]: "3"
+            - button "" [ref=e7090] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

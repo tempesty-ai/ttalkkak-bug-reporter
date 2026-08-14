@@ -1,0 +1,316 @@
+- generic [ref=e22717]:
+  - generic [ref=e22718]: 설정 알람 관리 Rca Alarm Setting
+  - generic [ref=e22730]:
+    - list [ref=e22764]
+    - generic [ref=e32812]:
+      - menubar [ref=e32813]:
+        - menuitem "헬스 알람 관리" [ref=e32814] [cursor=pointer]
+        - menuitem "알람 관리" [ref=e32815] [cursor=pointer]
+        - menuitem "사용률 알람 관리" [ref=e32816] [cursor=pointer]
+        - menuitem "솔루션 알람 관리" [ref=e32817] [cursor=pointer]
+        - menuitem "RCA 알람 관리" [ref=e32818] [cursor=pointer]
+      - generic [ref=e32822]:
+        - tablist [ref=e32826]:
+          - tab "전체 (12)" [selected] [ref=e32828]
+          - tab "Metric (5)" [ref=e32829]
+          - tab "Log (7)" [ref=e32830]
+        - generic [ref=e32831]:
+          - tabpanel "전체 (12)"
+          - generic [ref=e32832]:
+            - generic [ref=e32834]:
+              - generic [ref=e32835]: 룰 목록
+              - textbox "검색" [ref=e32849]
+            - generic [ref=e32851]:
+              - generic [ref=e32852]:
+                - table [ref=e32854]:
+                  - rowgroup [ref=e32869]:
+                    - row " 룰 이름 룰 타입 룰 레벨 타겟 타입 구분 타겟 제외 타겟 조건 설명 사용 알람 소리" [ref=e32870]:
+                      - columnheader [ref=e32871]:
+                        - generic [ref=e32874] [cursor=pointer]:
+                          - checkbox
+                      - columnheader [ref=e32876]:
+                        - button "" [ref=e32879] [cursor=pointer]
+                      - columnheader [ref=e32881]
+                      - columnheader [ref=e32883]
+                      - columnheader [ref=e32885]
+                      - columnheader [ref=e32887]
+                      - columnheader [ref=e32889]
+                      - columnheader [ref=e32891]
+                      - columnheader [ref=e32893]
+                      - columnheader [ref=e32895]
+                      - columnheader [ref=e32897]
+                      - columnheader [ref=e32899]
+                      - columnheader [ref=e32901]
+                - table [ref=e32904]:
+                  - rowgroup [ref=e32919]:
+                    - row " BE) 개발계 ERROR 로그 Log Fatal FILELOG 개별 개발 api 로그 키워드 로그 ERROR 키워드 로그 발생 시 미사용" [ref=e32920]:
+                      - cell [ref=e32921]:
+                        - generic [ref=e32924] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e32926]
+                      - cell "BE) 개발계 ERROR 로그" [ref=e32930]
+                      - cell "Log" [ref=e32934]
+                      - cell "Fatal" [ref=e32936]
+                      - cell "FILELOG" [ref=e32938]
+                      - cell "개별" [ref=e32940]
+                      - cell "개발 api 로그" [ref=e32942]
+                      - cell [ref=e32944]
+                      - cell "키워드 로그" [ref=e32945]
+                      - cell "ERROR 키워드 로그 발생 시" [ref=e32947]
+                      - cell [ref=e32949]:
+                        - switch [checked] [ref=e32952]:
+                          - checkbox [checked]
+                      - cell "미사용" [ref=e32954]
+                    - row " XAI개발API ERROR Log Normal FILELOG 전체 전체 localhost.localdomain.sjs 키워드 로그 미사용" [ref=e32956]:
+                      - cell [ref=e32957]:
+                        - generic [ref=e32960] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e32962]
+                      - cell "XAI개발API ERROR" [ref=e32966]
+                      - cell "Log" [ref=e32970]
+                      - cell "Normal" [ref=e32972]
+                      - cell "FILELOG" [ref=e32974]
+                      - cell "전체" [ref=e32976]
+                      - cell "전체" [ref=e32978]
+                      - cell "localhost.localdomain.sjs" [ref=e32980]
+                      - cell "키워드 로그" [ref=e32982]
+                      - cell [ref=e32984]
+                      - cell [ref=e32985]:
+                        - switch [ref=e32988]:
+                          - checkbox
+                      - cell "미사용" [ref=e32990]
+                    - 'row " dboutput_error 확인용 #수집 (희소로그) Log Normal FILELOG 전체 전체 localhost.localdomain.sjs 희소 로그 이상 패턴 로그 발생 시 희소 로그 발생 시 미사용" [ref=e32992]':
+                      - cell [ref=e32993]:
+                        - generic [ref=e32996] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e32998]
+                      - 'cell "dboutput_error 확인용 #수집 (희소로그)" [ref=e33002]'
+                      - cell "Log" [ref=e33006]
+                      - cell "Normal" [ref=e33008]
+                      - cell "FILELOG" [ref=e33010]
+                      - cell "전체" [ref=e33012]
+                      - cell "전체" [ref=e33014]
+                      - cell "localhost.localdomain.sjs" [ref=e33016]
+                      - cell "희소 로그" [ref=e33018]
+                      - cell "이상 패턴 로그 발생 시 희소 로그 발생 시" [ref=e33020]
+                      - cell [ref=e33022]:
+                        - switch [checked] [ref=e33025]:
+                          - checkbox [checked]
+                      - cell "미사용" [ref=e33027]
+                    - row " sejin_test Metric Normal WAS 전체 전체 os_cpu_usage >= 80% os_cpu_usage 지표가 80 이상인 조건일 때 실시간으로 알람이 발생합니다. 미사용" [ref=e33029]:
+                      - cell [ref=e33030]:
+                        - generic [ref=e33033] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33035]
+                      - cell "sejin_test" [ref=e33039]
+                      - cell "Metric" [ref=e33043]
+                      - cell "Normal" [ref=e33045]
+                      - cell "WAS" [ref=e33047]
+                      - cell "전체" [ref=e33049]
+                      - cell "전체" [ref=e33051]
+                      - cell [ref=e33053]
+                      - cell "os_cpu_usage >= 80%" [ref=e33054]
+                      - cell "os_cpu_usage 지표가 80 이상인 조건일 때 실시간으로 알람이 발생합니다." [ref=e33056]
+                      - cell [ref=e33058]:
+                        - switch [ref=e33061]:
+                          - checkbox
+                      - cell "미사용" [ref=e33063]
+                    - row " test Metric Critical SERVICE 전체 전체 elapse06_avg >= 1ms 미사용" [ref=e33065]:
+                      - cell [ref=e33066]:
+                        - generic [ref=e33069] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33071]
+                      - cell "test" [ref=e33075]
+                      - cell "Metric" [ref=e33079]
+                      - cell "Critical" [ref=e33081]
+                      - cell "SERVICE" [ref=e33083]
+                      - cell "전체" [ref=e33085]
+                      - cell "전체" [ref=e33087]
+                      - cell [ref=e33089]
+                      - cell "elapse06_avg >= 1ms" [ref=e33090]
+                      - cell [ref=e33092]
+                      - cell [ref=e33093]:
+                        - switch [ref=e33096]:
+                          - checkbox
+                      - cell "미사용" [ref=e33098]
+                    - row " test_cje_2 Metric Critical WAS 전체 전체 active_db_sessions >= 10건, tps >= 5건 미사용" [ref=e33100]:
+                      - cell [ref=e33101]:
+                        - generic [ref=e33104] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33106]
+                      - cell "test_cje_2" [ref=e33110]
+                      - cell "Metric" [ref=e33114]
+                      - cell "Critical" [ref=e33116]
+                      - cell "WAS" [ref=e33118]
+                      - cell "전체" [ref=e33120]
+                      - cell "전체" [ref=e33122]
+                      - cell [ref=e33124]
+                      - cell "active_db_sessions >= 10건, tps >= 5건" [ref=e33125]
+                      - cell [ref=e33127]
+                      - cell [ref=e33128]:
+                        - switch [ref=e33131]:
+                          - checkbox
+                      - cell "미사용" [ref=e33133]
+                    - row " 서비스메트릭 Metric Normal SERVICE 그룹 MCI-FEP 서비스, MCI-EAI 서비스, MCI 단일구간 서비스, EAI-MCI-FEP서비스 error_count > 50건 error_count 지표가 50 초과인 조건일 때 실시간으로 알람이 발생합니다. 미사용" [ref=e33135]:
+                      - cell [ref=e33136]:
+                        - generic [ref=e33139] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33141]
+                      - cell "서비스메트릭" [ref=e33145]
+                      - cell "Metric" [ref=e33149]
+                      - cell "Normal" [ref=e33151]
+                      - cell "SERVICE" [ref=e33153]
+                      - cell "그룹" [ref=e33155]
+                      - cell "MCI-FEP 서비스, MCI-EAI 서비스, MCI 단일구간 서비스, EAI-MCI-FEP서비스" [ref=e33157]
+                      - cell [ref=e33159]
+                      - cell "error_count > 50건" [ref=e33160]
+                      - cell "error_count 지표가 50 초과인 조건일 때 실시간으로 알람이 발생합니다." [ref=e33162]
+                      - cell [ref=e33164]:
+                        - switch [ref=e33167]:
+                          - checkbox
+                      - cell "미사용" [ref=e33169]
+                    - row " 이상 패턴 파일 로그 Log Normal FILELOG 전체 전체 localhost.localdomain.sjs 이상 패턴 로그 미사용" [ref=e33171]:
+                      - cell [ref=e33172]:
+                        - generic [ref=e33175] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33177]
+                      - cell "이상 패턴 파일 로그" [ref=e33181]
+                      - cell "Log" [ref=e33185]
+                      - cell "Normal" [ref=e33187]
+                      - cell "FILELOG" [ref=e33189]
+                      - cell "전체" [ref=e33191]
+                      - cell "전체" [ref=e33193]
+                      - cell "localhost.localdomain.sjs" [ref=e33195]
+                      - cell "이상 패턴 로그" [ref=e33197]
+                      - cell [ref=e33199]
+                      - cell [ref=e33200]:
+                        - switch [checked] [ref=e33203]:
+                          - checkbox [checked]
+                      - cell "미사용" [ref=e33205]
+                    - row " 이상패턴 syslog Log Normal SYSLOG 전체 전체 이상 패턴 로그 미사용" [ref=e33207]:
+                      - cell [ref=e33208]:
+                        - generic [ref=e33211] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33213]
+                      - cell "이상패턴 syslog" [ref=e33217]
+                      - cell "Log" [ref=e33221]
+                      - cell "Normal" [ref=e33223]
+                      - cell "SYSLOG" [ref=e33225]
+                      - cell "전체" [ref=e33227]
+                      - cell "전체" [ref=e33229]
+                      - cell [ref=e33231]
+                      - cell "이상 패턴 로그" [ref=e33232]
+                      - cell [ref=e33234]
+                      - cell [ref=e33235]:
+                        - switch [checked] [ref=e33238]:
+                          - checkbox [checked]
+                      - cell "미사용" [ref=e33240]
+                    - row " 키워드 syslog Log Normal SYSLOG 전체 전체 키워드 로그 미사용" [ref=e33242]:
+                      - cell [ref=e33243]:
+                        - generic [ref=e33246] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33248]
+                      - cell "키워드 syslog" [ref=e33252]
+                      - cell "Log" [ref=e33256]
+                      - cell "Normal" [ref=e33258]
+                      - cell "SYSLOG" [ref=e33260]
+                      - cell "전체" [ref=e33262]
+                      - cell "전체" [ref=e33264]
+                      - cell [ref=e33266]
+                      - cell "키워드 로그" [ref=e33267]
+                      - cell [ref=e33269]
+                      - cell [ref=e33270]:
+                        - switch [checked] [ref=e33273]:
+                          - checkbox [checked]
+                      - cell "미사용" [ref=e33275]
+                    - row " 티커 테스트 알람 Metric Critical TP 전체 전체 count_sum >= 10000000건 티커(서비스트리맵 공지) 확인완료. 추후 다시 확인할수도 있어서 룰 삭제를 하지는 않고 조건 엄격하게, 비활성화로 해둠. 미사용" [ref=e33277]:
+                      - cell [ref=e33278]:
+                        - generic [ref=e33281] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33283]
+                      - cell "티커 테스트 알람" [ref=e33287]
+                      - cell "Metric" [ref=e33291]
+                      - cell "Critical" [ref=e33293]
+                      - cell "TP" [ref=e33295]
+                      - cell "전체" [ref=e33297]
+                      - cell "전체" [ref=e33299]
+                      - cell [ref=e33301]
+                      - cell "count_sum >= 10000000건" [ref=e33302]
+                      - cell "티커(서비스트리맵 공지) 확인완료. 추후 다시 확인할수도 있어서 룰 삭제를 하지는 않고 조건 엄격하게, 비활성화로 해둠." [ref=e33304]
+                      - cell [ref=e33306]:
+                        - switch [ref=e33309]:
+                          - checkbox
+                      - cell "미사용" [ref=e33311]
+                    - row " 희소로그 syslog Log Normal SYSLOG 전체 전체 희소 로그 미사용" [ref=e33313]:
+                      - cell [ref=e33314]:
+                        - generic [ref=e33317] [cursor=pointer]:
+                          - checkbox
+                      - cell "" [ref=e33319]
+                      - cell "희소로그 syslog" [ref=e33323]
+                      - cell "Log" [ref=e33327]
+                      - cell "Normal" [ref=e33329]
+                      - cell "SYSLOG" [ref=e33331]
+                      - cell "전체" [ref=e33333]
+                      - cell "전체" [ref=e33335]
+                      - cell [ref=e33337]
+                      - cell "희소 로그" [ref=e33338]
+                      - cell [ref=e33340]
+                      - cell [ref=e33341]:
+                        - switch [checked] [ref=e33344]:
+                          - checkbox [checked]
+                      - cell "미사용" [ref=e33346]
+              - generic [ref=e33349]:
+                - button "" [disabled] [ref=e33350]
+                - list [ref=e33352]:
+                  - listitem [ref=e33353]: "1"
+                - button "" [disabled] [ref=e33354]
+    - generic [ref=e24337]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e24344] [cursor=pointer]
+        - generic [ref=e24367]:
+          - text: 팝업 설정
+          - generic [ref=e24369]:
+            - text: 알람 팝업
+            - switch [ref=e24370]:
+              - checkbox
+        - generic [ref=e24372]:
+          - generic [ref=e24375]:
+            - button "알람 목록 (최근)" [ref=e24376] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e24377] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e24378] [cursor=pointer]
+          - generic [ref=e24382]:
+            - generic [ref=e24383]:
+              - generic [ref=e24384]: "룰 타입 :"
+              - generic [ref=e24386]:
+                - textbox "선택" [ref=e24387] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e24393]:
+              - table [ref=e24395]:
+                - rowgroup [ref=e24406]:
+                  - row [ref=e24407]:
+                    - columnheader [ref=e24408]
+                    - columnheader [ref=e24410]
+                    - columnheader [ref=e24412]
+                    - columnheader [ref=e24414]
+                    - columnheader [ref=e24416]
+                    - columnheader [ref=e24418]
+                    - columnheader [ref=e24420]
+                    - columnheader [ref=e24422]
+                    - columnheader [ref=e24424]
+              - generic [ref=e24426]:
+                - table:
+                  - rowgroup
+                - generic [ref=e24427]: 데이터 없음
+    - generic:
+      - generic [ref=e24430]:
+        - generic [ref=e24431]: Info (1970-01-01 09:00)
+        - generic [ref=e24437]:
+          - generic [ref=e24438]: 타겟 명
+          - generic [ref=e24440]: 타입
+          - generic [ref=e24442]: 상태
+      - generic [ref=e24447]:
+        - generic [ref=e24448]: Chart Detail
+        - generic [ref=e24453]:
+          - textbox "Select time" [ref=e24467] [cursor=pointer]
+          - generic [ref=e24472]: 데이터 없음

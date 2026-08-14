@@ -1,0 +1,276 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 기타 로그인 내역
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e16278]:
+      - menubar [ref=e16279]:
+        - menuitem "라이선스" [ref=e16280] [cursor=pointer]
+        - menuitem "언어" [ref=e16281] [cursor=pointer]
+        - menuitem "데이터 보관주기" [ref=e16282] [cursor=pointer]
+        - menuitem "로그인 내역" [ref=e16283] [cursor=pointer]
+        - menuitem "행위로그" [ref=e16284] [cursor=pointer]
+        - menuitem "수집 타겟" [ref=e16285] [cursor=pointer]
+        - menuitem "알람 사운드 관리" [ref=e16286] [cursor=pointer]
+      - generic [ref=e16288]:
+        - generic [ref=e16289]:
+          - tablist [ref=e16293]:
+            - tab "파티션 테이블" [selected] [ref=e16295]
+            - tab "클릭하우스 테이블" [ref=e16296]
+          - tabpanel "파티션 테이블" [ref=e16298]:
+            - generic [ref=e16299]:
+              - generic [ref=e16301]:
+                - generic [ref=e16302]: 테이블 목록
+                - textbox "검색" [ref=e16307]
+              - generic [ref=e16309]:
+                - generic [ref=e16310]:
+                  - table [ref=e16312]:
+                    - rowgroup [ref=e16319]:
+                      - row [ref=e16320]:
+                        - columnheader [ref=e16321]
+                        - columnheader [ref=e16323]
+                        - columnheader [ref=e16325]
+                        - columnheader [ref=e16327]
+                        - columnheader [ref=e16329]
+                  - table [ref=e16332]:
+                    - rowgroup [ref=e16339]:
+                      - row [ref=e16340]:
+                        - cell " ai_result_tsmixer_predict" [ref=e16341]:
+                          - generic [ref=e16342]:
+                            - generic [ref=e16343] [cursor=pointer]: 
+                            - text: ai_result_tsmixer_predict
+                        - cell "3" [ref=e16345]
+                        - cell "86" [ref=e16347]
+                        - cell "582.7 GB" [ref=e16349]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16351]
+                      - row [ref=e16353]:
+                        - cell " dbsln_result_performance" [ref=e16354]:
+                          - generic [ref=e16355]:
+                            - generic [ref=e16356] [cursor=pointer]: 
+                            - text: dbsln_result_performance
+                        - cell "3" [ref=e16358]
+                        - cell "86" [ref=e16360]
+                        - cell "33.4 GB" [ref=e16362]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16364]
+                      - row [ref=e16366]:
+                        - cell " alarm_history_external_solution" [ref=e16367]:
+                          - generic [ref=e16368]:
+                            - generic [ref=e16369] [cursor=pointer]: 
+                            - text: alarm_history_external_solution
+                        - cell "3" [ref=e16371]
+                        - cell "76" [ref=e16373]
+                        - cell "23.2 GB" [ref=e16375]
+                        - cell "2026-05-06 ~ 2026-08-04" [ref=e16377]
+                      - row [ref=e16379]:
+                        - cell " ai_result_gdn_performance" [ref=e16380]:
+                          - generic [ref=e16381]:
+                            - generic [ref=e16382] [cursor=pointer]: 
+                            - text: ai_result_gdn_performance
+                        - cell "3" [ref=e16384]
+                        - cell "86" [ref=e16386]
+                        - cell "18.3 GB" [ref=e16388]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16390]
+                      - row [ref=e16392]:
+                        - cell " ch_health_check_history" [ref=e16393]:
+                          - generic [ref=e16394]:
+                            - generic [ref=e16395] [cursor=pointer]: 
+                            - text: ch_health_check_history
+                        - cell "3" [ref=e16397]
+                        - cell "91" [ref=e16399]
+                        - cell "8.9 GB" [ref=e16401]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16403]
+                      - row [ref=e16405]:
+                        - cell " ai_result_dspot_performance" [ref=e16406]:
+                          - generic [ref=e16407]:
+                            - generic [ref=e16408] [cursor=pointer]: 
+                            - text: ai_result_dspot_performance
+                        - cell "12" [ref=e16410]
+                        - cell "21" [ref=e16412]
+                        - cell "7.1 GB" [ref=e16414]
+                        - cell "2026-07-08 ~ 2026-08-07" [ref=e16416]
+                      - row [ref=e16418]:
+                        - cell " ai_result_gdn_summary" [ref=e16419]:
+                          - generic [ref=e16420]:
+                            - generic [ref=e16421] [cursor=pointer]: 
+                            - text: ai_result_gdn_summary
+                        - cell "3" [ref=e16423]
+                        - cell "86" [ref=e16425]
+                        - cell "1.6 GB" [ref=e16427]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16429]
+                      - row [ref=e16431]:
+                        - cell " dbsln_result_service_performance" [ref=e16432]:
+                          - generic [ref=e16433]:
+                            - generic [ref=e16434] [cursor=pointer]: 
+                            - text: dbsln_result_service_performance
+                        - cell "3" [ref=e16436]
+                        - cell "82" [ref=e16438]
+                        - cell "1.3 GB" [ref=e16440]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16442]
+                      - row [ref=e16444]:
+                        - cell " ai_result_issuefcst_performance" [ref=e16445]:
+                          - generic [ref=e16446]:
+                            - generic [ref=e16447] [cursor=pointer]: 
+                            - text: ai_result_issuefcst_performance
+                        - cell "12" [ref=e16449]
+                        - cell "162" [ref=e16451]
+                        - cell "434.8 MB" [ref=e16453]
+                        - cell "2025-08-09 ~ 2026-08-07" [ref=e16455]
+                      - row [ref=e16457]:
+                        - cell " ai_result_dspot_summary" [ref=e16458]:
+                          - generic [ref=e16459]:
+                            - generic [ref=e16460] [cursor=pointer]: 
+                            - text: ai_result_dspot_summary
+                        - cell "12" [ref=e16462]
+                        - cell "21" [ref=e16464]
+                        - cell "356.2 MB" [ref=e16466]
+                        - cell "2026-07-08 ~ 2026-08-07" [ref=e16468]
+                      - row [ref=e16470]:
+                        - cell " ai_result_aerca_performance" [ref=e16471]:
+                          - generic [ref=e16472]:
+                            - generic [ref=e16473] [cursor=pointer]: 
+                            - text: ai_result_aerca_performance
+                        - cell "12" [ref=e16475]
+                        - cell "17" [ref=e16477]
+                        - cell "243.1 MB" [ref=e16479]
+                        - cell "2026-07-09 ~ 2026-08-07" [ref=e16481]
+                      - row [ref=e16483]:
+                        - cell " dbsln_result_anomaly" [ref=e16484]:
+                          - generic [ref=e16485]:
+                            - generic [ref=e16486] [cursor=pointer]: 
+                            - text: dbsln_result_anomaly
+                        - cell "3" [ref=e16488]
+                        - cell "86" [ref=e16490]
+                        - cell "199.8 MB" [ref=e16492]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16494]
+                      - row [ref=e16496]:
+                        - cell " ai_result_aerca_monitor" [ref=e16497]:
+                          - generic [ref=e16498]:
+                            - generic [ref=e16499] [cursor=pointer]: 
+                            - text: ai_result_aerca_monitor
+                        - cell "12" [ref=e16501]
+                        - cell "11" [ref=e16503]
+                        - cell "199.2 MB" [ref=e16505]
+                        - cell "2026-07-08 ~ 2026-08-07" [ref=e16507]
+                      - row [ref=e16509]:
+                        - cell " ai_result_dbsln_service_summary" [ref=e16510]:
+                          - generic [ref=e16511]:
+                            - generic [ref=e16512] [cursor=pointer]: 
+                            - text: ai_result_dbsln_service_summary
+                        - cell "3" [ref=e16514]
+                        - cell "82" [ref=e16516]
+                        - cell "104.2 MB" [ref=e16518]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16520]
+                      - row [ref=e16522]:
+                        - cell " ai_result_aerca_summary" [ref=e16523]:
+                          - generic [ref=e16524]:
+                            - generic [ref=e16525] [cursor=pointer]: 
+                            - text: ai_result_aerca_summary
+                        - cell "12" [ref=e16527]
+                        - cell "20" [ref=e16529]
+                        - cell "54.1 MB" [ref=e16531]
+                        - cell "2026-07-09 ~ 2026-08-07" [ref=e16533]
+                      - row [ref=e16535]:
+                        - cell " alarm_history" [ref=e16536]:
+                          - generic [ref=e16537]:
+                            - generic [ref=e16538] [cursor=pointer]: 
+                            - text: alarm_history
+                        - cell "3" [ref=e16540]
+                        - cell "85" [ref=e16542]
+                        - cell "38.6 MB" [ref=e16544]
+                        - cell "2026-05-06 ~ 2026-08-06" [ref=e16546]
+                      - row [ref=e16548]:
+                        - cell " alarm_history_rca_summary_v2" [ref=e16549]:
+                          - generic [ref=e16550]:
+                            - generic [ref=e16551] [cursor=pointer]: 
+                            - text: alarm_history_rca_summary_v2
+                        - cell "3" [ref=e16553]
+                        - cell "80" [ref=e16555]
+                        - cell "12.9 MB" [ref=e16557]
+                        - cell "2026-05-06 ~ 2026-08-07" [ref=e16559]
+                      - row [ref=e16561]:
+                        - cell " ai_result_log_digcn_anomaly_v2" [ref=e16562]:
+                          - generic [ref=e16563]:
+                            - generic [ref=e16564] [cursor=pointer]: 
+                            - text: ai_result_log_digcn_anomaly_v2
+                        - cell "3" [ref=e16566]
+                        - cell "70" [ref=e16568]
+                        - cell "9.9 MB" [ref=e16570]
+                        - cell "2026-05-06 ~ 2026-08-06" [ref=e16572]
+                      - row [ref=e16574]:
+                        - cell " ch_db_tablespace_segment" [ref=e16575]:
+                          - generic [ref=e16576]:
+                            - generic [ref=e16577] [cursor=pointer]: 
+                            - text: ch_db_tablespace_segment
+                        - cell "3" [ref=e16579]
+                        - cell "58" [ref=e16581]
+                        - cell "8 MB" [ref=e16583]
+                        - cell "2026-05-06 ~ 2026-07-18" [ref=e16585]
+                - generic [ref=e16588]:
+                  - button "" [disabled] [ref=e16589]
+                  - list [ref=e16591]:
+                    - listitem [ref=e16592]: "1"
+                    - listitem [ref=e16593] [cursor=pointer]: "2"
+                  - button "" [ref=e16594] [cursor=pointer]
+        - generic [ref=e16596]:
+          - generic [ref=e16597]: 데이터 보관 주기 설정
+          - generic [ref=e16599]:
+            - generic [ref=e16600]:
+              - generic [ref=e16601]: 테이블
+              - textbox [disabled] [ref=e16603]
+            - generic [ref=e16604]:
+              - generic [ref=e16605]: 보관 주기
+              - spinbutton "1 ~ 120" [ref=e16608]
+              - generic [ref=e16609]: 개월
+          - button "저장" [disabled] [ref=e16611]
+        - generic [ref=e16612]:
+          - generic [ref=e16613]: 테이블 크기
+          - generic [ref=e16614]: 데이터 없음
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

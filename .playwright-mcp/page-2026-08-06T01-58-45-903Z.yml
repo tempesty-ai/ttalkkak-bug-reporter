@@ -1,0 +1,124 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 통계 & 내역 External Alarm Occurrence History
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e20428]:
+      - generic [ref=e20429]:
+        - generic [ref=e20432]:
+          - generic [ref=e20433]: 
+          - textbox "Start date" [ref=e20434]: 2026-07-30
+          - generic [ref=e20435]: "-"
+          - textbox "End date" [ref=e20436]: 2026-08-06
+        - generic [ref=e20438]:
+          - generic [ref=e20439]:
+            - text: 타입
+            - generic [ref=e20443]:
+              - generic [ref=e20444]: 전체
+              - generic [ref=e20445]: 
+          - generic [ref=e20447]:
+            - text: 타겟
+            - generic [ref=e20449]:
+              - generic [ref=e20450] [cursor=pointer]:
+                - textbox "선택" [ref=e20451]: 전체
+                - generic: 
+              - text: 
+        - generic [ref=e20454]:
+          - button "조회" [ref=e20455] [cursor=pointer]
+          - button "Excel Export" [disabled] [ref=e20456]
+      - generic [ref=e20472]:
+        - generic [ref=e20473]: 알람 요약 목록
+        - generic [ref=e20481]:
+          - table [ref=e20483]:
+            - rowgroup [ref=e20488]:
+              - row [ref=e20489]:
+                - columnheader [ref=e20490]
+                - columnheader [ref=e20492]
+                - columnheader [ref=e20494]
+          - generic [ref=e20496]:
+            - table:
+              - rowgroup
+            - generic [ref=e20497]: 데이터 없음
+      - generic [ref=e20499]:
+        - generic [ref=e20500]:
+          - generic [ref=e20501]: 알람 상세 목록
+          - generic [ref=e20503]:
+            - generic [ref=e20505] [cursor=pointer]:
+              - generic [ref=e20506]:
+                - checkbox "확인 여부"
+              - generic [ref=e20508]: 확인 여부
+            - generic [ref=e20509]:
+              - button "전체 확인" [ref=e20511] [cursor=pointer]
+              - button "전체 삭제" [ref=e20513] [cursor=pointer]
+              - button "확인" [ref=e20515] [cursor=pointer]
+              - button "삭제" [ref=e20517] [cursor=pointer]
+        - generic [ref=e20523]:
+          - table [ref=e20525]:
+            - rowgroup [ref=e20537]:
+              - row " 시간 타겟 타입 타겟 명 경로 사용률 조건 확인여부 More" [ref=e20538]:
+                - columnheader [ref=e20539]:
+                  - generic [ref=e20542] [cursor=pointer]:
+                    - checkbox [disabled]
+                - columnheader [ref=e20544]:
+                  - button "" [ref=e20547] [cursor=pointer]
+                - columnheader [ref=e20549]
+                - columnheader [ref=e20551]
+                - columnheader [ref=e20553]
+                - columnheader [ref=e20555]
+                - columnheader [ref=e20557]
+                - columnheader [ref=e20559]
+                - columnheader [ref=e20561]
+                - columnheader [ref=e20563]
+          - generic [ref=e20565]:
+            - table:
+              - rowgroup
+            - generic [ref=e20566]: 데이터 없음
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

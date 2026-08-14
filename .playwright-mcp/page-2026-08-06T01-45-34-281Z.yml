@@ -1,0 +1,94 @@
+- generic [ref=e29]:
+  - generic [ref=e31]:
+    - generic [ref=e35]: 모니터링 서비스 맵
+    - generic [ref=e39]:
+      - generic [ref=e17782] [cursor=pointer]: 기본 화면
+      - generic [ref=e17783] [cursor=pointer]: 화면 초기화
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e17784]:
+      - generic [ref=e17785]:
+        - generic [ref=e17786]:
+          - generic [ref=e17787]: "[점검] 결제 서비스 구간 모니터링 설정 변경 작업 예정"
+          - button "티커 등록" [ref=e17790] [cursor=pointer]:
+            - generic [ref=e17791]: 
+        - button "트리맵 설정" [ref=e17792] [cursor=pointer]:
+          - generic [ref=e17793]: 
+      - generic [ref=e17796]:
+        - generic [ref=e17797]:
+          - generic [ref=e17798]: 타임 라인
+          - generic [ref=e17804]:
+            - textbox "Select time" [ref=e17805] [cursor=pointer]: 2026/08/06 10:42
+            - generic [ref=e17806]: 
+        - generic [ref=e17808]:
+          - img [ref=e17816]:
+            - generic [ref=e17818]:
+              - generic [ref=e18047]: 08:13
+              - generic [ref=e18048]: 08:33
+              - generic [ref=e18049]: 08:53
+              - generic [ref=e18050]: 09:13
+              - generic [ref=e18051]: 09:33
+              - generic [ref=e18052]: 09:53
+              - generic [ref=e18053]: 10:13
+              - generic [ref=e18054]: 10:33
+              - generic [ref=e18055]: 10:53
+              - generic [ref=e18238]: "1000"
+              - generic [ref=e18240]: "8"
+              - generic [ref=e18242]: "7"
+              - generic [ref=e18244]: "6"
+              - generic [ref=e18246]: "5"
+              - generic [ref=e18248]: "3"
+              - generic [ref=e18250]: "2"
+              - generic [ref=e18252]: "0"
+              - generic [ref=e18254]: "-1"
+          - textbox [ref=e18039] [cursor=pointer]: 10:42
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음

@@ -1,0 +1,16 @@
+- generic [ref=f7e5]:
+  - generic [ref=f7e6]:
+    - generic [ref=f7e7]: Welcome to XAIOps
+    - generic [ref=f7e8]: Artificial Intelligence for IT Operations
+  - generic [ref=f7e9]:
+    - generic [ref=f7e13]:
+      - generic [ref=f7e14]: Id
+      - textbox [ref=f7e15]
+    - generic [ref=f7e19]:
+      - generic [ref=f7e20]: Password
+      - textbox [ref=f7e21]
+    - generic [ref=f7e22]:
+      - checkbox "Remember user Id"
+      - text: Remember user Id
+    - button "Log in" [ref=f7e23] [cursor=pointer]:
+      - generic [ref=f7e24]:  Log in

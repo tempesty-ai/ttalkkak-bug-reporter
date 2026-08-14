@@ -1,0 +1,361 @@
+- generic [ref=e29]:
+  - generic [ref=e30]: 설정 시스템 로그
+  - generic [ref=e45]:
+    - list [ref=e79]
+    - generic [ref=e5605]:
+      - menubar [ref=e5606]:
+        - menuitem "구간" [ref=e5607] [cursor=pointer]
+        - menuitem "업무 그룹" [ref=e5608] [cursor=pointer]
+        - menuitem "호스트" [ref=e5609] [cursor=pointer]
+        - menuitem "인스턴스" [ref=e5610] [cursor=pointer]
+        - menuitem "서비스" [ref=e5611] [cursor=pointer]
+        - menuitem "로그" [ref=e5612] [cursor=pointer]
+        - menuitem "시스템 연동" [ref=e5613] [cursor=pointer]
+      - generic [ref=e5615]:
+        - generic [ref=e5617]:
+          - generic [ref=e5618]:
+            - generic [ref=e5619]: 서비스 그룹
+            - button "매핑" [ref=e5634] [cursor=pointer]
+          - generic [ref=e5636]:
+            - table [ref=e5638]:
+              - rowgroup [ref=e5644]:
+                - row " 서비스 그룹 코드 서비스 그룹 명" [ref=e5645]:
+                  - columnheader [ref=e5646]:
+                    - generic [ref=e5649] [cursor=pointer]:
+                      - checkbox
+                  - columnheader [ref=e5651]:
+                    - button "" [ref=e5654] [cursor=pointer]
+                  - columnheader [ref=e5656]
+                  - columnheader [ref=e5660]
+            - table [ref=e5665]:
+              - rowgroup [ref=e5671]:
+                - row "4 EAI-MCI-FEP서비스" [ref=e5672]:
+                  - cell [ref=e5673]:
+                    - generic [ref=e5676] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e5678]
+                  - cell "4" [ref=e5679]
+                  - cell "EAI-MCI-FEP서비스" [ref=e5684]
+                - row "1 MCI 단일구간 서비스" [ref=e5689]:
+                  - cell [ref=e5690]:
+                    - generic [ref=e5693] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e5695]
+                  - cell "1" [ref=e5696]
+                  - cell "MCI 단일구간 서비스" [ref=e5701]
+                - row "3 MCI-EAI 서비스" [ref=e5706]:
+                  - cell [ref=e5707]:
+                    - generic [ref=e5710] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e5712]
+                  - cell "3" [ref=e5713]
+                  - cell "MCI-EAI 서비스" [ref=e5718]
+                - row "2 MCI-FEP 서비스" [ref=e5723]:
+                  - cell [ref=e5724]:
+                    - generic [ref=e5727] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e5729]
+                  - cell "2" [ref=e5730]
+                  - cell "MCI-FEP 서비스" [ref=e5735]
+                - row "empty 서비스그룹 empty 서비스그룹" [ref=e5740]:
+                  - cell [ref=e5741]:
+                    - generic [ref=e5744] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e5746]
+                  - cell "empty 서비스그룹" [ref=e5747]
+                  - cell "empty 서비스그룹" [ref=e5752]
+                - row "333 jdh servicegroup 1" [ref=e5757]:
+                  - cell [ref=e5758]:
+                    - generic [ref=e5761] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e5763]
+                  - cell "333" [ref=e5764]
+                  - cell "jdh servicegroup 1" [ref=e5769]
+                - row "334 jdh servicegroup 2" [ref=e5774]:
+                  - cell [ref=e5775]:
+                    - generic [ref=e5778] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e5780]
+                  - cell "334" [ref=e5781]
+                  - cell "jdh servicegroup 2" [ref=e5786]
+                - row "7 엑셈뱅크V2서비스그룹" [ref=e5791]:
+                  - cell [ref=e5792]:
+                    - generic [ref=e5795] [cursor=pointer]:
+                      - checkbox
+                  - cell [ref=e5797]
+                  - cell "7" [ref=e5798]
+                  - cell "엑셈뱅크V2서비스그룹" [ref=e5803]
+          - generic [ref=e5809]:
+            - button "" [disabled] [ref=e5810]
+            - list [ref=e5812]:
+              - listitem [ref=e5813]: "1"
+            - button "" [disabled] [ref=e5814]
+        - generic [ref=e5817]:
+          - generic [ref=e5818]:
+            - generic [ref=e5819]: 서비스
+            - textbox "검색" [ref=e5828]
+          - generic [ref=e5829]:
+            - table [ref=e5831]:
+              - rowgroup [ref=e5840]:
+                - row [ref=e5841]:
+                  - columnheader [ref=e5842]
+                  - columnheader [ref=e5844]
+                  - columnheader [ref=e5848]
+                  - columnheader [ref=e5850]
+                  - columnheader [ref=e5852]
+                  - columnheader [ref=e5856]
+                  - columnheader [ref=e5858]
+            - table [ref=e5861]:
+              - rowgroup [ref=e5870]:
+                - row "RANDOM_TX RANDOM_TX_NAME RANDOM_TXN_ID RANDOM_TXN_NAME 0분" [ref=e5871]:
+                  - cell "RANDOM_TX" [ref=e5872]
+                  - cell "RANDOM_TX_NAME" [ref=e5874]
+                  - cell "RANDOM_TXN_ID" [ref=e5879]
+                  - cell "RANDOM_TXN_NAME" [ref=e5881]
+                  - cell "0분" [ref=e5883]
+                  - cell [ref=e5885]
+                  - cell [ref=e5886]:
+                    - switch [ref=e5889]:
+                      - checkbox
+                - row "100 TEST_100 E37107715835AAEDF851BF590CCD1EEF9EE2E1BB /examples/jsp/jsp2/el/basic-comparisons.jsp 0분" [ref=e5891]:
+                  - cell "100" [ref=e5892]
+                  - cell "TEST_100" [ref=e5894]
+                  - cell "E37107715835AAEDF851BF590CCD1EEF9EE2E1BB" [ref=e5899]
+                  - cell "/examples/jsp/jsp2/el/basic-comparisons.jsp" [ref=e5901]
+                  - cell "0분" [ref=e5903]
+                  - cell [ref=e5905]
+                  - cell [ref=e5906]:
+                    - switch [ref=e5909]:
+                      - checkbox
+                - row "15 TEST_15 83364A7B9FF9478D380C30E3D6D5E8877759B268 /test/DefaultPoolNameGetter.do 0분" [ref=e5911]:
+                  - cell "15" [ref=e5912]
+                  - cell "TEST_15" [ref=e5914]
+                  - cell "83364A7B9FF9478D380C30E3D6D5E8877759B268" [ref=e5919]
+                  - cell "/test/DefaultPoolNameGetter.do" [ref=e5921]
+                  - cell "0분" [ref=e5923]
+                  - cell [ref=e5925]
+                  - cell [ref=e5926]:
+                    - switch [ref=e5929]:
+                      - checkbox
+                - row "16 TEST_16 9A22FC006E0AEE6E1DA5D7D3B3A9D8FA69356608 /EXEMBank1.2/switch-thread-sleep/1 0분" [ref=e5931]:
+                  - cell "16" [ref=e5932]
+                  - cell "TEST_16" [ref=e5934]
+                  - cell "9A22FC006E0AEE6E1DA5D7D3B3A9D8FA69356608" [ref=e5939]
+                  - cell "/EXEMBank1.2/switch-thread-sleep/1" [ref=e5941]
+                  - cell "0분" [ref=e5943]
+                  - cell [ref=e5945]
+                  - cell [ref=e5946]:
+                    - switch [ref=e5949]:
+                      - checkbox
+                - row "17 TEST_17 CEA56AB32FA0656E6A64750BD53919238C7A627B /EXEMBank1.2/switch-thread-sleep/0 0분" [ref=e5951]:
+                  - cell "17" [ref=e5952]
+                  - cell "TEST_17" [ref=e5954]
+                  - cell "CEA56AB32FA0656E6A64750BD53919238C7A627B" [ref=e5959]
+                  - cell "/EXEMBank1.2/switch-thread-sleep/0" [ref=e5961]
+                  - cell "0분" [ref=e5963]
+                  - cell [ref=e5965]
+                  - cell [ref=e5966]:
+                    - switch [ref=e5969]:
+                      - checkbox
+                - row "18 TEST_18 FE6D92E73F8DD3ED89EE4D0B5EA41C696D6D94C6 /EXEMBank1.2/index.jsp 0분" [ref=e5971]:
+                  - cell "18" [ref=e5972]
+                  - cell "TEST_18" [ref=e5974]
+                  - cell "FE6D92E73F8DD3ED89EE4D0B5EA41C696D6D94C6" [ref=e5979]
+                  - cell "/EXEMBank1.2/index.jsp" [ref=e5981]
+                  - cell "0분" [ref=e5983]
+                  - cell [ref=e5985]
+                  - cell [ref=e5986]:
+                    - switch [ref=e5989]:
+                      - checkbox
+                - row "19 TEST_19 E765E83AAFEFD5869DBBAE0A24BAB9F2202E3CB5 /EXEMBank1.2/list.do 0분" [ref=e5991]:
+                  - cell "19" [ref=e5992]
+                  - cell "TEST_19" [ref=e5994]
+                  - cell "E765E83AAFEFD5869DBBAE0A24BAB9F2202E3CB5" [ref=e5999]
+                  - cell "/EXEMBank1.2/list.do" [ref=e6001]
+                  - cell "0분" [ref=e6003]
+                  - cell [ref=e6005]
+                  - cell [ref=e6006]:
+                    - switch [ref=e6009]:
+                      - checkbox
+                - row "20 TEST_20 3EA0C30969B9A13DC6B03F13B1841A5C86DC402D /EXEMBank1.2/check-error-status 0분" [ref=e6011]:
+                  - cell "20" [ref=e6012]
+                  - cell "TEST_20" [ref=e6014]
+                  - cell "3EA0C30969B9A13DC6B03F13B1841A5C86DC402D" [ref=e6019]
+                  - cell "/EXEMBank1.2/check-error-status" [ref=e6021]
+                  - cell "0분" [ref=e6023]
+                  - cell [ref=e6025]
+                  - cell [ref=e6026]:
+                    - switch [ref=e6029]:
+                      - checkbox
+                - row "21 TEST_21 2098ECF01EEA85928244DC1F02D9198226D957A9 /EXEMBank1.2/slock-on-account 0분" [ref=e6031]:
+                  - cell "21" [ref=e6032]
+                  - cell "TEST_21" [ref=e6034]
+                  - cell "2098ECF01EEA85928244DC1F02D9198226D957A9" [ref=e6039]
+                  - cell "/EXEMBank1.2/slock-on-account" [ref=e6041]
+                  - cell "0분" [ref=e6043]
+                  - cell [ref=e6045]
+                  - cell [ref=e6046]:
+                    - switch [ref=e6049]:
+                      - checkbox
+                - row "22 TEST_22 B7E09DC7F0487B80FECC02B4D66212D45BE902CD /EXEMBank1.2/slock-on-mci 0분 jdh servicegroup 1, jdh servicegroup 2" [ref=e6051]:
+                  - cell "22" [ref=e6052]
+                  - cell "TEST_22" [ref=e6054]
+                  - cell "B7E09DC7F0487B80FECC02B4D66212D45BE902CD" [ref=e6059]
+                  - cell "/EXEMBank1.2/slock-on-mci" [ref=e6061]
+                  - cell "0분" [ref=e6063]
+                  - cell "jdh servicegroup 1, jdh servicegroup 2" [ref=e6065]
+                  - cell [ref=e6067]:
+                    - switch [ref=e6070]:
+                      - checkbox
+                - row "23 TEST_23 716DE71A1FFB306F90183383CB1D6EC657C14A4D /manager/WEB-INF/jsp/401.jsp 0분" [ref=e6072]:
+                  - cell "23" [ref=e6073]
+                  - cell "TEST_23" [ref=e6075]
+                  - cell "716DE71A1FFB306F90183383CB1D6EC657C14A4D" [ref=e6080]
+                  - cell "/manager/WEB-INF/jsp/401.jsp" [ref=e6082]
+                  - cell "0분" [ref=e6084]
+                  - cell [ref=e6086]
+                  - cell [ref=e6087]:
+                    - switch [ref=e6090]:
+                      - checkbox
+                - row "24 TEST_24 7973A019397DE8C46EA7BA4D95653D453D5B2F0F /manager/images/asf-logo.svg 0분" [ref=e6092]:
+                  - cell "24" [ref=e6093]
+                  - cell "TEST_24" [ref=e6095]
+                  - cell "7973A019397DE8C46EA7BA4D95653D453D5B2F0F" [ref=e6100]
+                  - cell "/manager/images/asf-logo.svg" [ref=e6102]
+                  - cell "0분" [ref=e6104]
+                  - cell [ref=e6106]
+                  - cell [ref=e6107]:
+                    - switch [ref=e6110]:
+                      - checkbox
+                - row "25 TEST_25 6FB8A88F4F1B770C93B77190675CD88728244D3F /manager/html/ 0분" [ref=e6112]:
+                  - cell "25" [ref=e6113]
+                  - cell "TEST_25" [ref=e6115]
+                  - cell "6FB8A88F4F1B770C93B77190675CD88728244D3F" [ref=e6120]
+                  - cell /manager/html/ [ref=e6122]
+                  - cell "0분" [ref=e6124]
+                  - cell [ref=e6126]
+                  - cell [ref=e6127]:
+                    - switch [ref=e6130]:
+                      - checkbox
+                - row "26 TEST_26 3DDD8022B1EA7F12C031C04FEB315193512C1E27 /favicon.ico 0분" [ref=e6132]:
+                  - cell "26" [ref=e6133]
+                  - cell "TEST_26" [ref=e6135]
+                  - cell "3DDD8022B1EA7F12C031C04FEB315193512C1E27" [ref=e6140]
+                  - cell "/favicon.ico" [ref=e6142]
+                  - cell "0분" [ref=e6144]
+                  - cell [ref=e6146]
+                  - cell [ref=e6147]:
+                    - switch [ref=e6150]:
+                      - checkbox
+                - row "27 TEST_27 BAB727CEAC8B724E09580427A66EA796BD9F6335 /manager/html/sessions 0분" [ref=e6152]:
+                  - cell "27" [ref=e6153]
+                  - cell "TEST_27" [ref=e6155]
+                  - cell "BAB727CEAC8B724E09580427A66EA796BD9F6335" [ref=e6160]
+                  - cell "/manager/html/sessions" [ref=e6162]
+                  - cell "0분" [ref=e6164]
+                  - cell [ref=e6166]
+                  - cell [ref=e6167]:
+                    - switch [ref=e6170]:
+                      - checkbox
+                - row "28 TEST_28 3936CCD0FA96FA63F8078A81A8EEB65F52591B94 /EXEMBank1.2/swtich-thread-sleep/0 0분" [ref=e6172]:
+                  - cell "28" [ref=e6173]
+                  - cell "TEST_28" [ref=e6175]
+                  - cell "3936CCD0FA96FA63F8078A81A8EEB65F52591B94" [ref=e6180]
+                  - cell "/EXEMBank1.2/swtich-thread-sleep/0" [ref=e6182]
+                  - cell "0분" [ref=e6184]
+                  - cell [ref=e6186]
+                  - cell [ref=e6187]:
+                    - switch [ref=e6190]:
+                      - checkbox
+                - row "29 TEST_29 2ED260DE98F75717E2CD20A776B2FD4A9198AB92 /manager/html 0분" [ref=e6192]:
+                  - cell "29" [ref=e6193]
+                  - cell "TEST_29" [ref=e6195]
+                  - cell "2ED260DE98F75717E2CD20A776B2FD4A9198AB92" [ref=e6200]
+                  - cell "/manager/html" [ref=e6202]
+                  - cell "0분" [ref=e6204]
+                  - cell [ref=e6206]
+                  - cell [ref=e6207]:
+                    - switch [ref=e6210]:
+                      - checkbox
+                - row "30 TEST_30 8B1D97C94EB77C0B09899257D110FA8CE1AE0FEF /manager/html/undeploy 0분" [ref=e6212]:
+                  - cell "30" [ref=e6213]
+                  - cell "TEST_30" [ref=e6215]
+                  - cell "8B1D97C94EB77C0B09899257D110FA8CE1AE0FEF" [ref=e6220]
+                  - cell "/manager/html/undeploy" [ref=e6222]
+                  - cell "0분" [ref=e6224]
+                  - cell [ref=e6226]
+                  - cell [ref=e6227]:
+                    - switch [ref=e6230]:
+                      - checkbox
+                - row "31 TEST_31 27B0F2C7284D595CF08A874CA29F11A88BFBE053 /pkiops/crl/Microsoft%20Azure%20TLS%20Issuing%20CA%2005.crl 0분" [ref=e6232]:
+                  - cell "31" [ref=e6233]
+                  - cell "TEST_31" [ref=e6235]
+                  - cell "27B0F2C7284D595CF08A874CA29F11A88BFBE053" [ref=e6240]
+                  - cell "/pkiops/crl/Microsoft%20Azure%20TLS%20Issuing%20CA%2005.crl" [ref=e6242]
+                  - cell "0분" [ref=e6244]
+                  - cell [ref=e6246]
+                  - cell [ref=e6247]:
+                    - switch [ref=e6250]:
+                      - checkbox
+          - generic [ref=e6253]:
+            - button "" [disabled] [ref=e6254]
+            - list [ref=e6256]:
+              - listitem [ref=e6257]: "1"
+              - listitem [ref=e6258] [cursor=pointer]: "2"
+              - listitem [ref=e6259] [cursor=pointer]: "3"
+              - listitem [ref=e6260] [cursor=pointer]: "4"
+              - listitem [ref=e6261] [cursor=pointer]: "5"
+              - listitem [ref=e6262] [cursor=pointer]: "6"
+              - listitem [ref=e6263] [cursor=pointer]: 
+              - listitem [ref=e6264] [cursor=pointer]: "11"
+            - button "" [ref=e6265] [cursor=pointer]
+    - generic [ref=e635]:
+      - generic:
+        - generic: 
+        - button "채팅 열기" [ref=e642] [cursor=pointer]
+        - generic [ref=e665]:
+          - text: 팝업 설정
+          - generic [ref=e667]:
+            - text: 알람 팝업
+            - switch [ref=e668]:
+              - checkbox
+        - generic [ref=e670]:
+          - generic [ref=e673]:
+            - button "알람 목록 (최근)" [ref=e674] [cursor=pointer]
+            - button "솔루션 알람 목록 (최근)" [ref=e675] [cursor=pointer]
+            - button "사용률 알람 목록" [ref=e676] [cursor=pointer]
+          - generic [ref=e680]:
+            - generic [ref=e681]:
+              - generic [ref=e682]: "룰 타입 :"
+              - generic [ref=e684]:
+                - textbox "선택" [ref=e685] [cursor=pointer]: 전체
+                - generic: 
+            - generic [ref=e691]:
+              - table [ref=e693]:
+                - rowgroup [ref=e704]:
+                  - row [ref=e705]:
+                    - columnheader [ref=e706]
+                    - columnheader [ref=e708]
+                    - columnheader [ref=e710]
+                    - columnheader [ref=e712]
+                    - columnheader [ref=e714]
+                    - columnheader [ref=e716]
+                    - columnheader [ref=e718]
+                    - columnheader [ref=e720]
+                    - columnheader [ref=e722]
+              - generic [ref=e724]:
+                - table:
+                  - rowgroup
+                - generic [ref=e725]: 데이터 없음
+    - generic:
+      - generic [ref=e728]:
+        - generic [ref=e729]: Info (1970-01-01 09:00)
+        - generic [ref=e735]:
+          - generic [ref=e736]: 타겟 명
+          - generic [ref=e738]: 타입
+          - generic [ref=e740]: 상태
+      - generic [ref=e745]:
+        - generic [ref=e746]: Chart Detail
+        - generic [ref=e751]:
+          - textbox "Select time" [ref=e765] [cursor=pointer]
+          - generic [ref=e770]: 데이터 없음
