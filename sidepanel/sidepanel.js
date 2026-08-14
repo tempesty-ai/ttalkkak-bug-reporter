@@ -867,6 +867,29 @@ function buildAiDescription(r) {
   return lines.join('\n').trim();
 }
 
+/** 등록된 리포트를 로컬에 예시로 저장 (AI가 스타일 학습에 참고). 최근 8개 유지. */
+async function saveExample(title, description) {
+  try {
+    const cfg = await getLocal([LOCAL_KEYS.REPORT_EXAMPLES]);
+    const list = Array.isArray(cfg[LOCAL_KEYS.REPORT_EXAMPLES]) ? cfg[LOCAL_KEYS.REPORT_EXAMPLES] : [];
+    list.unshift({ title: String(title || '').slice(0, 200), description: String(description || '').slice(0, 1500) });
+    await setLocal({ [LOCAL_KEYS.REPORT_EXAMPLES]: list.slice(0, 8) });
+  } catch {
+    /* 저장 실패는 무시 */
+  }
+}
+
+/** 최근 예시로 few-shot 참고 블록 구성. */
+async function buildExamplesBlock() {
+  const cfg = await getLocal([LOCAL_KEYS.REPORT_EXAMPLES]);
+  const examples = (cfg[LOCAL_KEYS.REPORT_EXAMPLES] || []).slice(0, 3);
+  if (!examples.length) return '';
+  return (
+    '\n\n[우리 팀 기존 리포트 예시 — 아래 스타일·형식·말투를 참고해 비슷하게 작성하세요]\n' +
+    examples.map((ex, i) => `예시${i + 1}) 제목: ${ex.title}\n${ex.description}`).join('\n\n---\n')
+  );
+}
+
 function setAiLoading(on) {
   els.aiSpinner.hidden = !on;
   els.aiSubmitBtn.disabled = on;
@@ -887,9 +910,11 @@ async function handleAiSubmit() {
       '당신은 QA 버그 리포트 정리 전문가입니다. 주어진 대략적인 메모, 사용자 행동(재현 스텝), 콘솔 에러, (제공되면) 스크린샷을 종합해 명확한 한국어 버그 리포트를 작성하세요. ' +
       '반드시 아래 형식의 JSON만 출력하세요. 다른 말/설명 금지. ' +
       '{"title":"간결한 제목","precondition":"사전 조건","steps":["1. ...","2. ..."],"expected":"기대 결과","actual":"실제 결과"}';
+    const examplesBlock = await buildExamplesBlock();
     const user =
       `제목(초안): ${els.title.value}\n\n` +
-      `아래 메모와 자동 수집 정보를 바탕으로 정리해주세요:\n${els.description.value}`;
+      `아래 메모와 자동 수집 정보를 바탕으로 정리해주세요:\n${els.description.value}` +
+      examplesBlock;
 
     let imagesBase64;
     if (cfg[LOCAL_KEYS.OLLAMA_SEND_IMAGE] && captureBlob && (captureBlob.type || '').startsWith('image/')) {
@@ -975,6 +1000,7 @@ async function handleSubmit() {
     });
 
     await removeSession(SESSION_KEYS.PENDING_CAPTURE);
+    await saveExample(name, els.description.value); // 다음 AI 작성이 참고할 예시로 저장
     showToast('ClickUp에 등록되었습니다.', 'success', taskUrl);
     els.spinner.hidden = true;
     els.submitBtn.disabled = true;
