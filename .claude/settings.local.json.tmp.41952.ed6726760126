@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'Feat: Phase 5 영상 녹화 \\(tabCapture + offscreen MediaRecorder\\) *)",
+      "Bash(git push *)",
+      "Bash(git commit -q -m 'Docs: 사용 가이드\\(docs/guide.html\\) + AI 서버 시작 스크립트\\(scripts/start-ai-server.bat\\) 추가 *)"
+    ]
+  }
+}

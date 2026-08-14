@@ -1,0 +1,388 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>딸깍 버그리포팅 가이드</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --brand: #4f46e5;
+    --brand-strong: #4338ca;
+    --brand-soft: #eef0ff;
+    --ground: #f7f8fb;
+    --surface: #ffffff;
+    --card: #fbfbfe;
+    --ink: #1b1e2b;
+    --muted: #62667a;
+    --border: #e6e7ef;
+    --code-bg: #f2f3f9;
+    --ok: #16a34a;
+    --ok-soft: #eafaf0;
+    --warn: #b45309;
+    --warn-soft: #fff7ea;
+    --danger: #dc2626;
+    --shadow: 0 1px 2px rgba(20, 22, 35, 0.04), 0 8px 24px rgba(20, 22, 35, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --brand: #8b93ff;
+      --brand-strong: #a5abff;
+      --brand-soft: #23263a;
+      --ground: #0f1117;
+      --surface: #161923;
+      --card: #1a1d29;
+      --ink: #e7e8f0;
+      --muted: #9a9fb5;
+      --border: #2a2e3d;
+      --code-bg: #1f2331;
+      --ok: #4ade80;
+      --ok-soft: #16241c;
+      --warn: #fbbf24;
+      --warn-soft: #241f14;
+      --danger: #f87171;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --brand: #8b93ff;
+    --brand-strong: #a5abff;
+    --brand-soft: #23263a;
+    --ground: #0f1117;
+    --surface: #161923;
+    --card: #1a1d29;
+    --ink: #e7e8f0;
+    --muted: #9a9fb5;
+    --border: #2a2e3d;
+    --code-bg: #1f2331;
+    --ok: #4ade80;
+    --ok-soft: #16241c;
+    --warn: #fbbf24;
+    --warn-soft: #241f14;
+    --danger: #f87171;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: 'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, -apple-system, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: 'Cascadia Code', 'D2Coding', ui-monospace, Consolas, monospace; }
+
+  /* ---- top bar ---- */
+  header.bar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 12px 22px;
+    background: color-mix(in srgb, var(--surface) 86%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.01em; }
+  .brand .mark {
+    width: 26px; height: 26px; border-radius: 7px; background: var(--brand);
+    display: grid; place-items: center; box-shadow: 0 0 0 3px var(--brand-soft);
+  }
+  .brand .mark svg { width: 16px; height: 16px; color: #fff; }
+  nav.anchors { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.anchors a {
+    color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600;
+    padding: 6px 11px; border-radius: 8px;
+  }
+  nav.anchors a:hover { color: var(--brand); background: var(--brand-soft); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 0 22px 96px; }
+
+  /* ---- hero (compact) ---- */
+  .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
+  .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--brand); margin: 0 0 14px;
+  }
+  h1 { font-size: clamp(30px, 5vw, 42px); line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 16px; text-wrap: balance; font-weight: 820; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 60ch; margin: 0; }
+  .flow {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 28px;
+    font-weight: 700; font-size: 14px;
+  }
+  .flow .step { padding: 8px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+  .flow .arw { color: var(--brand); font-weight: 800; }
+  .flow .goal { color: var(--brand); border-color: color-mix(in srgb, var(--brand) 40%, var(--border)); background: var(--brand-soft); }
+
+  /* ---- sections ---- */
+  section { padding: 46px 0 8px; }
+  .sec-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    margin: 0 0 6px;
+  }
+  h2 { font-size: 25px; letter-spacing: -0.015em; margin: 0 0 8px; font-weight: 780; text-wrap: balance; }
+  .sec-desc { color: var(--muted); margin: 0 0 26px; max-width: 62ch; }
+  h3 { font-size: 17px; margin: 0 0 6px; font-weight: 720; }
+
+  /* ---- feature cards ---- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .card .ico {
+    width: 38px; height: 38px; border-radius: 10px; background: var(--brand-soft); color: var(--brand);
+    display: grid; place-items: center; margin-bottom: 14px;
+  }
+  .card .ico svg { width: 21px; height: 21px; }
+  .card p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+  .card .tag { display: inline-block; margin-top: 12px; font-size: 11.5px; font-weight: 700; color: var(--brand); background: var(--brand-soft); padding: 3px 9px; border-radius: 999px; }
+  .card.soon .ico { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--muted); }
+
+  /* ---- feature rows (stacked explanations) ---- */
+  .rows { display: flex; flex-direction: column; gap: 12px; }
+  .row {
+    display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: start;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 13px; padding: 18px 20px;
+  }
+  .row .k { font-weight: 720; }
+  .row .k .sub { display: block; font-size: 12.5px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+  .row .v { color: var(--muted); font-size: 14.5px; }
+  .row .v b { color: var(--ink); font-weight: 700; }
+  @media (max-width: 620px) { .row { grid-template-columns: 1fr; gap: 8px; } }
+
+  /* ---- steps (ordered, meaningful sequence) ---- */
+  ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  ol.steps > li {
+    counter-increment: s; position: relative; padding: 14px 16px 14px 54px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 14px; top: 13px;
+    width: 26px; height: 26px; border-radius: 8px; background: var(--brand); color: #fff;
+    display: grid; place-items: center; font-weight: 800; font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  ol.steps b { font-weight: 720; }
+  ol.steps .hint { display: block; color: var(--muted); font-size: 13.5px; margin-top: 3px; }
+
+  code {
+    font-family: 'Cascadia Code', 'D2Coding', ui-monospace, Consolas, monospace;
+    background: var(--code-bg); padding: 1.5px 6px; border-radius: 6px; font-size: 0.88em;
+    border: 1px solid var(--border); word-break: break-all;
+  }
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 13px 15px; overflow-x: auto; margin: 10px 0 0;
+  }
+  pre code { background: none; border: none; padding: 0; font-size: 13px; line-height: 1.6; }
+
+  /* ---- callouts ---- */
+  .note { border-radius: 12px; padding: 14px 16px 14px 16px; margin-top: 16px; font-size: 14px; border: 1px solid; }
+  .note .t { font-weight: 720; margin: 0 0 4px; }
+  .note p { margin: 0; }
+  .note.tip { background: var(--brand-soft); border-color: color-mix(in srgb, var(--brand) 30%, var(--border)); }
+  .note.tip .t { color: var(--brand-strong); }
+  .note.warn { background: var(--warn-soft); border-color: color-mix(in srgb, var(--warn) 34%, var(--border)); }
+  .note.warn .t { color: var(--warn); }
+
+  /* diagnosis chips */
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .chip { font-size: 12.5px; font-weight: 700; padding: 4px 11px; border-radius: 999px; }
+  .chip.ok { color: var(--ok); background: var(--ok-soft); }
+  .chip.bad { color: var(--danger); background: color-mix(in srgb, var(--danger) 12%, transparent); }
+
+  .divider { height: 1px; background: var(--border); border: 0; margin: 8px 0 0; }
+  footer { padding: 40px 0 0; color: var(--muted); font-size: 13.5px; }
+  footer .stack { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  footer .stack span { border: 1px solid var(--border); border-radius: 999px; padding: 4px 11px; font-weight: 600; font-size: 12px; }
+  a.inline { color: var(--brand); }
+</style>
+
+<header class="bar">
+  <div class="brand">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+    </span>
+    딸깍 버그리포팅
+  </div>
+  <nav class="anchors">
+    <a href="#features">기능</a>
+    <a href="#report">리포트·AI</a>
+    <a href="#settings">설정</a>
+    <a href="#install">설치·배포</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <p class="eyebrow">QA Capture → ClickUp</p>
+    <h1>버그 발견부터 티켓 등록까지, 딸깍 한 번</h1>
+    <p class="lead">화면을 캡처하고 주석을 달면, 재현 단계·콘솔 에러·환경 정보까지 자동으로 채워져 ClickUp에 등록됩니다. 로컬 AI가 내용을 다듬어주고, 데이터는 사내망 밖으로 나가지 않습니다.</p>
+    <div class="flow" aria-label="사용 흐름">
+      <span class="step">캡처</span><span class="arw">→</span>
+      <span class="step">주석·자동 정보</span><span class="arw">→</span>
+      <span class="step">AI 정리(선택)</span><span class="arw">→</span>
+      <span class="step goal">ClickUp 등록 · 30초</span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <p class="sec-label">기능</p>
+    <h2>캡처 4종</h2>
+    <p class="sec-desc">툴바의 딸깍 아이콘을 누르면 오른쪽에 사이드 패널이 열립니다. 네 가지 모두 캡처 후 <b>같은 리포트 화면</b>으로 이어집니다.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div>
+        <h3>화면 캡처</h3>
+        <p>지금 보이는 영역을 즉시 한 장 캡처합니다. 가장 빠른 기본 캡처.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M8 7h8M8 12h8M8 17h5"></path></svg></div>
+        <h3>전체 페이지</h3>
+        <p>페이지를 자동으로 스크롤하며 여러 컷을 찍어 하나의 긴 이미지로 이어붙입니다. 고정 헤더는 반복되지 않게 처리됩니다.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path></svg></div>
+        <h3>영역 선택</h3>
+        <p>페이지 위에서 마우스로 드래그한 부분만 잘라 캡처합니다. 고해상도 배율도 정확히 반영됩니다.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg></div>
+        <h3>영상 녹화</h3>
+        <p>탭 화면을 webm 영상으로 녹화합니다. 원하면 다른 창·전체 화면도 녹화 가능. 녹화 시작 시 대상 탭으로 자동 전환됩니다.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:44px">이미지 위 주석 편집</h2>
+    <p class="sec-desc">이미지 캡처(화면·전체·영역)는 캡처 직후 편집 도구가 함께 뜹니다. 영상은 재생 미리보기로 표시됩니다.</p>
+    <div class="rows">
+      <div class="row"><div class="k">그리기 도구</div><div class="v"><b>화살표</b>·<b>형광펜</b>·<b>단계 번호</b>(클릭할 때마다 자동 증가)·<b>텍스트</b>. 빨강/주황/파랑 색상 선택.</div></div>
+      <div class="row"><div class="k">되돌리기</div><div class="v"><b>실행 취소</b>와 <b>전체 지우기</b>로 언제든 수정. 등록 시 주석이 합쳐진 이미지가 첨부됩니다.</div></div>
+    </div>
+  </section>
+
+  <!-- REPORT + AI -->
+  <section id="report">
+    <p class="sec-label">리포트 · 자동화</p>
+    <h2>리포트 작성 — 알아서 채워집니다</h2>
+    <p class="sec-desc">캡처하면 리포트 폼이 뜹니다. 대부분의 항목이 자동으로 채워지므로 QA는 확인만 하면 됩니다.</p>
+    <div class="rows">
+      <div class="row">
+        <div class="k">제목<span class="sub">placeholder 안내</span></div>
+        <div class="v"><code>[고객사] 이슈 내용</code> 형식이 회색 힌트로 표시됩니다. 클릭해 입력하면 사라지므로 지울 필요가 없습니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">우선순위</div>
+        <div class="v">🔴 긴급 · 🟠 높음 · 🟡 보통 · ⚪ 낮음 — ClickUp 기본 우선순위로 그대로 매핑됩니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">재현 방법<span class="sub">자동 기록</span></div>
+        <div class="v"><b>페이지에서의 클릭·입력을 자동으로 기억</b>해, 캡처 시점의 직전 행동을 번호 매긴 재현 단계로 자동 작성합니다. (예: <span class="mono">1. '조회' 버튼 클릭 → 2. 아이디 입력…</span>)</div>
+      </div>
+      <div class="row">
+        <div class="k">멘션 표시</div>
+        <div class="v">본문 맨 아래에 담당자 이름을 하이퍼링크로 넣습니다. 기본값은 내 이름이며 자유롭게 수정 가능합니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">URL · 캡처 시각</div>
+        <div class="v">현재 페이지 주소와 시각이 자동으로 기입됩니다.</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:44px">웹 상태 자동 진단</h2>
+    <p class="sec-desc">개발자 도구를 열지 않아도, 페이지의 문제를 자동으로 감지해 리포트에 첨부합니다. 개발자가 받아 바로 디버깅할 수 있는 정보입니다.</p>
+    <div class="rows">
+      <div class="row">
+        <div class="k">웹 상태</div>
+        <div class="v">런처의 진단 카드에 실시간 표시됩니다. <span class="chips"><span class="chip ok">정상 ✅</span><span class="chip bad">⚠️ 콘솔 에러 N건</span></span> 마우스를 올리면 실제 에러 내용이 보이고, 같은 에러는 <code>(×N)</code>으로 합쳐집니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">수집 항목</div>
+        <div class="v"><b>콘솔 에러</b>(JS 오류)와 <b>실패한 네트워크 요청</b>(4xx·5xx)을 iframe까지 포함해 수집합니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">강력 새로고침 후 진단</div>
+        <div class="v">버튼 한 번으로 페이지를 캐시 무시하고 새로고침한 뒤, 로드 중 발생하는 에러까지 잡아냅니다.</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:44px">등록 — 버튼 두 개</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="k">ClickUp에 등록</div>
+        <div class="v">작성한 내용 그대로 ClickUp에 태스크를 만들고, 캡처 이미지(또는 영상)를 첨부하며, 담당자를 본인으로 지정합니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">🤖 AI로 다듬어 등록</div>
+        <div class="v"><b>사내 로컬 AI(Ollama)</b>가 메모·재현 스텝·콘솔 에러·(비전 모델이면) 스크린샷을 종합해 <b>제목·프리컨디션·재현 단계·기대/실제 결과</b>로 정리한 뒤 등록합니다. 등록한 리포트를 예시로 기억해 <b>쓸수록 팀 스타일에 맞춰집니다.</b></div>
+      </div>
+    </div>
+    <div class="note tip">
+      <p class="t">완전 로컬 처리</p>
+      <p>AI는 사내/로컬 Ollama 서버에서 동작하므로, 캡처·리포트 데이터가 외부 클라우드로 전송되지 않습니다.</p>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="settings">
+    <p class="sec-label">설정</p>
+    <h2>ClickUp 연결</h2>
+    <p class="sec-desc">옵션 페이지(패널의 ⚙️)에서 한 번만 설정하면 됩니다.</p>
+    <ol class="steps">
+      <li><b>개인 API 토큰 발급</b><span class="hint">ClickUp 우상단 아바타 → Settings → All settings → <b>ClickUp API</b> → Generate. 표시된 토큰은 <b>Copy 버튼</b>으로 복사 (Bearer 접두어 없이).</span></li>
+      <li><b>토큰 붙여넣기 → 연결 테스트</b><span class="hint">“연결 성공 — 사용자: …”가 뜨면 정상입니다.</span></li>
+      <li><b>리스트 찾아보기</b><span class="hint">워크스페이스 → 스페이스 → 폴더 → 리스트를 순서대로 골라 선택합니다. (ClickUp URL에는 리스트 ID가 안 보이는 경우가 많아 이 방식이 안전)</span></li>
+      <li><b>저장</b></li>
+    </ol>
+
+    <h2 style="margin-top:44px">AI (로컬 Ollama) — 선택</h2>
+    <p class="sec-desc">AI 다듬기 기능을 쓰려면 Ollama가 필요합니다. 텍스트만이면 가볍고 빠른 모델을 권장합니다.</p>
+    <ol class="steps">
+      <li><b>모델 준비</b><span class="hint">빠름·한국어: <code>ollama pull llama3.2:3b</code> 또는 <code>qwen2.5</code> · 스크린샷까지 이해(비전): <code>llama3.2-vision</code>, <code>gemma3</code></span></li>
+      <li><b>옵션에 입력</b><span class="hint">서버 주소 <code>http://127.0.0.1:11434</code> · 모델명(예: <code>llama3.2:3b</code>) · 비전 모델이면 “스크린샷도 AI에 전송” 체크</span></li>
+      <li><b>AI 연결 테스트</b><span class="hint">연결되면 설치된 모델 목록이 표시됩니다.</span></li>
+    </ol>
+    <div class="note warn">
+      <p class="t">확장이 Ollama에 막힐 때 (403)</p>
+      <p>Ollama가 확장의 접속을 차단하면 <code>OLLAMA_ORIGINS=*</code> 를 설정하고 서버를 재시작하세요. 바탕화면의 <b>“딸깍 AI 서버 시작”</b> 배치 파일을 실행하면 이 설정으로 서버가 한 번에 켜집니다.</p>
+    </div>
+  </section>
+
+  <!-- INSTALL / DEPLOY -->
+  <section id="install">
+    <p class="sec-label">설치 · 배포</p>
+    <h2>설치 — 어떻게 올라가나</h2>
+    <p class="sec-desc">별도 빌드가 필요 없습니다. 크롬이 소스 파일을 그대로 읽어 확장으로 실행합니다.</p>
+    <ol class="steps">
+      <li><b>개발자 모드로 로드</b><span class="hint">크롬 <code>chrome://extensions</code> → 우상단 <b>개발자 모드</b> ON → <b>“압축해제된 확장 프로그램 로드”</b> → 프로젝트 폴더 선택</span></li>
+      <li><b>툴바 아이콘 클릭 → 사이드 패널</b><span class="hint">코드 수정 후에는 카드의 새로고침(🔄)만 누르면 반영됩니다. 설정 값은 유지됩니다.</span></li>
+      <li><b>(선택) 정식 배포</b><span class="hint">사내 배포는 압축해제 로드 그대로 사용하거나 CRX 서명, Chrome Web Store 등록으로 확장할 수 있습니다.</span></li>
+    </ol>
+
+    <h2 style="margin-top:44px">팀에서 함께 쓰려면</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="k">ClickUp 토큰</div>
+        <div class="v">개인 계정 토큰이므로 <b>각자 발급</b>해서 입력합니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">AI 서버</div>
+        <div class="v"><b>사내 공용 Ollama 서버</b> 한 대를 두고(<code>OLLAMA_HOST=0.0.0.0</code>), 팀원은 확장 설정에 그 서버 주소만 입력하면 됩니다. 각자 설치할 필요 없이 한 곳에서 모델을 관리하고, 데이터는 사내망 안에 머뭅니다.</div>
+      </div>
+    </div>
+    <div class="note tip">
+      <p class="t">공모전 데모 팁</p>
+      <p>데모는 로컬(<code>localhost:11434</code>)로 시연하고, 팀 배포 단계에서 공용 서버로 확장하는 흐름을 함께 보여주면 “보안 + 확장성”을 동시에 어필할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <footer>
+    <hr class="divider" />
+    <p style="margin-top:18px"><b style="color:var(--ink)">기술 스택</b> — 번들러·프레임워크·TypeScript 없이 순수 웹 기술로 구현. 데이터는 <code>chrome.storage</code>에 로컬 저장되고 외부 서버로 나가지 않습니다.</p>
+    <div class="stack">
+      <span>Manifest V3</span><span>Vanilla JS (ES Modules)</span><span>Chrome Side Panel</span>
+      <span>Canvas 주석</span><span>getDisplayMedia 녹화</span><span>ClickUp API</span><span>로컬 Ollama</span>
+    </div>
+  </footer>
+</main>
