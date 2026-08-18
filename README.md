@@ -6,6 +6,7 @@ QA가 버그를 발견한 순간부터 이슈 트래커에 리포트가 올라�
 
 ## 📖 상세 가이드
 
+📄 **[프로젝트 설명자료 (PDF)](docs/딸깍%20버그%20리포팅.pdf)** — 소개·기능 슬라이드
 기능·설정·설치/배포 안내는 **[docs/guide.html](docs/guide.html)** 를 브라우저로 열어 확인하세요.
 AI 서버가 꼬였을 때는 **[scripts/start-ai-server.bat](scripts/start-ai-server.bat)** 을 실행하면 Ollama가 확장 접속 허용 상태로 재시작됩니다.
 
