@@ -15,10 +15,21 @@
   box.style.cssText = `position:fixed;display:none;border:2px solid #4f46e5;background:rgba(79,70,229,0.12);z-index:${Z};pointer-events:none;`;
 
   const hint = document.createElement('div');
-  hint.textContent = '드래그해서 영역을 선택하세요 · ESC로 취소';
-  hint.style.cssText = `position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#111;color:#fff;font:13px/1.4 'Malgun Gothic',system-ui,sans-serif;padding:7px 14px;border-radius:8px;z-index:${Z};box-shadow:0 4px 14px rgba(0,0,0,0.3);`;
+  hint.style.cssText = `position:fixed;top:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:#111;color:#fff;font:13px/1.4 'Malgun Gothic',system-ui,sans-serif;padding:7px 8px 7px 14px;border-radius:8px;z-index:${Z};box-shadow:0 4px 14px rgba(0,0,0,0.3);`;
+  const hintText = document.createElement('span');
+  hintText.textContent = '드래그해서 영역을 선택하세요';
+  const cancelBtn = document.createElement('button');
+  cancelBtn.textContent = '✕ 취소 (ESC)';
+  cancelBtn.style.cssText = "background:#374151;color:#fff;border:none;border-radius:6px;padding:5px 12px;font:600 12px 'Malgun Gothic',system-ui,sans-serif;cursor:pointer;";
+  // 클릭은 키보드 포커스와 무관하게 항상 취소된다.
+  cancelBtn.addEventListener('pointerdown', (e) => { e.stopPropagation(); });
+  cancelBtn.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); cancel(); });
+  hint.append(hintText, cancelBtn);
 
   document.documentElement.append(overlay, box, hint);
+  // ESC가 페이지로 오도록 오버레이에 포커스 시도.
+  overlay.tabIndex = -1;
+  try { overlay.focus({ preventScroll: true }); } catch { /* 무시 */ }
 
   let startX = 0;
   let startY = 0;
