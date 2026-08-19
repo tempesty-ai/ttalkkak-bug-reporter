@@ -457,6 +457,10 @@ async function showReport(cap) {
     annotator.setColor(DEFAULT_COLOR);
     setActiveTool(els.toolbar.querySelector(`.tool-btn[data-tool="${DEFAULT_TOOL}"]`));
     setActiveColor(els.toolbar.querySelector(`.color-btn[data-color="${DEFAULT_COLOR}"]`));
+    // 이미지 첨부용 파일명/blob (영상 분기는 위에서 .webm으로 이미 설정됨 — 덮어쓰지 말 것)
+    const stamp = (cap.capturedAt || 'capture').replace(/[:.]/g, '-');
+    captureFilename = `screenshot-${stamp}.png`;
+    captureBlob = dataUrlToBlob(cap.dataUrl);
   }
 
   const defaults = buildDefaults(cap);
@@ -469,10 +473,6 @@ async function showReport(cap) {
   els.mentionName.value = meCache[LOCAL_KEYS.MY_USER_NAME] || '';
   currentSourceUrl = cap.sourceUrl || '';
   currentMeta = cap.metadata || null;
-
-  const stamp = (cap.capturedAt || 'capture').replace(/[:.]/g, '-');
-  captureFilename = `screenshot-${stamp}.png`;
-  captureBlob = dataUrlToBlob(cap.dataUrl);
 
   const cfg = await getLocal([LOCAL_KEYS.DEFAULT_LIST_ID]);
   const listId = cfg[LOCAL_KEYS.DEFAULT_LIST_ID];
