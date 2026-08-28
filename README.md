@@ -1,3 +1,13 @@
+<div align="center">
+
+# 🏆 사내 공모전 수상작 🏆
+
+### 딸깍 버그리포팅 (QA Capture to ClickUp)
+
+</div>
+
+---
+
 # 딸깍 버그리포팅 (QA Capture to ClickUp)
 
 > 화면을 캡처하고 주석을 단 뒤, 클릭 한 번(딸깍)으로 ClickUp에 버그 태스크를 등록하는 크롬 확장 프로그램.
