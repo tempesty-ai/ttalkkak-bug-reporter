@@ -15,6 +15,7 @@ import {
 } from '../lib/storage.js';
 import { submitReport, getAuthorizedUser } from '../lib/clickup.js';
 import { chatJson } from '../lib/openai.js';
+import { TEAM_DEFAULTS } from '../lib/team-config.js';
 import { createAnnotator } from './annotator.js';
 
 const els = {
@@ -841,10 +842,11 @@ async function handleAction(action) {
 
 /* ---------- AI(OpenAI)로 다듬어 등록 ---------- */
 
-/** OpenAI API 키가 설정돼 있을 때만 'AI로 다듬어 등록' 버튼을 노출. */
+/** OpenAI 키(개인 설정 또는 팀 배포 기본값)가 있을 때만 'AI로 다듬어 등록' 버튼을 노출. */
 async function updateAiButtonVisibility() {
   const cfg = await getLocal([LOCAL_KEYS.OPENAI_API_KEY]);
-  els.aiSubmitBtn.hidden = !cfg[LOCAL_KEYS.OPENAI_API_KEY];
+  const apiKey = cfg[LOCAL_KEYS.OPENAI_API_KEY] || TEAM_DEFAULTS.openaiApiKey;
+  els.aiSubmitBtn.hidden = !apiKey;
 }
 
 /** AI 결과(JSON)를 마크다운 설명으로. */
@@ -901,12 +903,14 @@ async function handleAiSubmit() {
     LOCAL_KEYS.OPENAI_BASE_URL,
     LOCAL_KEYS.OPENAI_SEND_IMAGE,
   ]);
-  const apiKey = cfg[LOCAL_KEYS.OPENAI_API_KEY];
+  // 개인 옵션값 우선, 없으면 팀 배포 기본값(team-config.js) 사용.
+  const apiKey = cfg[LOCAL_KEYS.OPENAI_API_KEY] || TEAM_DEFAULTS.openaiApiKey;
   if (!apiKey) {
     showToast('설정 페이지에서 OpenAI API 키를 먼저 입력해주세요.', 'error');
     return;
   }
-  const model = cfg[LOCAL_KEYS.OPENAI_MODEL] || 'gpt-4o-mini';
+  const model = cfg[LOCAL_KEYS.OPENAI_MODEL] || TEAM_DEFAULTS.openaiModel || 'gpt-4o-mini';
+  const baseUrl = cfg[LOCAL_KEYS.OPENAI_BASE_URL] || TEAM_DEFAULTS.openaiBaseUrl;
 
   setAiLoading(true);
   try {
@@ -926,7 +930,7 @@ async function handleAiSubmit() {
     }
 
     const result = await chatJson({
-      baseUrl: cfg[LOCAL_KEYS.OPENAI_BASE_URL],
+      baseUrl,
       apiKey,
       model,
       system,

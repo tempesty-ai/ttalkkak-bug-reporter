@@ -13,6 +13,7 @@ import {
   getFolderlessLists,
 } from '../lib/clickup.js';
 import { listModels } from '../lib/openai.js';
+import { TEAM_DEFAULTS } from '../lib/team-config.js';
 
 const tokenEl = document.getElementById('token');
 const listIdEl = document.getElementById('list-id');
@@ -94,9 +95,10 @@ async function loadSettings() {
   ]);
   tokenEl.value = cfg[LOCAL_KEYS.CLICKUP_TOKEN] || '';
   listIdEl.value = cfg[LOCAL_KEYS.DEFAULT_LIST_ID] || '';
-  openaiKeyEl.value = cfg[LOCAL_KEYS.OPENAI_API_KEY] || '';
-  openaiModelEl.value = cfg[LOCAL_KEYS.OPENAI_MODEL] || '';
-  openaiBaseEl.value = cfg[LOCAL_KEYS.OPENAI_BASE_URL] || '';
+  // 개인이 저장한 값이 있으면 그 값, 없으면 팀 배포 기본값(team-config.js)을 보여준다.
+  openaiKeyEl.value = cfg[LOCAL_KEYS.OPENAI_API_KEY] || TEAM_DEFAULTS.openaiApiKey || '';
+  openaiModelEl.value = cfg[LOCAL_KEYS.OPENAI_MODEL] || TEAM_DEFAULTS.openaiModel || '';
+  openaiBaseEl.value = cfg[LOCAL_KEYS.OPENAI_BASE_URL] || TEAM_DEFAULTS.openaiBaseUrl || '';
   openaiImageEl.checked = Boolean(cfg[LOCAL_KEYS.OPENAI_SEND_IMAGE]);
 }
 
