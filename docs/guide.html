@@ -70,6 +70,7 @@
     font-size: 15.5px;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    word-break: keep-all; /* 한글이 음절 중간에서 끊기지 않고 어절 단위로 줄바꿈 */
   }
   .mono { font-family: 'Cascadia Code', 'D2Coding', ui-monospace, Consolas, monospace; }
 
@@ -141,7 +142,7 @@
   /* ---- feature rows (stacked explanations) ---- */
   .rows { display: flex; flex-direction: column; gap: 12px; }
   .row {
-    display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: start;
+    display: grid; grid-template-columns: 184px 1fr; gap: 18px; align-items: start;
     background: var(--surface); border: 1px solid var(--border); border-radius: 13px; padding: 18px 20px;
   }
   .row .k { font-weight: 720; }
