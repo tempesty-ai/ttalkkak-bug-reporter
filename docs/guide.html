@@ -226,7 +226,7 @@
   <div class="hero">
     <p class="eyebrow">QA Capture → ClickUp</p>
     <h1>버그 발견부터 티켓 등록까지, 딸깍 한 번</h1>
-    <p class="lead">화면을 캡처하고 주석을 달면, 재현 단계·콘솔 에러·환경 정보까지 자동으로 채워져 ClickUp에 등록됩니다. AI가 내용을 다듬어 초안을 완성해 줍니다.</p>
+    <p class="lead">화면을 캡처하고 주석을 달면, 재현 단계·콘솔 에러·환경 정보까지 자동으로 채워져 ClickUp에 등록됩니다.<br>AI가 내용을 다듬어 초안을 완성해 줍니다.</p>
     <div class="flow" aria-label="사용 흐름">
       <span class="step">캡처</span><span class="arw">→</span>
       <span class="step">주석·자동 정보</span><span class="arw">→</span>
@@ -243,7 +243,7 @@
   <section id="install">
     <p class="sec-label">설치 · 배포</p>
     <h2>설치 — 어떻게 올라가나</h2>
-    <p class="sec-desc">별도 빌드가 필요 없습니다. 담당자에게 받은 ZIP을 풀어 크롬에 올리면 됩니다.</p>
+    <p class="sec-desc">별도 빌드가 필요 없습니다.<br>담당자에게 받은 ZIP을 풀어 크롬에 올리면 됩니다.</p>
     <ol class="steps">
       <li><b>ZIP 받기 · 압축 풀기</b><span class="hint">담당자에게 받은 <code>ttalkkak-bug-reporter.zip</code>을 원하는 위치(예: 바탕화면·문서 폴더)에서 <b>마우스 우클릭 → “압축 풀기”</b>로 해제합니다. 압축을 <b>푼 뒤</b> 생긴 폴더를 사용합니다(ZIP 안에서 바로 로드 X).</span></li>
       <li><b>폴더 위치 정하기</b><span class="hint">한 번 로드한 뒤에는 <b>폴더를 옮기거나 이름을 바꾸지 마세요</b>. 경로가 바뀌면 확장이 새 확장으로 인식되어 저장한 설정(토큰·리스트 등)이 초기화됩니다.</span></li>
@@ -257,7 +257,7 @@
       </figure>
       <figure class="shot">
         <img src="assets/install-card.png" alt="로드된 딸깍 버그리포팅 확장 카드" loading="lazy" />
-        <figcaption>로드되면 “딸깍 버그리포팅” 카드가 생깁니다. 오른쪽 토글이 켜져 있어야 동작합니다.</figcaption>
+        <figcaption>로드되면 “딸깍 버그리포팅” 카드가 생깁니다.<br>오른쪽 토글이 켜져 있어야 동작합니다.</figcaption>
       </figure>
     </div>
 
@@ -269,12 +269,12 @@
       </div>
       <div class="row">
         <div class="k">AI (선택)</div>
-        <div class="v"><b>사내 프록시</b> 권장 — 호스트 PC 한 곳에서 프록시(<code>proxy/start-proxy.bat</code>)를 돌리고, 팀원은 옵션에 <b>서버 주소 + 접속 토큰</b>만 입력합니다. 실제 OpenAI 키는 호스트에만 있어 팀원에게 노출되지 않습니다. AI를 안 쓰는 팀원은 키 없이도 캡처·진단·등록을 모두 사용할 수 있습니다.</div>
+        <div class="v"><b>사내 프록시</b> 권장 — 호스트 PC 한 곳에서 프록시(<code>proxy/start-proxy.bat</code>)를 돌리고, 팀원은 옵션에 <b>서버 주소 + 접속 토큰</b>만 입력합니다.<br>실제 OpenAI 키는 호스트에만 있어 팀원에게 노출되지 않습니다.<br>AI를 안 쓰는 팀원은 키 없이도 캡처·진단·등록을 모두 사용할 수 있습니다.</div>
       </div>
     </div>
     <div class="note tip">
       <p class="t">배포 팁</p>
-      <p>ZIP으로 폴더를 공유하면 팀원은 <code>chrome://extensions</code> → 개발자 모드 → “압축해제된 확장 프로그램 로드”로 바로 설치할 수 있습니다. 각자 ClickUp 토큰만 입력하면 준비 완료입니다.</p>
+      <p>ZIP으로 폴더를 공유하면 팀원은 <code>chrome://extensions</code> → 개발자 모드 → “압축해제된 확장 프로그램 로드”로 바로 설치할 수 있습니다.<br>각자 ClickUp 토큰만 입력하면 준비 완료입니다.</p>
     </div>
   </section>
 
@@ -309,29 +309,29 @@
     </div>
 
     <h2 style="margin-top:44px">AI (OpenAI) — 로컬 프록시</h2>
-    <p class="sec-desc">AI 관련 값(<b>접속 토큰·모델·base URL</b>)은 배포본에 <b>미리 설정</b>되어 있어 설정 화면에서 <b>비활성</b> 상태로 표시됩니다. 팀원은 따로 입력할 필요가 없습니다. (실제 OpenAI 키는 담당자 PC의 프록시에만 있어 노출되지 않습니다.)</p>
+    <p class="sec-desc">AI 관련 값(<b>접속 토큰·모델·base URL</b>)은 배포본에 <b>미리 설정</b>되어 있어 설정 화면에서 <b>비활성</b> 상태로 표시됩니다.<br>팀원은 따로 입력할 필요가 없습니다.<br>(실제 OpenAI 키는 담당자 PC의 프록시에만 있어 노출되지 않습니다.)</p>
     <div class="rows">
-      <div class="row"><div class="k">접속 토큰</div><div class="v">담당자 프록시 접속 토큰(●●●로 마스킹). <b>실제 OpenAI 키가 아닙니다.</b> 고정.</div></div>
+      <div class="row"><div class="k">접속 토큰</div><div class="v">담당자 프록시 접속 토큰(●●●로 마스킹).<br><b>실제 OpenAI 키가 아닙니다.</b> 고정.</div></div>
       <div class="row"><div class="k">AI 모델</div><div class="v"><code>gpt-4o-mini</code> 고정.</div></div>
-      <div class="row"><div class="k">base URL</div><div class="v">담당자 로컬 PC 프록시 주소 <code>http://…:8770/v1</code>. 고정.</div></div>
-      <div class="row"><div class="k">스크린샷 전송</div><div class="v">체크하면 이미지도 AI에 함께 전송(이미지 인식). 유일하게 켜고 끌 수 있는 옵션입니다.</div></div>
+      <div class="row"><div class="k">base URL</div><div class="v">담당자 로컬 PC 프록시 주소 <code>http://…:8770/v1</code>.<br>고정.</div></div>
+      <div class="row"><div class="k">스크린샷 전송</div><div class="v">체크하면 이미지도 AI에 함께 전송(이미지 인식).<br>유일하게 켜고 끌 수 있는 옵션입니다.</div></div>
     </div>
 
     <h2 style="margin-top:44px">연결 확인 — 저장 전에 두 버튼</h2>
-    <p class="sec-desc">저장하기 전에 아래 두 버튼으로 정상 동작을 꼭 확인하세요. 초록 메시지가 뜨면 정상, 빨간 메시지면 아래 안내를 확인합니다.</p>
+    <p class="sec-desc">저장하기 전에 아래 두 버튼으로 정상 동작을 꼭 확인하세요.<br>초록 메시지가 뜨면 정상, 빨간 메시지면 아래 안내를 확인합니다.</p>
     <div class="rows">
       <div class="row">
         <div class="k">연결 테스트<span class="sub">ClickUp</span></div>
-        <div class="v">ClickUp 토큰이 유효한지 확인합니다. <span class="chips"><span class="chip ok">연결 성공 — 사용자: 홍길동</span></span> 이 뜨면 정상. 빨간 메시지면 토큰을 다시 붙여넣으세요(Bearer 없이 <code>pk_…</code>).</div>
+        <div class="v">ClickUp 토큰이 유효한지 확인합니다.<br><span class="chips"><span class="chip ok">연결 성공 — 사용자: 홍길동</span></span> 이 뜨면 정상.<br>빨간 메시지면 토큰을 다시 붙여넣으세요(Bearer 없이 <code>pk_…</code>).</div>
       </div>
       <div class="row">
         <div class="k">AI 연결 테스트<span class="sub">OpenAI 프록시</span></div>
-        <div class="v">프록시를 거쳐 OpenAI 연결을 확인합니다. <span class="chips"><span class="chip ok">OpenAI 연결 성공! 사용 가능한 모델 126개 확인됨</span></span> 이 뜨면 정상. 빨간 메시지면 <b>담당자 PC의 프록시가 켜져 있는지</b>·같은 사내망인지 확인하세요.</div>
+        <div class="v">프록시를 거쳐 OpenAI 연결을 확인합니다.<br><span class="chips"><span class="chip ok">OpenAI 연결 성공!<br>사용 가능한 모델 126개 확인됨</span></span> 이 뜨면 정상.<br>빨간 메시지면 <b>담당자 PC의 프록시가 켜져 있는지</b>·같은 사내망인지 확인하세요.</div>
       </div>
     </div>
     <div class="note tip">
       <p class="t">저장</p>
-      <p>두 테스트가 정상이면 <b>저장</b>을 누릅니다. 팀원이 직접 입력할 것은 <b>ClickUp 토큰·리스트</b>뿐이며, AI 값은 이미 설정돼 있습니다.</p>
+      <p>두 테스트가 정상이면 <b>저장</b>을 누릅니다.<br>팀원이 직접 입력할 것은 <b>ClickUp 토큰·리스트</b>뿐이며, AI 값은 이미 설정돼 있습니다.</p>
     </div>
   </section>
 
@@ -339,27 +339,27 @@
   <section id="features">
     <p class="sec-label">기능</p>
     <h2>캡처 4종</h2>
-    <p class="sec-desc">툴바의 딸깍 아이콘을 누르면 오른쪽에 사이드 패널이 열립니다. 네 가지 모두 캡처 후 <b>같은 리포트 화면</b>으로 이어집니다.</p>
+    <p class="sec-desc">툴바의 딸깍 아이콘을 누르면 오른쪽에 사이드 패널이 열립니다.<br>네 가지 모두 캡처 후 <b>같은 리포트 화면</b>으로 이어집니다.</p>
     <div class="grid">
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div>
         <h3>화면 캡처</h3>
-        <p>지금 보이는 영역을 즉시 한 장 캡처합니다. 가장 빠른 기본 캡처.</p>
+        <p>지금 보이는 영역을 즉시 한 장 캡처합니다.<br>가장 빠른 기본 캡처.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M8 7h8M8 12h8M8 17h5"></path></svg></div>
         <h3>전체 페이지</h3>
-        <p>페이지를 자동으로 스크롤하며 여러 컷을 찍어 하나의 긴 이미지로 이어붙입니다. 고정 헤더는 반복되지 않게 처리됩니다.</p>
+        <p>페이지를 자동으로 스크롤하며 여러 컷을 찍어 하나의 긴 이미지로 이어붙입니다.<br>고정 헤더는 반복되지 않게 처리됩니다.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path></svg></div>
         <h3>영역 선택</h3>
-        <p>페이지 위에서 마우스로 드래그한 부분만 잘라 캡처합니다. 고해상도 배율도 정확히 반영됩니다.</p>
+        <p>페이지 위에서 마우스로 드래그한 부분만 잘라 캡처합니다.<br>고해상도 배율도 정확히 반영됩니다.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg></div>
         <h3>영상 녹화</h3>
-        <p>탭 화면을 webm 영상으로 녹화합니다. 원하면 다른 창·전체 화면도 녹화 가능. 녹화 시작 시 대상 탭으로 자동 전환됩니다.</p>
+        <p>탭 화면을 webm 영상으로 녹화합니다.<br>원하면 다른 창·전체 화면도 녹화 가능.<br>녹화 시작 시 대상 탭으로 자동 전환됩니다.</p>
       </div>
     </div>
     <div class="shot-grid">
@@ -374,10 +374,10 @@
     </div>
 
     <h2 style="margin-top:44px">이미지 위 주석 편집</h2>
-    <p class="sec-desc">이미지 캡처(화면·전체·영역)는 캡처 직후 편집 도구가 함께 뜹니다. 영상은 재생 미리보기로 표시됩니다.</p>
+    <p class="sec-desc">이미지 캡처(화면·전체·영역)는 캡처 직후 편집 도구가 함께 뜹니다.<br>영상은 재생 미리보기로 표시됩니다.</p>
     <div class="rows">
-      <div class="row"><div class="k">그리기 도구</div><div class="v"><b>화살표</b>·<b>형광펜</b>·<b>단계 번호</b>(클릭할 때마다 자동 증가)·<b>텍스트</b>. 빨강/주황/파랑 색상 선택.</div></div>
-      <div class="row"><div class="k">되돌리기</div><div class="v"><b>실행 취소</b>와 <b>전체 지우기</b>로 언제든 수정. 등록 시 주석이 합쳐진 이미지가 첨부됩니다.</div></div>
+      <div class="row"><div class="k">그리기 도구</div><div class="v"><b>화살표</b>·<b>형광펜</b>·<b>단계 번호</b>(클릭할 때마다 자동 증가)·<b>텍스트</b>.<br>빨강/주황/파랑 색상 선택.</div></div>
+      <div class="row"><div class="k">되돌리기</div><div class="v"><b>실행 취소</b>와 <b>전체 지우기</b>로 언제든 수정.<br>등록 시 주석이 합쳐진 이미지가 첨부됩니다.</div></div>
     </div>
   </section>
 
@@ -385,11 +385,11 @@
   <section id="report">
     <p class="sec-label">리포트 · 자동화</p>
     <h2>리포트 작성 — 알아서 채워집니다</h2>
-    <p class="sec-desc">캡처하면 리포트 폼이 뜹니다. 대부분의 항목이 자동으로 채워지므로 QA는 확인만 하면 됩니다.</p>
+    <p class="sec-desc">캡처하면 리포트 폼이 뜹니다.<br>대부분의 항목이 자동으로 채워지므로 QA는 확인만 하면 됩니다.</p>
     <div class="rows">
       <div class="row">
         <div class="k">제목<span class="sub">placeholder 안내</span></div>
-        <div class="v"><code>[고객사] 이슈 내용</code> 형식이 회색 힌트로 표시됩니다. 클릭해 입력하면 사라지므로 지울 필요가 없습니다.</div>
+        <div class="v"><code>[고객사] 이슈 내용</code> 형식이 회색 힌트로 표시됩니다.<br>클릭해 입력하면 사라지므로 지울 필요가 없습니다.</div>
       </div>
       <div class="row">
         <div class="k">우선순위</div>
@@ -397,11 +397,11 @@
       </div>
       <div class="row">
         <div class="k">재현 방법<span class="sub">자동 기록</span></div>
-        <div class="v"><b>페이지에서의 클릭·입력을 자동으로 기억</b>해, 캡처 시점의 직전 행동을 번호 매긴 재현 단계로 자동 작성합니다. (예: <span class="mono">1. '조회' 버튼 클릭 → 2. 아이디 입력…</span>)</div>
+        <div class="v"><b>페이지에서의 클릭·입력을 자동으로 기억</b>해, 캡처 시점의 직전 행동을 번호 매긴 재현 단계로 자동 작성합니다.<br>(예: <span class="mono">1.<br>'조회' 버튼 클릭 → 2.<br>아이디 입력…</span>)</div>
       </div>
       <div class="row">
         <div class="k">멘션 표시</div>
-        <div class="v">본문 맨 아래에 담당자 이름을 하이퍼링크로 넣습니다. 기본값은 내 이름이며 자유롭게 수정 가능합니다.</div>
+        <div class="v">본문 맨 아래에 담당자 이름을 하이퍼링크로 넣습니다.<br>기본값은 내 이름이며 자유롭게 수정 가능합니다.</div>
       </div>
       <div class="row">
         <div class="k">URL · 캡처 시각</div>
@@ -414,11 +414,11 @@
     </figure>
 
     <h2 style="margin-top:44px">웹 상태 자동 진단</h2>
-    <p class="sec-desc">개발자 도구를 열지 않아도, 페이지의 문제를 자동으로 감지해 리포트에 첨부합니다. 개발자가 받아 바로 디버깅할 수 있는 정보입니다.</p>
+    <p class="sec-desc">개발자 도구를 열지 않아도, 페이지의 문제를 자동으로 감지해 리포트에 첨부합니다.<br>개발자가 받아 바로 디버깅할 수 있는 정보입니다.</p>
     <div class="rows">
       <div class="row">
         <div class="k">웹 상태</div>
-        <div class="v">런처의 진단 카드에 실시간 표시됩니다. <span class="chips"><span class="chip ok">정상 ✅</span><span class="chip bad">⚠️ 콘솔 에러 N건</span></span> 마우스를 올리면 실제 에러 내용이 보이고, 같은 에러는 <code>(×N)</code>으로 합쳐집니다.</div>
+        <div class="v">런처의 진단 카드에 실시간 표시됩니다.<br><span class="chips"><span class="chip ok">정상 ✅</span><span class="chip bad">⚠️ 콘솔 에러 N건</span></span> 마우스를 올리면 실제 에러 내용이 보이고, 같은 에러는 <code>(×N)</code>으로 합쳐집니다.</div>
       </div>
       <div class="row">
         <div class="k">수집 항목</div>
@@ -442,7 +442,7 @@
       </div>
       <div class="row">
         <div class="k">🤖 AI로 다듬어 등록</div>
-        <div class="v"><b>OpenAI</b>가 메모·재현 스텝·콘솔 에러·(이미지 인식 모델이면) 스크린샷을 종합해 <b>제목·프리컨디션·재현 단계·기대/실제 결과</b>로 정리한 뒤 등록합니다. 등록한 리포트를 예시로 기억해 <b>쓸수록 팀 스타일에 맞춰집니다.</b></div>
+        <div class="v"><b>OpenAI</b>가 메모·재현 스텝·콘솔 에러·(이미지 인식 모델이면) 스크린샷을 종합해 <b>제목·프리컨디션·재현 단계·기대/실제 결과</b>로 정리한 뒤 등록합니다.<br>등록한 리포트를 예시로 기억해 <b>쓸수록 팀 스타일에 맞춰집니다.</b></div>
       </div>
     </div>
     <figure class="shot narrow">
@@ -451,11 +451,11 @@
     </figure>
     <div class="note tip">
       <p class="t">데이터 처리</p>
-      <p>캡처·주석·웹 상태·설정은 브라우저(<code>chrome.storage</code>) 로컬에서 처리됩니다. <b>“AI로 다듬어 등록”은 선택 기능</b>으로, 이 버튼을 누를 때만 리포트 내용과 (설정 시)스크린샷이 OpenAI(사내 프록시 경유)로 전송됩니다.</p>
+      <p>캡처·주석·웹 상태·설정은 브라우저(<code>chrome.storage</code>) 로컬에서 처리됩니다.<br><b>“AI로 다듬어 등록”은 선택 기능</b>으로, 이 버튼을 누를 때만 리포트 내용과 (설정 시)스크린샷이 OpenAI(사내 프록시 경유)로 전송됩니다.</p>
     </div>
 
     <h2 style="margin-top:44px">올라간 결과</h2>
-    <p class="sec-desc">사람이 직접 쓴 건 <b>제목과 주석</b>뿐입니다. 아래 내용은 전부 자동으로 채워졌습니다.</p>
+    <p class="sec-desc">사람이 직접 쓴 건 <b>제목과 주석</b>뿐입니다.<br>아래 내용은 전부 자동으로 채워졌습니다.</p>
     <div class="shot-grid">
       <figure class="shot">
         <img src="assets/clickup-task.png" alt="ClickUp에 생성된 태스크 본문" loading="lazy" />
