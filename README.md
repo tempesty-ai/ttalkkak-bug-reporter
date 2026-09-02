@@ -68,7 +68,7 @@ QA가 버그를 발견한 순간부터 이슈 트래커에 리포트가 올라�
 팀원에게 실제 OpenAI 키를 노출하지 않으려면 **호스트 PC 한 곳에서 프록시**를 돌리고,
 팀원 확장에는 **서버 주소 + 접속 토큰**만 배포합니다. → [proxy/README.md](proxy/README.md)
 - 호스트: `proxy/config.example.json` → `config.local.json` 복사·작성 후 `proxy/start-proxy.bat` 실행
-- 팀원 옵션: base URL `http://<호스트 IP>:8787/v1`, API 키에는 **접속 토큰**(실제 키 아님) 입력
+- 팀원 옵션: base URL `http://<호스트 IP>:8770/v1`, API 키에는 **접속 토큰**(실제 키 아님) 입력
 - 실제 키는 호스트 PC에만 있고 저장소·ZIP엔 포함되지 않습니다(`config.local.json` gitignore)
 
 ## 사용법

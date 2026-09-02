@@ -7,7 +7,7 @@
 // 설정:  proxy/config.local.json  (proxy/config.example.json 복사해서 채움. git에 안 올라감)
 //
 // 팀원 확장 옵션 입력값:
-//   - base URL : http://<이 PC의 사내 IP>:<port>/v1   (예: http://192.168.0.10:8787/v1)
+//   - base URL : http://<이 PC의 사내 IP>:<port>/v1   (예: http://192.168.0.10:8770/v1)
 //   - API 키   : config의 accessToken 값 (실제 OpenAI 키 아님)
 
 import http from 'node:http';
@@ -28,7 +28,7 @@ function loadConfig() {
   return {
     openaiKey: file.openaiKey || process.env.OPENAI_API_KEY || '',
     accessToken: file.accessToken || process.env.PROXY_ACCESS_TOKEN || '',
-    port: Number(file.port || process.env.PROXY_PORT || 8787),
+    port: Number(file.port || process.env.PROXY_PORT || 8770),
     upstream: (file.upstream || process.env.OPENAI_UPSTREAM || 'https://api.openai.com').replace(/\/+$/, ''),
   };
 }
