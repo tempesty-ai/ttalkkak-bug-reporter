@@ -80,7 +80,11 @@
         <input type="checkbox" id="openai-image" />
         스크린샷도 AI에 전송 (이미지 인식)
       </label>
-      <input id="openai-base" type="text" placeholder="(선택) Azure·사내 호환 엔드포인트 base URL" autocomplete="off" spellcheck="false" style="margin-top:10px;" />
+      <input id="openai-base" type="text" placeholder="사내 프록시 base URL (예: http://10.20.132.30:8770/v1)" autocomplete="off" spellcheck="false" style="margin-top:10px;" />
+      <p class="hint">
+        base URL은 <strong>담당자 로컬 PC에 띄운 사내 프록시</strong> 주소입니다.
+        AI 요청이 이 프록시를 거쳐 OpenAI로 전달돼요. (담당자 PC의 프록시가 켜져 있어야 AI 기능 사용 가능)
+      </p>
       <div class="input-row" style="margin-top:10px;">
         <button id="openai-test" class="ghost-btn" type="button">AI 연결 테스트</button>
       </div>
