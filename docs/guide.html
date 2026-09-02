@@ -1,761 +1,403 @@
 <!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>딸깍 버그리포팅 사용자 가이드</title>
-  <style>
-    :root {
-      --bg: #eef3f7;
-      --surface: #ffffff;
-      --surface-2: #f5f8fb;
-      --surface-3: #eaf2f8;
-      --line: #d2dde7;
-      --text: #17212b;
-      --muted: #607080;
-      --soft: #253545;
-      --brand: #1f6fa9;
-      --accent: #187353;
-      --warn: #a86400;
-      --danger: #c2413a;
-      --code: #f3f6f9;
-      --paper-ink: #17212b;
+<meta charset="utf-8">
+<title>딸깍 버그리포팅 가이드</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --brand: #4f46e5;
+    --brand-strong: #4338ca;
+    --brand-soft: #eef0ff;
+    --ground: #f7f8fb;
+    --surface: #ffffff;
+    --card: #fbfbfe;
+    --ink: #1b1e2b;
+    --muted: #62667a;
+    --border: #e6e7ef;
+    --code-bg: #f2f3f9;
+    --ok: #16a34a;
+    --ok-soft: #eafaf0;
+    --warn: #b45309;
+    --warn-soft: #fff7ea;
+    --danger: #dc2626;
+    --shadow: 0 1px 2px rgba(20, 22, 35, 0.04), 0 8px 24px rgba(20, 22, 35, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --brand: #8b93ff;
+      --brand-strong: #a5abff;
+      --brand-soft: #23263a;
+      --ground: #0f1117;
+      --surface: #161923;
+      --card: #1a1d29;
+      --ink: #e7e8f0;
+      --muted: #9a9fb5;
+      --border: #2a2e3d;
+      --code-bg: #1f2331;
+      --ok: #4ade80;
+      --ok-soft: #16241c;
+      --warn: #fbbf24;
+      --warn-soft: #241f14;
+      --danger: #f87171;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
     }
+  }
+  :root[data-theme="dark"] {
+    --brand: #8b93ff;
+    --brand-strong: #a5abff;
+    --brand-soft: #23263a;
+    --ground: #0f1117;
+    --surface: #161923;
+    --card: #1a1d29;
+    --ink: #e7e8f0;
+    --muted: #9a9fb5;
+    --border: #2a2e3d;
+    --code-bg: #1f2331;
+    --ok: #4ade80;
+    --ok-soft: #16241c;
+    --warn: #fbbf24;
+    --warn-soft: #241f14;
+    --danger: #f87171;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: 'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, -apple-system, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: 'Cascadia Code', 'D2Coding', ui-monospace, Consolas, monospace; }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Segoe UI", "Malgun Gothic", Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.68;
-    }
+  /* ---- top bar ---- */
+  header.bar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 12px 22px;
+    background: color-mix(in srgb, var(--surface) 86%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.01em; }
+  .brand .mark {
+    width: 26px; height: 26px; border-radius: 7px; background: var(--brand);
+    display: grid; place-items: center; box-shadow: 0 0 0 3px var(--brand-soft);
+  }
+  .brand .mark svg { width: 16px; height: 16px; color: #fff; }
+  nav.anchors { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.anchors a {
+    color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600;
+    padding: 6px 11px; border-radius: 8px;
+  }
+  nav.anchors a:hover { color: var(--brand); background: var(--brand-soft); }
 
-    a { color: var(--brand); }
-    p, li, td { color: var(--soft); }
+  main { max-width: 900px; margin: 0 auto; padding: 0 22px 96px; }
 
-    .layout {
-      display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
-      min-height: 100vh;
-    }
+  /* ---- hero (compact) ---- */
+  .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
+  .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--brand); margin: 0 0 14px;
+  }
+  h1 { font-size: clamp(30px, 5vw, 42px); line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 16px; text-wrap: balance; font-weight: 820; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 60ch; margin: 0; }
+  .flow {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 28px;
+    font-weight: 700; font-size: 14px;
+  }
+  .flow .step { padding: 8px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+  .flow .arw { color: var(--brand); font-weight: 800; }
+  .flow .goal { color: var(--brand); border-color: color-mix(in srgb, var(--brand) 40%, var(--border)); background: var(--brand-soft); }
 
-    .sidebar {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow: auto;
-      border-right: 1px solid var(--line);
-      background: #f8fbfd;
-      padding: 24px 18px;
-    }
+  /* ---- sections ---- */
+  section { padding: 46px 0 8px; }
+  .sec-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    margin: 0 0 6px;
+  }
+  h2 { font-size: 25px; letter-spacing: -0.015em; margin: 0 0 8px; font-weight: 780; text-wrap: balance; }
+  .sec-desc { color: var(--muted); margin: 0 0 26px; max-width: 62ch; }
+  h3 { font-size: 17px; margin: 0 0 6px; font-weight: 720; }
 
-    .brand { margin-bottom: 24px; }
+  /* ---- feature cards ---- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .card .ico {
+    width: 38px; height: 38px; border-radius: 10px; background: var(--brand-soft); color: var(--brand);
+    display: grid; place-items: center; margin-bottom: 14px;
+  }
+  .card .ico svg { width: 21px; height: 21px; }
+  .card p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+  .card .tag { display: inline-block; margin-top: 12px; font-size: 11.5px; font-weight: 700; color: var(--brand); background: var(--brand-soft); padding: 3px 9px; border-radius: 999px; }
+  .card.soon .ico { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--muted); }
 
-    .brand small {
-      display: block;
-      color: var(--accent);
-      font-family: "Cascadia Code", Consolas, monospace;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
+  /* ---- feature rows (stacked explanations) ---- */
+  .rows { display: flex; flex-direction: column; gap: 12px; }
+  .row {
+    display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: start;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 13px; padding: 18px 20px;
+  }
+  .row .k { font-weight: 720; }
+  .row .k .sub { display: block; font-size: 12.5px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+  .row .v { color: var(--muted); font-size: 14.5px; }
+  .row .v b { color: var(--ink); font-weight: 700; }
+  @media (max-width: 620px) { .row { grid-template-columns: 1fr; gap: 8px; } }
 
-    .brand h1 {
-      margin: 4px 0 6px;
-      color: #101927;
-      font-size: 28px;
-      line-height: 1.12;
-    }
+  /* ---- steps (ordered, meaningful sequence) ---- */
+  ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  ol.steps > li {
+    counter-increment: s; position: relative; padding: 14px 16px 14px 54px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 14px; top: 13px;
+    width: 26px; height: 26px; border-radius: 8px; background: var(--brand); color: #fff;
+    display: grid; place-items: center; font-weight: 800; font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  ol.steps b { font-weight: 720; }
+  ol.steps .hint { display: block; color: var(--muted); font-size: 13.5px; margin-top: 3px; }
 
-    .brand p { margin: 0; color: var(--muted); font-size: 13px; }
+  code {
+    font-family: 'Cascadia Code', 'D2Coding', ui-monospace, Consolas, monospace;
+    background: var(--code-bg); padding: 1.5px 6px; border-radius: 6px; font-size: 0.88em;
+    border: 1px solid var(--border); word-break: break-all;
+  }
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 13px 15px; overflow-x: auto; margin: 10px 0 0;
+  }
+  pre code { background: none; border: none; padding: 0; font-size: 13px; line-height: 1.6; }
 
-    .nav-group { margin: 18px 0; }
+  /* ---- callouts ---- */
+  .note { border-radius: 12px; padding: 14px 16px 14px 16px; margin-top: 16px; font-size: 14px; border: 1px solid; }
+  .note .t { font-weight: 720; margin: 0 0 4px; }
+  .note p { margin: 0; }
+  .note.tip { background: var(--brand-soft); border-color: color-mix(in srgb, var(--brand) 30%, var(--border)); }
+  .note.tip .t { color: var(--brand-strong); }
+  .note.warn { background: var(--warn-soft); border-color: color-mix(in srgb, var(--warn) 34%, var(--border)); }
+  .note.warn .t { color: var(--warn); }
 
-    .nav-group strong {
-      display: block;
-      margin: 0 0 6px;
-      color: #334155;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
+  /* diagnosis chips */
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .chip { font-size: 12.5px; font-weight: 700; padding: 4px 11px; border-radius: 999px; }
+  .chip.ok { color: var(--ok); background: var(--ok-soft); }
+  .chip.bad { color: var(--danger); background: color-mix(in srgb, var(--danger) 12%, transparent); }
 
-    .nav-group a {
-      display: block;
-      border-radius: 6px;
-      color: #334155;
-      font-size: 14px;
-      padding: 7px 9px;
-      text-decoration: none;
-    }
+  .divider { height: 1px; background: var(--border); border: 0; margin: 8px 0 0; }
+  footer { padding: 40px 0 0; color: var(--muted); font-size: 13.5px; }
+  footer .stack { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  footer .stack span { border: 1px solid var(--border); border-radius: 999px; padding: 4px 11px; font-weight: 600; font-size: 12px; }
+  a.inline { color: var(--brand); }
+</style>
 
-    .nav-group a:hover { background: #e6f1fa; color: #0f4f7a; }
-
-    main { min-width: 0; padding: 42px clamp(24px, 5vw, 78px) 86px; }
-
-    .hero {
-      max-width: 1180px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      border-left: 6px solid var(--brand);
-      background: var(--surface);
-      box-shadow: 0 14px 36px rgba(22, 34, 46, 0.08);
-      padding: clamp(24px, 4vw, 42px);
-    }
-
-    .hero .eyebrow {
-      margin: 0 0 10px;
-      color: var(--accent);
-      font-family: "Cascadia Code", Consolas, monospace;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .hero h2 {
-      max-width: 860px;
-      margin: 0 0 12px;
-      border: 0;
-      padding: 0;
-      color: #101927;
-      font-size: clamp(28px, 4.2vw, 44px);
-      line-height: 1.16;
-    }
-
-    .hero p { max-width: 920px; margin: 0; color: #465767; font-size: 17px; }
-
-    section { max-width: 1180px; margin-top: 42px; }
-
-    h2 {
-      margin: 0 0 14px;
-      border-bottom: 1px solid var(--line);
-      color: #101927;
-      font-size: 28px;
-      line-height: 1.25;
-      padding-bottom: 8px;
-    }
-
-    h3 { margin: 24px 0 10px; color: #17212b; font-size: 19px; line-height: 1.3; }
-
-    .section-intro { max-width: 880px; margin: 0 0 18px; color: var(--muted); }
-
-    code, kbd {
-      border: 1px solid #c7d3df;
-      border-radius: 5px;
-      background: var(--code);
-      color: #152536;
-      font-family: "Cascadia Code", Consolas, monospace;
-      font-size: 0.92em;
-      padding: 1px 5px;
-    }
-
-    pre {
-      overflow: auto;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--code);
-      color: #152536;
-      padding: 14px;
-    }
-    pre code { border: 0; background: transparent; padding: 0; }
-
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-    .card, .note, details {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface);
-    }
-    .card, .note { padding: 16px; }
-    .card h3, .note h3 { margin-top: 0; }
-    .card p:last-child, .note p:last-child { margin-bottom: 0; }
-
-    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .pill {
-      border: 1px solid #b8d2e6;
-      border-radius: 999px;
-      background: #eef7fc;
-      color: #0f4f7a;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 5px 10px;
-    }
-
-    .reader-guide {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-    .reader-guide .card { border-top: 3px solid var(--accent); }
-    .reader-guide .card:nth-child(2) { border-top-color: var(--brand); }
-    .reader-guide .card:nth-child(3) { border-top-color: var(--warn); }
-    .reader-guide ol { margin: 10px 0 0; padding-left: 20px; }
-
-    .path-note {
-      border: 1px solid #bfd4e4;
-      border-radius: 8px;
-      background: #f2f8fc;
-      margin-top: 14px;
-      padding: 12px 14px;
-    }
-    .path-note strong { display: block; color: #0f4f7a; margin-bottom: 4px; }
-    .path-note p { margin: 0; color: var(--muted); }
-
-    .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
-    .steps li {
-      counter-increment: step;
-      position: relative;
-      margin: 0 0 12px;
-      padding-left: 40px;
-    }
-    .steps li::before {
-      content: counter(step);
-      position: absolute;
-      left: 0;
-      top: 1px;
-      display: grid;
-      place-items: center;
-      width: 27px;
-      height: 27px;
-      border-radius: 50%;
-      background: var(--brand);
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .task-card {
-      display: grid;
-      gap: 8px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      border-left: 4px solid var(--brand);
-      background: var(--surface);
-      padding: 15px;
-    }
-    .task-card b { color: #101927; font-size: 15px; }
-    .task-card span { color: var(--muted); font-size: 13px; }
-    .task-card a {
-      width: fit-content;
-      border-radius: 6px;
-      background: #e6f1fa;
-      color: #0f4f7a;
-      font-size: 13px;
-      padding: 5px 9px;
-      text-decoration: none;
-    }
-
-    .screen-map {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .screen-map div {
-      border: 1px solid #d5e1eb;
-      border-radius: 6px;
-      background: #ffffff;
-      padding: 10px;
-    }
-    .screen-map b { display: block; color: var(--accent); font-size: 12px; }
-    .screen-map span { display: block; margin-top: 3px; color: #465767; font-size: 13px; }
-
-    details { overflow: hidden; margin: 12px 0; }
-    summary {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: var(--surface-2);
-      color: #101927;
-      font-size: 18px;
-      font-weight: 700;
-      padding: 14px 16px;
-    }
-    summary span { color: var(--muted); font-size: 13px; font-weight: 500; }
-    .detail-body { padding: 14px 16px 16px; }
-
-    .menu-table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .menu-table th, .menu-table td {
-      border-bottom: 1px solid var(--line);
-      padding: 10px 12px;
-      text-align: left;
-      vertical-align: top;
-    }
-    .menu-table th { background: var(--surface-3); color: #17212b; font-size: 13px; }
-    .menu-table td:first-child { width: 170px; color: #17212b; font-weight: 700; }
-
-    .callout {
-      border-left: 4px solid var(--warn);
-      background: #fff8e8;
-      margin: 16px 0;
-      padding: 12px 14px;
-    }
-    .callout.danger { border-left-color: var(--danger); background: #fff1f0; }
-    .callout.info { border-left-color: var(--brand); background: #eef7fc; }
-    .callout strong { color: #17212b; }
-    .callout p { margin: 6px 0 0; }
-    .callout p:first-child { margin-top: 0; }
-
-    .print-note { color: var(--muted); font-size: 13px; }
-
-    @page { size: A4; margin: 15mm 13mm 16mm; }
-
-    @media print {
-      html { scroll-behavior: auto; }
-      body { background: #fff; color: var(--paper-ink); font-size: 10.5pt; line-height: 1.52; }
-      .layout { display: block; }
-      .sidebar { display: none; }
-      main { padding: 0; }
-      section { max-width: none; margin-top: 11mm; }
-      h2 { margin: 0 0 5mm; padding-bottom: 2mm; border-bottom: 1px solid #b7c2cc; font-size: 18pt; page-break-after: avoid; }
-      h3 { margin: 7mm 0 3mm; font-size: 13pt; page-break-after: avoid; }
-      #capture, #settings, #deploy, #troubleshooting { page-break-before: always; }
-      p, li, td, th { color: var(--paper-ink); font-size: 10.5pt; }
-      a { color: #135f91; text-decoration: none; }
-      code, kbd, pre { border-color: #c7d0d9; background: #f3f6f8; color: #17212b; }
-      pre { padding: 8px 10px; }
-      .hero { border: 0; border-left: 5px solid #135f91; border-radius: 0; padding: 0 0 0 8mm; margin-bottom: 9mm; box-shadow: none; }
-      .hero h2 { margin-bottom: 4mm; font-size: 22pt; line-height: 1.2; }
-      .hero p { color: #4b5b68; font-size: 11pt; }
-      .hero .eyebrow, .brand small { color: #135f91; }
-      .pill-row { display: none; }
-      .grid, .grid.three, .reader-guide, .screen-map { display: block; }
-      .card, .task-card, .note, .screen-map div, .path-note {
-        break-inside: avoid; border: 1px solid #d4dce4; border-radius: 4px; background: #fff; margin: 0 0 4mm; padding: 4mm;
-      }
-      .reader-guide .card { border-top: 2px solid #135f91; }
-      .task-card { gap: 2mm; }
-      .task-card a { border: 0; background: transparent; color: #135f91; padding: 0; }
-      details { border: 1px solid #d4dce4; border-radius: 4px; background: #fff; margin: 4mm 0; break-inside: avoid; }
-      summary { background: #eef2f5; font-size: 12pt; padding: 3mm 4mm; }
-      .detail-body { padding: 3mm 4mm; }
-      .menu-table { border-color: #c7d0d9; page-break-inside: avoid; }
-      .menu-table th, .menu-table td { border-bottom-color: #d8e0e7; font-size: 9.5pt; padding: 6px 8px; }
-      .menu-table th { background: #eef2f5; }
-      .menu-table td:first-child { width: 32mm; }
-      .steps li { padding-left: 28px; }
-      .steps li::before { width: 20px; height: 20px; background: #135f91; font-size: 8.5pt; }
-      .callout, .callout.danger, .callout.info { break-inside: avoid; border-left-width: 3px; margin: 4mm 0; padding: 3mm 4mm; }
-      .print-note { display: none; }
-    }
-
-    @media (max-width: 980px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { position: static; height: auto; }
-      .grid, .grid.three, .reader-guide, .screen-map { grid-template-columns: 1fr; }
-      .menu-table, .menu-table tbody, .menu-table tr, .menu-table td, .menu-table th { display: block; }
-      .menu-table thead { display: none; }
-      .menu-table td:first-child { width: auto; border-bottom: 0; padding-bottom: 2px; }
-    }
-  </style>
-  <script>
-    window.addEventListener('beforeprint', function () {
-      document.querySelectorAll('details').forEach(function (d) { d.setAttribute('open', ''); });
-    });
-  </script>
-</head>
-<body>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brand">
-        <small>딸깍 Manual</small>
-        <h1>딸깍 버그리포팅</h1>
-        <p>Chrome 확장 · QA Capture to ClickUp<br />작성일: 2026-09-02</p>
-      </div>
-      <nav>
-        <div class="nav-group">
-          <strong>처음 보기</strong>
-          <a href="#reader-guide">읽는 순서</a>
-          <a href="#quick-start">빠른 시작</a>
-          <a href="#task-finder">작업별 길찾기</a>
-          <a href="#screens">화면 구성</a>
-        </div>
-        <div class="nav-group">
-          <strong>주요 기능</strong>
-          <a href="#capture">캡처 4종</a>
-          <a href="#annotate">주석 편집</a>
-          <a href="#diagnose">웹 상태 진단</a>
-          <a href="#repro">자동 재현 스텝</a>
-          <a href="#ai">AI로 다듬어 등록</a>
-          <a href="#clickup">ClickUp 등록</a>
-        </div>
-        <div class="nav-group">
-          <strong>설정 · 운영</strong>
-          <a href="#settings">설정</a>
-          <a href="#deploy">팀 배포 (담당자)</a>
-          <a href="#troubleshooting">문제 해결</a>
-        </div>
-      </nav>
-    </aside>
-
-    <main>
-      <header class="hero">
-        <p class="eyebrow">Chrome Extension · QA Bug Reporting</p>
-        <h2>버그를 발견한 화면 그대로, 딸깍 한 번으로 ClickUp에 등록합니다.</h2>
-        <p>
-          화면·영상을 캡처하고 주석을 단 뒤, 콘솔 에러·재현 단계·환경 정보까지 자동으로 채워
-          ClickUp 태스크로 등록하는 QA 도구입니다. 리포트 작성 시간을 몇 분에서 30초 이내로 줄이는 것을 목표로 합니다.
-        </p>
-        <div class="pill-row">
-          <span class="pill">화면 / 영역 / 전체 캡처</span>
-          <span class="pill">영상 녹화</span>
-          <span class="pill">주석 편집</span>
-          <span class="pill">웹 상태 자동 진단</span>
-          <span class="pill">자동 재현 스텝</span>
-          <span class="pill">AI 다듬기</span>
-          <span class="pill">ClickUp 원클릭</span>
-        </div>
-      </header>
-
-      <section id="reader-guide">
-        <h2>먼저 이렇게 보세요</h2>
-        <p class="section-intro">모든 항목을 처음부터 읽을 필요는 없습니다. 지금 상황에 맞는 흐름부터 보세요.</p>
-        <div class="reader-guide">
-          <div class="card">
-            <h3>처음 설치한 경우</h3>
-            <ol>
-              <li><a href="#quick-start">빠른 시작</a>으로 설치와 첫 캡처를 확인합니다.</li>
-              <li><a href="#settings">설정</a>에서 ClickUp 토큰·리스트를 등록합니다.</li>
-              <li><a href="#clickup">ClickUp 등록</a>으로 첫 리포트를 올려봅니다.</li>
-            </ol>
-          </div>
-          <div class="card">
-            <h3>매일 쓰는 QA인 경우</h3>
-            <ol>
-              <li><a href="#task-finder">작업별 길찾기</a>에서 원하는 캡처를 고릅니다.</li>
-              <li><a href="#diagnose">웹 상태 진단</a>·<a href="#repro">재현 스텝</a>을 함께 담습니다.</li>
-              <li><a href="#ai">AI로 다듬어 등록</a>으로 리포트를 정리해 올립니다.</li>
-            </ol>
-          </div>
-          <div class="card">
-            <h3>팀 배포 담당자인 경우</h3>
-            <ol>
-              <li><a href="#deploy">팀 배포</a>에서 프록시를 켭니다.</li>
-              <li><code>lib/team-config.js</code>에 프록시 주소·토큰을 넣습니다.</li>
-              <li>ZIP을 팀에 배포하고, 각자 ClickUp 토큰만 넣게 안내합니다.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section id="quick-start">
-        <h2>1. 처음 3분 사용 순서</h2>
-        <p class="section-intro">설치부터 첫 리포트 등록까지의 최소 흐름입니다.</p>
-        <div class="grid">
-          <div class="card">
-            <h3>1. 확장 설치</h3>
-            <ol class="steps">
-              <li>크롬 주소창에 <code>chrome://extensions</code> 입력</li>
-              <li>우측 상단 <strong>개발자 모드</strong> 켜기</li>
-              <li><strong>압축해제된 확장 프로그램 로드</strong> → 딸깍 폴더 선택</li>
-              <li>툴바에 아이콘이 생기면 완료</li>
-            </ol>
-          </div>
-          <div class="card">
-            <h3>2. ClickUp 연결</h3>
-            <ol class="steps">
-              <li>툴바 아이콘 클릭 → 사이드 패널의 <strong>⚙️ 설정</strong></li>
-              <li>ClickUp 개인 API 토큰 입력 → <strong>연결 테스트</strong></li>
-              <li><strong>리스트 찾아보기</strong>로 등록할 리스트 선택 → <strong>저장</strong></li>
-            </ol>
-          </div>
-          <div class="card">
-            <h3>3. 캡처</h3>
-            <ol class="steps">
-              <li>리포트할 페이지에서 툴바 아이콘 클릭</li>
-              <li>사이드 패널에서 <strong>화면 캡처</strong> 선택</li>
-              <li>필요하면 화살표·번호로 주석 추가</li>
-            </ol>
-          </div>
-          <div class="card">
-            <h3>4. 등록</h3>
-            <ol class="steps">
-              <li>제목·내용 확인 (재현 단계·URL·시각 자동)</li>
-              <li><strong>ClickUp에 등록</strong> 또는 <strong>🤖 AI로 다듬어 등록</strong></li>
-              <li>토스트가 뜨면 ClickUp에 태스크·첨부 생성 완료</li>
-            </ol>
-          </div>
-        </div>
-        <div class="path-note">
-          <strong>첫 등록 전에 확인할 것</strong>
-          <p>설정에서 ClickUp <strong>토큰</strong>과 <strong>기본 리스트</strong>가 저장돼 있어야 등록됩니다. 토큰은 Bearer 접두어 없이 <code>pk_…</code> 형태 그대로 붙여넣습니다.</p>
-        </div>
-      </section>
-
-      <section id="task-finder">
-        <h2>2. 무엇을 하고 싶나요?</h2>
-        <p class="section-intro">원하는 작업을 고르면 어디를 눌러야 하는지 바로 찾을 수 있습니다.</p>
-        <div class="grid three">
-          <div class="task-card">
-            <b>지금 보이는 화면을 캡처</b>
-            <span>사이드 패널 → 화면 캡처</span>
-            <a href="#capture">캡처 보기</a>
-          </div>
-          <div class="task-card">
-            <b>페이지 전체를 한 장으로</b>
-            <span>사이드 패널 → 전체 페이지 (스크롤 스티칭)</span>
-            <a href="#capture">캡처 보기</a>
-          </div>
-          <div class="task-card">
-            <b>특정 영역만 잘라서</b>
-            <span>사이드 패널 → 영역 선택 (드래그)</span>
-            <a href="#capture">캡처 보기</a>
-          </div>
-          <div class="task-card">
-            <b>동작을 영상으로 남긴다</b>
-            <span>사이드 패널 → 영상 녹화</span>
-            <a href="#capture">캡처 보기</a>
-          </div>
-          <div class="task-card">
-            <b>캡처에 화살표·설명을 그린다</b>
-            <span>캡처 후 주석 도구 (화살표·형광펜·번호·텍스트)</span>
-            <a href="#annotate">주석 보기</a>
-          </div>
-          <div class="task-card">
-            <b>콘솔 에러를 함께 첨부</b>
-            <span>리포트 뷰의 웹 상태 진단 카드</span>
-            <a href="#diagnose">진단 보기</a>
-          </div>
-          <div class="task-card">
-            <b>클릭 순서를 재현 단계로</b>
-            <span>자동 재현 스텝 기록 → 재현 방법 자동 작성</span>
-            <a href="#repro">재현 스텝 보기</a>
-          </div>
-          <div class="task-card">
-            <b>AI로 리포트를 정리</b>
-            <span>리포트 뷰의 🤖 AI로 다듬어 등록</span>
-            <a href="#ai">AI 보기</a>
-          </div>
-          <div class="task-card">
-            <b>담당자를 나로 지정 / 멘션</b>
-            <span>등록 시 자동 배정 + 멘션 표시 입력칸</span>
-            <a href="#clickup">등록 보기</a>
-          </div>
-          <div class="task-card">
-            <b>처음 설정한다</b>
-            <span>사이드 패널 → ⚙️ 설정</span>
-            <a href="#settings">설정 보기</a>
-          </div>
-          <div class="task-card">
-            <b>팀에 배포한다</b>
-            <span>프록시 실행 + team-config + ZIP 배포</span>
-            <a href="#deploy">배포 보기</a>
-          </div>
-          <div class="task-card">
-            <b>동작이 이상하거나 실패</b>
-            <span>토큰·리스트·프록시·권한 확인</span>
-            <a href="#troubleshooting">문제 해결 보기</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="screens">
-        <h2>3. 화면 구성</h2>
-        <p class="section-intro">
-          딸깍은 별도 창이 아니라 크롬 <strong>사이드 패널</strong>에서 동작합니다. 페이지를 조작하는 동안에도 패널이 닫히지 않아 캡처·녹화·영역 선택에 유리합니다.
-        </p>
-        <div class="screen-map">
-          <div><b>런처 뷰</b><span>캡처 4종 버튼(화면·전체·영역·영상)이 있는 시작 화면입니다.</span></div>
-          <div><b>미리보기</b><span>캡처된 이미지/영상을 보여주고, 이미지면 주석 도구가 열립니다.</span></div>
-          <div><b>웹 상태 진단</b><span>콘솔 에러·실패 요청 건수를 카드로 요약해 보여줍니다.</span></div>
-          <div><b>리포트 폼</b><span>제목·이슈 내용·재현 방법·URL·캡처 시각을 담습니다.</span></div>
-          <div><b>등록 버튼</b><span>ClickUp에 등록 / 🤖 AI로 다듬어 등록 두 가지.</span></div>
-          <div><b>⚙️ 설정</b><span>ClickUp 토큰·리스트, AI(프록시) 설정 페이지로 이동.</span></div>
-        </div>
-      </section>
-
-      <section id="capture">
-        <h2>4. 캡처 4종</h2>
-        <p class="section-intro">상황에 맞는 방식으로 화면을 담습니다. 캡처 후에는 미리보기 → (이미지면) 주석 → 리포트 폼으로 이어집니다.</p>
-        <table class="menu-table">
-          <thead><tr><th>버튼</th><th>기능</th><th>설명</th></tr></thead>
-          <tbody>
-            <tr><td>화면 캡처</td><td>보이는 영역</td><td>현재 탭에서 눈에 보이는 영역을 즉시 캡처합니다. 가장 빠릅니다.</td></tr>
-            <tr><td>전체 페이지</td><td>스크롤 스티칭</td><td>페이지를 스크롤하며 여러 컷을 이어붙입니다. 고정 헤더가 중복되지 않게 처리합니다.</td></tr>
-            <tr><td>영역 선택</td><td>드래그 크롭</td><td>원하는 부분만 드래그해 잘라냅니다. 고해상도(배율)도 반영됩니다. <code>ESC</code> 또는 <strong>✕ 취소</strong> 버튼으로 취소.</td></tr>
-            <tr><td>영상 녹화</td><td>화면 녹화(webm)</td><td>탭·창·전체 화면을 녹화합니다. 중지하면 미리보기에서 재생 후 첨부됩니다.</td></tr>
-          </tbody>
-        </table>
-        <div class="callout info">
-          <strong>영상 녹화 팁</strong>
-          <p>녹화 시작 시 공유 대상을 고르는 크롬 창이 뜹니다. 대상 탭/창을 선택하면 녹화가 시작되고, 완료 후 <code>.webm</code>으로 첨부됩니다.</p>
-        </div>
-      </section>
-
-      <section id="annotate">
-        <h2>5. 주석 편집</h2>
-        <p class="section-intro">이미지 캡처 위에 바로 그릴 수 있는 캔버스 도구입니다. 무거운 외부 편집기 없이 패널 안에서 처리됩니다.</p>
-        <div class="grid">
-          <div class="card"><h3>화살표</h3><p>문제 지점을 가리킵니다.</p></div>
-          <div class="card"><h3>형광펜</h3><p>영역을 반투명하게 강조합니다.</p></div>
-          <div class="card"><h3>단계 번호</h3><p>클릭할 때마다 1, 2, 3… 자동 증가합니다.</p></div>
-          <div class="card"><h3>텍스트</h3><p>짧은 설명을 이미지에 직접 씁니다.</p></div>
-        </div>
-        <p class="print-note">색상 변경과 실행 취소(Undo)를 지원합니다.</p>
-      </section>
-
-      <section id="diagnose">
-        <h2>6. 웹 상태 자동 진단</h2>
-        <p class="section-intro">
-          QA가 개발자 도구를 직접 뒤지지 않아도, 페이지의 <strong>콘솔 에러</strong>와 <strong>실패한 네트워크 요청</strong>을 자동으로 수집합니다. iframe 내부까지 포함하며 중복은 제거됩니다.
-        </p>
-        <div class="grid">
-          <div class="card">
-            <h3>무엇이 잡히나</h3>
-            <p>JS 콘솔 에러, 4xx·5xx로 실패한 요청을 건수와 함께 요약합니다. 리포트 등록 시 내용이 설명에 자동 포함됩니다.</p>
-          </div>
-          <div class="card">
-            <h3>강력 새로고침 후 진단</h3>
-            <p>버튼 한 번으로 캐시를 무시하고 새로고침한 뒤, 로드 중 발생하는 에러까지 잡아냅니다. (쿠키/캐시 이슈 재현에 유리)</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="repro">
-        <h2>7. 자동 재현 스텝</h2>
-        <p class="section-intro">
-          버그 재현까지 눌렀던 <strong>클릭·입력</strong>을 기억해 <strong>재현 방법</strong>을 자동으로 작성합니다. 손으로 재현 단계를 적을 필요가 줄어듭니다.
-        </p>
-        <div class="path-note">
-          <strong>활용</strong>
-          <p>기록된 행동이 리포트의 “재현 방법” 항목으로 정리되어, 개발자가 같은 순서로 재현하기 쉬워집니다.</p>
-        </div>
-      </section>
-
-      <section id="ai">
-        <h2>8. AI로 다듬어 등록</h2>
-        <p class="section-intro">
-          메모·재현 스텝·콘솔 에러(설정 시 스크린샷까지)를 종합해 <strong>제목 / 프리컨디션 / 재현 단계 / 기대·실제 결과</strong>로 정리한 뒤 등록합니다. 등록한 리포트를 예시로 기억해 <strong>쓸수록 팀 스타일에 맞춰집니다.</strong>
-        </p>
-        <div class="grid">
-          <div class="card">
-            <h3>어떻게 동작하나</h3>
-            <p>OpenAI(<code>gpt-4o-mini</code>)가 내용을 정리합니다. 팀 환경에서는 담당자 PC의 <strong>로컬 프록시</strong>를 거쳐 호출되므로, 팀원은 실제 OpenAI 키 없이 사용합니다.</p>
-          </div>
-          <div class="card">
-            <h3>버튼이 안 보인다면</h3>
-            <p>AI 접속 토큰이 설정되지 않으면 “🤖 AI로 다듬어 등록” 버튼은 숨겨집니다. (일반 <strong>ClickUp에 등록</strong>은 그대로 사용 가능)</p>
-          </div>
-        </div>
-        <div class="callout info">
-          <strong>데이터 처리</strong>
-          <p>캡처·주석·웹 상태·설정은 브라우저(<code>chrome.storage</code>)에 로컬 저장됩니다. “AI로 다듬어 등록”을 누를 때만 리포트 내용과 (설정 시)스크린샷이 프록시를 거쳐 OpenAI로 전송됩니다.</p>
-        </div>
-      </section>
-
-      <section id="clickup">
-        <h2>9. ClickUp 등록</h2>
-        <p class="section-intro">지정한 리스트에 태스크를 만들고 캡처 이미지/영상을 첨부합니다.</p>
-        <div class="grid">
-          <div class="card">
-            <h3>자동으로 채워지는 것</h3>
-            <p>제목 형식 <code>[고객사] 이슈 내용</code>, 이슈 내용·재현 방법·URL·캡처 시각. 담당자는 본인으로 자동 배정됩니다.</p>
-          </div>
-          <div class="card">
-            <h3>멘션 표시</h3>
-            <p>리포트 폼의 “멘션 표시” 입력칸에 이름/팀을 넣으면 본문 맨 아래 하이퍼링크로 들어갑니다.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="settings">
-        <h2>10. 설정</h2>
-        <p class="section-intro">사이드 패널의 ⚙️ 설정에서 한 번만 맞추면 됩니다.</p>
-
-        <h3>ClickUp 연결 (각자 필수)</h3>
-        <ol class="steps">
-          <li><strong>개인 API 토큰 발급</strong> — ClickUp 우상단 아바타 → Settings → All settings → ClickUp API → Generate. 표시된 토큰은 <strong>Copy 버튼</strong>으로 복사 (Bearer 접두어 없이).</li>
-          <li><strong>토큰 붙여넣기 → 연결 테스트</strong> — “연결 성공 — 사용자: …”가 뜨면 정상.</li>
-          <li><strong>리스트 찾아보기</strong> — 워크스페이스 → 스페이스 → 폴더 → 리스트를 순서대로 골라 선택합니다. (ClickUp URL엔 리스트 ID가 안 보이는 경우가 많아 이 방식이 안전)</li>
-          <li><strong>저장</strong></li>
-        </ol>
-
-        <h3>AI (OpenAI · 로컬 프록시)</h3>
-        <p>
-          AI 관련 값(<strong>접속 토큰 · 모델 · base URL</strong>)은 배포본에 미리 설정되어 있어 <strong>비활성 상태</strong>로 표시됩니다. 팀원은 손댈 필요가 없습니다.
-        </p>
-        <table class="menu-table">
-          <thead><tr><th>항목</th><th>값</th><th>상태</th></tr></thead>
-          <tbody>
-            <tr><td>접속 토큰</td><td>담당자 프록시 접속 토큰 (실제 OpenAI 키 아님)</td><td>고정 · 마스킹</td></tr>
-            <tr><td>모델</td><td><code>gpt-4o-mini</code></td><td>고정</td></tr>
-            <tr><td>base URL</td><td>담당자 로컬 프록시 주소 <code>http://…:8770/v1</code></td><td>고정</td></tr>
-            <tr><td>스크린샷 전송</td><td>체크 시 이미지도 AI에 전송</td><td>선택 가능</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section id="deploy">
-        <h2>11. 팀 배포 (담당자용)</h2>
-        <p class="section-intro">
-          실제 OpenAI 키는 담당자 PC의 프록시에만 두고, 팀원에게는 프록시 주소와 접속 토큰만 배포합니다. 팀원은 실제 키를 볼 수 없습니다.
-        </p>
-
-        <h3>1) 프록시 실행 (담당자 PC)</h3>
-        <ol class="steps">
-          <li><code>proxy/config.example.json</code>을 <code>config.local.json</code>으로 복사</li>
-          <li><code>openaiKey</code>에 실제 OpenAI 키, <code>accessToken</code>에 팀에 나눠줄 토큰 입력</li>
-          <li><code>proxy/start-proxy.bat</code> 실행 → 콘솔에 실행 안내가 뜨면 정상</li>
-          <li>담당자 PC의 사내 IP 확인 (<code>ipconfig</code> → IPv4)</li>
-        </ol>
-        <div class="callout">
-          <strong>방화벽 · 사용량</strong>
-          <p>팀원 접속을 위해 해당 포트(기본 <code>8770</code>) 인바운드를 허용해야 할 수 있습니다. OpenAI 대시보드에서 키에 <strong>월 사용량 한도</strong>를 걸어두면 만일의 유출에도 피해가 상한선 안에서 멈춥니다.</p>
-        </div>
-
-        <h3>2) 기본값 심기 (배포본)</h3>
-        <p><code>lib/team-config.js</code>에 프록시 주소와 접속 토큰을 넣어두면, 팀원은 옵션을 만지지 않아도 AI가 바로 동작합니다.</p>
-        <pre><code>export const TEAM_DEFAULTS = {
-  openaiBaseUrl: 'http://10.20.132.30:8770/v1',
-  openaiApiKey: 'ttalkkak-...(접속 토큰)',
-  openaiModel: 'gpt-4o-mini',
-};</code></pre>
-        <div class="callout danger">
-          <strong>실제 OpenAI 키는 여기에 넣지 마세요</strong>
-          <p><code>team-config.js</code>에는 프록시 <strong>주소·접속 토큰</strong>만 넣습니다. 실제 OpenAI 키(<code>sk-…</code>)는 담당자 PC의 <code>proxy/config.local.json</code>에만 있어야 합니다.</p>
-        </div>
-
-        <h3>3) 팀원 설치</h3>
-        <ol class="steps">
-          <li>ZIP을 받아 압축 해제</li>
-          <li><code>chrome://extensions</code> → 개발자 모드 → 압축해제된 확장 프로그램 로드 → 폴더 선택</li>
-          <li>⚙️ 설정에서 <strong>본인 ClickUp 토큰·리스트</strong>만 입력 (AI는 이미 설정됨)</li>
-        </ol>
-        <div class="callout info">
-          <strong>AI를 쓰려면</strong>
-          <p>담당자 PC의 프록시가 켜져 있고 사내망에 연결돼 있어야 합니다. 프록시가 꺼져 있으면 AI 버튼만 실패하고, 캡처·진단·ClickUp 등록은 그대로 동작합니다.</p>
-        </div>
-      </section>
-
-      <section id="troubleshooting">
-        <h2>12. 문제 해결</h2>
-        <table class="menu-table">
-          <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
-          <tbody>
-            <tr><td>등록 시 401</td><td>ClickUp 토큰 오류 (또는 Bearer 접두어)</td><td>설정에서 raw 토큰만 다시 입력</td></tr>
-            <tr><td>등록 시 404</td><td>리스트 ID 문제</td><td>설정 → 리스트 찾아보기로 재선택</td></tr>
-            <tr><td>AI 버튼이 안 보임</td><td>접속 토큰 미설정</td><td>team-config 또는 설정 확인 (담당자에게 문의)</td></tr>
-            <tr><td>AI 401</td><td>접속 토큰 불일치</td><td>담당자에게 받은 토큰 재확인</td></tr>
-            <tr><td>AI 연결 실패</td><td>프록시 꺼짐 / 방화벽 / 다른 망</td><td>담당자 프록시 실행 여부·포트·사내망 확인</td></tr>
-            <tr><td>영역 선택 취소 안 됨</td><td>패널 포커스로 ESC 미동작</td><td>오버레이의 ✕ 취소 버튼 사용</td></tr>
-            <tr><td>설정이 사라짐</td><td>확장 재로드/경로 변경으로 확장 ID 변경</td><td>토큰·리스트 재입력 (경로 고정 권장)</td></tr>
-          </tbody>
-        </table>
-        <p class="print-note">이 문서는 인쇄(<kbd>Ctrl</kbd>+<kbd>P</kbd>)하면 A4 PDF로 저장됩니다. 접힌 항목은 인쇄 시 자동으로 펼쳐집니다.</p>
-      </section>
-    </main>
+<header class="bar">
+  <div class="brand">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+    </span>
+    딸깍 버그리포팅
   </div>
-</body>
-</html>
+  <nav class="anchors">
+    <a href="#features">기능</a>
+    <a href="#report">리포트·AI</a>
+    <a href="#settings">설정</a>
+    <a href="#install">설치·배포</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <p class="eyebrow">QA Capture → ClickUp</p>
+    <h1>버그 발견부터 티켓 등록까지, 딸깍 한 번</h1>
+    <p class="lead">화면을 캡처하고 주석을 달면, 재현 단계·콘솔 에러·환경 정보까지 자동으로 채워져 ClickUp에 등록됩니다. 로컬 AI가 내용을 다듬어주고, 데이터는 사내망 밖으로 나가지 않습니다.</p>
+    <div class="flow" aria-label="사용 흐름">
+      <span class="step">캡처</span><span class="arw">→</span>
+      <span class="step">주석·자동 정보</span><span class="arw">→</span>
+      <span class="step">AI 정리(선택)</span><span class="arw">→</span>
+      <span class="step goal">ClickUp 등록 · 30초</span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <p class="sec-label">기능</p>
+    <h2>캡처 4종</h2>
+    <p class="sec-desc">툴바의 딸깍 아이콘을 누르면 오른쪽에 사이드 패널이 열립니다. 네 가지 모두 캡처 후 <b>같은 리포트 화면</b>으로 이어집니다.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div>
+        <h3>화면 캡처</h3>
+        <p>지금 보이는 영역을 즉시 한 장 캡처합니다. 가장 빠른 기본 캡처.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M8 7h8M8 12h8M8 17h5"></path></svg></div>
+        <h3>전체 페이지</h3>
+        <p>페이지를 자동으로 스크롤하며 여러 컷을 찍어 하나의 긴 이미지로 이어붙입니다. 고정 헤더는 반복되지 않게 처리됩니다.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path></svg></div>
+        <h3>영역 선택</h3>
+        <p>페이지 위에서 마우스로 드래그한 부분만 잘라 캡처합니다. 고해상도 배율도 정확히 반영됩니다.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg></div>
+        <h3>영상 녹화</h3>
+        <p>탭 화면을 webm 영상으로 녹화합니다. 원하면 다른 창·전체 화면도 녹화 가능. 녹화 시작 시 대상 탭으로 자동 전환됩니다.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:44px">이미지 위 주석 편집</h2>
+    <p class="sec-desc">이미지 캡처(화면·전체·영역)는 캡처 직후 편집 도구가 함께 뜹니다. 영상은 재생 미리보기로 표시됩니다.</p>
+    <div class="rows">
+      <div class="row"><div class="k">그리기 도구</div><div class="v"><b>화살표</b>·<b>형광펜</b>·<b>단계 번호</b>(클릭할 때마다 자동 증가)·<b>텍스트</b>. 빨강/주황/파랑 색상 선택.</div></div>
+      <div class="row"><div class="k">되돌리기</div><div class="v"><b>실행 취소</b>와 <b>전체 지우기</b>로 언제든 수정. 등록 시 주석이 합쳐진 이미지가 첨부됩니다.</div></div>
+    </div>
+  </section>
+
+  <!-- REPORT + AI -->
+  <section id="report">
+    <p class="sec-label">리포트 · 자동화</p>
+    <h2>리포트 작성 — 알아서 채워집니다</h2>
+    <p class="sec-desc">캡처하면 리포트 폼이 뜹니다. 대부분의 항목이 자동으로 채워지므로 QA는 확인만 하면 됩니다.</p>
+    <div class="rows">
+      <div class="row">
+        <div class="k">제목<span class="sub">placeholder 안내</span></div>
+        <div class="v"><code>[고객사] 이슈 내용</code> 형식이 회색 힌트로 표시됩니다. 클릭해 입력하면 사라지므로 지울 필요가 없습니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">우선순위</div>
+        <div class="v">🔴 긴급 · 🟠 높음 · 🟡 보통 · ⚪ 낮음 — ClickUp 기본 우선순위로 그대로 매핑됩니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">재현 방법<span class="sub">자동 기록</span></div>
+        <div class="v"><b>페이지에서의 클릭·입력을 자동으로 기억</b>해, 캡처 시점의 직전 행동을 번호 매긴 재현 단계로 자동 작성합니다. (예: <span class="mono">1. '조회' 버튼 클릭 → 2. 아이디 입력…</span>)</div>
+      </div>
+      <div class="row">
+        <div class="k">멘션 표시</div>
+        <div class="v">본문 맨 아래에 담당자 이름을 하이퍼링크로 넣습니다. 기본값은 내 이름이며 자유롭게 수정 가능합니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">URL · 캡처 시각</div>
+        <div class="v">현재 페이지 주소와 시각이 자동으로 기입됩니다.</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:44px">웹 상태 자동 진단</h2>
+    <p class="sec-desc">개발자 도구를 열지 않아도, 페이지의 문제를 자동으로 감지해 리포트에 첨부합니다. 개발자가 받아 바로 디버깅할 수 있는 정보입니다.</p>
+    <div class="rows">
+      <div class="row">
+        <div class="k">웹 상태</div>
+        <div class="v">런처의 진단 카드에 실시간 표시됩니다. <span class="chips"><span class="chip ok">정상 ✅</span><span class="chip bad">⚠️ 콘솔 에러 N건</span></span> 마우스를 올리면 실제 에러 내용이 보이고, 같은 에러는 <code>(×N)</code>으로 합쳐집니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">수집 항목</div>
+        <div class="v"><b>콘솔 에러</b>(JS 오류)와 <b>실패한 네트워크 요청</b>(4xx·5xx)을 iframe까지 포함해 수집합니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">강력 새로고침 후 진단</div>
+        <div class="v">버튼 한 번으로 페이지를 캐시 무시하고 새로고침한 뒤, 로드 중 발생하는 에러까지 잡아냅니다.</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:44px">등록 — 버튼 두 개</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="k">ClickUp에 등록</div>
+        <div class="v">작성한 내용 그대로 ClickUp에 태스크를 만들고, 캡처 이미지(또는 영상)를 첨부하며, 담당자를 본인으로 지정합니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">🤖 AI로 다듬어 등록</div>
+        <div class="v"><b>OpenAI</b>가 메모·재현 스텝·콘솔 에러·(이미지 인식 모델이면) 스크린샷을 종합해 <b>제목·프리컨디션·재현 단계·기대/실제 결과</b>로 정리한 뒤 등록합니다. 등록한 리포트를 예시로 기억해 <b>쓸수록 팀 스타일에 맞춰집니다.</b></div>
+      </div>
+    </div>
+    <div class="note tip">
+      <p class="t">데이터 처리</p>
+      <p>캡처·주석·웹 상태·설정은 브라우저(<code>chrome.storage</code>) 로컬에서 처리됩니다. <b>“AI로 다듬어 등록”은 선택 기능</b>으로, 이 버튼을 누를 때만 리포트 내용과 (설정 시)스크린샷이 OpenAI로 전송됩니다.</p>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="settings">
+    <p class="sec-label">설정</p>
+    <h2>ClickUp 연결</h2>
+    <p class="sec-desc">옵션 페이지(패널의 ⚙️)에서 한 번만 설정하면 됩니다.</p>
+    <ol class="steps">
+      <li><b>개인 API 토큰 발급</b><span class="hint">ClickUp 우상단 아바타 → Settings → All settings → <b>ClickUp API</b> → Generate. 표시된 토큰은 <b>Copy 버튼</b>으로 복사 (Bearer 접두어 없이).</span></li>
+      <li><b>토큰 붙여넣기 → 연결 테스트</b><span class="hint">“연결 성공 — 사용자: …”가 뜨면 정상입니다.</span></li>
+      <li><b>리스트 찾아보기</b><span class="hint">워크스페이스 → 스페이스 → 폴더 → 리스트를 순서대로 골라 선택합니다. (ClickUp URL에는 리스트 ID가 안 보이는 경우가 많아 이 방식이 안전)</span></li>
+      <li><b>저장</b></li>
+    </ol>
+
+    <h2 style="margin-top:44px">AI (OpenAI) — 로컬 프록시</h2>
+    <p class="sec-desc">AI 관련 값(<b>접속 토큰·모델·base URL</b>)은 배포본에 <b>미리 설정</b>되어 있어 설정 화면에서 <b>비활성</b> 상태로 표시됩니다. 팀원은 따로 입력할 필요가 없습니다. (실제 OpenAI 키는 담당자 PC의 프록시에만 있어 노출되지 않습니다.)</p>
+    <div class="rows">
+      <div class="row"><div class="k">접속 토큰</div><div class="v">담당자 프록시 접속 토큰(●●●로 마스킹). <b>실제 OpenAI 키가 아닙니다.</b> 고정.</div></div>
+      <div class="row"><div class="k">AI 모델</div><div class="v"><code>gpt-4o-mini</code> 고정.</div></div>
+      <div class="row"><div class="k">base URL</div><div class="v">담당자 로컬 PC 프록시 주소 <code>http://…:8770/v1</code>. 고정.</div></div>
+      <div class="row"><div class="k">스크린샷 전송</div><div class="v">체크하면 이미지도 AI에 함께 전송(이미지 인식). 유일하게 켜고 끌 수 있는 옵션입니다.</div></div>
+    </div>
+
+    <h2 style="margin-top:44px">연결 확인 — 저장 전에 두 버튼</h2>
+    <p class="sec-desc">저장하기 전에 아래 두 버튼으로 정상 동작을 꼭 확인하세요. 초록 메시지가 뜨면 정상, 빨간 메시지면 아래 안내를 확인합니다.</p>
+    <div class="rows">
+      <div class="row">
+        <div class="k">연결 테스트<span class="sub">ClickUp</span></div>
+        <div class="v">ClickUp 토큰이 유효한지 확인합니다. <span class="chips"><span class="chip ok">연결 성공 — 사용자: 홍길동</span></span> 이 뜨면 정상. 빨간 메시지면 토큰을 다시 붙여넣으세요(Bearer 없이 <code>pk_…</code>).</div>
+      </div>
+      <div class="row">
+        <div class="k">AI 연결 테스트<span class="sub">OpenAI 프록시</span></div>
+        <div class="v">프록시를 거쳐 OpenAI 연결을 확인합니다. <span class="chips"><span class="chip ok">OpenAI 연결 성공! 사용 가능한 모델 126개 확인됨</span></span> 이 뜨면 정상. 빨간 메시지면 <b>담당자 PC의 프록시가 켜져 있는지</b>·같은 사내망인지 확인하세요.</div>
+      </div>
+    </div>
+    <div class="note tip">
+      <p class="t">저장</p>
+      <p>두 테스트가 정상이면 <b>저장</b>을 누릅니다. 팀원이 직접 입력할 것은 <b>ClickUp 토큰·리스트</b>뿐이며, AI 값은 이미 설정돼 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- INSTALL / DEPLOY -->
+  <section id="install">
+    <p class="sec-label">설치 · 배포</p>
+    <h2>설치 — 어떻게 올라가나</h2>
+    <p class="sec-desc">별도 빌드가 필요 없습니다. 담당자에게 받은 ZIP을 풀어 크롬에 올리면 됩니다.</p>
+    <ol class="steps">
+      <li><b>ZIP 받기 · 압축 풀기</b><span class="hint">담당자에게 받은 <code>ttalkkak-bug-reporter.zip</code>을 원하는 위치(예: 바탕화면·문서 폴더)에서 <b>마우스 우클릭 → “압축 풀기”</b>로 해제합니다. 압축을 <b>푼 뒤</b> 생긴 폴더를 사용합니다(ZIP 안에서 바로 로드 X).</span></li>
+      <li><b>폴더 위치 정하기</b><span class="hint">한 번 로드한 뒤에는 <b>폴더를 옮기거나 이름을 바꾸지 마세요</b>. 경로가 바뀌면 확장이 새 확장으로 인식되어 저장한 설정(토큰·리스트 등)이 초기화됩니다.</span></li>
+      <li><b>개발자 모드로 로드</b><span class="hint">크롬 <code>chrome://extensions</code> → 우상단 <b>개발자 모드</b> ON → <b>“압축해제된 확장 프로그램 로드”</b> → <b>압축 푼 폴더</b> 선택</span></li>
+      <li><b>툴바 아이콘 클릭 → 사이드 패널</b><span class="hint">아이콘이 안 보이면 툴바의 퍼즐(🧩) 아이콘 → 딸깍을 <b>고정(핀)</b>하세요. 코드 갱신 후에는 카드의 새로고침(🔄)만 누르면 반영됩니다.</span></li>
+    </ol>
+
+    <h2 style="margin-top:44px">팀에서 함께 쓰려면</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="k">ClickUp 토큰</div>
+        <div class="v">개인 계정 토큰이므로 <b>각자 발급</b>해서 입력합니다.</div>
+      </div>
+      <div class="row">
+        <div class="k">AI (선택)</div>
+        <div class="v"><b>사내 프록시</b> 권장 — 호스트 PC 한 곳에서 프록시(<code>proxy/start-proxy.bat</code>)를 돌리고, 팀원은 옵션에 <b>서버 주소 + 접속 토큰</b>만 입력합니다. 실제 OpenAI 키는 호스트에만 있어 팀원에게 노출되지 않습니다. AI를 안 쓰는 팀원은 키 없이도 캡처·진단·등록을 모두 사용할 수 있습니다.</div>
+      </div>
+    </div>
+    <div class="note tip">
+      <p class="t">배포 팁</p>
+      <p>ZIP으로 폴더를 공유하면 팀원은 <code>chrome://extensions</code> → 개발자 모드 → “압축해제된 확장 프로그램 로드”로 바로 설치할 수 있습니다. 각자 ClickUp 토큰만 입력하면 준비 완료입니다.</p>
+    </div>
+  </section>
+
+  <footer>
+    <hr class="divider" />
+    <p style="margin-top:18px"><b style="color:var(--ink)">기술 스택</b> — 번들러·프레임워크·TypeScript 없이 순수 웹 기술로 구현. 캡처·설정 데이터는 <code>chrome.storage</code>에 로컬 저장되며, 외부 전송은 ClickUp 등록과 (선택한 경우) OpenAI AI 정리 때만 이뤄집니다.</p>
+    <div class="stack">
+      <span>Manifest V3</span><span>Vanilla JS (ES Modules)</span><span>Chrome Side Panel</span>
+      <span>Canvas 주석</span><span>getDisplayMedia 녹화</span><span>ClickUp API</span><span>OpenAI API</span>
+    </div>
+  </footer>
+</main>
