@@ -87,15 +87,14 @@ async function loadSettings() {
   const cfg = await getLocal([
     LOCAL_KEYS.CLICKUP_TOKEN,
     LOCAL_KEYS.DEFAULT_LIST_ID,
-    LOCAL_KEYS.OPENAI_BASE_URL,
     LOCAL_KEYS.OPENAI_SEND_IMAGE,
   ]);
   tokenEl.value = cfg[LOCAL_KEYS.CLICKUP_TOKEN] || '';
   listIdEl.value = cfg[LOCAL_KEYS.DEFAULT_LIST_ID] || '';
-  // 접속 토큰·모델은 team-config.js에 고정(비활성 표시용). base URL·이미지 옵션만 개인 저장값 우선.
+  // 접속 토큰·모델·base URL은 team-config.js에 고정(비활성 표시용). 이미지 옵션만 개인 저장.
   openaiKeyEl.value = TEAM_DEFAULTS.openaiApiKey || '';
   openaiModelEl.value = TEAM_DEFAULTS.openaiModel || 'gpt-4o-mini';
-  openaiBaseEl.value = cfg[LOCAL_KEYS.OPENAI_BASE_URL] || TEAM_DEFAULTS.openaiBaseUrl || '';
+  openaiBaseEl.value = TEAM_DEFAULTS.openaiBaseUrl || '';
   openaiImageEl.checked = Boolean(cfg[LOCAL_KEYS.OPENAI_SEND_IMAGE]);
 }
 
@@ -112,11 +111,10 @@ async function saveSettings() {
     return;
   }
 
-  // 접속 토큰·모델은 team-config.js에 고정이라 저장하지 않는다(항상 team-config 값 사용).
+  // 접속 토큰·모델·base URL은 team-config.js에 고정이라 저장하지 않는다(항상 team-config 값 사용).
   await setLocal({
     [LOCAL_KEYS.CLICKUP_TOKEN]: token,
     [LOCAL_KEYS.DEFAULT_LIST_ID]: listId,
-    [LOCAL_KEYS.OPENAI_BASE_URL]: openaiBaseEl.value.trim(),
     [LOCAL_KEYS.OPENAI_SEND_IMAGE]: openaiImageEl.checked,
   });
   showStatus('저장되었습니다.', 'success');
