@@ -64,11 +64,12 @@
     <section class="field" style="margin-top:24px;border-top:1px solid var(--border);padding-top:20px;">
       <label for="openai-key">🤖 AI (OpenAI) — 선택</label>
       <div class="input-row">
-        <input id="openai-key" type="password" placeholder="sk-..." autocomplete="off" spellcheck="false" />
+        <input id="openai-key" type="password" placeholder="담당자에게 받은 접속 토큰" autocomplete="off" spellcheck="false" />
         <button id="toggle-openai-key" class="ghost-btn" type="button">표시</button>
       </div>
       <p class="hint">
-        OpenAI API 키 (발급: platform.openai.com → API keys). AI로 리포트를 자동 정리할 때 사용.
+        AI 사용을 위한 인증 값입니다. 사내 프록시를 쓰면 <strong>담당자에게 받은 접속 토큰</strong>을 입력하세요.
+        (프록시 없이 OpenAI를 직접 쓰는 경우엔 실제 API 키 <code>sk-…</code>)
         <strong>설정 안 하면 "AI로 다듬어 등록" 버튼은 숨겨집니다.</strong>
       </p>
     </section>
