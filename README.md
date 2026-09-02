@@ -64,6 +64,13 @@ QA가 버그를 발견한 순간부터 이슈 트래커에 리포트가 올라�
    - 설정 안 하면 "AI로 다듬어 등록" 버튼은 숨겨집니다 (일반 등록은 그대로 사용)
    - (선택) Azure·사내 호환 엔드포인트는 옵션의 base URL에 입력
 
+#### 팀 공용 키 — 사내 프록시 배포 (권장)
+팀원에게 실제 OpenAI 키를 노출하지 않으려면 **호스트 PC 한 곳에서 프록시**를 돌리고,
+팀원 확장에는 **서버 주소 + 접속 토큰**만 배포합니다. → [proxy/README.md](proxy/README.md)
+- 호스트: `proxy/config.example.json` → `config.local.json` 복사·작성 후 `proxy/start-proxy.bat` 실행
+- 팀원 옵션: base URL `http://<호스트 IP>:8787/v1`, API 키에는 **접속 토큰**(실제 키 아님) 입력
+- 실제 키는 호스트 PC에만 있고 저장소·ZIP엔 포함되지 않습니다(`config.local.json` gitignore)
+
 ## 사용법
 
 1. 리포트할 웹페이지에서 툴바 아이콘 클릭 → 사이드 패널 열림
@@ -91,6 +98,7 @@ options/               ClickUp · AI 설정
 lib/                   storage · clickup · openai
 icons/                 확장 아이콘
 docs/                  사용 가이드 · 설명자료(PDF)
+proxy/                 (선택) 사내 OpenAI 프록시 — 팀 공용 키를 서버에만 보관
 ```
 
 ## 라이선스

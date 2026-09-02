@@ -1,0 +1,7 @@
+{
+  "_설명": "이 파일을 config.local.json 으로 복사한 뒤 값을 채우세요. config.local.json 은 git에 올라가지 않습니다.",
+  "openaiKey": "여기에_실제_OpenAI_키_붙여넣기(sk-...)",
+  "accessToken": "여기에_팀_접속_토큰(아무_긴_문자열이나_직접_정하기)",
+  "port": 8787,
+  "upstream": "https://api.openai.com"
+}

@@ -8,3 +8,6 @@ node_modules/
 
 .playwright-mcp/
 .claude/
+
+# 프록시 실제 키/토큰 — 절대 커밋 금지
+proxy/config.local.json
