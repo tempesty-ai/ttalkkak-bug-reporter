@@ -315,12 +315,12 @@
       </div>
       <div class="row">
         <div class="k">🤖 AI로 다듬어 등록</div>
-        <div class="v"><b>사내 로컬 AI(Ollama)</b>가 메모·재현 스텝·콘솔 에러·(비전 모델이면) 스크린샷을 종합해 <b>제목·프리컨디션·재현 단계·기대/실제 결과</b>로 정리한 뒤 등록합니다. 등록한 리포트를 예시로 기억해 <b>쓸수록 팀 스타일에 맞춰집니다.</b></div>
+        <div class="v"><b>OpenAI</b>가 메모·재현 스텝·콘솔 에러·(이미지 인식 모델이면) 스크린샷을 종합해 <b>제목·프리컨디션·재현 단계·기대/실제 결과</b>로 정리한 뒤 등록합니다. 등록한 리포트를 예시로 기억해 <b>쓸수록 팀 스타일에 맞춰집니다.</b></div>
       </div>
     </div>
     <div class="note tip">
-      <p class="t">완전 로컬 처리</p>
-      <p>AI는 사내/로컬 Ollama 서버에서 동작하므로, 캡처·리포트 데이터가 외부 클라우드로 전송되지 않습니다.</p>
+      <p class="t">데이터 처리</p>
+      <p>캡처·주석·웹 상태·설정은 브라우저(<code>chrome.storage</code>) 로컬에서 처리됩니다. <b>“AI로 다듬어 등록”은 선택 기능</b>으로, 이 버튼을 누를 때만 리포트 내용과 (설정 시)스크린샷이 OpenAI로 전송됩니다.</p>
     </div>
   </section>
 
@@ -336,16 +336,16 @@
       <li><b>저장</b></li>
     </ol>
 
-    <h2 style="margin-top:44px">AI (로컬 Ollama) — 선택</h2>
-    <p class="sec-desc">AI 다듬기 기능을 쓰려면 Ollama가 필요합니다. 텍스트만이면 가볍고 빠른 모델을 권장합니다.</p>
+    <h2 style="margin-top:44px">AI (OpenAI) — 선택</h2>
+    <p class="sec-desc">AI 다듬기 기능을 쓰려면 OpenAI API 키가 필요합니다. 설정하지 않으면 “AI로 다듬어 등록” 버튼은 숨겨지고, 일반 등록은 그대로 사용할 수 있습니다.</p>
     <ol class="steps">
-      <li><b>모델 준비</b><span class="hint">빠름·한국어: <code>ollama pull llama3.2:3b</code> 또는 <code>qwen2.5</code> · 스크린샷까지 이해(비전): <code>llama3.2-vision</code>, <code>gemma3</code></span></li>
-      <li><b>옵션에 입력</b><span class="hint">서버 주소 <code>http://127.0.0.1:11434</code> · 모델명(예: <code>llama3.2:3b</code>) · 비전 모델이면 “스크린샷도 AI에 전송” 체크</span></li>
-      <li><b>AI 연결 테스트</b><span class="hint">연결되면 설치된 모델 목록이 표시됩니다.</span></li>
+      <li><b>API 키 발급</b><span class="hint"><code>platform.openai.com</code> → API keys → 새 키 생성 후 복사</span></li>
+      <li><b>옵션에 입력</b><span class="hint">🤖 AI 섹션에 <b>API 키</b> 붙여넣기 · 모델(권장 <code>gpt-4o-mini</code>, 비우면 자동) · 스크린샷도 분석하려면 “스크린샷도 AI에 전송” 체크</span></li>
+      <li><b>AI 연결 테스트 → 저장</b><span class="hint">키가 유효하면 “연결 성공”이 표시됩니다.</span></li>
     </ol>
-    <div class="note warn">
-      <p class="t">확장이 Ollama에 막힐 때 (403)</p>
-      <p>Ollama가 확장의 접속을 차단하면 <code>OLLAMA_ORIGINS=*</code> 를 설정하고 서버를 재시작하세요. 바탕화면의 <b>“딸깍 AI 서버 시작”</b> 배치 파일을 실행하면 이 설정으로 서버가 한 번에 켜집니다.</p>
+    <div class="note tip">
+      <p class="t">Azure·사내 호환 엔드포인트</p>
+      <p>OpenAI 호환 API를 쓴다면 옵션의 <b>base URL</b>에 해당 주소를 입력하면 그대로 연동됩니다.</p>
     </div>
   </section>
 
@@ -367,22 +367,22 @@
         <div class="v">개인 계정 토큰이므로 <b>각자 발급</b>해서 입력합니다.</div>
       </div>
       <div class="row">
-        <div class="k">AI 서버</div>
-        <div class="v"><b>사내 공용 Ollama 서버</b> 한 대를 두고(<code>OLLAMA_HOST=0.0.0.0</code>), 팀원은 확장 설정에 그 서버 주소만 입력하면 됩니다. 각자 설치할 필요 없이 한 곳에서 모델을 관리하고, 데이터는 사내망 안에 머뭅니다.</div>
+        <div class="k">AI (선택)</div>
+        <div class="v"><b>OpenAI API 키</b>를 각자 발급해 옵션에 입력하거나, 팀 공용 키를 공유해 사용합니다. AI 다듬기를 쓰지 않는 팀원은 키 없이도 캡처·진단·ClickUp 등록을 모두 사용할 수 있습니다.</div>
       </div>
     </div>
     <div class="note tip">
-      <p class="t">공모전 데모 팁</p>
-      <p>데모는 로컬(<code>localhost:11434</code>)로 시연하고, 팀 배포 단계에서 공용 서버로 확장하는 흐름을 함께 보여주면 “보안 + 확장성”을 동시에 어필할 수 있습니다.</p>
+      <p class="t">배포 팁</p>
+      <p>ZIP으로 폴더를 공유하면 팀원은 <code>chrome://extensions</code> → 개발자 모드 → “압축해제된 확장 프로그램 로드”로 바로 설치할 수 있습니다. 각자 ClickUp 토큰만 입력하면 준비 완료입니다.</p>
     </div>
   </section>
 
   <footer>
     <hr class="divider" />
-    <p style="margin-top:18px"><b style="color:var(--ink)">기술 스택</b> — 번들러·프레임워크·TypeScript 없이 순수 웹 기술로 구현. 데이터는 <code>chrome.storage</code>에 로컬 저장되고 외부 서버로 나가지 않습니다.</p>
+    <p style="margin-top:18px"><b style="color:var(--ink)">기술 스택</b> — 번들러·프레임워크·TypeScript 없이 순수 웹 기술로 구현. 캡처·설정 데이터는 <code>chrome.storage</code>에 로컬 저장되며, 외부 전송은 ClickUp 등록과 (선택한 경우) OpenAI AI 정리 때만 이뤄집니다.</p>
     <div class="stack">
       <span>Manifest V3</span><span>Vanilla JS (ES Modules)</span><span>Chrome Side Panel</span>
-      <span>Canvas 주석</span><span>getDisplayMedia 녹화</span><span>ClickUp API</span><span>로컬 Ollama</span>
+      <span>Canvas 주석</span><span>getDisplayMedia 녹화</span><span>ClickUp API</span><span>OpenAI API</span>
     </div>
   </footer>
 </main>

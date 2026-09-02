@@ -62,24 +62,28 @@
     </section>
 
     <section class="field" style="margin-top:24px;border-top:1px solid var(--border);padding-top:20px;">
-      <label for="ollama-url">🤖 AI (로컬 Ollama) — 선택</label>
-      <input id="ollama-url" type="text" placeholder="http://localhost:11434" autocomplete="off" spellcheck="false" />
+      <label for="openai-key">🤖 AI (OpenAI) — 선택</label>
+      <div class="input-row">
+        <input id="openai-key" type="password" placeholder="sk-..." autocomplete="off" spellcheck="false" />
+        <button id="toggle-openai-key" class="ghost-btn" type="button">표시</button>
+      </div>
       <p class="hint">
-        Ollama 서버 주소. 비우면 <code>http://localhost:11434</code> 사용.
-        설치: <code>ollama pull llama3.2-vision</code>
+        OpenAI API 키 (발급: platform.openai.com → API keys). AI로 리포트를 자동 정리할 때 사용.
+        <strong>설정 안 하면 "AI로 다듬어 등록" 버튼은 숨겨집니다.</strong>
       </p>
     </section>
 
     <section class="field">
-      <label for="ollama-model">AI 모델명</label>
-      <input id="ollama-model" type="text" placeholder="llama3.2-vision" autocomplete="off" spellcheck="false" />
+      <label for="openai-model">AI 모델명</label>
+      <input id="openai-model" type="text" placeholder="gpt-4o-mini" autocomplete="off" spellcheck="false" />
       <label class="inline-check">
-        <input type="checkbox" id="ollama-image" />
-        스크린샷도 AI에 전송 (비전 모델일 때만)
+        <input type="checkbox" id="openai-image" />
+        스크린샷도 AI에 전송 (이미지 인식)
       </label>
-      <p class="hint">추천: <code>llama3.2-vision</code>(이미지 인식) · <code>qwen2.5</code>(텍스트·빠름)</p>
+      <p class="hint">추천: <code>gpt-4o-mini</code>(싸고 빠름) · <code>gpt-4o</code>(품질). 비우면 <code>gpt-4o-mini</code>.</p>
+      <input id="openai-base" type="text" placeholder="(선택) Azure·사내 호환 엔드포인트 base URL" autocomplete="off" spellcheck="false" style="margin-top:10px;" />
       <div class="input-row" style="margin-top:10px;">
-        <button id="ollama-test" class="ghost-btn" type="button">AI 연결 테스트</button>
+        <button id="openai-test" class="ghost-btn" type="button">AI 연결 테스트</button>
       </div>
     </section>
 

@@ -12,7 +12,7 @@ import {
   getFolderLists,
   getFolderlessLists,
 } from '../lib/clickup.js';
-import { listModels } from '../lib/ollama.js';
+import { listModels } from '../lib/openai.js';
 
 const tokenEl = document.getElementById('token');
 const listIdEl = document.getElementById('list-id');
@@ -77,23 +77,27 @@ function resetSelect(select, placeholder) {
 
 /* ---------- 설정 저장/로드 ---------- */
 
-const ollamaUrlEl = document.getElementById('ollama-url');
-const ollamaModelEl = document.getElementById('ollama-model');
-const ollamaImageEl = document.getElementById('ollama-image');
+const openaiKeyEl = document.getElementById('openai-key');
+const openaiModelEl = document.getElementById('openai-model');
+const openaiBaseEl = document.getElementById('openai-base');
+const openaiImageEl = document.getElementById('openai-image');
+const toggleOpenaiBtn = document.getElementById('toggle-openai-key');
 
 async function loadSettings() {
   const cfg = await getLocal([
     LOCAL_KEYS.CLICKUP_TOKEN,
     LOCAL_KEYS.DEFAULT_LIST_ID,
-    LOCAL_KEYS.OLLAMA_URL,
-    LOCAL_KEYS.OLLAMA_MODEL,
-    LOCAL_KEYS.OLLAMA_SEND_IMAGE,
+    LOCAL_KEYS.OPENAI_API_KEY,
+    LOCAL_KEYS.OPENAI_MODEL,
+    LOCAL_KEYS.OPENAI_BASE_URL,
+    LOCAL_KEYS.OPENAI_SEND_IMAGE,
   ]);
   tokenEl.value = cfg[LOCAL_KEYS.CLICKUP_TOKEN] || '';
   listIdEl.value = cfg[LOCAL_KEYS.DEFAULT_LIST_ID] || '';
-  ollamaUrlEl.value = cfg[LOCAL_KEYS.OLLAMA_URL] || '';
-  ollamaModelEl.value = cfg[LOCAL_KEYS.OLLAMA_MODEL] || '';
-  ollamaImageEl.checked = Boolean(cfg[LOCAL_KEYS.OLLAMA_SEND_IMAGE]);
+  openaiKeyEl.value = cfg[LOCAL_KEYS.OPENAI_API_KEY] || '';
+  openaiModelEl.value = cfg[LOCAL_KEYS.OPENAI_MODEL] || '';
+  openaiBaseEl.value = cfg[LOCAL_KEYS.OPENAI_BASE_URL] || '';
+  openaiImageEl.checked = Boolean(cfg[LOCAL_KEYS.OPENAI_SEND_IMAGE]);
 }
 
 async function saveSettings() {
@@ -112,9 +116,10 @@ async function saveSettings() {
   await setLocal({
     [LOCAL_KEYS.CLICKUP_TOKEN]: token,
     [LOCAL_KEYS.DEFAULT_LIST_ID]: listId,
-    [LOCAL_KEYS.OLLAMA_URL]: ollamaUrlEl.value.trim(),
-    [LOCAL_KEYS.OLLAMA_MODEL]: ollamaModelEl.value.trim(),
-    [LOCAL_KEYS.OLLAMA_SEND_IMAGE]: ollamaImageEl.checked,
+    [LOCAL_KEYS.OPENAI_API_KEY]: openaiKeyEl.value.trim(),
+    [LOCAL_KEYS.OPENAI_MODEL]: openaiModelEl.value.trim(),
+    [LOCAL_KEYS.OPENAI_BASE_URL]: openaiBaseEl.value.trim(),
+    [LOCAL_KEYS.OPENAI_SEND_IMAGE]: openaiImageEl.checked,
   });
   showStatus('저장되었습니다.', 'success');
 }
@@ -259,34 +264,38 @@ function applyPickedList() {
 
 /* ---------- 바인딩 ---------- */
 
-async function testOllama() {
-  const btn = document.getElementById('ollama-test');
+async function testOpenAI() {
+  const btn = document.getElementById('openai-test');
+  const apiKey = openaiKeyEl.value.trim();
+  if (!apiKey) {
+    showStatus('OpenAI API 키를 먼저 입력해주세요.', 'error');
+    return;
+  }
   btn.disabled = true;
   const original = btn.textContent;
   btn.textContent = '확인 중…';
   try {
-    const models = await listModels(ollamaUrlEl.value.trim());
-    if (!models.length) {
-      showStatus('Ollama 연결 성공 — 단, 설치된 모델이 없어요. `ollama pull llama3.2-vision`', 'error');
-    } else {
-      const has = ollamaModelEl.value.trim() && models.some((m) => m.startsWith(ollamaModelEl.value.trim()));
-      showStatus(
-        `Ollama 연결 성공! 설치된 모델: ${models.join(', ')}` + (has ? '' : ' — 입력한 모델명이 목록에 없어요, 확인해주세요.'),
-        has || !ollamaModelEl.value.trim() ? 'success' : 'error',
-      );
-    }
+    const models = await listModels({ baseUrl: openaiBaseEl.value.trim(), apiKey });
+    showStatus(`OpenAI 연결 성공! 사용 가능한 모델 ${models.length}개 확인됨.`, 'success');
   } catch (err) {
-    showStatus(err.userMessage || err.message || 'Ollama 연결 실패', 'error');
+    showStatus(err.userMessage || err.message || 'OpenAI 연결 실패', 'error');
   } finally {
     btn.disabled = false;
     btn.textContent = original;
   }
 }
 
+function toggleOpenaiVisibility() {
+  const isHidden = openaiKeyEl.type === 'password';
+  openaiKeyEl.type = isHidden ? 'text' : 'password';
+  toggleOpenaiBtn.textContent = isHidden ? '숨김' : '표시';
+}
+
 saveBtn.addEventListener('click', saveSettings);
 testBtn.addEventListener('click', testConnection);
 toggleBtn.addEventListener('click', toggleTokenVisibility);
-document.getElementById('ollama-test').addEventListener('click', testOllama);
+document.getElementById('openai-test').addEventListener('click', testOpenAI);
+toggleOpenaiBtn.addEventListener('click', toggleOpenaiVisibility);
 
 findListBtn.addEventListener('click', openPicker);
 pkTeam.addEventListener('change', onTeamChange);

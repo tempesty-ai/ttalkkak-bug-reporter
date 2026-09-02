@@ -14,7 +14,7 @@ import {
   LOCAL_KEYS,
 } from '../lib/storage.js';
 import { submitReport, getAuthorizedUser } from '../lib/clickup.js';
-import { chatJson } from '../lib/ollama.js';
+import { chatJson } from '../lib/openai.js';
 import { createAnnotator } from './annotator.js';
 
 const els = {
@@ -473,6 +473,7 @@ async function showReport(cap) {
   els.mentionName.value = meCache[LOCAL_KEYS.MY_USER_NAME] || '';
   currentSourceUrl = cap.sourceUrl || '';
   currentMeta = cap.metadata || null;
+  updateAiButtonVisibility(); // OpenAI 키 있을 때만 AI 버튼 노출
 
   const cfg = await getLocal([LOCAL_KEYS.DEFAULT_LIST_ID]);
   const listId = cfg[LOCAL_KEYS.DEFAULT_LIST_ID];
@@ -838,16 +839,12 @@ async function handleAction(action) {
 
 /* ---------- 등록 ---------- */
 
-/* ---------- AI(Ollama)로 다듬어 등록 ---------- */
+/* ---------- AI(OpenAI)로 다듬어 등록 ---------- */
 
-/** Blob을 base64(접두어 없이)로. Ollama images 필드용. */
-function blobToBase64(blob) {
-  return new Promise((resolve, reject) => {
-    const fr = new FileReader();
-    fr.onload = () => resolve(String(fr.result).split(',')[1] || '');
-    fr.onerror = () => reject(new Error('이미지 인코딩에 실패했습니다.'));
-    fr.readAsDataURL(blob);
-  });
+/** OpenAI API 키가 설정돼 있을 때만 'AI로 다듬어 등록' 버튼을 노출. */
+async function updateAiButtonVisibility() {
+  const cfg = await getLocal([LOCAL_KEYS.OPENAI_API_KEY]);
+  els.aiSubmitBtn.hidden = !cfg[LOCAL_KEYS.OPENAI_API_KEY];
 }
 
 /** AI 결과(JSON)를 마크다운 설명으로. */
@@ -898,11 +895,18 @@ function setAiLoading(on) {
 }
 
 async function handleAiSubmit() {
-  const cfg = await getLocal([LOCAL_KEYS.OLLAMA_URL, LOCAL_KEYS.OLLAMA_MODEL, LOCAL_KEYS.OLLAMA_SEND_IMAGE]);
-  if (!cfg[LOCAL_KEYS.OLLAMA_MODEL]) {
-    showToast('설정 페이지에서 AI 모델명을 먼저 입력해주세요.', 'error');
+  const cfg = await getLocal([
+    LOCAL_KEYS.OPENAI_API_KEY,
+    LOCAL_KEYS.OPENAI_MODEL,
+    LOCAL_KEYS.OPENAI_BASE_URL,
+    LOCAL_KEYS.OPENAI_SEND_IMAGE,
+  ]);
+  const apiKey = cfg[LOCAL_KEYS.OPENAI_API_KEY];
+  if (!apiKey) {
+    showToast('설정 페이지에서 OpenAI API 키를 먼저 입력해주세요.', 'error');
     return;
   }
+  const model = cfg[LOCAL_KEYS.OPENAI_MODEL] || 'gpt-4o-mini';
 
   setAiLoading(true);
   try {
@@ -916,17 +920,18 @@ async function handleAiSubmit() {
       `아래 메모와 자동 수집 정보를 바탕으로 정리해주세요:\n${els.description.value}` +
       examplesBlock;
 
-    let imagesBase64;
-    if (cfg[LOCAL_KEYS.OLLAMA_SEND_IMAGE] && captureBlob && (captureBlob.type || '').startsWith('image/')) {
-      imagesBase64 = [await blobToBase64(captureBlob)];
+    let imagesDataUrls;
+    if (cfg[LOCAL_KEYS.OPENAI_SEND_IMAGE] && captureBlob && (captureBlob.type || '').startsWith('image/')) {
+      imagesDataUrls = [await blobToDataUrl(captureBlob)];
     }
 
     const result = await chatJson({
-      baseUrl: cfg[LOCAL_KEYS.OLLAMA_URL],
-      model: cfg[LOCAL_KEYS.OLLAMA_MODEL],
+      baseUrl: cfg[LOCAL_KEYS.OPENAI_BASE_URL],
+      apiKey,
+      model,
       system,
       user,
-      imagesBase64,
+      imagesDataUrls,
     });
 
     if (result.title) els.title.value = String(result.title).slice(0, 255);
