@@ -82,22 +82,19 @@ const openaiKeyEl = document.getElementById('openai-key');
 const openaiModelEl = document.getElementById('openai-model');
 const openaiBaseEl = document.getElementById('openai-base');
 const openaiImageEl = document.getElementById('openai-image');
-const toggleOpenaiBtn = document.getElementById('toggle-openai-key');
 
 async function loadSettings() {
   const cfg = await getLocal([
     LOCAL_KEYS.CLICKUP_TOKEN,
     LOCAL_KEYS.DEFAULT_LIST_ID,
-    LOCAL_KEYS.OPENAI_API_KEY,
-    LOCAL_KEYS.OPENAI_MODEL,
     LOCAL_KEYS.OPENAI_BASE_URL,
     LOCAL_KEYS.OPENAI_SEND_IMAGE,
   ]);
   tokenEl.value = cfg[LOCAL_KEYS.CLICKUP_TOKEN] || '';
   listIdEl.value = cfg[LOCAL_KEYS.DEFAULT_LIST_ID] || '';
-  // 개인이 저장한 값이 있으면 그 값, 없으면 팀 배포 기본값(team-config.js)을 보여준다.
-  openaiKeyEl.value = cfg[LOCAL_KEYS.OPENAI_API_KEY] || TEAM_DEFAULTS.openaiApiKey || '';
-  openaiModelEl.value = cfg[LOCAL_KEYS.OPENAI_MODEL] || TEAM_DEFAULTS.openaiModel || '';
+  // 접속 토큰·모델은 team-config.js에 고정(비활성 표시용). base URL·이미지 옵션만 개인 저장값 우선.
+  openaiKeyEl.value = TEAM_DEFAULTS.openaiApiKey || '';
+  openaiModelEl.value = TEAM_DEFAULTS.openaiModel || 'gpt-4o-mini';
   openaiBaseEl.value = cfg[LOCAL_KEYS.OPENAI_BASE_URL] || TEAM_DEFAULTS.openaiBaseUrl || '';
   openaiImageEl.checked = Boolean(cfg[LOCAL_KEYS.OPENAI_SEND_IMAGE]);
 }
@@ -115,11 +112,10 @@ async function saveSettings() {
     return;
   }
 
+  // 접속 토큰·모델은 team-config.js에 고정이라 저장하지 않는다(항상 team-config 값 사용).
   await setLocal({
     [LOCAL_KEYS.CLICKUP_TOKEN]: token,
     [LOCAL_KEYS.DEFAULT_LIST_ID]: listId,
-    [LOCAL_KEYS.OPENAI_API_KEY]: openaiKeyEl.value.trim(),
-    [LOCAL_KEYS.OPENAI_MODEL]: openaiModelEl.value.trim(),
     [LOCAL_KEYS.OPENAI_BASE_URL]: openaiBaseEl.value.trim(),
     [LOCAL_KEYS.OPENAI_SEND_IMAGE]: openaiImageEl.checked,
   });
@@ -287,17 +283,10 @@ async function testOpenAI() {
   }
 }
 
-function toggleOpenaiVisibility() {
-  const isHidden = openaiKeyEl.type === 'password';
-  openaiKeyEl.type = isHidden ? 'text' : 'password';
-  toggleOpenaiBtn.textContent = isHidden ? '숨김' : '표시';
-}
-
 saveBtn.addEventListener('click', saveSettings);
 testBtn.addEventListener('click', testConnection);
 toggleBtn.addEventListener('click', toggleTokenVisibility);
 document.getElementById('openai-test').addEventListener('click', testOpenAI);
-toggleOpenaiBtn.addEventListener('click', toggleOpenaiVisibility);
 
 findListBtn.addEventListener('click', openPicker);
 pkTeam.addEventListener('change', onTeamChange);
