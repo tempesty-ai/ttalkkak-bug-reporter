@@ -26,6 +26,11 @@ const els = {
   canvas: document.getElementById('annotate-canvas'),
   videoPreview: document.getElementById('video-preview'),
   videoPlayBtn: document.getElementById('video-play-btn'),
+  zoomBtn: document.getElementById('zoom-btn'),
+  lightbox: document.getElementById('lightbox'),
+  lightboxBody: document.getElementById('lightbox-body'),
+  lightboxImg: document.getElementById('lightbox-img'),
+  lightboxClose: document.getElementById('lightbox-close'),
   toolbar: document.querySelector('.annotate-toolbar'),
   undoBtn: document.getElementById('undo-btn'),
   clearBtn: document.getElementById('clear-btn'),
@@ -444,6 +449,7 @@ async function showReport(cap) {
     els.videoPreview.src = cap.dataUrl;
     els.videoPlayBtn.hidden = false;
     els.videoPlayBtn.textContent = '▶ 재생';
+    els.zoomBtn.hidden = true; // 영상은 자체 컨트롤(전체화면) 사용
     captureBlob = dataUrlToBlob(cap.dataUrl);
     captureFilename = `recording-${(cap.capturedAt || 'rec').replace(/[:.]/g, '-')}.webm`;
   } else {
@@ -453,6 +459,7 @@ async function showReport(cap) {
     els.videoPlayBtn.hidden = true;
     els.toolbar.hidden = false;
     els.canvas.hidden = false;
+    els.zoomBtn.hidden = false; // 이미지 캡처만 확대 보기 제공
     annotator = createAnnotator(els.canvas, cap.dataUrl);
     annotator.setTool(DEFAULT_TOOL);
     annotator.setColor(DEFAULT_COLOR);
@@ -1089,6 +1096,32 @@ els.toolbar.querySelectorAll('.color-btn').forEach((btn) => {
 });
 els.undoBtn.addEventListener('click', () => annotator && annotator.undo());
 els.clearBtn.addEventListener('click', () => annotator && annotator.clear());
+
+// 확대 보기(라이트박스) — 좁은 패널에서 캡처를 크게 확인
+function openLightbox() {
+  if (els.canvas.hidden) return; // 이미지 캡처일 때만
+  els.lightboxImg.classList.remove('zoomed');
+  // 캔버스에는 base 이미지 + 주석이 합쳐져 그려져 있으므로 그대로 사용
+  els.lightboxImg.src = els.canvas.toDataURL('image/png');
+  els.lightbox.hidden = false;
+  els.lightboxBody.scrollTop = 0;
+}
+function closeLightbox() {
+  els.lightbox.hidden = true;
+  els.lightboxImg.removeAttribute('src');
+}
+els.zoomBtn.addEventListener('click', openLightbox);
+els.lightboxClose.addEventListener('click', closeLightbox);
+// 이미지 클릭 → 화면 맞춤 ↔ 실제 크기 토글
+els.lightboxImg.addEventListener('click', () => els.lightboxImg.classList.toggle('zoomed'));
+// 배경(이미지 밖) 클릭 시 닫기
+els.lightbox.addEventListener('click', (e) => {
+  if (e.target === els.lightbox || e.target === els.lightboxBody) closeLightbox();
+});
+// ESC로 닫기
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !els.lightbox.hidden) closeLightbox();
+});
 
 // 자동 수집 카드
 els.autoCollect.addEventListener('change', async () => {

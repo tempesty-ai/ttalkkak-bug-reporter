@@ -106,12 +106,26 @@
       <button id="clear-btn" class="tool-btn" title="전체 지우기" aria-label="전체 지우기">🗑</button>
     </div>
 
-    <div class="preview">
-      <canvas id="annotate-canvas" class="annotate-canvas"></canvas>
-      <video id="video-preview" class="video-preview" controls hidden></video>
+    <div class="preview-wrap">
+      <div class="preview">
+        <canvas id="annotate-canvas" class="annotate-canvas"></canvas>
+        <video id="video-preview" class="video-preview" controls hidden></video>
+      </div>
+      <button id="zoom-btn" class="zoom-btn" type="button" title="크게 보기" aria-label="크게 보기" hidden>⤢ 크게</button>
     </div>
 
     <button id="video-play-btn" class="video-play-btn" type="button" hidden>▶ 재생</button>
+
+    <!-- 확대 뷰: 좁은 패널에서 캡처를 크게 확인 -->
+    <div id="lightbox" class="lightbox" hidden>
+      <div class="lightbox-bar">
+        <span class="lightbox-hint">이미지를 클릭하면 실제 크기로 전환 · ESC로 닫기</span>
+        <button id="lightbox-close" class="lightbox-close" type="button" aria-label="닫기">✕ 닫기</button>
+      </div>
+      <div id="lightbox-body" class="lightbox-body">
+        <img id="lightbox-img" class="lightbox-img" alt="확대된 캡처" />
+      </div>
+    </div>
 
     <label class="field">
       <span class="field-label">제목 <em>*</em></span>

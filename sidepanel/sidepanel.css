@@ -429,6 +429,10 @@ body {
   margin: 0 2px;
 }
 
+.preview-wrap {
+  position: relative;
+}
+
 .preview {
   display: flex;
   align-items: center;
@@ -438,6 +442,86 @@ body {
   border-radius: var(--radius);
   max-height: 320px;
   overflow: auto;
+}
+
+/* 미리보기 위 '크게 보기' 버튼 (스크롤과 무관하게 우상단 고정) */
+.zoom-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+}
+.zoom-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* 확대 뷰(라이트박스) — 패널 전체를 덮음 */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: rgba(10, 12, 20, 0.94);
+}
+.lightbox-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.lightbox-hint {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+}
+.lightbox-close {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: transparent;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.lightbox-body {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12px;
+}
+.lightbox-img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  cursor: zoom-in;
+  background: #fff;
+}
+/* 클릭 시 실제 픽셀 크기(가로 스크롤로 세부 확인) */
+.lightbox-img.zoomed {
+  width: auto;
+  max-width: none;
+  cursor: zoom-out;
 }
 
 .annotate-canvas {
