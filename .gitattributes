@@ -1,0 +1,2 @@
+# 윈도우 배치 파일은 항상 CRLF로 유지 (LF면 cmd.exe가 if 블록을 잘못 파싱)
+*.bat text eol=crlf
