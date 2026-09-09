@@ -53,20 +53,24 @@
   }
 
   // XHR 후킹
+  // 요청 정보를 XHR 객체에 직접 붙이면 안 된다. 페이지가 그 객체를 console.error나
+  // JSON.stringify로 찍을 때 우리 마커만 열거돼 {"__qaMethod":…} 같은 쓰레기가 로그에 남는다.
+  // WeakMap에 따로 보관해 페이지 객체를 건드리지 않는다.
+  const xhrInfo = new WeakMap();
   const origOpen = XMLHttpRequest.prototype.open;
   const origSend = XMLHttpRequest.prototype.send;
   XMLHttpRequest.prototype.open = function hookedOpen(method, url) {
-    this.__qaMethod = method;
-    this.__qaUrl = url;
+    xhrInfo.set(this, { method, url });
     return origOpen.apply(this, arguments);
   };
   XMLHttpRequest.prototype.send = function hookedSend(...a) {
     this.addEventListener('loadend', () => {
       try {
         if (this.status === 0 || this.status >= 400) {
+          const info = xhrInfo.get(this) || {};
           push(store.failedRequests, {
-            url: this.__qaUrl,
-            method: this.__qaMethod || 'GET',
+            url: info.url,
+            method: info.method || 'GET',
             status: this.status,
             at: now(),
           });
@@ -81,9 +85,24 @@
   // ---- 상호작용(재현 스텝) 기록 ----
   const IMAX = 15; // 최근 상호작용 버퍼
   const pushStep = (item) => {
+    // 같은 조작을 연달아 하면 줄을 늘리지 않고 횟수만 센다.
+    // 안 그러면 재현 단계가 똑같은 줄로 도배된다.
+    const last = store.interactions[store.interactions.length - 1];
+    if (last && last.action === item.action && last.target === item.target && last.extra === item.extra) {
+      last.count = (last.count || 1) + 1;
+      last.at = item.at;
+      return;
+    }
+    item.count = 1;
     store.interactions.push(item);
     if (store.interactions.length > IMAX) store.interactions.shift();
   };
+
+  // 확장이 페이지에 심은 UI(녹화 컨트롤 바, 영역 선택 오버레이)는 사용자 조작이 아니다.
+  // 걸러내지 않으면 "'영역 지정' 버튼 클릭"이 재현 단계에 쌓인다.
+  function isExtensionUi(node) {
+    return !!(node && node.nodeType === 1 && node.closest && node.closest('[data-qa-ext-ui]'));
+  }
 
   // 클릭 대상을 의미있는 요소로 승격 + 사람이 읽을 설명 생성
   function describe(el) {
@@ -112,6 +131,7 @@
     'click',
     (e) => {
       const t = e.target;
+      if (isExtensionUi(t)) return;
       const el =
         (t && t.closest && t.closest('a,button,[role="button"],input,select,textarea,[onclick],li,td,th,label,[class*="btn"]')) ||
         null;
@@ -125,6 +145,7 @@
     'change',
     (e) => {
       const el = e.target;
+      if (isExtensionUi(el)) return;
       const tag = (el.tagName || '').toLowerCase();
       const type = (el.type || '').toLowerCase();
       if (tag === 'select') {

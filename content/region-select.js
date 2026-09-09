@@ -7,6 +7,9 @@
   if (window.__qaRegionSelectActive) return;
   window.__qaRegionSelectActive = true;
 
+  // 패널이 주입 직전에 window.__qaRegionMode를 심어둔다. ('image' 캡처 | 'video' 녹화)
+  const mode = window.__qaRegionMode === 'video' ? 'video' : 'image';
+
   const Z = '2147483647';
   const overlay = document.createElement('div');
   overlay.style.cssText = `position:fixed;inset:0;z-index:${Z};cursor:crosshair;background:rgba(0,0,0,0.28);user-select:none;`;
@@ -17,7 +20,8 @@
   const hint = document.createElement('div');
   hint.style.cssText = `position:fixed;top:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:#111;color:#fff;font:13px/1.4 'Malgun Gothic',system-ui,sans-serif;padding:7px 8px 7px 14px;border-radius:8px;z-index:${Z};box-shadow:0 4px 14px rgba(0,0,0,0.3);`;
   const hintText = document.createElement('span');
-  hintText.textContent = '드래그해서 영역을 선택하세요';
+  hintText.textContent =
+    mode === 'video' ? '드래그해서 녹화할 영역을 선택하세요' : '드래그해서 영역을 선택하세요';
   const cancelBtn = document.createElement('button');
   cancelBtn.textContent = '✕ 취소 (ESC)';
   cancelBtn.style.cssText = "background:#374151;color:#fff;border:none;border-radius:6px;padding:5px 12px;font:600 12px 'Malgun Gothic',system-ui,sans-serif;cursor:pointer;";
@@ -25,6 +29,9 @@
   cancelBtn.addEventListener('pointerdown', (e) => { e.stopPropagation(); });
   cancelBtn.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); cancel(); });
   hint.append(hintText, cancelBtn);
+
+  // log-collector가 오버레이 클릭을 '사용자 재현 단계'로 기록하지 않도록 표시.
+  for (const el of [overlay, box, hint]) el.setAttribute('data-qa-ext-ui', '');
 
   document.documentElement.append(overlay, box, hint);
   // ESC가 페이지로 오도록 오버레이에 포커스 시도.
@@ -104,11 +111,13 @@
     }
 
     const dpr = window.devicePixelRatio || 1;
+    // 뷰포트 크기: 패널이 rect(CSS px)를 캡처/녹화 영상의 해상도로 환산할 때 필요.
+    const viewport = { w: window.innerWidth, h: window.innerHeight };
     cleanup();
     // 오버레이 제거가 화면에 반영된 다음 프레임 이후에 캡처 신호를 보낸다.
     requestAnimationFrame(() =>
       requestAnimationFrame(() =>
-        setTimeout(() => send({ type: 'REGION_SELECTED', rect, dpr }), 30),
+        setTimeout(() => send({ type: 'REGION_SELECTED', rect, dpr, viewport, mode }), 30),
       ),
     );
   });

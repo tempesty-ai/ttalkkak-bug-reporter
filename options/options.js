@@ -11,6 +11,9 @@ import {
   getFolders,
   getFolderLists,
   getFolderlessLists,
+  getList,
+  listPathParts,
+  joinListPath,
 } from '../lib/clickup.js';
 import { listModels } from '../lib/openai.js';
 import { TEAM_DEFAULTS } from '../lib/team-config.js';
@@ -117,6 +120,20 @@ async function saveSettings() {
     [LOCAL_KEYS.DEFAULT_LIST_ID]: listId,
     [LOCAL_KEYS.OPENAI_SEND_IMAGE]: openaiImageEl.checked,
   });
+
+  // 패널이 '등록 대상'을 경로로 보여주므로 여기서 같이 갱신해 둔다.
+  // 조회에 실패해도 저장 자체는 성공이므로 막지 않는다. (패널이 나중에 다시 시도)
+  try {
+    const parts = listPathParts(await getList(listId, token));
+    await setLocal({ [LOCAL_KEYS.DEFAULT_LIST_PATH]: parts });
+    if (parts.length) {
+      listNameEl.textContent = `선택됨: ${joinListPath(parts)} (ID ${listId})`;
+      listNameEl.hidden = false;
+    }
+  } catch {
+    await setLocal({ [LOCAL_KEYS.DEFAULT_LIST_PATH]: [] }); // 낡은 경로가 남지 않도록 비운다
+  }
+
   showStatus('저장되었습니다.', 'success');
 }
 

@@ -15,7 +15,7 @@ export function createAnnotator(canvas, dataUrl) {
   const ctx = canvas.getContext('2d');
   const shapes = [];
   let tool = 'arrow';
-  let color = '#e11d48';
+  let color = '#e5484d';
   let baseImage = null;
   let drawing = false;
   let start = null;
@@ -208,6 +208,29 @@ export function createAnnotator(canvas, dataUrl) {
     },
     isEmpty() {
       return shapes.length === 0;
+    },
+    /**
+     * 베이스 이미지만 갈아끼우고 주석은 유지한다 (라이브 따라가기용).
+     * 캡처 크기가 달라지면 기존 주석 좌표가 어긋나므로 그때만 비운다.
+     */
+    setImage(nextDataUrl) {
+      return new Promise((resolve) => {
+        const next = new Image();
+        next.onload = () => {
+          if (next.naturalWidth !== canvas.width || next.naturalHeight !== canvas.height) {
+            shapes.length = 0;
+            canvas.width = next.naturalWidth;
+            canvas.height = next.naturalHeight;
+            strokeWidth = Math.max(3, Math.round(next.naturalWidth / 300));
+            fontSize = Math.max(16, Math.round(next.naturalWidth / 45));
+          }
+          baseImage = next;
+          redraw();
+          resolve(true);
+        };
+        next.onerror = () => resolve(false);
+        next.src = nextDataUrl;
+      });
     },
     /** 주석이 합쳐진 PNG Blob 반환. */
     getBlob() {
