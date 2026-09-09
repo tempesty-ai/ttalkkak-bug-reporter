@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "딸깍 버그리포팅 (QA Capture to ClickUp)",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "화면 캡처·영상 녹화·주석 편집을 거쳐 ClickUp에 원클릭으로 버그 리포트를 등록하는 QA 도구.",
   "icons": {
     "16": "icons/icon-16.png",
