@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>딸깍 · 캡처 보기</title>
+  <link rel="stylesheet" href="../fonts/wanted-sans/wanted-sans.css" />
+  <link rel="stylesheet" href="viewer.css" />
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span id="title" class="brand-name">딸깍 · 캡처 보기</span>
+      <span id="meta" class="meta"></span>
+    </div>
+    <div class="bar-actions">
+      <!-- 이미지일 때만: 화면맞춤 ↔ 실제 크기(1:1). QA는 픽셀 단위 확인이 필요하다. -->
+      <button id="zoom-btn" class="btn" type="button" hidden>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path><path d="M8 11h6"></path><path d="M11 8v6"></path>
+        </svg>
+        <span id="zoom-label">실제 크기</span>
+      </button>
+      <button id="fullscreen-btn" class="btn" type="button">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path>
+        </svg>
+        <span id="fullscreen-label">전체화면</span>
+      </button>
+      <button id="download-btn" class="btn" type="button">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"></path><path d="M7 12l5 5 5-5"></path><path d="M4 21h16"></path>
+        </svg>
+        다운로드
+      </button>
+      <button id="apply-btn" class="btn btn-apply" type="button" hidden>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12l5 5L20 7"></path>
+        </svg>
+        적용하고 닫기
+      </button>
+      <button id="close-btn" class="btn btn-close" type="button">✕ 닫기</button>
+    </div>
+  </header>
+
+  <!-- 이미지일 때만. 패널 툴바와 같은 도구 구성 — 여기선 크게 보면서 그릴 수 있다. -->
+  <div id="tools" class="tools" role="toolbar" aria-label="주석 도구" hidden>
+    <div class="tool-group">
+      <button class="tool-btn" data-tool="arrow" title="화살표" aria-label="화살표">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17 17 7"></path><path d="M9 7h8v8"></path>
+        </svg>
+      </button>
+      <button class="tool-btn" data-tool="highlight" title="형광펜" aria-label="형광펜">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18"></path><path d="M15.5 3.5a2.1 2.1 0 0 1 3 3L9 16l-4 1 1-4z"></path>
+        </svg>
+      </button>
+      <button class="tool-btn" data-tool="step" title="단계 번호" aria-label="단계 번호">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle><path d="M10.5 9.5 12.5 8.5V16"></path>
+        </svg>
+      </button>
+      <button class="tool-btn" data-tool="text" title="텍스트" aria-label="텍스트">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 6V4h14v2"></path><path d="M12 4v16"></path><path d="M9 20h6"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="tool-group colors">
+      <button class="color-btn" data-color="#e5484d" style="background:#e5484d" title="빨강" aria-label="빨강"></button>
+      <button class="color-btn" data-color="#e0940b" style="background:#e0940b" title="주황" aria-label="주황"></button>
+      <button class="color-btn" data-color="#2b6cb0" style="background:#2b6cb0" title="파랑" aria-label="파랑"></button>
+    </div>
+
+    <div class="tool-group">
+      <button id="undo-btn" class="tool-btn" title="실행 취소" aria-label="실행 취소">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 14 4 9l5-5"></path><path d="M4 9h10a6 6 0 0 1 0 12h-2"></path>
+        </svg>
+      </button>
+      <button id="clear-btn" class="tool-btn" title="전체 지우기" aria-label="전체 지우기">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18"></path><path d="M9 6V4h6v2"></path><path d="M18.5 6 17.5 20h-11L5.5 6"></path>
+        </svg>
+      </button>
+    </div>
+
+    <span class="tools-hint">그린 내용은 <b>적용하고 닫기</b>를 눌러야 리포트에 반영됩니다</span>
+  </div>
+
+  <main id="stage" class="stage">
+    <video id="video" class="video" controls autoplay playsinline hidden></video>
+    <canvas id="canvas" class="image" hidden></canvas>
+    <p id="empty" class="empty" hidden>캡처를 불러오지 못했습니다. 패널에서 다시 열어주세요.</p>
+  </main>
+
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

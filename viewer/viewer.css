@@ -1,0 +1,270 @@
+/* 녹화 영상 전용 뷰어 탭.
+   패널과 달리 여기선 Fullscreen API가 정상 동작한다. 영상이 주인공이라 어두운 톤 고정. */
+
+:root {
+  --bg: #0b0d13;
+  --bar: #141922;
+  --rule: rgba(255, 255, 255, 0.12);
+  --ink: #e8eaf0;
+  --ink-sub: #8a93a3;
+  --brand: #8b8cf7;
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --font-body: 'Wanted Sans Variable', 'Wanted Sans', 'Pretendard Variable', 'Apple SD Gothic Neo',
+    'Malgun Gothic', 'Segoe UI', system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+.bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--bar);
+  border-bottom: 1px solid var(--rule);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand-dot {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  background: no-repeat center/20px 20px
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6.6 9.2l7.6 4.5-3.2.8-.8 3.2-3.6-8.5z' fill='%23e8eaf0'/%3E%3Cpath d='M6.6 6.2V3.4M3.6 7.6 1.8 5.8M9.6 7.6l1.8-1.8' stroke='%238b8cf7' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.meta {
+  color: var(--ink-sub);
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bar-actions {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--rule);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  font: 600 13px/1.4 var(--font-body);
+  padding: 7px 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.btn-close:hover {
+  background: #c8321c;
+  border-color: #c8321c;
+}
+
+.btn-apply {
+  background: #4f46e5;
+  border-color: #4f46e5;
+}
+
+.btn-apply:hover {
+  background: #4338ca;
+  border-color: #4338ca;
+}
+
+/* ===== 주석 툴바 ===== */
+.tools {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 16px;
+  background: var(--bar);
+  border-bottom: 1px solid var(--rule);
+}
+
+.tool-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tool-group.colors {
+  gap: 8px;
+  padding: 0 6px;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 30px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-sub);
+  cursor: pointer;
+  transition: background 0.14s var(--ease), color 0.14s var(--ease);
+}
+
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ink);
+}
+
+.tool-btn.active {
+  background: #4f46e5;
+  color: #fff;
+}
+
+#clear-btn:hover {
+  color: #ff8a75;
+}
+
+.color-btn {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  outline: 1px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+  cursor: pointer;
+}
+
+.color-btn.active {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.tools-hint {
+  margin-left: auto;
+  color: var(--ink-sub);
+  font-size: 12px;
+}
+
+.tools-hint b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* 잠긴 버튼은 호버에도 반응하지 않아야 '지금은 못 쓴다'가 분명해진다 */
+.btn:disabled:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--rule);
+}
+
+/* 영상은 남는 공간을 꽉 채우되 비율은 유지 */
+.stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* 실제 크기(1:1) 모드에선 스테이지가 스크롤 컨테이너가 된다 */
+.stage.is-scroll {
+  display: block;
+  overflow: auto;
+}
+
+.video {
+  max-width: 100%;
+  max-height: 100%;
+  background: #000;
+}
+
+/* 전체화면에선 바깥 여백 제한이 남아 작게 보이지 않도록 */
+.video:fullscreen {
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  background: #fff;
+  cursor: crosshair;
+  touch-action: none; /* 포인터로 그릴 때 스크롤 방지 */
+}
+
+/* 1:1 — 원본 픽셀 그대로 두고 스테이지 스크롤로 훑는다 */
+.image.is-actual {
+  max-width: none;
+  max-height: none;
+}
+
+/* 이미지는 문서 전체를 전체화면으로 올린다(툴바를 같이 데려가려고).
+   기본 배경이 검게 깔리므로 우리 배경을 명시한다. */
+:root:fullscreen {
+  background: var(--bg);
+}
+
+:root:fullscreen body {
+  height: 100%;
+}
+
+.empty {
+  margin: 0;
+  color: var(--ink-sub);
+  font-size: 14px;
+}
