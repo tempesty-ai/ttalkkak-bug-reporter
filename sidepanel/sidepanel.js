@@ -55,7 +55,6 @@ const els = {
   collectDetail: document.getElementById('collect-detail'),
   collectRefresh: document.getElementById('collect-refresh'),
   collectReread: document.getElementById('collect-reread'),
-  collectClearSteps: document.getElementById('collect-clear-steps'),
   autoCollect: document.getElementById('auto-collect'),
   title: document.getElementById('task-title'),
   priority: document.getElementById('task-priority'),
@@ -445,7 +444,6 @@ async function updateCollectCard() {
 
   const errs = info.consoleErrors;
   const reqs = info.failedRequests;
-  const steps = info.interactions.length;
 
   // 수치 위에 마우스를 올리면 실제 내용을 툴팁으로. (좁은 패널이라 본문에 다 못 편다)
   const errTip = errs.length
@@ -457,8 +455,7 @@ async function updateCollectCard() {
 
   els.collectSummary.innerHTML =
     metricCell(errs.length, '콘솔 에러', 'status-bad', errTip) +
-    metricCell(reqs.length, '실패 요청', '', reqTip) +
-    metricCell(steps, '재현 단계', '', '');
+    metricCell(reqs.length, '실패 요청', '', reqTip);
 
   // 잘라낸 뒤 같아 보이는 항목은 합친다 — 목록에 똑같은 줄이 나란히 남지 않도록.
   const items = [
@@ -700,33 +697,6 @@ function waitForTabComplete(tabId, timeoutMs = 8000) {
     chrome.tabs.onUpdated.addListener(listener);
     setTimeout(finish, timeoutMs);
   });
-}
-
-/**
- * 재현 단계 기록만 비운다. 페이지는 그대로 두므로 버그 상태를 잃지 않는다.
- *
- * log-collector는 document_start 선언형 content script라 페이지가 다시 로드되기 전엔
- * 버퍼가 계속 살아 있다. 그래서 새로고침 말고 비울 수단이 필요하다.
- */
-async function clearInteractionSteps() {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab || !isCapturableUrl(tab.url)) {
-    setCollectMessage('이 페이지에선 비울 수 없어요.');
-    return;
-  }
-  try {
-    await chrome.scripting.executeScript({
-      target: { tabId: tab.id, allFrames: true },
-      world: 'MAIN',
-      func: () => {
-        if (window.__qaCollected?.interactions) window.__qaCollected.interactions.length = 0;
-      },
-    });
-    await updateCollectCard();
-    showLauncherStatus('');
-  } catch {
-    showLauncherStatus('재현 단계를 비우지 못했습니다.');
-  }
 }
 
 /** 페이지를 새로고침한 뒤(로드 중 에러까지 수집) 진단 카드 갱신. */
@@ -1794,7 +1764,6 @@ els.autoCollect.addEventListener('change', async () => {
 });
 els.collectRefresh.addEventListener('click', reloadAndDiagnose);
 els.collectReread.addEventListener('click', () => updateCollectCard());
-els.collectClearSteps.addEventListener('click', clearInteractionSteps);
 
 // 탭 전환/페이지 이동 시 자동 재진단 (런처가 보일 때만)
 chrome.tabs.onActivated.addListener(() => {
