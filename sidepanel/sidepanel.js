@@ -1043,31 +1043,66 @@ async function handleRegionSelected(rect, dpr, viewport) {
 
 function fpBegin() {
   document.documentElement.style.scrollBehavior = 'auto';
-  const originalScrollY = window.scrollY;
+  const dpr = window.devicePixelRatio || 1;
+  const viewportW = window.innerWidth;
+  const viewportH = window.innerHeight;
+  const docEl = document.scrollingElement || document.documentElement;
+  const winScrolls = docEl.scrollHeight > viewportH + 4;
+
+  let mode = 'window';
+  let rect = { top: 0, left: 0, width: viewportW, height: viewportH };
+  let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body ? document.body.scrollHeight : 0);
+  let step = viewportH;
+  let originalScroll = window.scrollY;
   let fixedCount = 0;
-  const all = document.body ? document.body.getElementsByTagName('*') : [];
-  for (const el of all) {
-    const pos = getComputedStyle(el).position;
-    if (pos === 'fixed' || pos === 'sticky') {
-      el.setAttribute('data-qa-fp-fixed', '');
-      fixedCount += 1;
+
+  // 창이 스크롤되지 않으면(대시보드 등) 내부 스크롤 컨테이너를 찾는다.
+  if (!winScrolls) {
+    let best = null;
+    let bestScore = 0;
+    const els = document.body ? document.body.querySelectorAll('*') : [];
+    for (const el of els) {
+      const oy = getComputedStyle(el).overflowY;
+      if (oy !== 'auto' && oy !== 'scroll' && oy !== 'overlay') continue;
+      const scrollable = el.scrollHeight - el.clientHeight;
+      if (scrollable <= 20) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < viewportW * 0.4 || r.height < viewportH * 0.35) continue; // 사이드바 등 작은 스크롤 제외
+      const score = scrollable * r.width * r.height; // 스크롤 여력 + 화면 점유가 큰 요소 우선
+      if (score > bestScore) { best = el; bestScore = score; }
+    }
+    if (best) {
+      mode = 'element';
+      best.setAttribute('data-qa-fp-scroll', '');
+      const r = best.getBoundingClientRect();
+      const top = Math.max(0, r.top);
+      const left = Math.max(0, r.left);
+      rect = { top, left, width: Math.min(r.width, viewportW - left), height: Math.min(r.height, viewportH - top) };
+      scrollHeight = best.scrollHeight;
+      step = best.clientHeight;
+      originalScroll = best.scrollTop;
     }
   }
-  const scrollHeight = Math.max(
-    document.documentElement.scrollHeight,
-    document.body ? document.body.scrollHeight : 0,
-  );
-  return {
-    scrollHeight,
-    viewportH: window.innerHeight,
-    viewportW: window.innerWidth,
-    dpr: window.devicePixelRatio || 1,
-    originalScrollY,
-    fixedCount,
-  };
+
+  // 창 스크롤일 때만 고정/스티키를 표시(첫 컷 뒤 숨김). 내부 컨테이너는 잘라내므로 불필요.
+  if (mode === 'window') {
+    const all = document.body ? document.body.getElementsByTagName('*') : [];
+    for (const el of all) {
+      const pos = getComputedStyle(el).position;
+      if (pos === 'fixed' || pos === 'sticky') { el.setAttribute('data-qa-fp-fixed', ''); fixedCount += 1; }
+    }
+  }
+
+  const maxScroll = Math.max(0, scrollHeight - step);
+  return { mode, rect, scrollHeight, step, maxScroll, viewportW, viewportH, dpr, originalScroll, fixedCount };
 }
 
 function fpScroll(y, hideFixed) {
+  const t = document.querySelector('[data-qa-fp-scroll]');
+  if (t) {
+    t.scrollTop = y; // 내부 컨테이너 스크롤
+    return { scroll: t.scrollTop };
+  }
   let style = document.getElementById('qa-fp-hide-style');
   if (hideFixed && !style) {
     // 첫 컷 이후엔 고정/스티키 요소를 숨겨 매 컷 반복되지 않게 함 (함정 6).
@@ -1077,14 +1112,20 @@ function fpScroll(y, hideFixed) {
     document.documentElement.appendChild(style);
   }
   window.scrollTo(0, y);
-  return { scrollY: window.scrollY };
+  return { scroll: window.scrollY };
 }
 
-function fpEnd(originalScrollY) {
+function fpEnd(originalScroll) {
   const style = document.getElementById('qa-fp-hide-style');
   if (style) style.remove();
   document.querySelectorAll('[data-qa-fp-fixed]').forEach((el) => el.removeAttribute('data-qa-fp-fixed'));
-  window.scrollTo(0, originalScrollY);
+  const t = document.querySelector('[data-qa-fp-scroll]');
+  if (t) {
+    t.scrollTop = originalScroll;
+    t.removeAttribute('data-qa-fp-scroll');
+  } else {
+    window.scrollTo(0, originalScroll);
+  }
 }
 
 const FP_MAX_CANVAS_PX = 30000; // 캔버스 높이 한도. 초과 시 상단부터 이 높이까지만.
@@ -1092,7 +1133,8 @@ const FP_MAX_SLICES = 40;
 const FP_SETTLE_MS = 600; // 스크롤 안정 + captureVisibleTab 레이트리밋(<=2/s)
 
 async function stitchSlices(slices, m) {
-  const width = Math.round(m.viewportW * m.dpr);
+  const rd = m.rect; // 잘라낼 영역(뷰포트 CSS px). window 모드면 뷰포트 전체.
+  const width = Math.round(rd.width * m.dpr);
   let fullH = Math.round(m.scrollHeight * m.dpr);
   let truncated = false;
   if (fullH > FP_MAX_CANVAS_PX) {
@@ -1103,10 +1145,15 @@ async function stitchSlices(slices, m) {
   canvas.width = width;
   canvas.height = fullH;
   const ctx = canvas.getContext('2d');
+  const sx = Math.round(rd.left * m.dpr);
+  const sy = Math.round(rd.top * m.dpr);
+  const sw = Math.round(rd.width * m.dpr);
+  const sh = Math.round(rd.height * m.dpr);
   for (const slice of slices) {
     // eslint-disable-next-line no-await-in-loop
     const img = await loadImage(slice.dataUrl);
-    ctx.drawImage(img, 0, Math.round(slice.y * m.dpr));
+    // 캡처된 뷰포트에서 컨테이너 영역만 잘라, 스크롤 위치에 맞춰 이어붙임.
+    ctx.drawImage(img, sx, sy, sw, sh, 0, Math.round(slice.scroll * m.dpr), sw, sh);
   }
   return { dataUrl: canvas.toDataURL('image/png'), truncated };
 }
@@ -1122,7 +1169,6 @@ async function captureFullPage() {
   setActionsEnabled(false);
   try {
     const [{ result: m }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: fpBegin });
-    const maxScroll = Math.max(0, m.scrollHeight - m.viewportH);
     const slices = [];
 
     try {
@@ -1139,16 +1185,16 @@ async function captureFullPage() {
         await sleep(FP_SETTLE_MS);
         // eslint-disable-next-line no-await-in-loop
         const dataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });
-        slices.push({ y: s.scrollY, dataUrl });
+        slices.push({ scroll: s.scroll, dataUrl });
         showLauncherStatus(`전체 페이지 캡처 중… ${slices.length}컷`);
         first = false;
-        if (s.scrollY >= maxScroll) break;
-        y += m.viewportH;
+        if (s.scroll >= m.maxScroll) break;
+        y += m.step;
       }
     } finally {
       // 중간에 실패해도 페이지(스크롤/고정요소) 원상복구.
       await chrome.scripting
-        .executeScript({ target: { tabId: tab.id }, func: fpEnd, args: [m.originalScrollY] })
+        .executeScript({ target: { tabId: tab.id }, func: fpEnd, args: [m.originalScroll] })
         .catch(() => {});
     }
 
