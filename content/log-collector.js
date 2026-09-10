@@ -130,6 +130,9 @@
   document.addEventListener(
     'click',
     (e) => {
+      // SPA(대시보드 등)가 로드 시 프로그램적으로 쏘는 합성 이벤트는 사용자 조작이 아니다.
+      // 안 거르면 URL 진입 즉시 재현 단계가 채워진다. isTrusted는 실제 사용자 제스처만 true.
+      if (!e.isTrusted) return;
       const t = e.target;
       if (isExtensionUi(t)) return;
       const el =
@@ -144,6 +147,7 @@
   document.addEventListener(
     'change',
     (e) => {
+      if (!e.isTrusted) return; // 합성 change 이벤트(자동 초기화 등) 제외
       const el = e.target;
       if (isExtensionUi(el)) return;
       const tag = (el.tagName || '').toLowerCase();
